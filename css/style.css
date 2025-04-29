@@ -1,0 +1,15 @@
+/* 
+MARK: HomePage
+*/
+.navbar a {
+  text-decoration: none;
+}
+.signUpSuggistionWrapper {
+  font-size: 0.8rem;
+}
+.signUpSuggistionWrapper a {
+  font-size: 0.9rem;
+}
+.navbareIconsWrapper {
+  font-size: 1.5rem;
+}
