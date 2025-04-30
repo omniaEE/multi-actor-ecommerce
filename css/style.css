@@ -1,6 +1,7 @@
 /* 
 MARK: HomePage
 */
+/* Header */
 .navbar a {
   text-decoration: none;
 }
@@ -12,4 +13,19 @@ MARK: HomePage
 }
 .navbareIconsWrapper {
   font-size: 1.5rem;
+}
+
+/* Hero */
+.heroWrapper {
+  height: 83vh;
+  background-color: #f2f0f1;
+}
+.heroHeader {
+  /* width: 65%; */
+  font-size: 4rem;
+  font-weight: bolder;
+}
+.rightSideContainer {
+  height: 80vh;
+  /* background-color: blue; */
 }
