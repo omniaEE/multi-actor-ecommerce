@@ -5,12 +5,15 @@ MARK: HomePage
 .navbar a {
   text-decoration: none;
 }
+
 .signUpSuggistionWrapper {
   font-size: 0.8rem;
 }
+
 .signUpSuggistionWrapper a {
   font-size: 0.9rem;
 }
+
 .navbareIconsWrapper {
   font-size: 1.5rem;
 }
@@ -20,12 +23,93 @@ MARK: HomePage
   height: 83vh;
   background-color: #f2f0f1;
 }
+
 .heroHeader {
   /* width: 65%; */
   font-size: 4rem;
   font-weight: bolder;
 }
+
 .rightSideContainer {
   height: 80vh;
   /* background-color: blue; */
+}
+
+
+
+
+
+
+
+
+/* products sections */
+.pros-holder{
+  text-align: center;
+}
+.pros-holder h1 {
+  font-size: 2.4rem;
+  font-family: Arial Black, sans-serif;
+  margin: 50px auto 25px;
+}
+
+.other-pro {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 85%;
+  margin: auto;
+}
+.pro-card{
+  text-align: left;
+}
+.pro-card img {
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.pro-card .rating {
+  margin: 7px 0;
+}
+
+.pro-card .rating i {
+  color: #ffd45e;
+}
+
+.pro-card p {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.pro-card h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pro-card h2 s {
+  color: #bbb;
+  margin: 0 10px;
+}
+
+.pro-card h2 span {
+  background-color: rgb(255, 226, 226);
+  padding: 2px 10px;
+  color: #d90b0b;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+.pros-holder hr{
+  width: 85%;
+  margin: 30px auto;
+  opacity: 0.1;
+}
+.pros-holder button{
+  margin: 30px auto;
+  padding: 8px 0;
+  width: 20%;
+  border: 1px solid #bbb;
+  border-radius: 30px;
+  background: transparent;
 }
