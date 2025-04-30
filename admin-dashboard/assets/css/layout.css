@@ -1,0 +1,7 @@
+.list-group-item.active {
+  background-color: #f5f7f9 !important;
+
+  color: rgb(12, 12, 12) !important;
+  border-radius: 2px;
+  border-color: #f5f7f9 !important;
+}
