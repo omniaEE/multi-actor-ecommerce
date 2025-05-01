@@ -1,12 +1,20 @@
+let totalUsers = 0;
+let totalProducts = 0;
+let totalOrders = 0;
+
 fetch("./data/data.json")
   .then((response) => {
     if (!response.ok) throw new Error("Failed to load dashboard data");
     return response.json();
   })
   .then((data) => {
-    document.getElementById("totalUsers").textContent = data.totalUsers;
-    document.getElementById("totalProducts").textContent = data.totalProducts;
-    document.getElementById("totalOrders").textContent = data.totalOrders;
+    totalOrders = data.totalOrders;
+    totalProducts = data.totalProducts;
+    totalUsers = data.totalUsers;
+
+    document.getElementById("totalUsers").textContent = totalUsers;
+    document.getElementById("totalProducts").textContent = totalProducts;
+    document.getElementById("totalOrders").textContent = totalOrders;
 
     updateChangeBadge("totalUsersChange", data.changes.users);
     updateChangeBadge("productsChange", data.changes.products);
