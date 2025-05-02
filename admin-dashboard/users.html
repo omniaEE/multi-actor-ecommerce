@@ -1,11 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>user page</h1>
-  </body>
-</html>
+<div class="container mt-5">
+  <h2 class="mb-4">Users Management</h2>
+
+  <!-- Search bar -->
+  <div class="mb-3">
+    <input
+      type="text"
+      id="userSearch"
+      class="form-control"
+      placeholder="Search by name or email"
+    />
+  </div>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+      <tr>
+        <td>1</td>
+        <td>Jane Doe</td>
+        <td>jane@example.com</td>
+        <td><span class="badge bg-success">Active</span></td>
+        <td>
+          <button
+            class="btn btn-warning btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#banModal"
+          >
+            Ban
+          </button>
+          <button
+            class="btn btn-danger btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>John Smith</td>
+        <td>john@example.com</td>
+        <td><span class="badge bg-secondary">Banned</span></td>
+        <td>
+          <button
+            class="btn btn-success btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#unbanModal"
+          >
+            Unban
+          </button>
+          <button
+            class="btn btn-danger btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <!-- Add more user rows as needed -->
+    </tbody>
+  </table>
+</div>

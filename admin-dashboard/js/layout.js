@@ -39,4 +39,5 @@ function loadPage(page) {
     });
 }
 
-loadPage("./dashboard.html");
+// loadPage("./dashboard.html");
+loadPage("./users.html");

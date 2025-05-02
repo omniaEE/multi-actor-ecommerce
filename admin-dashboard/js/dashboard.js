@@ -3,8 +3,6 @@
   let totalProducts = 0;
   let totalOrders = 0;
 
-  // your code here
-
   fetch("./data/data.json")
     .then((response) => {
       if (!response.ok) throw new Error("Failed to load dashboard data");
