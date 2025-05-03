@@ -70,7 +70,7 @@
         "category": "Men",
         "sellerId": 4,
         "ratings": [5, 4, 5],
-        "images": ["../assets/", "../assets/"]
+        "images": ["../assets/pro1.jpg", "../assets/pro2.jpg", "../assets/pro3.jpg"]
       },
       {
         "id": 302,
@@ -85,7 +85,7 @@
         "category": "Party",
         "sellerId": 4,
         "ratings": [5, 5, 4],
-        "images": ["../assets/", "../assets/"]
+        "images": ["../assets/pro9.jpg", "../assets/pro5.jpg"]
       },
       {
         "id": 303,
@@ -99,7 +99,7 @@
         "category": "Kids",
         "sellerId": 3,
         "ratings": [4, 4, 5],
-        "images": ["../assets/"]
+        "images": ["../assets/pro6.jpg"]
       },
       {
         "id": 304,
@@ -114,7 +114,7 @@
         "category": "Formal",
         "sellerId": 3,
         "ratings": [5, 5, 5],
-        "images": ["../assets/formal.png"]
+        "images": ["../assets/pro7.jpg"]
       },
       {
         "id": 305,
@@ -129,7 +129,7 @@
         "category": "Casual",
         "sellerId": 4,
         "ratings": [4, 4, 3],
-        "images": ["../assets/"]
+        "images": ["../assets/pro8.jpg"]
       },
       {
         "id": 306,
@@ -144,11 +144,11 @@
         "category": "Men",
         "sellerId": 3,
         "ratings": [5, 4, 4],
-        "images": ["../assets/tshirt9.jpg", "../assets/tshirt5.jpg", "../assets/tshirt4.jpg"]
+        "images": ["../assets/pro10.jpg", "../assets/pro4.jpg"]
       },
       {
         "id": 307,
-        "name": "Girls' Cotton Pajama Set",
+        "name": "Unisex Oversized T-Shirt",
         "description": "Cute and comfy pajama set for girls, made from 100% organic cotton with fun prints.",
         "status": "active", 
         "price": 129.5,
@@ -159,11 +159,11 @@
         "category": "Kids",
         "sellerId": 4,
         "ratings": [5, 5, 5],
-        "images": ["../assets/"]
+        "images": ["../assets/pro11.jpg"]
       },
       {
         "id": 308,
-        "name": "Unisex Oversized T-Shirt",
+        "name": "Girls' Cotton Pajama Set",
         "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
         "status": "active", 
         "price": 99.0,
@@ -174,7 +174,21 @@
         "category": "Casual",
         "sellerId": 3,
         "ratings": [4, 5, 4],
-        "images": ["../assets/"]
+        "images": ["../assets/pro12.jpg","../assets/pro14.jpg"]
+      },
+      {
+        "id": 308,
+        "name": "Men's Jeans Pants",
+        "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "price": 99.0,
+        "old_price": "129.0",
+        "colors": ["white", "black", "beige"],
+        "sizes": ["s", "m", "l", "xl"],
+        "stock": 80,
+        "category": "Casual",
+        "sellerId": 3,
+        "ratings": [4, 5, 4],
+        "images": ["../assets/pro13.jpg"]
       }
     ],
     "orders": [
