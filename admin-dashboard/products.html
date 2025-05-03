@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Product Panel</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .table-img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="container py-5">
+      <h2 class="mb-4">Admin - Manage Products</h2>
+      <table class="table table-bordered bg-white">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+      </table>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="editForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Product</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="editId" />
+              <div class="mb-2">
+                <label class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editName"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Category</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCategory"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Price</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="editPrice"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Stock</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="editStock"
+                  required
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="submit">
+                Save Changes
+              </button>
+              <button class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let products = [];
+
+      // Load JSON from local file
+      async function loadProducts() {
+        const res = await fetch("../data/data.json");
+        const data = await res.json();
+        products = data.products;
+        localStorage.setItem("adminProducts", JSON.stringify(products));
+
+        renderProducts();
+      }
+
+      // Render table
+      function renderProducts() {
+        const table = document.getElementById("productTable");
+        table.innerHTML = "";
+        products.forEach((product, index) => {
+          const isFrozen = product.status === "frozen";
+          const row = document.createElement("tr");
+          row.className = isFrozen ? "table-secondary" : "";
+
+          row.innerHTML = `
+      <td>${product.id}</td>
+      <td><img src="${product.images[0]}" class="table-img" /></td>
+      <td>${product.name}</td>
+      <td>${product.category}</td>
+      <td>$${product.price}</td>
+      <td>${product.stock}</td>
+      <td>
+        <button class="btn btn-sm ${
+          isFrozen ? "btn-success" : "btn-secondary"
+        }" onclick="toggleFreeze(${index})">
+          ${isFrozen ? "Unfreeze" : "Freeze"}
+        </button>
+        <button class="btn btn-warning btn-sm" onclick="openEditModal(${index})" ${
+            isFrozen ? "disabled" : ""
+          }>Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="removeProduct(${index})">Remove</button>
+      </td>
+    `;
+          table.appendChild(row);
+        });
+      }
+      function toggleFreeze(index) {
+        products[index].status =
+          products[index].status === "frozen" ? "active" : "frozen";
+        localStorage.setItem("adminProducts", JSON.stringify(products));
+        renderProducts();
+      }
+      function removeProduct(index) {
+        if (confirm("Are you sure you want to delete this product?")) {
+          products.splice(index, 1);
+          localStorage.setItem("adminProducts", JSON.stringify(products));
+          renderProducts();
+        }
+      }
+
+      // Edit modal handlers
+      function openEditModal(index) {
+        const p = products[index];
+        document.getElementById("editId").value = index;
+        document.getElementById("editName").value = p.name;
+        document.getElementById("editCategory").value = p.category;
+        document.getElementById("editPrice").value = p.price;
+        document.getElementById("editStock").value = p.stock;
+        new bootstrap.Modal(document.getElementById("editModal")).show();
+      }
+
+      document.getElementById("editForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const index = document.getElementById("editId").value;
+        products[index].name = document.getElementById("editName").value;
+        products[index].category =
+          document.getElementById("editCategory").value;
+        products[index].price = parseFloat(
+          document.getElementById("editPrice").value
+        );
+        products[index].stock = parseInt(
+          document.getElementById("editStock").value
+        );
+
+        localStorage.setItem("adminProducts", JSON.stringify(products));
+        bootstrap.Modal.getInstance(
+          document.getElementById("editModal")
+        ).hide();
+        renderProducts();
+      });
+
+      loadProducts();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

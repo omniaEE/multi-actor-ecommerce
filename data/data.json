@@ -1,60 +1,67 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "role": "customer",
-        "firstName": "Fadl",
-        "lastName": "Yousry",
-        "email": "fadl@gmail.com",
-        "password": "fd_cust_1",
-        "address": "123 Tanta, Egypt",
-        "orders": [101, 102]
-      },
-      {
-        "id": 2,
-        "role": "customer",
-        "firstName": "Yousef",
-        "lastName": "Hesham",
-        "email": "yousef@gmail.com",
-        "password": "fd_cust_2",
-        "address": "456 Garbia",
-        "orders": [103, 104]
-      },
-      {
-        "id": 3,
-        "role": "seller",
-        "firstName": "Alaa",
-        "lastName": "Hamdi",
-        "email": "alaa@sellhub.com",
-        "password": "alaa_sell_3",
-        "storeName": "Lola Store",
-        "products": [201, 202]
-      },
-      {
-        "id": 4,
-        "role": "seller",
-        "firstName": "Hagar",
-        "lastName": "Gamal",
-        "email": "hager@sellhub.com",
-        "password": "hager_sell_4",
-        "storeName": "Gora Store",
-        "products": [203, 204]
-      },
-      {
-        "id": 5,
-        "role": "admin",
-        "firstName": "Omnia",
-        "lastName": "Eid",
-        "email": "omnia@adminhub.com",
-        "password": "omnia_admin_5",
-        "permissions": ["manage_users", "manage_products", "view_reports"]
-      }
-    ],
+  "users": [
+  {
+    "id": 1,
+    "role": "customer",
+    "firstName": "Fadl",
+    "lastName": "Yousry",
+    "email": "fadl@gmail.com",
+    "password": "fd_cust_1",
+    "address": "123 Tanta, Egypt",
+    "orders": [101, 102],
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "role": "customer",
+    "firstName": "Yousef",
+    "lastName": "Hesham",
+    "email": "yousef@gmail.com",
+    "password": "fd_cust_2",
+    "address": "456 Garbia",
+    "orders": [103, 104],
+    "status": "Banned"
+  },
+  {
+    "id": 3,
+    "role": "seller",
+    "firstName": "Alaa",
+    "lastName": "Hamdi",
+    "email": "alaa@sellhub.com",
+    "password": "alaa_sell_3",
+    "storeName": "Lola Store",
+    "products": [201, 202],
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "role": "seller",
+    "firstName": "Hagar",
+    "lastName": "Gamal",
+    "email": "hager@sellhub.com",
+    "password": "hager_sell_4",
+    "storeName": "Gora Store",
+    "products": [203, 204],
+    "status": "Banned"
+  },
+  {
+    "id": 5,
+    "role": "admin",
+    "firstName": "Omnia",
+    "lastName": "Eid",
+    "email": "omnia@adminhub.com",
+    "password": "omnia_admin_5",
+    "permissions": ["manage_users", "manage_products", "view_reports"],
+    "status": "Active"
+  }
+]
+,
     "products": [
       {
         "id": 301,
         "name": "Men's Wool Winter Jacket",
         "description": "Cozy and stylish men's winter jacket made of wool blend, perfect for cold weather. Features an inner lining, button closure, and a modern fit.",
+        "status": "active",
         "price": 349.5,
         "old_price": "",
         "colors": ["black", "red", "white"],
@@ -69,6 +76,7 @@
         "id": 302,
         "name": "Women's Floral Summer Dress",
         "description": "Lightweight and breathable summer dress for women, ideal for sunny days. Made from organic cotton with floral patterns and adjustable straps.",
+        "status": "active", 
         "price": 500.0,
         "old_price": "",
         "colors": ["purple", "red", "pink"],
@@ -97,6 +105,7 @@
         "id": 304,
         "name": "Men's Formal Suit",
         "description": "Classic tailored men's suit ideal for business meetings and formal occasions. Includes jacket and trousers.",
+        "status": "active", 
         "price": 799.0,
         "old_price": "",
         "colors": ["navy", "black"],
@@ -112,6 +121,7 @@
         "name": "LOOSE FIT BERMUDA SHORTS",
         "description": "Trendy denim jacket for women, perfect for a casual day out. Features button-up front and side pockets.",
         "price": 299.0,
+        "status": "active", 
         "old_price": "349.0",
         "colors": ["blue", "light blue"],
         "sizes": ["s", "m", "l"],
@@ -125,6 +135,7 @@
         "id": 306,
         "name": "One Life Graphic T-shirt",
         "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+        "status": "active", 
         "price": 260,
         "old_price": "300",
         "colors": ["brown", "green", "blue"],
@@ -139,6 +150,7 @@
         "id": 307,
         "name": "Girls' Cotton Pajama Set",
         "description": "Cute and comfy pajama set for girls, made from 100% organic cotton with fun prints.",
+        "status": "active", 
         "price": 129.5,
         "old_price": "",
         "colors": ["pink", "yellow", "white"],
@@ -153,6 +165,7 @@
         "id": 308,
         "name": "Unisex Oversized T-Shirt",
         "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "status": "active", 
         "price": 99.0,
         "old_price": "129.0",
         "colors": ["white", "black", "beige"],
