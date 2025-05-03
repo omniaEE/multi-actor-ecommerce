@@ -64,3 +64,7 @@ p {
 
     }
 }
+.is-invalid {
+    border-color: red !important; /* مثال: تغيير اللون الأحمر للحدود مع !important */
+    color: red !important; /* إذا كنت ترغب في تغيير النص أو أي خصائص أخرى */
+}

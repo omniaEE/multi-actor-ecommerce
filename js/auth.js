@@ -1,5 +1,53 @@
 
-function signUp() {
+//تحميل البيانات
+let all_data = {};
+
+fetch("../saller/data.json")
+    .then(res => res.json())
+    .then(data => {
+        localStorage.setItem("all_data", JSON.stringify(data));
+        all_data = data;
+
+        all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+    })
+    .catch (err => console.error("error in loading data", err));
+//--------------------------------------------------------------------------------------------
+function showAlert(message, type = "danger") {
+    const alertBox = document.getElementById("alertBox");
+    alertBox.textContent = message;
+    alertBox.className = `alert alert-${type}`; // alert-danger, alert-success, etc.
+    alertBox.classList.remove("d-none");
+}
+
+//----------------------------------------------------------------------------------------
+document.getElementById("phone").addEventListener("input", function () {
+    const phoneInput = document.getElementById("phone");
+    const phoneRegex = /^01[0-2,5]{1}[0-9]{8}$/;
+
+    if (phoneRegex.test(phoneInput.value)) {
+        phoneInput.classList.remove("is-invalid");
+    } else {
+        phoneInput.classList.add("is-invalid");
+    }
+});
+
+
+//----------------------------------------------------------------------------------------
+document.getElementById("ConfirmPassword").addEventListener("input", function () {
+    const password = document.getElementById("password").value;
+    const confirmPasswordInput = document.getElementById("ConfirmPassword");
+
+    if (confirmPasswordInput.value === password) {
+        confirmPasswordInput.classList.remove("is-invalid");
+    } else {
+        confirmPasswordInput.classList.add("is-invalid");
+    }
+});
+
+//----------------------------------------------------------------------------------------
+function signUp(event) {
+    event.preventDefault();
+
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
@@ -7,15 +55,22 @@ function signUp() {
     const password = document.getElementById("password").value;
     const ConfirmPassword = document.getElementById("ConfirmPassword").value;
 
-    if (!firstName || !lastName || !email || !phone || !password || !ConfirmPassword) {
-        alert("Please fill in all fields.");
+    const phoneRegex = /^01[0-2,5]{1}[0-9]{8}$/;
+
+    if (!phoneRegex.test(phone)) {
+        document.getElementById("phone").classList.add("is-invalid");
+
         return;
+    }
+    else {
+        document.getElementById("phone").classList.remove("is-invalid");
     }
 
     if (password !== ConfirmPassword) {
         alert("Passwords do not match.");
         return;
     }
+
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
     const exists = users.find(user => user.email === email);
@@ -23,33 +78,33 @@ function signUp() {
         alert("Email already exists");
         return;
     }
+
     const role = "customer";
-
-
     users.push({ firstName, lastName, email, phone, password, role });
     localStorage.setItem("users", JSON.stringify(users));
 
-    alert("Signed up successfully as a customer!");
+    showAlert("Signed up successfully!", "success");
 }
+
 //-----------------------------------------------------------------------------------------------------------------
 function login() {
     const email = document.getElementById("email").value;
     const loginPassword = document.getElementById("loginPassword").value;
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const users = all_data.users;
 
-    const validUser = users.find(user => user.email === email && user.password === loginPassword);
+    const validUser = users.find(users => users.email === email && users.password === loginPassword);
 
     if (validUser) {
         switch (validUser.role) {
             case "admin":
                 window.location.href = "admin.html";
                 break;
-            case "customer":
-                window.location.href = "home.html";
-                break;
             case "seller":
-                window.location.href = "seller.html";
+                window.location.href = "../saller/overView.html";
+                break;
+            case "customer":
+                window.location.href = "customer.html";
                 break;
         }
         localStorage.setItem("loggedInUser", JSON.stringify(validUser));
@@ -115,3 +170,23 @@ function updatepassword() {
         message2.textContent = "Password updated successfully!";
     }
 }
+
+//----------------------------------------------------------------------------------------------------
+//bootstrap validation style
+(() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
