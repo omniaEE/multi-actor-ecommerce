@@ -22,7 +22,6 @@ fetch("nav bar.html")
     .then(data => {
         document.getElementById("sidebar").innerHTML = data;
 
-        // بعد تحميل السايدبار - أربط الحدث بالزر
         const toggleBtn = document.querySelector(".toggle-btn");
         const sidebar = document.getElementById("sidebar");
         const toggleIcon = document.getElementById("toggleIcon");
@@ -42,4 +41,3 @@ fetch("nav bar.html")
 
 
 
- 

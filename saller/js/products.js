@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const all_data = JSON.parse(localStorage.getItem("all_data")) || {};
     const container = document.getElementById("productsContainer");
 
-    // عرض المنتجات
+    //  productes
     if (all_data.products && Array.isArray(all_data.products)) {
         all_data.products.forEach(product => {
             const avgRating = product.ratings.length
@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                                 <p class="card-text" style="font-size: 15px;">$${product.price}</p>
                             </div>
-                                <!-- أزرار التعديل والحذف -->
                                 <div class="action-buttons">
                                     <button class="btn btn-primary" onclick="editProduct(${product.id})">Update</button><br>
                                     <button class="btn btn-danger " onclick="deleteProduct(${product.id})">Delete </button>
@@ -40,13 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // عرض نموذج إضافة المنتج
     window.addProduct = function () {
         document.getElementById("addProduct").classList.remove("d-none");
         document.getElementById("productsContainer").classList.add("d-none");
     }
 
-    // إضافة لون
+    // add color 
     const colorList = [];
     window.addColor = function () {
         const colorInput = document.getElementById("colorInput");
@@ -64,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // معاينة الصورة
+    // image view 
     document.getElementById("imageUpload").addEventListener("change", function (e) {
         const file = e.target.files[0];
         if (file) {
@@ -76,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // عند إرسال النموذج
+    //send form
     document.getElementById("productForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -119,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 sizes: selectedSizes,
                 stock: quantity,
                 category: category,
-                sellerId: 4, // اجعله ديناميكي إذا كان عندك تسجيل دخول
+                sellerId: 4,
                 ratings: [],
                 images: [imageBase64]
             };
@@ -148,7 +146,6 @@ function editProduct(productId) {
     const product = all_data.products.find(p => p.id === productId);
 
     if (product) {
-        // قم بتعبئة النموذج بقيم المنتج
         document.getElementById("name").value = product.name;
         document.getElementById("price").value = product.price;
         document.getElementById("description").value = product.description;
@@ -157,7 +154,6 @@ function editProduct(productId) {
 
         
 
-        // عند حفظ التعديلات
         document.getElementById("saveButton").onclick = function() {
             saveProductEdits(productId);
         };
@@ -176,25 +172,22 @@ function saveProductEdits(productId) {
     if (productIndex !== -1) {
         const product = all_data.products[productIndex];
 
-        // الحصول على القيم المعدلة من النموذج
         const name = document.getElementById("name").value;
         const price = parseFloat(document.getElementById("price").value);
         const description = document.getElementById("description").value.trim();
         const category = document.getElementById("category").value;
         const quantity = parseInt(document.getElementById("quantity").value);
 
-        // تحديث بيانات المنتج
         product.name = name;
         product.price = price;
         product.description = description;
         product.category = category;
         product.stock = quantity;
 
-        // حفظ التعديلات في localStorage
         all_data.products[productIndex] = product;
         localStorage.setItem("all_data", JSON.stringify(all_data));
 
-        alert("✅ تم تعديل المنتج بنجاح!");
-        window.location.reload();  // إعادة تحميل الصفحة لتحديث قائمة المنتجات
+        alert(" تم تعديل المنتج بنجاح!");
+        window.location.reload();  
     }
 }
