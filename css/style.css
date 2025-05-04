@@ -1,6 +1,13 @@
 /* 
 MARK: HomePage
 */
+.sectionTitle {
+  font-size: 2.4rm;
+  text-align: center;
+  font-family: Arial Black, sans-serif;
+  margin: 50px auto 25px;
+}
+
 /* Header */
 .navbar a {
   text-decoration: none;
@@ -35,21 +42,9 @@ MARK: HomePage
   /* background-color: blue; */
 }
 
-
-
-
-
-
-
-
 /* products sections */
-.pros-holder{
+.pros-holder {
   text-align: center;
-}
-.pros-holder h1 {
-  font-size: 2.4rem;
-  font-family: Arial Black, sans-serif;
-  margin: 50px auto 25px;
 }
 
 .other-pro {
@@ -59,9 +54,11 @@ MARK: HomePage
   width: 85%;
   margin: auto;
 }
-.pro-card{
+
+.pro-card {
   text-align: left;
 }
+
 .pro-card img {
   width: 100%;
   border-radius: 20px;
@@ -100,16 +97,97 @@ MARK: HomePage
   font-size: 0.7rem;
   font-weight: 300;
 }
-.pros-holder hr{
+
+.pros-holder hr {
   width: 85%;
   margin: 30px auto;
   opacity: 0.1;
 }
-.pros-holder button{
+
+.pros-holder button {
   margin: 30px auto;
   padding: 8px 0;
   width: 20%;
   border: 1px solid #bbb;
   border-radius: 30px;
   background: transparent;
+}
+
+/* 
+MARK: Cat Catalog
+*/
+.catWrapper {
+  background-color: #f2f0f1;
+}
+
+.catCover {
+  height: 40vh;
+  background-size: cover;
+  background-position-x: right;
+  background-position-y: center;
+}
+
+.catCover:hover {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.casualCat {
+  background-position-y: 48%;
+  background-image: url("../assets/category4.jpg");
+}
+
+.formalCat {
+  background-position-y: 30%;
+  background-image: url("../assets/category1.jpg");
+}
+
+.partyCat {
+  background-image: url("../assets/category2.jpg");
+}
+
+.gymCat {
+  background-position-y: 43%;
+  background-image: url("../assets/category3.jpg");
+}
+
+/* Reviews */
+.reviewSection {
+  padding: 40px;
+}
+
+.review-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  /* width: 300px; */
+  border: 1px solid gray ;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stars {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.reviewer {
+  font-weight: bold;
+  color: #333;
+}
+
+.verified {
+  color: green;
+  font-size: 1.1em;
+}
+
+.review-text {
+  font-size: 0.95em;
+  color: #555;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .review-card {
+    width: 100%;
+  }
 }
