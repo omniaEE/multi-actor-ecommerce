@@ -115,16 +115,16 @@ MARK: Cat Catalog
 }
 .casualCat{
   background-position-y:48% ;
-  background-image: url("../assets/casualCatCover.jpg");
+  background-image: url("../assets/category4.jpg");
 }
 .formalCat {
   background-position-y:30% ;
-  background-image: url("../assets/formalCatCover.jpg");
+  background-image: url("../assets/category1.jpg");
 }
 .partyCat{
-  background-image: url("../assets/partyCatCover.jpg");
+  background-image: url("../assets/category2.jpg");
 }
 .gymCat {
   background-position-y:43% ;
-  background-image: url("../assets/gymCatCover.jpg");
+  background-image: url("../assets/category3.jpg");
 }
