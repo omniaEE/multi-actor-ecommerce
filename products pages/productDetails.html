@@ -21,14 +21,15 @@
         </div>
         <div>
             <h1 id="product-name">PRODUCT NAME</h1>
-            <div class="rating">
+            <span class="rating" id="product-star">
+                <!-- <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <small id="product-rate">(XX Reviews)</small>
-            </div>
+                <i class="fa-solid fa-star"></i> -->
+            </span>
+            &nbsp;
+            <small id="product-rate">(XX Reviews)</small>
             <h2 id="product-price">$260 <s>$300</s> <span>-40%</span></h2>
             <p id="product-desc">This graphic t-shirt which is perfect for any occasion. Crafted from a soft and
                 breathable fabric, it
@@ -93,7 +94,7 @@
         </div>
         <div class="tab-content show">
             <div class="review-header">
-                <h4>All Reviews <small>(451)</small></h4>
+                <h4>All Reviews &nbsp; <small id="reviewsLength">(451)</small></h4>
                 <div class="feature-btns">
                     <button><i class="fa-solid fa-sliders"></i></button>
                 </div>
@@ -129,7 +130,7 @@
                 <i class="fa-regular fa-star"></i>
                 <i class="fa-regular fa-star"></i>
             </div>
-            <input type="text" placeholder="Subject" />
+            <input type="text" placeholder="Username" />
             <textarea placeholder="Leave a Review" rows="10"></textarea>
             <br/>
             <button class="add-to-cart">Send</button>

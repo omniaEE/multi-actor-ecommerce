@@ -79,10 +79,10 @@
         "white"
       ],
       "sizes": [
-        "xl",
-        "sm",
-        "lg",
-        "md"
+        "X-Large",
+        "Small",
+        "Large",
+        "Medium"
       ],
       "stock": 30,
       "category": "Men",
@@ -124,10 +124,10 @@
         "pink"
       ],
       "sizes": [
-        "xl",
-        "sm",
-        "lg",
-        "md"
+        "X-Large",
+        "Small",
+        "Large",
+        "Medium"
       ],
       "stock": 40,
       "category": "Party",
@@ -140,7 +140,7 @@
       "reviews": [
         {
           "rate": 3,
-          "username": "Alex M.",
+          "username": "Hagar Gamal",
           "review": "cool t-shirt",
           "date": "16-4-2025"
         }
@@ -162,24 +162,30 @@
         "gray"
       ],
       "sizes": [
-        "s",
-        "m",
-        "l"
+        "Small",
+        "Medium",
+        "Large"
       ],
       "stock": 60,
       "category": "Kids",
       "sellerId": 3,
       "ratings": [
-        4,
-        4,
-        5
+        2,
+        1,
+        2
       ],
       "reviews": [
         {
           "rate": 3,
-          "username": "Alex M.",
+          "username": "Hagar Gamal",
           "review": "cool t-shirt",
           "date": "16-4-2025"
+        },
+        {
+          "rate": 5,
+          "username": "Hagar Gamal",
+          "review": "this t-shirt is perfect for me",
+          "date": "2-5-2025"
         }
       ],
       "images": [
@@ -197,9 +203,9 @@
         "black"
       ],
       "sizes": [
-        "m",
-        "l",
-        "xl"
+        "Medium",
+        "Large",
+        "X-Large"
       ],
       "stock": 20,
       "category": "Formal",
@@ -229,24 +235,36 @@
       "old_price": "349.0",
       "colors": [
         "blue",
-        "light blue"
+        "lightBlue"
       ],
       "sizes": [
-        "s",
-        "m",
-        "l"
+        "Small",
+        "Medium",
+        "Large"
       ],
       "stock": 35,
       "category": "Casual",
       "sellerId": 4,
       "ratings": [
-        4,
-        4,
-        3
+        3,
+        5,
+        4
       ],
       "reviews": [
         {
           "rate": 3,
+          "username": "Alex M.",
+          "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 5,
+          "username": "Hagar Gamal",
+          "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 4,
           "username": "Alex M.",
           "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
           "date": "16-4-2025"
@@ -274,10 +292,10 @@
         "blue"
       ],
       "sizes": [
-        "s",
-        "md",
-        "lg",
-        "xl"
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large"
       ],
       "stock": 45,
       "category": "Men",
@@ -285,13 +303,25 @@
       "ratings": [
         5,
         4,
-        4
+        1
       ],
       "reviews": [
         {
           "rate": 3,
           "username": "Alex M.",
           "review": "cool t-shirt",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 5,
+          "username": "Alex M.",
+          "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 2,
+          "username": "Hagar Gamal",
+          "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
           "date": "16-4-2025"
         }
       ],
@@ -305,24 +335,24 @@
       "name": "Unisex Oversized T-Shirt",
       "description": "Cute and comfy pajama set for girls, made from 100% organic cotton with fun prints.",
       "price": 129.5,
-      "old_price": "",
+      "old_price": "99",
       "colors": [
         "pink",
         "yellow",
         "white"
       ],
       "sizes": [
-        "xs",
-        "s",
-        "m"
+        "X-Small",
+        "Small",
+        "Medium"
       ],
-      "stock": 70,
+      "stock": 7,
       "category": "Kids",
       "sellerId": 4,
       "ratings": [
+        3,
         5,
-        5,
-        5
+        1
       ],
       "reviews": [
         {
@@ -349,23 +379,22 @@
       "price": 99.0,
       "old_price": "129.0",
       "colors": [
-        "white",
         "black",
         "beige"
       ],
       "sizes": [
-        "s",
-        "m",
-        "l",
-        "xl"
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large"
       ],
       "stock": 80,
       "category": "Casual",
       "sellerId": 3,
       "ratings": [
         4,
-        5,
-        4
+        1,
+        2
       ],
       "reviews": [
         {
@@ -398,18 +427,18 @@
         "beige"
       ],
       "sizes": [
-        "s",
-        "m",
-        "l",
-        "xl"
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large"
       ],
       "stock": 80,
       "category": "Casual",
       "sellerId": 3,
       "ratings": [
         4,
-        5,
-        4
+        1,
+        3
       ],
       "reviews": [
         {

@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .product-details {
@@ -98,7 +99,8 @@ h1 {
     column-gap: 5px;
 }
 
-.color div {
+.color div,
+.filter-color div {
     height: 35px;
     width: 35px;
     border-radius: 50%;
@@ -107,10 +109,12 @@ h1 {
     justify-content: center;
     cursor: pointer;
     color: #fff;
+    border: 0.5px solid #555;
 }
 
 .size button,
-.add-to-cart {
+.add-to-cart,
+.filter-sizes button {
     padding: 8px 20px;
     border-radius: 15px;
     border: 0;
@@ -118,7 +122,8 @@ h1 {
     cursor: pointer;
 }
 
-.size button.active {
+.size button.active,
+.filter-sizes button.active {
     background-color: #000;
     color: #fff;
 }
@@ -341,6 +346,7 @@ h1 {
 
 .pro-card img {
     width: 100%;
+    height: 270px;
     border-radius: 20px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -441,15 +447,75 @@ h1 {
     margin: 50px auto;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    gap: 20px;
+    gap: 30px;
 }
 
 .all-pros {
     display: grid;
-    grid-template-columns: repeat(1fr, 3);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
+aside {
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 15px;
+    color: #444;
+    height: fit-content;
+}
 
+aside hr {
+    opacity: 0.3;
+    margin: 15px 0;
+}
+
+.filter-header,
+.categories div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 1.3rem;
+}
+
+.filter-header i {
+    cursor: pointer;
+    font-size: 1rem;
+}
+.filter-header h5 {
+    font-size: 1.2rem;
+}
+.categories p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #999;
+    cursor: pointer;
+}
+.categories p.active{
+    color: #000;
+}
+
+.categories i {
+    cursor: pointer;
+    font-size: 0.7rem;
+    color: #999;
+}
+
+.price input {
+    width: 100%;
+}
+.filter-color{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+}
+.filter-color div{
+    margin-bottom: 5px;
+}
+.filter-sizes button {
+    margin: 10px 5px;
+    color: #777;
+}
 
 
 
@@ -554,7 +620,7 @@ h1 {
 
     .other-pro {
         grid-template-columns: 1fr;
-        width: 90%;
+        width: 80%;
     }
 
     .add-to-cart {
@@ -573,13 +639,20 @@ h1 {
     .your-review .rating i {
         font-size: 1rem;
     }
-    .pro-card h2,.pro-card{
+
+    .pro-card h2,
+    .pro-card {
         font-size: 1.3rem;
     }
-    .pro-card{
+
+    .pro-card {
         margin-top: 20px;
     }
-    .pro-card:first-child{
+
+    .pro-card:first-child {
         margin-top: 0;
+    }
+    .other-pro .pro-card img{
+        height: auto;
     }
 }

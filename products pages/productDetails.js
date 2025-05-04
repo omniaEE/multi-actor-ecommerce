@@ -61,17 +61,30 @@ fetch('../data/data.json')
     .then(data => {
         for (let i = 1; i < 5; i++) {
             const product = data.products[i]
+            //rating
+            const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
+            const fullStars = Math.floor(avgRating);
+            const halfStar = avgRating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+            let starsHtml = '';
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += `<i class="fa-solid fa-star"></i>`;
+            }
+            if (halfStar) {
+                starsHtml += `<i class="fa-solid fa-star-half-stroke"></i>`;
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                starsHtml += `<i class="fa-regular fa-star"></i>`;
+            }
             otherPro.innerHTML += `
             <div class="pro-card">
                 <img src="${product.images[0]}" data-productid="${product.id}" alt="">
                 <p>${product.name}</p>
                 <div class="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <small>${(product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length).toPrecision(2)}</small>
+                    ${starsHtml}
+                    &nbsp;
+                    <small>${avgRating.toPrecision(2)}</small>
                 </div>
                 <h2>$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}</h2>
             </div>
@@ -101,6 +114,29 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             const product = data.products.find(p => p.id == id);
             if (product) {
+
+                //-------------rating------------
+                const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
+                const fullStars = Math.floor(avgRating);
+                const halfStar = avgRating % 1 >= 0.5;
+                const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+                let starsHtml = '';
+                for (let i = 0; i < fullStars; i++) {
+                    starsHtml += `<i class="fa-solid fa-star"></i>`;
+                }
+                if (halfStar) {
+                    starsHtml += `<i class="fa-solid fa-star-half-stroke"></i>`;
+                }
+                for (let i = 0; i < emptyStars; i++) {
+                    starsHtml += `<i class="fa-regular fa-star"></i>`;
+                }
+                document.getElementById('product-star').innerHTML = starsHtml;
+
+
+
+
+
 
                 //----------images-----------
                 document.getElementById('mainImg').src = product.images[0];
@@ -151,9 +187,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 let colors = document.querySelectorAll(".color div")
                 for (let i = 0; i < colors.length; i++) {
                     colors[i].addEventListener('click', () => {
-                        colors.forEach(color => {
-                            color.innerHTML = ""
-                            colors[i].innerHTML = `<i class="fa-solid fa-check"></i>`
+                        colors.forEach(color => {     
+                            console.log(colors[i].style.backgroundColor);
+                                                   
+                            if (colors[i].style.backgroundColor == "white") {                                
+                                color.innerHTML = ""
+                                colors[i].innerHTML = `<i class="fa-solid fa-check" style="color:black;"></i>`
+                            } else {
+                                color.innerHTML = ""
+                                colors[i].innerHTML = `<i class="fa-solid fa-check"></i>`
+                            }
                         })
                     })
                 }
@@ -197,6 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                 //---------------------reviews
+                let reviewsLenght = document.getElementById("reviewsLength")
+                reviewsLenght.innerText = "(" + product.reviews.length + ")"
                 for (let i = 0; i < product.reviews.length; i++) {
                     div += `
                 <div class="review">
