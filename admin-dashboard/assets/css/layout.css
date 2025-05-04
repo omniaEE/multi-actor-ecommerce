@@ -1,0 +1,34 @@
+.list-group-item.active {
+  background-color: #f5f7f9 !important;
+
+  color: rgb(12, 12, 12) !important;
+  border-radius: 2px;
+  border-color: #f5f7f9 !important;
+}
+/* Fixed Header */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+}
+
+/* Fixed Sidebar for large screens */
+.fixed-sidebar {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+.main-content {
+  margin-top: 56px;
+  margin-left: 250px;
+  padding: 1rem;
+}
+@media (max-width: 990px) {
+  .main-content {
+    margin-left: 0;
+  }
+}

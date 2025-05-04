@@ -1,0 +1,26 @@
+{
+    "totalUsers": 1230,
+    "totalProducts": 580,
+    "totalOrders": 3210,
+  
+    "sales": [
+      { "month": "January", "salesAmount": 1200 },
+      { "month": "February", "salesAmount": 1500 },
+      { "month": "March", "salesAmount": 1300 },
+      { "month": "April", "salesAmount": 1600 },
+      { "month": "May", "salesAmount": 1800 },
+      { "month": "June", "salesAmount": 1400 },
+      { "month": "July", "salesAmount": 1900 },
+      { "month": "August", "salesAmount": 2000 },
+      { "month": "September", "salesAmount": 2100 },
+      { "month": "October", "salesAmount": 2200 },
+      { "month": "November", "salesAmount": 2300 },
+      { "month": "December", "salesAmount": 2400 }
+    ],
+    "changes": {
+      "users": 17.6,
+      "products": 8.2,
+      "orders": -3.1
+    }
+  }
+  
