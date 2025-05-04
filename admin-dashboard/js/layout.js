@@ -14,24 +14,30 @@ function handleActiveLink(containerSelector) {
 // Apply to both large sidebar and offcanvas sidebar
 handleActiveLink(".col-lg-3 .list-group");
 handleActiveLink("#sidebar .list-group");
-
-function loadPage(pageUrl) {
-  const content = document.getElementById("content");
-
-  fetch(pageUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Page not found");
-      }
-      return response.text();
-    })
+function loadPage(page) {
+  fetch(page)
+    .then((res) => res.text())
     .then((html) => {
+      const content = document.getElementById("content");
       content.innerHTML = html;
-    })
-    .catch((error) => {
-      content.innerHTML = "<h2>Error loading page.</h2>";
-      console.error(error);
+
+      // Remove old dynamically loaded script if it exists
+      const oldScript = document.getElementById("dynamic-page-script");
+      if (oldScript) {
+        oldScript.remove();
+      }
+
+      // Create new script tag with a unique query to bust cache
+      const script = document.createElement("script");
+      script.id = "dynamic-page-script";
+      script.src =
+        "./js/" +
+        page.split("/").pop().replace(".html", ".js") +
+        "?v=" +
+        new Date().getTime();
+      document.body.appendChild(script);
     });
 }
 
-loadPage("./dashboard.html"); // Load the default page on initial load
+loadPage("./dashboard.html");
+// loadPage("./users.html");
