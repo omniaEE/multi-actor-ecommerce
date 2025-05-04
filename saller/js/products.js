@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 : "5.0";
 
             container.innerHTML += `
-                    <div class="col-2 col-md-3 mb-4">
+                    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 mb-4">
                         <div class="card h-100 shadow product-card">
                             <div id="products-all">
                             <img id="image" src="${product.images[0]}" class="card-img-top" alt="${product.name}">
@@ -42,10 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addProduct = function () {
         document.getElementById("addProduct").classList.remove("d-none");
         document.getElementById("productsContainer").classList.add("d-none");
+        document.getElementById("update").classList.add("d-none");
+
     }
 
     // add color 
-    const colorList = [];
+    let colorList = [];
     window.addColor = function () {
         const colorInput = document.getElementById("colorInput");
         const color = colorInput.value;
@@ -141,22 +143,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // update product
+let editColorList = [];
 function editProduct(productId) {
+    document.getElementById("update").classList.remove("d-none");
+    document.getElementById("productsContainer").classList.add("d-none");
     const all_data = JSON.parse(localStorage.getItem("all_data")) || { products: [] };
     const product = all_data.products.find(p => p.id === productId);
 
     if (product) {
-        document.getElementById("name").value = product.name;
-        document.getElementById("price").value = product.price;
-        document.getElementById("description").value = product.description;
-        document.getElementById("category").value = product.category;
-        document.getElementById("quantity").value = product.stock;
+        document.getElementById("editName").value = product.name;
+        document.getElementById("editPrice").value = product.price;
+        document.getElementById("editDescription").value = product.description;
+        document.getElementById("editCategory").value = product.category;
+        document.getElementById("editQuantity").value = product.stock;
 
+        editColorList = product.colors || [];
+        document.getElementById("editColorList").innerHTML = "";
+        editColorList.forEach(color => {
+            const li = document.createElement("div");
+            li.style.display = "inline-block";
+            li.style.backgroundColor = color;
+            li.style.width = "20px";
+            li.style.height = "20px";
+            li.style.margin = "2px";
+            li.style.cursor = "pointer";
+            li.title = "click to remove";
+        
+            li.onclick = function () {
+                editColorList = editColorList.filter(c => c !== color);
+                li.remove();
+            };
+        
+            document.getElementById("editColorList").appendChild(li);
+        });
         
 
-        document.getElementById("saveButton").onclick = function() {
+        document.getElementById("saveButton").onclick = function () {
             saveProductEdits(productId);
         };
+        document.getElementById("closeUpdate").onclick = function () {
+            closeUpdate();
+        };
+    }
+}
+
+
+
+//  edit color
+function addEditColor() {
+    const colorInput = document.getElementById("editColorInput");
+    const color = colorInput.value;
+
+    if (!editColorList.includes(color)) {
+        editColorList.push(color);
+
+        const li = document.createElement("li");
+        li.style.display = "inline-block";
+        li.style.backgroundColor = color;
+        li.style.width = "20px";
+        li.style.height = "20px";
+        li.style.margin = "2px";
+        li.style.cursor = "pointer";
+        li.title = "اضغط للحذف";
+
+        li.onclick = function () {
+            editColorList = editColorList.filter(c => c !== color);
+            li.remove();
+        };
+
+        document.getElementById("editColorList").appendChild(li);
     }
 }
 
@@ -164,7 +219,7 @@ function editProduct(productId) {
 
 
 
-
+// save edits
 function saveProductEdits(productId) {
     const all_data = JSON.parse(localStorage.getItem("all_data")) || { products: [] };
     const productIndex = all_data.products.findIndex(p => p.id === productId);
@@ -172,22 +227,51 @@ function saveProductEdits(productId) {
     if (productIndex !== -1) {
         const product = all_data.products[productIndex];
 
-        const name = document.getElementById("name").value;
-        const price = parseFloat(document.getElementById("price").value);
-        const description = document.getElementById("description").value.trim();
-        const category = document.getElementById("category").value;
-        const quantity = parseInt(document.getElementById("quantity").value);
+        const name = document.getElementById("editName").value;
+        const price = parseFloat(document.getElementById("editPrice").value);
+        const description = document.getElementById("editDescription").value.trim();
+        const category = document.getElementById("editCategory").value;
+        const quantity = parseInt(document.getElementById("editQuantity").value);
 
         product.name = name;
         product.price = price;
         product.description = description;
         product.category = category;
         product.stock = quantity;
+        product.colors = editColorList;
+
 
         all_data.products[productIndex] = product;
         localStorage.setItem("all_data", JSON.stringify(all_data));
 
         alert(" تم تعديل المنتج بنجاح!");
-        window.location.reload();  
+        window.location.reload();
     }
 }
+
+//close update
+function closeUpdate() {
+    document.getElementById("update").classList.add("d-none");
+    document.getElementById("productsContainer").classList.remove("d-none");
+}
+
+
+
+
+
+//delete product
+function deleteProduct(productId) {
+    const confirmDelete = confirm("do you sure you want to delete this product?");
+
+    if (confirmDelete) {
+        const all_data = JSON.parse(localStorage.getItem("all_data")) || { products: [] };
+
+        all_data.products = all_data.products.filter(p => p.id !== productId);
+
+        localStorage.setItem("all_data", JSON.stringify(all_data));
+
+        // alert("تم حذف المنتج بنجاح!");
+        window.location.reload();
+    }
+}
+

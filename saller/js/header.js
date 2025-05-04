@@ -8,11 +8,12 @@ fetch("header.html")
         document.getElementById("header").innerHTML = data;
 
         const user = JSON.parse(localStorage.getItem("loggedInUser")) || [];
+        
         console.log(user);
 
-        if (user.length > 0) {
-            document.getElementById("name").innerText = user[0].firstName + " " + user[0].lastName;
-            document.getElementById("email").innerText = user[0].email;
+        if (user) {
+            document.getElementById("name").innerText = user.firstName + " " + user.lastName;
+            document.getElementById("email").innerText = user.email;
         }
     });
 
