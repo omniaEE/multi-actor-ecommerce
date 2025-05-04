@@ -1,19 +1,23 @@
 /* 
 MARK: HomePage
 */
+.sectionTitle{
+  font-size: 2.4rm;
+  text-align: center;
+  font-family: Arial Black, sans-serif;
+  margin: 50px auto 25px;
+}
+
 /* Header */
 .navbar a {
   text-decoration: none;
 }
-
 .signUpSuggistionWrapper {
   font-size: 0.8rem;
 }
-
 .signUpSuggistionWrapper a {
   font-size: 0.9rem;
 }
-
 .navbareIconsWrapper {
   font-size: 1.5rem;
 }
@@ -23,35 +27,20 @@ MARK: HomePage
   height: 83vh;
   background-color: #f2f0f1;
 }
-
 .heroHeader {
   /* width: 65%; */
   font-size: 4rem;
   font-weight: bolder;
 }
-
 .rightSideContainer {
   height: 80vh;
   /* background-color: blue; */
 }
 
-
-
-
-
-
-
-
 /* products sections */
 .pros-holder{
   text-align: center;
 }
-.pros-holder h1 {
-  font-size: 2.4rem;
-  font-family: Arial Black, sans-serif;
-  margin: 50px auto 25px;
-}
-
 .other-pro {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -67,31 +56,25 @@ MARK: HomePage
   border-radius: 20px;
   margin-bottom: 10px;
 }
-
 .pro-card .rating {
   margin: 7px 0;
 }
-
 .pro-card .rating i {
   color: #ffd45e;
 }
-
 .pro-card p {
   font-weight: bold;
   margin: 0;
   padding: 0;
 }
-
 .pro-card h2 {
   font-size: 1.2rem;
   font-weight: bold;
 }
-
 .pro-card h2 s {
   color: #bbb;
   margin: 0 10px;
 }
-
 .pro-card h2 span {
   background-color: rgb(255, 226, 226);
   padding: 2px 10px;
@@ -112,4 +95,36 @@ MARK: HomePage
   border: 1px solid #bbb;
   border-radius: 30px;
   background: transparent;
+}
+
+/* 
+MARK: Cat Catalog
+*/
+.catWrapper{
+  background-color: #f2f0f1;
+}
+.catCover {
+  height: 40vh;
+  background-size: cover;
+  background-position-x: right ;
+  background-position-y:center ;
+}
+.catCover:hover {
+  cursor: pointer;
+  opacity: 0.4;
+}
+.casualCat{
+  background-position-y:48% ;
+  background-image: url("../assets/casualCatCover.jpg");
+}
+.formalCat {
+  background-position-y:30% ;
+  background-image: url("../assets/formalCatCover.jpg");
+}
+.partyCat{
+  background-image: url("../assets/partyCatCover.jpg");
+}
+.gymCat {
+  background-position-y:43% ;
+  background-image: url("../assets/gymCatCover.jpg");
 }
