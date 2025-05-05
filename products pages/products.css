@@ -342,9 +342,24 @@ h1 {
     width: 85%;
     margin: 50px auto;
 }
+
+.pro-card {
+    border: 1px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
 .pro-card img {
     width: 100%;
-    height: 270px;
+    height: 260px;
     border-radius: 20px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -451,8 +466,10 @@ h1 {
 .all-pros {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    column-gap: 20px;
+    row-gap: 30px;
     height: fit-content;
+    margin-top: 20px;
 }
 
 aside {
@@ -487,12 +504,13 @@ aside hr {
     justify-content: space-between;
     margin: 10px 0;
     font-size: 1.3rem;
+}
+
+.filter-header .fa-angle-up {
+    font-size: 1rem;
     cursor: pointer;
 }
 
-.filter-header i {
-    font-size: 1rem;
-}
 .filter-header i.rotate {
     transform: rotate(180deg);
     transition: transform 0.3s ease;
@@ -500,16 +518,19 @@ aside hr {
 
 .filter-header h5 {
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .categories p {
     font-size: 0.9rem;
     margin: 5px 0;
+}
+
+.categories .category-item {
+    color: #999;
     cursor: pointer;
 }
-.categories .category-item{
-    color: #999;
-}
+
 .category-item.active {
     font-weight: bold;
     color: #000;
@@ -525,7 +546,8 @@ aside hr {
     cursor: pointer;
     height: 6px;
 }
-.price p{
+
+.price p {
     text-align: right;
 }
 
@@ -544,7 +566,7 @@ aside hr {
     color: #777;
 }
 
-aside #clear-filters{
+aside #clear-filters {
     width: 100%;
     background-color: #000;
     color: #fff;
@@ -553,12 +575,37 @@ aside #clear-filters{
     cursor: pointer;
 }
 
+.filter-color div:hover {
+    border: 2.5px solid #000;
+}
 
+.filter-sizes button.active,
+.filter-sizes button:hover {
+    background-color: #000;
+    color: #fff;
+}
 
+.filter-header select {
+    outline: 0;
+    padding: 10px;
+    padding-right: 50px;
+    border-radius: 20px;
+}
 
-
-
-
+.pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.pagination button{
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+#filterMenu{
+    display: none;
+}
 
 
 
@@ -584,6 +631,33 @@ aside #clear-filters{
         flex-wrap: wrap;
         row-gap: 10px;
     }
+
+    .catalog {
+        grid-template-columns: 1fr;
+    }
+
+    .all-pros {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    body{
+        position: relative;
+    }
+    aside {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 80%;
+        z-index: 200;
+        background-color: #fff;
+        min-height: 100%;
+    }
+    #filterMenu,#filterMenu2{
+        display: inline;
+        cursor: pointer;
+    }
+    
 }
 
 @media (max-width: 768px) {
@@ -636,6 +710,13 @@ aside #clear-filters{
     .your-review textarea {
         width: 80%;
     }
+
+
+    .all-pros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
 }
 
 @media (max-width: 480px) {
@@ -690,8 +771,10 @@ aside #clear-filters{
     .pro-card:first-child {
         margin-top: 0;
     }
-
-    .other-pro .pro-card img {
+    .all-pros {
+        grid-template-columns: 1fr;
+    }
+    .pro-card img {
         height: auto;
     }
 }

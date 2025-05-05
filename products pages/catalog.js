@@ -7,40 +7,75 @@ let categories = document.querySelector(".categories")
 let filterColor = document.querySelector(".filter-color")
 let filterSizes = document.querySelector(".filter-sizes")
 let sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large", "XXX-Large"]
-
-
+let priceInput = document.getElementById("priceRange")
+let priceValue = document.getElementById("priceValue")
+let proLength = document.getElementById("proLength")
+const paginationContainer = document.querySelector(".pagination")
 
 
 let selectedCategory = null
 let selectedMaxPrice = 5000;
 let selectedSizes = []
 let selectedColors = []
+let selectedSort = "default";
+
+
+let currentPage = 1;
+const productsPerPage = 9;
 
 
 function renderProducts(products) {
-    allPros.innerHTML = '' //reset
-    products.forEach(product => {
-        // apply filters
-        if (
+    allPros.innerHTML = '' // reset
+
+    paginationContainer.innerHTML = ''
+
+    // apply filters
+    let filtered = products.filter(product => {
+        return !(
             (selectedCategory && product.category !== selectedCategory) ||
             (selectedSizes.length > 0 && !selectedSizes.some(size => product.sizes.includes(size))) ||
             (selectedColors.length > 0 && !selectedColors.some(color => product.colors.includes(color))) ||
             (product.price > selectedMaxPrice)
-        ) {
-            return;
-        }
+        );
+    });
 
-        //rating
-        const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length
-        const fullStars = Math.floor(avgRating)
-        const halfStar = avgRating % 1 >= 0.5
-        const emptyStars = 5 - fullStars - (halfStar ? 1 : 0)
-        let starsHtml = ''
-        for (let i = 0; i < fullStars; i++) starsHtml += `<i class="fa-solid fa-star"></i>`
-        if (halfStar) starsHtml += `<i class="fa-solid fa-star-half-stroke"></i>`
-        for (let i = 0; i < emptyStars; i++) starsHtml += `<i class="fa-regular fa-star"></i>`
+    // Sort filtered products
+    if (selectedSort === "priceLow") {
+        filtered.sort((a, b) => a.price - b.price);
+    } else if (selectedSort === "priceHigh") {
+        filtered.sort((a, b) => b.price - a.price);
+    } else if (selectedSort === "ratingHigh") {
+        filtered.sort((a, b) => {
+            const aAvg = a.ratings.reduce((acc, val) => acc + val, 0) / a.ratings.length;
+            const bAvg = b.ratings.reduce((acc, val) => acc + val, 0) / b.ratings.length;
+            return bAvg - aAvg;
+        });
+    }
 
-        //render
+    if (filtered.length === 0) {
+        allPros.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; font-size: 1.2rem; color: #666;">No products match your filters.</p>`;
+        return;
+    }
+
+
+    // pagination
+    const totalPages = Math.ceil(filtered.length / productsPerPage);
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    const paginatedProducts = filtered.slice(start, end);
+
+
+    // Render products
+    paginatedProducts.forEach(product => {
+        const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
+        const fullStars = Math.floor(avgRating);
+        const halfStar = avgRating % 1 >= 0.5;
+        const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+        let starsHtml = '';
+        for (let i = 0; i < fullStars; i++) starsHtml += `<i class="fa-solid fa-star"></i>`;
+        if (halfStar) starsHtml += `<i class="fa-solid fa-star-half-stroke"></i>`;
+        for (let i = 0; i < emptyStars; i++) starsHtml += `<i class="fa-regular fa-star"></i>`;
+
         allPros.innerHTML += `
             <div class="pro-card">
                 <img src="${product.images[0]}" data-productid="${product.id}" alt="">
@@ -54,9 +89,30 @@ function renderProducts(products) {
             </div>
         `
     })
+
+    // Render pagination buttons
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) {
+            btn.style.fontWeight = "bold";
+            btn.style.backgroundColor = "#000";
+            btn.style.color = "#fff";
+        }
+        btn.addEventListener("click", () => {
+            currentPage = i;
+            renderProducts(products);
+        });
+        paginationContainer.appendChild(btn);
+    }
+
+
+    //open product details
     allPros.addEventListener("click", (e) => {
-        window.location.href = `productDetails.html?id=${e.target.dataset.productid}`
-    })
+        if (e.target.tagName === "IMG") {
+            window.location.href = `productDetails.html?id=${e.target.dataset.productid}`;
+        }
+    });
 }
 
 
@@ -67,7 +123,7 @@ fetch('../data/data.json')
     .then(response => response.json())
     .then(data => {
         allProducts = data.products
-
+        proLength.innerText = data.products.length + " Items"
         //category
         data.categories.forEach(category => {
             let categoryDiv = document.createElement("div")
@@ -80,6 +136,7 @@ fetch('../data/data.json')
                     item.classList.remove("active")
                 })
                 categoryDiv.classList.add("active")
+
                 renderProducts(allProducts)
             })
             categories.appendChild(categoryDiv)
@@ -87,11 +144,10 @@ fetch('../data/data.json')
 
 
         //price
-        const priceInput = document.getElementById("priceRange");
-        const priceValue = document.getElementById("priceValue");
         priceInput.addEventListener("input", () => {
             selectedMaxPrice = parseInt(priceInput.value);
             priceValue.textContent = selectedMaxPrice;
+
             renderProducts(allProducts);
         });
 
@@ -107,6 +163,7 @@ fetch('../data/data.json')
                 } else {
                     selectedSizes.push(size);
                 }
+
                 renderProducts(data.products);
             })
             filterSizes.appendChild(sizeBtn);
@@ -136,12 +193,15 @@ fetch('../data/data.json')
             filterColor.appendChild(colorDiv);
         });
 
-
         renderProducts(allProducts) // Initial render
     })
 
 
-
+//sort select
+document.getElementById("sortSelect").addEventListener("change", (e) => {
+    selectedSort = e.target.value;
+    renderProducts(allProducts);
+});
 
 
 //clear filter btn
@@ -154,7 +214,7 @@ document.getElementById("clear-filters").addEventListener("click", () => {
     priceValue.textContent = 5000;
     document.querySelectorAll(".categories .category-item").forEach(div => div.classList.remove("active"));
     document.querySelectorAll(".filter-sizes button").forEach(btn => btn.classList.remove("active"));
-    document.querySelectorAll(".filter-color div").forEach(div => div.classList.remove("active"));
+    document.querySelectorAll(".filter-color div").forEach(div => div.innerHTML = "");
     renderProducts(allProducts)
 })
 
@@ -171,4 +231,28 @@ document.querySelectorAll(".filter-header").forEach(header => {
             icon.classList.toggle("rotate")
         }
     })
+})
+
+
+
+
+
+
+
+//filter menu (responsive)
+let filterMenu = document.getElementById("filterMenu")
+let filterMenu2 = document.getElementById("filterMenu2")
+filterMenu.addEventListener('click', () => {
+    if (document.getElementsByTagName("aside")[0].style.display == "block") {
+        document.getElementsByTagName("aside")[0].style.display = "none"
+    } else {
+        document.getElementsByTagName("aside")[0].style.display = "block"
+    }
+})
+filterMenu2.addEventListener('click', () => {
+    if (document.getElementsByTagName("aside")[0].style.display == "block") {
+        document.getElementsByTagName("aside")[0].style.display = "none"
+    } else {
+        document.getElementsByTagName("aside")[0].style.display = "block"
+    }
 })
