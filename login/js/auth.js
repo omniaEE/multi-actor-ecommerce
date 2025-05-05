@@ -114,7 +114,7 @@ function login() {
                 window.location.href = "../admin-dashboard/admin.html";
                 break;
             case "seller":
-                window.location.href = "../saller/overView.html";
+                window.location.href = "../saller_dashboard/overView.html";
                 break;
             case "customer":
                 window.location.href = "../../home_page/homePage.html";
