@@ -96,6 +96,8 @@ function signUp(event) {
 function login() {
     const email = document.getElementById("email").value;
     const loginPassword = document.getElementById("loginPassword").value;
+    const all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+
 
     const users = all_data.users;
 
