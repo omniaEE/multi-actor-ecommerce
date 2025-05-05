@@ -187,10 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let colors = document.querySelectorAll(".color div")
                 for (let i = 0; i < colors.length; i++) {
                     colors[i].addEventListener('click', () => {
-                        colors.forEach(color => {     
-                            console.log(colors[i].style.backgroundColor);
-                                                   
-                            if (colors[i].style.backgroundColor == "white" || colorDiv.style.backgroundColor == "beige") {                                
+                        colors.forEach(color => {                                                        
+                            if (colors[i].style.backgroundColor == "white" || colors[i].style.backgroundColor == "beige") {                                
                                 color.innerHTML = ""
                                 colors[i].innerHTML = `<i class="fa-solid fa-check" style="color:black;"></i>`
                             } else {
@@ -232,6 +230,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+                // desc
+                let extraDesc=document.getElementById("proDetails")
+                extraDesc.innerHTML=`${product.details}<br/>`
 
 
 
