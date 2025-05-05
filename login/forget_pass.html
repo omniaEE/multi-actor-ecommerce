@@ -1,63 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <title>login</title>
-    <style>
+    <style></style>
+  </head>
 
-    </style>
-</head>
-
-<body class="h-100 justify-content-center align-items-center d-flex min-vh-100 p-5">
+  <body
+    class="h-100 justify-content-center align-items-center d-flex min-vh-100 p-5"
+  >
     <main class="row mx-auto border rounded-4 shadow w-50">
-        <section id="login" class="p-5 p-md-5 py-md-3 p-lg-6 rounded-4">
-            <div>
-                <section class="row">
-                    <h3 class="py-2 col-6 "> SHOP.CO</h3>
-                    <img class=" d-none d-md-flex img-fluid w-50 col-6  " src="../images/—purple gradient password to unlock_5045253.png" alt="">
-                </section>
-                <h4>forget password </h4>
-                <form class="form-group row ">
-                    <div class="mb-2 col-12 col-md-6 px-1 ">
-                        <input required type="text" name="" id="firstName" placeholder="First Name" class=" form-control ">
-                    </div>
-                    <div class="mb-2 col-12 col-md-6 px-1  ">
-                        <input required type="text" name="" id="lastName" placeholder="Last Name" class=" form-control ">
-                    </div>
-                    <div class="mb-2 col-12 col-md-6 px-1 ">
-                        <input required type="email" name="" id="email" placeholder="Email" class=" form-control ">
-                    </div>
-                    <div class="mb-2 col-12 col-md-6 px-1 ">
-                        <input required type="number" name="" id="phone" placeholder="Phone Number" class=" form-control ">
-                    </div>
-                    <div id="message" ></div>
-                    <div class=" mb-2 col-12 col-md-6 px-1">
-                        <input  type="password" name="password" id="password" placeholder="New Password" class="d-none form-control">
-                    </div>
-                    <div class=" mb-2 col-12 col-md-6 px-1">
-                        <input  type="password" name="ConfirmPassword" id="ConfirmPassword" placeholder=" Confirm password" class="d-none form-control">
-                    </div>
-                    <div id="message2" ></div>
-                    <div >
-                        <button type="button" id="updatePassword" class="d-none btn btn-dark w-100 d-block mx-auto my-2" onclick="updatepassword()">Reset Password</button>
-                        <button type="button" id="checkAccount"  class="btn btn-dark w-100 d-block mx-auto my-2" onclick="resetPassword()">Check Account</button>
-                        <p class="text-center text-secondary"> Already have an account? <a
-                                class="link-underline link-underline-opacity-0 text-warning-emphasis "
-                                href="login.html">Login</a></p>
-                    </div>
-                </form>
+      <section id="login" class="p-5 p-md-5 py-md-3 p-lg-6 rounded-4">
+        <div>
+          <section class="row">
+            <h3 class="py-2 col-6">SHOP.CO</h3>
+            <img
+              class="d-none d-md-flex img-fluid w-50 col-6"
+              src="images/—purple gradient password to unlock_5045253.png"
+              alt=""
+            />
+          </section>
+          <h4>forget password</h4>
+          <form class="form-group row">
+            <div class="mb-2 col-12 col-md-6 px-1">
+              <input
+                required
+                type="text"
+                name=""
+                id="firstName"
+                placeholder="First Name"
+                class="form-control"
+              />
             </div>
-        </section>
-
+            <div class="mb-2 col-12 col-md-6 px-1">
+              <input
+                required
+                type="text"
+                name=""
+                id="lastName"
+                placeholder="Last Name"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2 col-12 col-md-6 px-1">
+              <input
+                required
+                type="email"
+                name=""
+                id="email"
+                placeholder="Email"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2 col-12 col-md-6 px-1">
+              <input
+                required
+                type="number"
+                name=""
+                id="phone"
+                placeholder="Phone Number"
+                class="form-control"
+              />
+            </div>
+            <div id="message"></div>
+            <div class="mb-2 col-12 col-md-6 px-1">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="New Password"
+                class="d-none form-control"
+              />
+            </div>
+            <div class="mb-2 col-12 col-md-6 px-1">
+              <input
+                type="password"
+                name="ConfirmPassword"
+                id="ConfirmPassword"
+                placeholder=" Confirm password"
+                class="d-none form-control"
+              />
+            </div>
+            <div id="message2"></div>
+            <div>
+              <button
+                type="button"
+                id="updatePassword"
+                class="d-none btn btn-dark w-100 d-block mx-auto my-2"
+                onclick="updatepassword()"
+              >
+                Reset Password
+              </button>
+              <button
+                type="button"
+                id="checkAccount"
+                class="btn btn-dark w-100 d-block mx-auto my-2"
+                onclick="resetPassword()"
+              >
+                Check Account
+              </button>
+              <p class="text-center text-secondary">
+                Already have an account?
+                <a
+                  class="link-underline link-underline-opacity-0 text-warning-emphasis"
+                  href="login.html"
+                  >Login</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
     </main>
-    <script src="../js/auth.js"></script>
-
-</body>
-
+    <script src="js/auth.js"></script>
+  </body>
 </html>

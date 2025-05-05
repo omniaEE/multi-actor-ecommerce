@@ -1,58 +1,69 @@
 {
   "users": [
+
   {
     "id": 1,
     "role": "customer",
     "firstName": "Fadl",
     "lastName": "Yousry",
+    "phone":"01210677917",
     "email": "fadl@gmail.com",
     "password": "fd_cust_1",
     "address": "123 Tanta, Egypt",
     "orders": [101, 102],
-    "status": "Active"
+    "status": "Active",
+    "roleAsSeller":"false"
   },
   {
     "id": 2,
     "role": "customer",
     "firstName": "Yousef",
     "lastName": "Hesham",
+    "phone":"01210677917",
     "email": "yousef@gmail.com",
     "password": "fd_cust_2",
     "address": "456 Garbia",
     "orders": [103, 104],
-    "status": "Banned"
+    "status": "Banned",
+    "roleAsSeller":"false"
   },
   {
     "id": 3,
     "role": "seller",
     "firstName": "Alaa",
     "lastName": "Hamdi",
+    "phone":"01210677917",
     "email": "alaa@sellhub.com",
     "password": "alaa_sell_3",
     "storeName": "Lola Store",
     "products": [201, 202],
-    "status": "Active"
+    "status": "Active",
+    "roleAsSeller":"false"
   },
   {
     "id": 4,
     "role": "seller",
     "firstName": "Hagar",
     "lastName": "Gamal",
+    "phone":"01210677917",
     "email": "hager@sellhub.com",
     "password": "hager_sell_4",
     "storeName": "Gora Store",
     "products": [203, 204],
-    "status": "Banned"
+    "status": "Banned",
+    "roleAsSeller":"false"
   },
   {
     "id": 5,
     "role": "admin",
     "firstName": "Omnia",
     "lastName": "Eid",
+    "phone":"01210677917",
     "email": "omnia@adminhub.com",
     "password": "omnia_admin_5",
     "permissions": ["manage_users", "manage_products", "view_reports"],
-    "status": "Active"
+    "status": "Active",
+    "roleAsSeller":"false"
   }
 ]
 ,
@@ -249,3 +260,4 @@
     ]
   }
   
+

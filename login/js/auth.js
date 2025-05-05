@@ -1,16 +1,5 @@
 
-//تحميل البيانات
-let all_data = {};
 
-fetch("../saller/data.json")
-    .then(res => res.json())
-    .then(data => {
-        localStorage.setItem("all_data", JSON.stringify(data));
-        all_data = data;
-
-        all_data = JSON.parse(localStorage.getItem("all_data")) || [];
-    })
-    .catch (err => console.error("error in loading data", err));
 //--------------------------------------------------------------------------------------------
 function showAlert(message, type = "danger") {
     const alertBox = document.getElementById("alertBox");
@@ -54,6 +43,9 @@ function signUp(event) {
     const phone = document.getElementById("phone").value;
     const password = document.getElementById("password").value;
     const ConfirmPassword = document.getElementById("ConfirmPassword").value;
+    const role = document.getElementById("role");
+
+    let sellerRequest = role.checked
 
     const phoneRegex = /^01[0-2,5]{1}[0-9]{8}$/;
 
@@ -71,7 +63,11 @@ function signUp(event) {
         return;
     }
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+    let users = all_data.users;
+
+    const newId = Math.max(0, ...all_data.users.map(p => p.id || 0)) + 1;
 
     const exists = users.find(user => user.email === email);
     if (exists) {
@@ -79,9 +75,24 @@ function signUp(event) {
         return;
     }
 
-    const role = "customer";
-    users.push({ firstName, lastName, email, phone, password, role });
-    localStorage.setItem("users", JSON.stringify(users));
+
+    const newUser = {
+        id: newId,
+        role: "customer",
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        email: email,
+        password: password,
+        address: '123 Tanta, Egypt',
+        orders: [101, 102],
+        status: "Active",
+        roleAsSeller: sellerRequest
+
+    };
+
+    all_data.users.push(newUser);
+    localStorage.setItem("all_data", JSON.stringify(all_data));
 
     showAlert("Signed up successfully!", "success");
 }
@@ -90,6 +101,8 @@ function signUp(event) {
 function login() {
     const email = document.getElementById("email").value;
     const loginPassword = document.getElementById("loginPassword").value;
+    const all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+
 
     const users = all_data.users;
 
@@ -98,13 +111,13 @@ function login() {
     if (validUser) {
         switch (validUser.role) {
             case "admin":
-                window.location.href = "admin.html";
+                window.location.href = "../admin-dashboard/admin.html";
                 break;
             case "seller":
                 window.location.href = "../saller/overView.html";
                 break;
             case "customer":
-                window.location.href = "customer.html";
+                window.location.href = "../../home_page/homePage.html";
                 break;
         }
         localStorage.setItem("loggedInUser", JSON.stringify(validUser));
