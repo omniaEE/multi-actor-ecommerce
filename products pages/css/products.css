@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .product-details {
@@ -36,8 +37,7 @@
 }
 
 .pro-imgs div img {
-    flex: 1;
-    /**/
+    flex-basis: 30%;
     cursor: pointer;
 }
 
@@ -55,7 +55,8 @@ h1 {
 }
 
 .product-details .rating small {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
+    margin-left: 8px;
 }
 
 .product-details h2 {
@@ -98,7 +99,8 @@ h1 {
     column-gap: 5px;
 }
 
-.color div {
+.color div,
+.filter-color div {
     height: 35px;
     width: 35px;
     border-radius: 50%;
@@ -106,12 +108,13 @@ h1 {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: #514631;
     color: #fff;
+    border: 0.5px solid #555;
 }
 
 .size button,
-.add-to-cart {
+.add-to-cart,
+.filter-sizes button {
     padding: 8px 20px;
     border-radius: 15px;
     border: 0;
@@ -119,7 +122,8 @@ h1 {
     cursor: pointer;
 }
 
-.size button.active {
+.size button.active,
+.filter-sizes button.active {
     background-color: #000;
     color: #fff;
 }
@@ -133,6 +137,7 @@ h1 {
     color: #fff;
     font-size: 1.1rem;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .feature-btns {
@@ -170,7 +175,8 @@ h1 {
 }
 
 .add-to-wishlist i:hover {
-    transform: scale(1.2);
+    /* .add-to-cart:hover { */
+    transform: scale(1.1);
 }
 
 
@@ -260,12 +266,6 @@ h1 {
     cursor: pointer;
 }
 
-.review-header .add-to-cart {
-    width: auto;
-    padding: 10px 30px;
-    font-size: 0.8rem;
-}
-
 .review-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -295,6 +295,31 @@ h1 {
     cursor: pointer;
 }
 
+.your-review input,
+.your-review textarea {
+    width: 50%;
+    padding: 10px 20px;
+    background-color: #eee;
+    border-radius: 15px;
+    border: 0;
+    outline: 0;
+    margin: 10px 0;
+}
+
+.your-review .rating {
+    margin-bottom: 20px;
+}
+
+.your-review .rating i {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.your-review .add-to-cart {
+    width: auto;
+    padding: 10px 30px;
+    font-size: 0.9rem;
+}
 
 
 
@@ -317,12 +342,12 @@ h1 {
     width: 85%;
     margin: 50px auto;
 }
-
-
 .pro-card img {
     width: 100%;
+    height: 270px;
     border-radius: 20px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .pro-card .rating {
@@ -340,6 +365,206 @@ h1 {
 .pro-card h2 span {
     font-size: 0.7rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*MARK:Catalog
+*/
+.catalog {
+    width: 85%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 30px;
+}
+
+.all-pros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    height: fit-content;
+}
+
+aside {
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 15px;
+    color: #444;
+    height: fit-content;
+}
+
+aside hr {
+    opacity: 0.3;
+    margin: 15px 0;
+}
+
+.filter-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 0;
+}
+
+.filter-content.open {
+    max-height: fit-content;
+    padding: 10px 0;
+}
+
+.filter-header,
+.categories div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.filter-header i {
+    font-size: 1rem;
+}
+.filter-header i.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.filter-header h5 {
+    font-size: 1.2rem;
+}
+
+.categories p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    cursor: pointer;
+}
+.categories .category-item{
+    color: #999;
+}
+.category-item.active {
+    font-weight: bold;
+    color: #000;
+}
+
+.categories i {
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+.price input {
+    width: 100%;
+    cursor: pointer;
+    height: 6px;
+}
+.price p{
+    text-align: right;
+}
+
+.filter-color {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+}
+
+.filter-color div {
+    margin-bottom: 5px;
+}
+
+.filter-sizes button {
+    margin: 10px 5px;
+    color: #777;
+}
+
+aside #clear-filters{
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -406,6 +631,11 @@ h1 {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
+
+    .your-review input,
+    .your-review textarea {
+        width: 80%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -428,18 +658,40 @@ h1 {
 
     .other-pro {
         grid-template-columns: 1fr;
-        width: 90%;
+        width: 80%;
     }
 
     .add-to-cart {
         font-size: 1rem;
     }
 
-    .review-header {
-        display: block;
-    }
-
     .review-header h4 {
         margin-bottom: 15px;
+    }
+
+    .your-review input,
+    .your-review textarea {
+        width: 100%;
+    }
+
+    .your-review .rating i {
+        font-size: 1rem;
+    }
+
+    .pro-card h2,
+    .pro-card {
+        font-size: 1.3rem;
+    }
+
+    .pro-card {
+        margin-top: 20px;
+    }
+
+    .pro-card:first-child {
+        margin-top: 0;
+    }
+
+    .other-pro .pro-card img {
+        height: auto;
     }
 }
