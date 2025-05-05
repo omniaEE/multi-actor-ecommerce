@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         colors.forEach(color => {     
                             console.log(colors[i].style.backgroundColor);
                                                    
-                            if (colors[i].style.backgroundColor == "white") {                                
+                            if (colors[i].style.backgroundColor == "white" || colorDiv.style.backgroundColor == "beige") {                                
                                 color.innerHTML = ""
                                 colors[i].innerHTML = `<i class="fa-solid fa-check" style="color:black;"></i>`
                             } else {

@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .product-details {
@@ -342,8 +342,6 @@ h1 {
     width: 85%;
     margin: 50px auto;
 }
-
-
 .pro-card img {
     width: 100%;
     height: 270px;
@@ -454,6 +452,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    height: fit-content;
 }
 
 aside {
@@ -469,6 +468,18 @@ aside hr {
     margin: 15px 0;
 }
 
+.filter-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 0;
+}
+
+.filter-content.open {
+    max-height: fit-content;
+    padding: 10px 0;
+}
+
 .filter-header,
 .categories div {
     display: flex;
@@ -476,46 +487,73 @@ aside hr {
     justify-content: space-between;
     margin: 10px 0;
     font-size: 1.3rem;
+    cursor: pointer;
 }
 
 .filter-header i {
-    cursor: pointer;
     font-size: 1rem;
 }
+.filter-header i.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
 .filter-header h5 {
     font-size: 1.2rem;
 }
+
 .categories p {
     font-size: 0.9rem;
     margin: 5px 0;
-    color: #999;
     cursor: pointer;
 }
-.categories p.active{
+.categories .category-item{
+    color: #999;
+}
+.category-item.active {
+    font-weight: bold;
     color: #000;
 }
 
 .categories i {
     cursor: pointer;
     font-size: 0.7rem;
-    color: #999;
 }
 
 .price input {
     width: 100%;
+    cursor: pointer;
+    height: 6px;
 }
-.filter-color{
+.price p{
+    text-align: right;
+}
+
+.filter-color {
     display: flex;
     flex-wrap: wrap;
     column-gap: 5px;
 }
-.filter-color div{
+
+.filter-color div {
     margin-bottom: 5px;
 }
+
 .filter-sizes button {
     margin: 10px 5px;
     color: #777;
 }
+
+aside #clear-filters{
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
 
 
 
@@ -652,7 +690,8 @@ aside hr {
     .pro-card:first-child {
         margin-top: 0;
     }
-    .other-pro .pro-card img{
+
+    .other-pro .pro-card img {
         height: auto;
     }
 }
