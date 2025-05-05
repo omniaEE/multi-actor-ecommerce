@@ -10,7 +10,8 @@
     "password": "fd_cust_1",
     "address": "123 Tanta, Egypt",
     "orders": [101, 102],
-    "status": "Active"
+    "status": "Active",
+    "roleAsSeller":"false"
   },
   {
     "id": 2,
@@ -22,7 +23,8 @@
     "password": "fd_cust_2",
     "address": "456 Garbia",
     "orders": [103, 104],
-    "status": "Banned"
+    "status": "Banned",
+    "roleAsSeller":"false"
   },
   {
     "id": 3,
@@ -34,7 +36,8 @@
     "password": "alaa_sell_3",
     "storeName": "Lola Store",
     "products": [201, 202],
-    "status": "Active"
+    "status": "Active",
+    "roleAsSeller":"false"
   },
   {
     "id": 4,
@@ -46,7 +49,8 @@
     "password": "hager_sell_4",
     "storeName": "Gora Store",
     "products": [203, 204],
-    "status": "Banned"
+    "status": "Banned",
+    "roleAsSeller":"false"
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
     "email": "omnia@adminhub.com",
     "password": "omnia_admin_5",
     "permissions": ["manage_users", "manage_products", "view_reports"],
-    "status": "Active"
+    "status": "Active",
+    "roleAsSeller":"false"
   }
 ]
 ,

@@ -43,6 +43,9 @@ function signUp(event) {
     const phone = document.getElementById("phone").value;
     const password = document.getElementById("password").value;
     const ConfirmPassword = document.getElementById("ConfirmPassword").value;
+    const role = document.getElementById("role");
+
+    let sellerRequest = role.checked
 
     const phoneRegex = /^01[0-2,5]{1}[0-9]{8}$/;
 
@@ -59,13 +62,13 @@ function signUp(event) {
         alert("Passwords do not match.");
         return;
     }
-    
-    
+
+
     let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
     let users = all_data.users;
-    
+
     const newId = Math.max(0, ...all_data.users.map(p => p.id || 0)) + 1;
-    
+
     const exists = users.find(user => user.email === email);
     if (exists) {
         alert("Email already exists");
@@ -73,18 +76,20 @@ function signUp(event) {
     }
 
 
-    const newUser = { 
+    const newUser = {
         id: newId,
         role: "customer",
         firstName: firstName,
         lastName: lastName,
-        phone:phone,
+        phone: phone,
         email: email,
         password: password,
         address: '123 Tanta, Egypt',
         orders: [101, 102],
-        status: "Active"
-     };
+        status: "Active",
+        roleAsSeller: sellerRequest
+
+    };
 
     all_data.users.push(newUser);
     localStorage.setItem("all_data", JSON.stringify(all_data));
@@ -112,7 +117,7 @@ function login() {
                 window.location.href = "../saller/overView.html";
                 break;
             case "customer":
-                window.location.href = "../homePage.html";
+                window.location.href = "../../home_page/homePage.html";
                 break;
         }
         localStorage.setItem("loggedInUser", JSON.stringify(validUser));
