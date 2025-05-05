@@ -196,6 +196,9 @@ MARK: Cat Catalog
   padding: 0;
 }
 
+/* 
+MARK: Main
+*/
 main {
   max-width: 820px;
   width: 100%;
