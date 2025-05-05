@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Welcome to Shop.Co – your one-stop online store for all your needs."
+    />
+    <meta name="author" content="Team 3" />
+    <meta
+      name="keywords"
+      content="online shop, e-commerce, fashion, accessories"
+    />
+    <title>Shop.Co Store</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Fontawsome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <!-- 
+    MARK: Header  
+    -->
+    <header>
+      <!-- Authentication Suggestion part -->
+      <div
+        class="bg-black text-white align-items-center justify-content-between d-flex px-4 py-1 signUpSuggistionWrapper"
+      >
+        <span class="m-auto">
+          Sign up and get 20% off to your first order.
+          <a href="#" class="text-white">Sign Up Now</a>
+        </span>
+        <div class="bg-black align-self-end">
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+
+      <!-- Navbar -->
+      <nav
+        class="navbar navbar-expand-lg py-3 px-3 bg-body-light align-items-center"
+      >
+        <div class="container-fluid">
+          <!-- Website Logo or Name -->
+          <h1 class="navbar-brand fs-2 fw-bolder mx-2" href="#">SHOP.CO</h1>
+
+          <!-- Collapse Icon in Smaller Screens -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTaps"
+            aria-controls="navbarTaps"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navigation Taps -->
+          <div class="collapse navbar-collapse" id="navbarTaps">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item mx-1 dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Shop
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Men</a></li>
+                  <li><a class="dropdown-item" href="#">Women</a></li>
+                  <li><a class="dropdown-item" href="#">Children</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item mx-1">
+                <a class="nav-link" href="#">On Sale</a>
+              </li>
+
+              <li class="nav-item mx-1">
+                <a class="nav-link" href="#">New Arrivals</a>
+              </li>
+
+              <li class="nav-item mx-1">
+                <a class="nav-link" href="#">Brands</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Search Box -->
+          <div class="w-50 input-group rounded-5 bg-light mx-5 px-4 flex-row">
+            <span class="input-group-text border-0">
+              <i class="fas fa-search text-muted"></i>
+            </span>
+            <input
+              type="text"
+              placeholder="Search for products..."
+              class="border-0 form-control shadow-none w-75 p-2 bg-light"
+            />
+          </div>
+          <!-- Cart & Profile Icons -->
+          <div class="p-2 fs-5 navbareIconsWrapper">
+            <a href="#" id="cartIcon">
+              <i
+                class="fa-solid fa-cart-shopping mx-3"
+                style="color: #141415"
+              ></i>
+            </a>
+            <a href="#" id="profileIcon">
+              <i
+                class="fa-regular fa-circle-user mx-3"
+                style="color: #141415"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 
+    MARK: Hero  
+    -->
+    <section class="heroWrapper">
+      <div class="container-fluid h-100 d-flex position-relative">
+        <div class="row col-12 d-flex flex-wrap">
+          <!-- Hero left Side -->
+          <div class="col-lg-7 col-sm-12 pt-3">
+            <h1 class="heroHeader col-lg-8 col-sm-12">
+              FIND CLOTHES THAT MATCHES YOUR STYLE
+            </h1>
+            <p>
+              Browse through our diverse range of meticulously crafted garments,
+              designed to bring out your individuality and cater to your sense
+              of style.
+            </p>
+            <button
+              class="btn bg-black text-white rounded-5 px-5 my-3 col-lg-3 col-sm-12"
+            >
+              Shop Now
+            </button>
+
+            <div class="row d-flex mt-3 pe-5">
+              <div
+                class="col-lg-4 col-sm-6 d-flex flex-column text-sm-center border-end"
+              >
+                <h3>200 +</h3>
+                <p>International Brands</p>
+              </div>
+              <div
+                class="col-lg-4 col-sm-6 d-flex flex-column text-center border-end"
+              >
+                <h3>2,000 +</h3>
+                <p>High-Quality Products</p>
+              </div>
+              <div class="col-lg-4 col-sm-12 d-flex flex-column text-center">
+                <h3>30,000 +</h3>
+                <p>Happy Customers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right Side -->
+          <div class="col-lg-5 col-sm-12 rightSideContainer">
+            <img src="image/heroimg.jpg" class="w-100 h-100" />
+          </div>
+        </div>
+
+        <!-- Hero Footer -->
+        <div
+          class="row bg-black text-white position-absolute bottom-0 start-50 translate-middle-x w-100 d-flex align-items-center justify-content-center"
+        >
+          <div class="col-lg col-sm-4 mb-sm-3 text-center">VERSACE</div>
+          <div class="col-lg col-sm-4 mb-sm-3 text-center">ZARA</div>
+          <div class="col-lg col-sm-4 mb-sm-3 text-center">GUCCI</div>
+          <div class="col-lg col-sm-6 mb-sm-3 mb-lg-0 text-center">PRADA</div>
+          <div class="col-lg col-sm-6 mb-sm-3 mb-lg-0 text-center">
+            Calvin Klein
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+    MARK: New Arr  
+    -->
+    <section class="pros-holder">
+      <h1 class="sectionTitle">NEW ARRIVALS</h1>
+      <div class="other-pro">
+        <div class="pro-card">
+          <img src="../assets/pro8.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+        <div class="pro-card">
+          <img src="../assets/pro14.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+        <div class="pro-card">
+          <img src="../assets/pro5.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+        <div class="pro-card">
+          <img src="../assets/pro10.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+      </div>
+      <button>View All</button>
+      <hr />
+    </section>
+
+    <!-- 
+    MARK: Top Selling  
+    -->
+    <section class="pros-holder">
+      <h1 class="sectionTitle">TOP SELLING</h1>
+      <div class="other-pro">
+        <div class="pro-card">
+          <img src="../assets/pro9.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+        <div class="pro-card">
+          <img src="../assets/pro11.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+        <div class="pro-card">
+          <img src="../assets/pro13.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+        <div class="pro-card">
+          <img src="../assets/pro12.jpg" alt="" />
+          <p>Polo with Contrast Trims</p>
+          <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <small>4.0</small>
+          </div>
+          <h2>$260 <s>$300</s> <span>-40%</span></h2>
+        </div>
+      </div>
+      <button>View All</button>
+    </section>
+    <!-- 
+    MARK: Cat Catalog  
+    -->
+    <section
+      class="container rounded-5 my-3 p-4 catWrapper d-flex flex-column align-items-center"
+    >
+      <div class="row d-flex">
+        <h1 class="sectionTitle col-12">BROWSE BY DRESS STYLE</h1>
+        <div class="row justify-content-center align-items-center flex-wrap">
+          <div
+            class="bg-white rounded-4 col-lg-4 col-sm-12 p-4 fw-bolder fs-4 mb-2 catCover casualCat"
+          >
+            Casual
+          </div>
+          <div
+            class="bg-white rounded-4 col-lg-7 col-sm-12 ms-lg-4 p-4 fw-bolder fs-4 catCover formalCat"
+          >
+            Formal
+          </div>
+        </div>
+        <div
+          class="row justify-content-center align-items-center mt-lg-3 mt-sm-2 flex-wrap"
+        >
+          <div
+            class="bg-white rounded-4 col-lg-7 col-sm-12 p-4 fw-bolder fs-4 mb-2 catCover partyCat"
+          >
+            Party
+          </div>
+          <div
+            class="bg-white rounded-4 col-lg-4 col-sm-12 ms-lg-4 p-4 fw-bolder fs-4 catCover gymCat"
+          >
+            Gym
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+    MARK: Reviews  
+    -->
+    <section class="container reviewSection">
+      <!-- Head of section -->
+      <div class="row justify-content-between align-items-center mb-4">
+        <h1 class="col-8 sectionTitle d-flex justify-content-start m-0">
+          OUR HAPPY CUSTOMERS
+        </h1>
+        <div class="col-3 d-flex justify-content-end">
+          <div>
+            <i
+              class="fa-solid fa-arrow-left mx-3 fs-5"
+              style="color: #0a0a0a"
+            ></i>
+          </div>
+          <div>
+            <i
+              class="fa-solid fa-arrow-right mx-3 fs-5"
+              style="color: #0a0a0a"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Wrapper -->
+      <div class="row justify-content-center flex-wrap gap-4">
+        <div class="col-lg col-sm-12 review-card">
+          <div class="stars">★★★★★</div>
+          <div class="reviewer">Sarah M. <span class="verified">●</span></div>
+          <div class="review-text">
+            “I’m blown away by the quality and style of the clothes I received
+            from Shop.co. Every piece I’ve bought has exceeded my expectations.”
+          </div>
+        </div>
+
+        <div class="col-lg col-sm-12 review-card">
+          <div class="stars">★★★★★</div>
+          <div class="reviewer">Alex K. <span class="verified">●</span></div>
+          <div class="review-text">
+            “The range of options they offer is truly remarkable, catering to a
+            variety of tastes and occasions.”
+          </div>
+        </div>
+
+        <div class="col-lg col-sm-12 review-card">
+          <div class="stars">★★★★★</div>
+          <div class="reviewer">James L. <span class="verified">●</span></div>
+          <div class="review-text">
+            “The selection of clothes is not only diverse but also on-point with
+            the latest trends.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+    MARK: Footer  
+    -->
+    <footer class="bg-light py-4">
+      <div class="container">
+        <div class="row">
+          <!-- description and social -->
+          <div class="col-12 col-md mb-2">
+            <h4 class="text-dark text-uppercase fw-bold">shop.co</h4>
+            <p class="text-muted">
+              We have clothes that suits your style and which you're proud to
+              wear. From women to men.
+            </p>
+            <div class="d-flex gap-3 mb-2">
+              <i class="fa-brands fa-twitter"></i>
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-github"></i>
+            </div>
+          </div>
+          <!-- column2 -->
+          <div class="col-sm-6 col-md mb-2">
+            <h6 class="text-uppercase fw-bold">company</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-muted text-decoration-none">About</a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Features</a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Works</a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">career</a>
+              </li>
+            </ul>
+          </div>
+          <!-- column-3 -->
+          <div class="col-sm-6 col-md mb-2">
+            <h6 class="text-uppercase fw-bold">help</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Customer Support</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Delivery Details</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- column4 -->
+          <div class="col-sm-6 col-md mb-2">
+            <h6 class="text-uppercase fw-bold">faq</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Account</a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Manage Deliveries</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Orders</a>
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none">Payments</a>
+              </li>
+            </ul>
+          </div>
+          <!-- column5 -->
+          <div class="col-sm-6 col-md mb-2">
+            <h6 class="text-uppercase fw-bold">resources</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Free eBook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Development tutroial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >How to - Blog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-muted text-decoration-none"
+                  >Youtube Playlist</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 border-top mt-4"
+        >
+          <p class="mb-2 text-muted">
+            Shop.co &copy; 2000 - 2023, All Rights Reserved
+          </p>
+          <div class="d-flex gap-2">
+            <img
+              src="image/visa.png"
+              width="50"
+              class="bg-white"
+              alt=" Visa"
+            />
+            <img
+              src="image/mastercard.jpg"
+              width="50"
+              class="bg-white"
+              alt=" MasterCard"
+            />
+            <img
+              src="image/apple-pay.jpg"
+              width="50"
+              class="bg-white"
+              alt="ApplePay"
+            />
+            <img
+              src="image/Google_pay.png"
+              width="50"
+              class="bg-white"
+              alt="GooglePay"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script src="js/home.js"></script>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 {
   "users": [
+<<<<<<< HEAD
 
     {
       "id": 1,
@@ -512,59 +513,106 @@
   ]
 }
 =======
+=======
+>>>>>>> a9e8d36 (new structure)
   {
     "id": 1,
     "role": "customer",
     "firstName": "Fadl",
     "lastName": "Yousry",
+<<<<<<< HEAD
+=======
+    "phone":"01210677917",
+>>>>>>> a9e8d36 (new structure)
     "email": "fadl@gmail.com",
     "password": "fd_cust_1",
     "address": "123 Tanta, Egypt",
     "orders": [101, 102],
+<<<<<<< HEAD
     "status": "Active"
+=======
+    "status": "Active",
+    "roleAsSeller":"false"
+>>>>>>> a9e8d36 (new structure)
   },
   {
     "id": 2,
     "role": "customer",
     "firstName": "Yousef",
     "lastName": "Hesham",
+<<<<<<< HEAD
+=======
+    "phone":"01210677917",
+>>>>>>> a9e8d36 (new structure)
     "email": "yousef@gmail.com",
     "password": "fd_cust_2",
     "address": "456 Garbia",
     "orders": [103, 104],
+<<<<<<< HEAD
     "status": "Banned"
+=======
+    "status": "Banned",
+    "roleAsSeller":"false"
+>>>>>>> a9e8d36 (new structure)
   },
   {
     "id": 3,
     "role": "seller",
     "firstName": "Alaa",
     "lastName": "Hamdi",
+<<<<<<< HEAD
+=======
+    "phone":"01210677917",
+>>>>>>> a9e8d36 (new structure)
     "email": "alaa@sellhub.com",
     "password": "alaa_sell_3",
     "storeName": "Lola Store",
     "products": [201, 202],
+<<<<<<< HEAD
     "status": "Active"
+=======
+    "status": "Active",
+    "roleAsSeller":"false"
+>>>>>>> a9e8d36 (new structure)
   },
   {
     "id": 4,
     "role": "seller",
     "firstName": "Hagar",
     "lastName": "Gamal",
+<<<<<<< HEAD
+=======
+    "phone":"01210677917",
+>>>>>>> a9e8d36 (new structure)
     "email": "hager@sellhub.com",
     "password": "hager_sell_4",
     "storeName": "Gora Store",
     "products": [203, 204],
+<<<<<<< HEAD
     "status": "Banned"
+=======
+    "status": "Banned",
+    "roleAsSeller":"false"
+>>>>>>> a9e8d36 (new structure)
   },
   {
     "id": 5,
     "role": "admin",
     "firstName": "Omnia",
     "lastName": "Eid",
+<<<<<<< HEAD
     "email": "omnia@adminhub.com",
     "password": "omnia_admin_5",
     "permissions": ["manage_users", "manage_products", "view_reports"],
     "status": "Active"
+=======
+    "phone":"01210677917",
+    "email": "omnia@adminhub.com",
+    "password": "omnia_admin_5",
+    "permissions": ["manage_users", "manage_products", "view_reports"],
+    "status": "Active",
+    "roleAsSeller":"false"
+>>>>>>> a9e8d36 (new structure)
   }
 ]
 ,
