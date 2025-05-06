@@ -33,6 +33,17 @@ MARK: Header
 }
 
 /* 
+MARK: Profile
+*/
+.dropdown-item:hover {
+  background-color: #ddd;
+}
+
+#profileIcon::after {
+  display: none !important;
+}
+
+/* 
 MARK: Hero 
 */
 .heroWrapper {
