@@ -56,6 +56,7 @@
                     <p>1</p>
                     <button id="inc"><i class="fa-solid fa-plus"></i></button>
                 </div>
+                <p id="addedToCart">Added To Cart</p>
                 <div class="add-to-wishlist"><i class="fa-regular fa-heart"></i></div>
                 <button class="add-to-cart" id="addToCart">Add to Cart</button>
             </div>
@@ -123,18 +124,18 @@
         </div>
         <!-- add review -->
         <div class="tab-content your-review">
-            <div class="rating">
+            <div class="rating your-rating">
                 Your Rating : 
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star" data-rating="1"></i>
+                <i class="fa-regular fa-star" data-rating="2"></i>
+                <i class="fa-regular fa-star" data-rating="3"></i>
+                <i class="fa-regular fa-star" data-rating="4"></i>
+                <i class="fa-regular fa-star" data-rating="5"></i>
             </div>
             <input type="text" placeholder="Username" />
             <textarea placeholder="Leave a Review" rows="10"></textarea>
             <br/>
-            <button class="add-to-cart">Send</button>
+            <button class="add-to-cart" id="sendReview">Send</button>
         </div>
     </section>
 

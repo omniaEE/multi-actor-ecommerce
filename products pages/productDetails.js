@@ -103,6 +103,78 @@ fetch('../data/data.json')
 
 
 
+//add review
+let sendReview = document.getElementById("sendReview")
+let usernameInput = document.querySelector(".your-review input")
+let reviewTextarea = document.querySelector(".your-review textarea")
+let selectedRating = 0;
+let starEls = document.querySelectorAll(".your-rating i");
+
+starEls.forEach((star, idx) => {
+    star.addEventListener("click", () => {
+        selectedRating = parseInt(star.dataset.rating);
+        starEls.forEach((s, i) => {
+            if (i < selectedRating) {
+                s.classList.remove("fa-regular");
+                s.classList.add("fa-solid");
+            } else {
+                s.classList.remove("fa-solid");
+                s.classList.add("fa-regular");
+            }
+        });
+    });
+});
+
+
+sendReview.addEventListener("click", () => {
+    const username = usernameInput.value.trim();
+    const reviewText = reviewTextarea.value.trim();
+
+    if (!username || !reviewText || selectedRating === 0) {
+        alert("Please fill in all fields and select a rating.");
+        return;
+    }
+
+    //create new review
+    const newReview = {
+        username: username,
+        review: reviewText,
+        rating: selectedRating,
+        date: new Date().toLocaleDateString()
+    }
+
+
+    //reset
+    usernameInput.value = "";
+    reviewTextarea.value = "";
+    selectedRating = 0;
+    starEls.forEach(s => {
+        s.classList.remove("fa-solid");
+        s.classList.add("fa-regular");
+    })
+    // console.log(newReview);
+
+    // const currentCount = parseInt(reviewsLength.textContent.replace(/\D/g, ""));
+    // reviewsLength.textContent = `(${currentCount + 1})`;
+
+    reviewTabs.forEach(tab => {
+        tab.classList.remove("active")
+        reviewTabs[1].classList.add("active")
+    })
+    reviewContents.forEach(content => {
+        content.classList.remove("show")
+        reviewContents[1].classList.add("show")
+    })
+})
+
+
+
+
+
+
+
+
+
 //laod data from href's search productId
 let imgsHolder = document.querySelector(".pro-imgs div")
 let reviewsHolder = document.querySelector(".review-body")
@@ -279,14 +351,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 //add to cart
                 let addToCartBtn = document.getElementById("addToCart")
-                loggedUser = localStorage.getItem("loggedInUser")
+                let addedToCart = document.getElementById("addedToCart")
+                let amountDiv = document.querySelector(".amount")
+                loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
                 addToCartBtn.addEventListener('click', () => {
-                    // loggedUser.cart.push({
-                    //     product: product,
-                    //     amount: counter.innerText,
-                    //     color: checkedColor,
-                    //     size: checkedSize
-                    // })
+                    loggedUser.cart.push({
+                        product: product,
+                        amount: counter.innerText,
+                        color: checkedColor,
+                        size: checkedSize
+                    })
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                    addToCartBtn.style.display = "none"
+                    addedToCart.style.display = "block"
+                    amountDiv.style.display = "none"
                 })
 
 
