@@ -11,7 +11,9 @@
     "address": "123 Tanta, Egypt",
     "orders": [101, 102],
     "status": "Active",
-    "roleAsSeller":"false"
+    "roleAsSeller":"false",
+    "cart": [],
+    "fav":[]
   },
   {
     "id": 2,
@@ -24,7 +26,9 @@
     "address": "456 Garbia",
     "orders": [103, 104],
     "status": "Banned",
-    "roleAsSeller":"false"
+    "roleAsSeller":"false",
+    "cart": [],
+    "fav":[]
   },
   {
     "id": 3,
@@ -37,7 +41,9 @@
     "storeName": "Lola Store",
     "products": [201, 202],
     "status": "Active",
-    "roleAsSeller":"false"
+    "roleAsSeller":"false",
+    "cart": [],
+    "fav":[]
   },
   {
     "id": 4,
@@ -50,7 +56,9 @@
     "storeName": "Gora Store",
     "products": [203, 204],
     "status": "Banned",
-    "roleAsSeller":"false"
+    "roleAsSeller":"false",
+    "cart": [],
+    "fav":[]
   },
   {
     "id": 5,
@@ -62,7 +70,9 @@
     "password": "omnia_admin_5",
     "permissions": ["manage_users", "manage_products", "view_reports"],
     "status": "Active",
-    "roleAsSeller":"false"
+    "roleAsSeller":"false",
+    "cart": [],
+    "fav":[]
   }
 ]
 ,
