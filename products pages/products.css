@@ -42,7 +42,8 @@
 }
 
 .pro-imgs div img.active {
-    border: 1.3px solid #000;
+    border: 1.7px solid #000;
+    opacity: 0.8;
 }
 
 h1 {
@@ -327,8 +328,23 @@ h1 {
     padding: 10px 40px;
     font-size: 0.9rem;
 }
-
-
+#showMoreReview{
+    display: none;
+    padding: 10px 50px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 1.07rem;
+    border: 1px solid #ccc;
+    margin: 30px auto 10px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#showMoreReview:hover{
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.07);
+}
 
 
 

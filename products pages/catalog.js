@@ -14,7 +14,7 @@ const paginationContainer = document.querySelector(".pagination")
 
 
 let selectedCategory = null
-let selectedMaxPrice = 5000;
+let selectedMaxPrice = 3000;
 let selectedSizes = []
 let selectedColors = []
 let selectedSort = "default";
@@ -118,83 +118,116 @@ function renderProducts(products) {
 
 
 
-let allProducts = []   //init 
-fetch('../data/data.json')
-    .then(response => response.json())
-    .then(data => {
-        allProducts = data.products
-        proLength.innerText = data.products.length + " Items"
-        //category
-        data.categories.forEach(category => {
-            let categoryDiv = document.createElement("div")
-            categoryDiv.classList.add("category-item")
-            categoryDiv.innerHTML = `<p>${category.name}</p><i class="fa-solid fa-plus"></i>`
 
-            categoryDiv.addEventListener("click", () => {
-                selectedCategory = category.name
-                document.querySelectorAll(".categories .category-item").forEach(item => {
-                    item.classList.remove("active")
-                })
-                categoryDiv.classList.add("active")
 
-                renderProducts(allProducts)
-            })
-            categories.appendChild(categoryDiv)
+
+
+
+
+
+
+
+
+
+
+
+
+// fetch('../data/data.json')
+//     .then(response => response.json())
+//     .then(data => {
+// allProducts = data.products
+
+let allProducts = JSON.parse(localStorage.getItem("all_data")).products
+
+proLength.innerText = allProducts.length + " Items"
+
+//category
+JSON.parse(localStorage.getItem("all_data")).categories.forEach(category => {
+    let categoryDiv = document.createElement("div")
+    categoryDiv.classList.add("category-item")
+    categoryDiv.innerHTML = `<p>${category.name}</p><i class="fa-solid fa-plus"></i>`
+
+    categoryDiv.addEventListener("click", () => {
+        selectedCategory = category.name
+        document.querySelectorAll(".categories .category-item").forEach(item => {
+            item.classList.remove("active")
         })
+        categoryDiv.classList.add("active")
 
-
-        //price
-        priceInput.addEventListener("input", () => {
-            selectedMaxPrice = parseInt(priceInput.value);
-            priceValue.textContent = selectedMaxPrice;
-
-            renderProducts(allProducts);
-        });
-
-        //size
-        sizes.forEach(size => {
-            const sizeBtn = document.createElement("button");
-            sizeBtn.textContent = size;
-            sizeBtn.classList.add("size-btn")
-            sizeBtn.addEventListener("click", () => {
-                sizeBtn.classList.toggle("active");
-                if (selectedSizes.includes(size)) {
-                    selectedSizes = selectedSizes.filter(s => s !== size);
-                } else {
-                    selectedSizes.push(size);
-                }
-
-                renderProducts(data.products);
-            })
-            filterSizes.appendChild(sizeBtn);
-        });
-
-
-        //color
-        const allColors = new Set();
-        allProducts.forEach(p => p.colors.forEach(c => allColors.add(c)));
-        allColors.forEach(color => {
-            const colorDiv = document.createElement("div");
-            colorDiv.style.backgroundColor = color;
-            colorDiv.addEventListener("click", () => {
-                if (selectedColors.includes(color)) {
-                    selectedColors = selectedColors.filter(c => c !== color);
-                    colorDiv.innerHTML = ""
-                } else {
-                    selectedColors.push(color);
-                    if (colorDiv.style.backgroundColor == "white" || colorDiv.style.backgroundColor == "beige") {
-                        colorDiv.innerHTML = `<i class="fa-solid fa-check" style="color:black;"></i>`
-                    } else {
-                        colorDiv.innerHTML = `<i class="fa-solid fa-check"></i>`
-                    }
-                }
-                renderProducts(allProducts);
-            });
-            filterColor.appendChild(colorDiv);
-        });
-
-        renderProducts(allProducts) // Initial render
+        renderProducts(allProducts)
     })
+    categories.appendChild(categoryDiv)
+})
+
+
+//price
+priceInput.addEventListener("input", () => {
+    selectedMaxPrice = parseInt(priceInput.value);
+    priceValue.textContent = selectedMaxPrice;
+
+    renderProducts(allProducts);
+});
+
+//size
+sizes.forEach(size => {
+    const sizeBtn = document.createElement("button");
+    sizeBtn.textContent = size;
+    sizeBtn.classList.add("size-btn")
+    sizeBtn.addEventListener("click", () => {
+        sizeBtn.classList.toggle("active");
+        if (selectedSizes.includes(size)) {
+            selectedSizes = selectedSizes.filter(s => s !== size);
+        } else {
+            selectedSizes.push(size);
+        }
+
+        renderProducts(allProducts);
+    })
+    filterSizes.appendChild(sizeBtn);
+});
+
+
+//color
+const allColors = new Set();
+allProducts.forEach(p => p.colors.forEach(c => allColors.add(c)));
+allColors.forEach(color => {
+    const colorDiv = document.createElement("div");
+    colorDiv.style.backgroundColor = color;
+    colorDiv.addEventListener("click", () => {
+        if (selectedColors.includes(color)) {
+            selectedColors = selectedColors.filter(c => c !== color);
+            colorDiv.innerHTML = ""
+        } else {
+            selectedColors.push(color);
+            if (colorDiv.style.backgroundColor == "white" || colorDiv.style.backgroundColor == "beige") {
+                colorDiv.innerHTML = `<i class="fa-solid fa-check" style="color:black;"></i>`
+            } else {
+                colorDiv.innerHTML = `<i class="fa-solid fa-check"></i>`
+            }
+        }
+        renderProducts(allProducts);
+    });
+    filterColor.appendChild(colorDiv);
+});
+
+renderProducts(allProducts) // Initial render
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //sort select
@@ -209,9 +242,9 @@ document.getElementById("clear-filters").addEventListener("click", () => {
     selectedCategory = null;
     selectedSizes = [];
     selectedColors = [];
-    selectedMaxPrice = 5000;
-    priceInput.value = 5000;
-    priceValue.textContent = 5000;
+    selectedMaxPrice = 3000;
+    priceInput.value = 3000;
+    priceValue.textContent = 3000;
     document.querySelectorAll(".categories .category-item").forEach(div => div.classList.remove("active"));
     document.querySelectorAll(".filter-sizes button").forEach(btn => btn.classList.remove("active"));
     document.querySelectorAll(".filter-color div").forEach(div => div.innerHTML = "");
