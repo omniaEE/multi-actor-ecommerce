@@ -1,101 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/products.css" />
-    <title>Product Details</title>
-  </head>
 
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="products.css">
+    <title>Product Details</title>
+</head>
+
+<body>
     <section class="product-details">
-      <div class="pro-imgs">
-        <div>
-          <!-- <img src="images/img (2).png" class="active" alt="Product Image 1">
+        <div class="pro-imgs">
+            <div>
+                <!-- <img src="images/img (2).png" class="active" alt="Product Image 1">
                 <img src="images/img (3).png" alt="Product Image 2">
                 <img src="images/img (4).png" alt="Product Image 3"> -->
+            </div>
+            <img src="images/img (2).png" alt="" id="mainImg">
         </div>
-        <img src="images/img (2).png" alt="" id="mainImg" />
-      </div>
-      <div>
-        <h1 id="product-name">PRODUCT NAME</h1>
-        <span class="rating" id="product-star">
-          <!-- <i class="fa-solid fa-star"></i>
+        <div>
+            <h1 id="product-name">PRODUCT NAME</h1>
+            <span class="rating" id="product-star">
+                <!-- <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i> -->
-        </span>
-        &nbsp;
-        <small id="product-rate">(XX Reviews)</small>
-        <h2 id="product-price">$260 <s>$300</s> <span>-40%</span></h2>
-        <p id="product-desc">
-          This graphic t-shirt which is perfect for any occasion. Crafted from a
-          soft and breathable fabric, it offers superior comfort and style.
-        </p>
-        <hr />
-        <p>Select Colors</p>
-        <div class="color">
-          <!-- <div><i class="fa-solid fa-check"></i></div>
+            </span>
+            &nbsp;
+            <small id="product-rate">(XX Reviews)</small>
+            <h2 id="product-price">$260 <s>$300</s> <span>-40%</span></h2>
+            <p id="product-desc">This graphic t-shirt which is perfect for any occasion. Crafted from a soft and
+                breathable fabric, it
+                offers superior comfort and style.</p>
+            <hr />
+            <p>Select Colors</p>
+            <div class="color">
+                <!-- <div><i class="fa-solid fa-check"></i></div>
                 <div></div>
                 <div></div> -->
-        </div>
-        <hr />
-        <p>Choose Size</p>
-        <div class="size">
-          <!-- <button>Small</button>
+            </div>
+            <hr />
+            <p>Choose Size</p>
+            <div class="size">
+                <!-- <button>Small</button>
                 <button class="active">Medium</button>
                 <button>Large</button>
                 <button>X-Large</button> -->
+            </div>
+            <hr />
+            <div class="feature-btns">
+                <div class="amount">
+                    <button id="dec"><i class="fa-solid fa-minus"></i></button>
+                    <p>1</p>
+                    <button id="inc"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <div class="add-to-wishlist"><i class="fa-regular fa-heart"></i></div>
+                <button class="add-to-cart" id="addToCart">Add to Cart</button>
+            </div>
         </div>
-        <hr />
-        <div class="feature-btns">
-          <div class="amount">
-            <button id="dec"><i class="fa-solid fa-minus"></i></button>
-            <p>1</p>
-            <button id="inc"><i class="fa-solid fa-plus"></i></button>
-          </div>
-          <div class="add-to-wishlist"><i class="fa-regular fa-heart"></i></div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- --------------------reviews---------------------- -->
     <section class="product-reviews">
-      <div class="tabs">
-        <button>Product Details</button>
-        <button class="active">Rating & Reviews</button>
-        <button>Write a Review</button>
-      </div>
-      <div class="tab-content">
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
-          perferendis, sit deleniti rem iusto animi hic error vero commodi, quos
-          reiciendis! Eos voluptate molestiae nam harum, provident commodi quod
-          ut.
-        </p>
-        <br />
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt,
-          distinctio ad! Rerum eaque, reprehenderit id in repudiandae, nobis
-          iure officiis ducimus deserunt, assumenda odio modi tempora nam?
-          Quasi, velit omnis?
-        </p>
-      </div>
-      <div class="tab-content show">
-        <div class="review-header">
-          <h4>All Reviews &nbsp; <small id="reviewsLength">(451)</small></h4>
-          <div class="feature-btns">
-            <button><i class="fa-solid fa-sliders"></i></button>
-          </div>
+        <div class="tabs">
+            <button>Product Details</button>
+            <button class="active">Rating & Reviews</button>
+            <button>Write a Review</button>
         </div>
-        <div class="review-body">
-          <!-- <div class="review">
+        <div class="tab-content">
+            <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque perferendis, sit deleniti rem iusto animi
+                hic error vero commodi, quos reiciendis! Eos voluptate molestiae nam harum, provident commodi quod ut.
+            </p>
+            <br />
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, distinctio ad! Rerum eaque,
+                reprehenderit id in repudiandae, nobis iure officiis ducimus deserunt, assumenda odio modi tempora nam?
+                Quasi, velit omnis?</p> -->
+                <p id="proDetails"></p>
+        </div>
+        <div class="tab-content show">
+            <div class="review-header">
+                <h4>All Reviews &nbsp; <small id="reviewsLength">(451)</small></h4>
+                <!-- <div class="feature-btns">
+                    <button><i class="fa-solid fa-sliders"></i></button>
+                </div> -->
+            </div>
+            <div class="review-body">
+                <!-- <div class="review">
                     <div class="review-header">
                         <div class="rating">
                             <i class="fa-solid fa-star"></i>
@@ -113,30 +119,37 @@
                     <br />
                     <small>Posted on August 18,2023</small>
                 </div>-->
+            </div>
         </div>
-      </div>
-      <!-- add review -->
-      <div class="tab-content your-review">
-        <div class="rating">
-          Your Rating :
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+        <!-- add review -->
+        <div class="tab-content your-review">
+            <div class="rating">
+                Your Rating : 
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <input type="text" placeholder="Username" />
+            <textarea placeholder="Leave a Review" rows="10"></textarea>
+            <br/>
+            <button class="add-to-cart">Send</button>
         </div>
-        <input type="text" placeholder="Username" />
-        <textarea placeholder="Leave a Review" rows="10"></textarea>
-        <br />
-        <button class="add-to-cart">Send</button>
-      </div>
     </section>
+
+
+
+
+
+
+
 
     <!-- --------------------other pros---------------------- -->
     <section>
-      <h1 style="text-align: center">YOU MIGHT ALSO LIKE</h1>
-      <div class="other-pro">
-        <!-- <div class="pro-card">
+        <h1 style="text-align: center;">YOU MIGHT ALSO LIKE</h1>
+        <div class="other-pro">
+            <!-- <div class="pro-card">
                 <img src="images/img (5).png" alt="">
                 <p>Polo with Contrast Trims</p>
                 <div class="rating">
@@ -149,9 +162,11 @@
                 </div>
                 <h2>$260 <s>$300</s> <span>-40%</span></h2>
             </div> -->
-      </div>
+        </div>
     </section>
 
-    <script src="js/productDetails.js"></script>
-  </body>
+
+    <script src="productDetails.js"></script>
+</body>
+
 </html>

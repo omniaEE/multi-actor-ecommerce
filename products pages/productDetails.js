@@ -12,7 +12,8 @@ dec.addEventListener('click', () => {
         counter.innerText = +counter.innerText - 1
     }
 })
-
+let checkedColor = ""
+let checkedSize = ""
 
 
 //heart
@@ -91,7 +92,9 @@ fetch('../data/data.json')
             `
         }
         otherPro.addEventListener("click", (e) => {
-            window.location.href = `productDetails.html?id=${e.target.dataset.productid}`;
+            if (e.target.tagName === "IMG") {
+                window.location.href = `productDetails.html?id=${e.target.dataset.productid}`;
+            }
         })
 
     })
@@ -114,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             const product = data.products.find(p => p.id == id);
             if (product) {
+
 
                 //-------------rating------------
                 const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
@@ -180,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     proColor.style.backgroundColor = product.colors[i]
                     if (i == 0) {
                         proColor.innerHTML = `<i class="fa-solid fa-check"></i>`
+                        checkedColor = proColor.style.backgroundColor
                     }
                     colorsHolder.appendChild(proColor)
                 }
@@ -187,15 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 let colors = document.querySelectorAll(".color div")
                 for (let i = 0; i < colors.length; i++) {
                     colors[i].addEventListener('click', () => {
-                        colors.forEach(color => {     
-                            console.log(colors[i].style.backgroundColor);
-                                                   
-                            if (colors[i].style.backgroundColor == "white" || colorDiv.style.backgroundColor == "beige") {                                
+                        colors.forEach(color => {
+                            if (colors[i].style.backgroundColor == "white" || colors[i].style.backgroundColor == "beige") {
                                 color.innerHTML = ""
                                 colors[i].innerHTML = `<i class="fa-solid fa-check" style="color:black;"></i>`
+                                checkedColor = colors[i].style.backgroundColor
                             } else {
                                 color.innerHTML = ""
                                 colors[i].innerHTML = `<i class="fa-solid fa-check"></i>`
+                                checkedColor = colors[i].style.backgroundColor
                             }
                         })
                     })
@@ -215,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     proSize.innerText = product.sizes[i]
                     if (i == 0) {
                         proSize.classList.add("active")
+                        checkedSize = proSize.innerText
                     }
                     sizesHolder.appendChild(proSize)
                 }
@@ -225,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         sizes.forEach(size => {
                             size.classList.remove("active")
                             sizes[i].classList.add("active")
+                            checkedSize = sizes[i].innerText
                         })
                     })
                 }
@@ -232,6 +239,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+                // desc
+                let extraDesc = document.getElementById("proDetails")
+                extraDesc.innerHTML = `${product.details}<br/>`
 
 
 
@@ -245,15 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 for (let i = 0; i < product.reviews.length; i++) {
                     div += `
                 <div class="review">
-                    <div class="review-header">
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                <div class="review-header">
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                         </div>
-                        <i class="fa-solid fa-ellipsis"></i>
                     </div>
                     <h3>${product.reviews[i].username} <i class="fa-solid fa-circle-check"></i></h3>
                     <p>${product.reviews[i].review}</p>
@@ -262,11 +272,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`
                 }
                 reviewsHolder.innerHTML = div
+
+
+
+
+
+                //add to cart
+                let addToCartBtn = document.getElementById("addToCart")
+                loggedUser = localStorage.getItem("loggedInUser")
+                addToCartBtn.addEventListener('click', () => {
+                    // loggedUser.cart.push({
+                    //     product: product,
+                    //     amount: counter.innerText,
+                    //     color: checkedColor,
+                    //     size: checkedSize
+                    // })
+                })
+
+
             } else {
                 // window.location.href = 'index.html';
             }
         })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
