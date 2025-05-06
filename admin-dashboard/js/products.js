@@ -1,23 +1,20 @@
 (() => {
-  let products = [];
+  const data = JSON.parse(localStorage.getItem("all_data"));
+  let products = data.products || [];
 
   // Load JSON from local file
-  async function loadProducts() {
-    const res = await fetch("../data/data.json");
-    const data = await res.json();
-    products = data.products;
-    localStorage.setItem("adminProducts", JSON.stringify(products));
-    const categorySet = new Set(products.map((p) => p.category));
-    const categoryFilter = document.getElementById("categoryFilter");
-    categorySet.forEach((cat) => {
-      const opt = document.createElement("option");
-      opt.value = cat;
-      opt.textContent = cat;
-      categoryFilter.appendChild(opt);
-    });
 
-    renderProducts();
-  }
+  const categorySet = new Set(products.map((p) => p.category));
+  const categoryFilter = document.getElementById("categoryFilter");
+  categorySet.forEach((cat) => {
+    const opt = document.createElement("option");
+    opt.value = cat;
+    opt.textContent = cat;
+    categoryFilter.appendChild(opt);
+  });
+
+  renderProducts();
+
   document
     .getElementById("userSearch")
     .addEventListener("input", renderProducts);
@@ -131,6 +128,4 @@
     bootstrap.Modal.getInstance(document.getElementById("editModal")).hide();
     renderProducts();
   });
-
-  loadProducts();
 })();
