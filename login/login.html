@@ -19,12 +19,12 @@
     <section class=" d-sm-flex col-sm-6 p-0">
       <img class="img-fluid w-100 h-100 object-fit-cover " src="images/login.webp" alt="photo" id="login_img">
     </section>
-    <section id="login" class="col-12 col-sm-6 p-5 pt-2 p-md-5 rounded-4">
+    <section id="login" class="col-12 col-sm-6 p-4 p-sm-5 pt-2 p-md-5 rounded-4">
       <div>
         <h2 class="pb-4 pb-md-5 "> SHOP.CO</h2>
         <h4>Sign In </h4>
 
-        <form>
+        <form onsubmit="login(event)" novalidate  class="needs-validation">
           <div class=" mb-2">
             <input required type="email" name="" id="email" placeholder="Email" class=" form-control ">
           </div>
@@ -35,7 +35,7 @@
 
           </div>
           <div class="text-end mx-3 ">
-            <button type="button" class="btn btn-dark w-100 d-block mx-auto my-2" onclick="login()">Sign In</button>
+            <button type="submit" class="btn btn-dark w-100 d-block mx-auto my-2" >Sign In</button>
             <p class="text-center text-secondary"> I don't have an account? <a
                 class="link-underline link-underline-opacity-0 text-warning-emphasis " href="signup.html">Register Now</a></p>
           </div>
@@ -45,7 +45,7 @@
       </div>
     </section>
   </main>
-  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
 
 </body>
 

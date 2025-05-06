@@ -66,141 +66,554 @@
   }
 ]
 ,
-    "products": [
+"products": [
+  {
+    "id": 301,
+    "name": "Men's Wool Winter Jacket",
+    "description": "Cozy and stylish men's winter jacket made of wool blend, perfect for cold weather. Features an inner lining, button closure, and a modern fit.",
+    "price": 349.5,
+    "old_price": "",
+    "colors": [
+      "black",
+      "red",
+      "white"
+    ],
+    "sizes": [
+      "X-Large",
+      "Small",
+      "Large",
+      "Medium"
+    ],
+    "stock": 30,
+    "category": "Men",
+    "sellerId": 4,
+    "ratings": [
+      5,
+      4,
+      5
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
       {
-        "id": 301,
-        "name": "Men's Wool Winter Jacket",
-        "description": "Cozy and stylish men's winter jacket made of wool blend, perfect for cold weather. Features an inner lining, button closure, and a modern fit.",
-        "status": "active",
-        "price": 349.5,
-        "old_price": "",
-        "colors": ["black", "red", "white"],
-        "sizes": ["xl", "sm", "lg", "md"],
-        "stock": 30,
-        "category": "Men",
-        "sellerId": 4,
-        "ratings": [5, 4, 5],
-        "images": ["../assets/pro1.jpg", "../assets/pro2.jpg", "../assets/pro3.jpg"]
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
       },
       {
-        "id": 302,
-        "name": "Women's Floral Summer Dress",
-        "description": "Lightweight and breathable summer dress for women, ideal for sunny days. Made from organic cotton with floral patterns and adjustable straps.",
-        "status": "active", 
-        "price": 500.0,
-        "old_price": "",
-        "colors": ["purple", "red", "pink"],
-        "sizes": ["xl", "sm", "lg", "md"],
-        "stock": 40,
-        "category": "Party",
-        "sellerId": 4,
-        "ratings": [5, 5, 4],
-        "images": ["../assets/pro9.jpg", "../assets/pro5.jpg"]
-      },
-      {
-        "id": 303,
-        "name": "Faded Skinny Jeans",
-        "description": "Soft and warm hoodie for boys, great for school or playtime. Made with cotton blend and available in fun colors.",
-        "price": 199.99,
-        "old_price": "249.99",
-        "colors": ["blue", "green", "gray"],
-        "sizes": ["s", "m", "l"],
-        "stock": 60,
-        "category": "Kids",
-        "sellerId": 3,
-        "ratings": [4, 4, 5],
-        "images": ["../assets/pro6.jpg"]
-      },
-      {
-        "id": 304,
-        "name": "Men's Formal Suit",
-        "description": "Classic tailored men's suit ideal for business meetings and formal occasions. Includes jacket and trousers.",
-        "status": "active", 
-        "price": 799.0,
-        "old_price": "",
-        "colors": ["navy", "black"],
-        "sizes": ["m", "l", "xl"],
-        "stock": 20,
-        "category": "Formal",
-        "sellerId": 3,
-        "ratings": [5, 5, 5],
-        "images": ["../assets/pro7.jpg"]
-      },
-      {
-        "id": 305,
-        "name": "LOOSE FIT BERMUDA SHORTS",
-        "description": "Trendy denim jacket for women, perfect for a casual day out. Features button-up front and side pockets.",
-        "price": 299.0,
-        "status": "active", 
-        "old_price": "349.0",
-        "colors": ["blue", "light blue"],
-        "sizes": ["s", "m", "l"],
-        "stock": 35,
-        "category": "Casual",
-        "sellerId": 4,
-        "ratings": [4, 4, 3],
-        "images": ["../assets/pro8.jpg"]
-      },
-      {
-        "id": 306,
-        "name": "One Life Graphic T-shirt",
-        "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
-        "status": "active", 
-        "price": 260,
-        "old_price": "300",
-        "colors": ["brown", "green", "blue"],
-        "sizes": ["sm", "md", "lg", "xl"],
-        "stock": 45,
-        "category": "Men",
-        "sellerId": 3,
-        "ratings": [5, 4, 4],
-        "images": ["../assets/pro10.jpg", "../assets/pro4.jpg"]
-      },
-      {
-        "id": 307,
-        "name": "Unisex Oversized T-Shirt",
-        "description": "Cute and comfy pajama set for girls, made from 100% organic cotton with fun prints.",
-        "status": "active", 
-        "price": 129.5,
-        "old_price": "",
-        "colors": ["pink", "yellow", "white"],
-        "sizes": ["xs", "s", "m"],
-        "stock": 70,
-        "category": "Kids",
-        "sellerId": 4,
-        "ratings": [5, 5, 5],
-        "images": ["../assets/pro11.jpg"]
-      },
-      {
-        "id": 308,
-        "name": "Girls' Cotton Pajama Set",
-        "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
-        "status": "active", 
-        "price": 99.0,
-        "old_price": "129.0",
-        "colors": ["white", "black", "beige"],
-        "sizes": ["s", "m", "l", "xl"],
-        "stock": 80,
-        "category": "Casual",
-        "sellerId": 3,
-        "ratings": [4, 5, 4],
-        "images": ["../assets/pro12.jpg","../assets/pro14.jpg"]
-      },
-      {
-        "id": 308,
-        "name": "Men's Jeans Pants",
-        "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
-        "price": 99.0,
-        "old_price": "129.0",
-        "colors": ["white", "black", "beige"],
-        "sizes": ["s", "m", "l", "xl"],
-        "stock": 80,
-        "category": "Casual",
-        "sellerId": 3,
-        "ratings": [4, 5, 4],
-        "images": ["../assets/pro13.jpg"]
+        "rate": 5,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. igendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
       }
     ],
+    "images": [
+      "../assets/pro1.jpg",
+      "../assets/pro2.jpg",
+      "../assets/pro3.jpg"
+    ]
+  },
+  {
+    "id": 302,
+    "name": "Women's Floral Summer Dress",
+    "description": "Lightweight and breathable summer dress for women, ideal for sunny days. Made from organic cotton with floral patterns and adjustable straps.",
+    "price": 500.0,
+    "old_price": "",
+    "colors": [
+      "purple",
+      "red",
+      "pink"
+    ],
+    "sizes": [
+      "X-Large",
+      "Small",
+      "Large",
+      "Medium"
+    ],
+    "stock": 40,
+    "category": "Party",
+    "sellerId": 4,
+    "ratings": [
+      5,
+      5,
+      4
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Hagar Gamal",
+        "review": "cool t-shirt",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro9.jpg",
+      "../assets/pro5.jpg"
+    ]
+  },
+  {
+    "id": 303,
+    "name": "Faded Skinny Jeans",
+    "description": "Soft and warm hoodie for boys, great for school or playtime. Made with cotton blend and available in fun colors.",
+    "price": 199.99,
+    "old_price": "249.99",
+    "colors": [
+      "blue",
+      "green",
+      "gray"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large"
+    ],
+    "stock": 60,
+    "category": "Kids",
+    "sellerId": 3,
+    "ratings": [
+      2,
+      1,
+      2
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Hagar Gamal",
+        "review": "cool t-shirt",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 5,
+        "username": "Hagar Gamal",
+        "review": "this t-shirt is perfect for me",
+        "date": "2-5-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro6.jpg"
+    ]
+  },
+  {
+    "id": 304,
+    "name": "Men's Formal Suit",
+    "description": "Classic tailored men's suit ideal for business meetings and formal occasions. Includes jacket and trousers.",
+    "price": 799.0,
+    "old_price": "",
+    "colors": [
+      "navy",
+      "black"
+    ],
+    "sizes": [
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 20,
+    "category": "Formal",
+    "sellerId": 3,
+    "ratings": [
+      5,
+      5,
+      5
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "cool t-shirt",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro7.jpg"
+    ]
+  },
+  {
+    "id": 305,
+    "name": "LOOSE FIT BERMUDA SHORTS",
+    "description": "Trendy denim jacket for women, perfect for a casual day out. Features button-up front and side pockets.",
+    "price": 299.0,
+    "old_price": "349.0",
+    "colors": [
+      "blue",
+      "lightBlue"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large"
+    ],
+    "stock": 35,
+    "category": "Casual",
+    "sellerId": 4,
+    "ratings": [
+      3,
+      5,
+      4
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 5,
+        "username": "Hagar Gamal",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 4,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 5,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro8.jpg"
+    ]
+  },
+  {
+    "id": 306,
+    "name": "One Life Graphic T-shirt",
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    "price": 260,
+    "old_price": "300",
+    "colors": [
+      "brown",
+      "green",
+      "blue"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 45,
+    "category": "Men",
+    "sellerId": 3,
+    "ratings": [
+      5,
+      4,
+      1
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "cool t-shirt",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 5,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 2,
+        "username": "Hagar Gamal",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro10.jpg",
+      "../assets/pro4.jpg"
+    ]
+  },
+  {
+    "id": 307,
+    "name": "Unisex Oversized T-Shirt",
+    "description": "Cute and comfy pajama set for girls, made from 100% organic cotton with fun prints.",
+    "price": 129.5,
+    "old_price": "99",
+    "colors": [
+      "pink",
+      "yellow",
+      "white"
+    ],
+    "sizes": [
+      "X-Small",
+      "Small",
+      "Medium"
+    ],
+    "stock": 7,
+    "category": "Kids",
+    "sellerId": 4,
+    "ratings": [
+      3,
+      5,
+      1
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "cool t-shirt",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 3,
+        "username": "Maya S.",
+        "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "date": "20-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro11.jpg"
+    ]
+  },
+  {
+    "id": 308,
+    "name": "Girls' Cotton Pajama Set",
+    "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+    "price": 99.0,
+    "old_price": "129.0",
+    "colors": [
+      "black",
+      "beige"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 80,
+    "category": "Casual",
+    "sellerId": 3,
+    "ratings": [
+      4,
+      1,
+      2
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      },
+      {
+        "rate": 5,
+        "username": "Alex M.",
+        "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro12.jpg",
+      "../assets/pro14.jpg"
+    ]
+  },
+  {
+    "id": 309,
+    "name": "Men's Jeans Pants",
+    "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+    "price": 99.0,
+    "old_price": "129.0",
+    "colors": [
+      "white",
+      "black",
+      "beige"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 80,
+    "category": "Casual",
+    "sellerId": 3,
+    "ratings": [
+      4,
+      1,
+      3
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro13.jpg"
+    ]
+  },
+  {
+    "id": 309,
+    "name": "Men's Jeans Pants",
+    "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+    "price": 99.0,
+    "old_price": "129.0",
+    "colors": [
+      "white",
+      "black",
+      "beige"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 80,
+    "category": "Casual",
+    "sellerId": 3,
+    "ratings": [
+      4,
+      1,
+      3
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro13.jpg"
+    ]
+  },
+  {
+    "id": 310,
+    "name": "Men's Jeans Pants",
+    "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+    "price": 99.0,
+    "old_price": "129.0",
+    "colors": [
+      "white",
+      "black",
+      "beige"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 80,
+    "category": "Casual",
+    "sellerId": 3,
+    "ratings": [
+      4,
+      1,
+      3
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro5.jpg"
+    ]
+  },
+  {
+    "id": 311,
+    "name": "Men's Jeans Pants",
+    "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+    "price": 99.0,
+    "old_price": "129.0",
+    "colors": [
+      "white",
+      "black",
+      "beige"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 80,
+    "category": "Casual",
+    "sellerId": 3,
+    "ratings": [
+      4,
+      1,
+      3
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro14.jpg"
+    ]
+  },
+  {
+    "id": 312,
+    "name": "Men's Jeans Pants",
+    "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+    "price": 99.0,
+    "old_price": "129.0",
+    "colors": [
+      "white",
+      "black",
+      "beige"
+    ],
+    "sizes": [
+      "Small",
+      "Medium",
+      "Large",
+      "X-Large"
+    ],
+    "stock": 80,
+    "category": "Casual",
+    "sellerId": 3,
+    "ratings": [
+      4,
+      1,
+      3
+    ],
+    "details": "Brand : adidus <br/> Fabric material : jeans",
+    "reviews": [
+      {
+        "rate": 3,
+        "username": "Alex M.",
+        "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+        "date": "16-4-2025"
+      }
+    ],
+    "images": [
+      "../assets/pro2.jpg"
+    ]
+  }
+],
     "orders": [
       {
         "id": 101,
