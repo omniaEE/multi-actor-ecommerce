@@ -35,34 +35,37 @@
         <div class="d-flex align-items-center">
           <!-- Profile Picture -->
           <img
-            src="./assets/img/unknownUser.png"
+            src="./assets/img/285655_user_icon.png"
             alt="Admin Profile Picture"
-            class="rounded-circle mx-2"
+            class="rounded-circle mx-2 user-image"
             width="40"
             height="40"
           />
-          <span class="navbar-brand mb-0 h1">Admin name</span>
+          <span class="navbar-brand mb-0 h1 user-name">Admin name</span>
         </div>
       </div>
     </nav>
 
     <!-- Large Screen Navbar with Admin Name and Profile (visible only on large screens) -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block fixed-header"
-    >
-      <div class="d-flex align-items-center">
-        <!-- Profile Picture -->
-        <img
-          src="./assets/img/unknownUser.png"
-          alt="Admin Profile Picture"
-          class="rounded-circle mx-2"
-          width="40"
-          height="40"
-        />
-        <!-- Admin Name -->
-        <span class="navbar-text text-white">Admin Name</span>
-      </div>
-    </nav>
+
+    <div class="d-flex flex-column fixed-header">
+      <nav
+        class="d-flex justify-content-end align-items-center p-2 pe-5 shadow-sm bg-dark"
+      >
+        <div class="d-flex align-items-center">
+          <!-- Profile Picture -->
+          <img
+            src="./assets/img/285655_user_icon.png"
+            alt="Admin Profile Picture"
+            class="rounded-circle mx-2 user-image"
+            width="40"
+            height="40"
+          />
+          <!-- Admin Name -->
+          <span class="navbar-text text-white user-name">Admin Name</span>
+        </div>
+      </nav>
+    </div>
 
     <div class="container-fluid">
       <div class="row">
@@ -70,8 +73,8 @@
         <div
           class="col-lg-3 col-xl-2 d-none d-lg-block bg-dark text-white min-vh-100 fixed-sidebar"
         >
-          <div class="p-3">
-            <h4>Admin Menu</h4>
+          <div class="px-3">
+            <h4 class="pb-4">Admin Menu</h4>
             <div class="list-group list-group-flush">
               <a
                 href="#"
