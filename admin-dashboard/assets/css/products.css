@@ -3,3 +3,130 @@
   height: 60px;
   object-fit: cover;
 }
+.productes-maincontent {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table {
+  border: 1px solid #dee2e6; /* Table outer border */
+  border-radius: 0.5rem; /* Rounded corners */
+  overflow: hidden; /* Hide cell corners if table is rounded */
+}
+
+.custom-table thead tr {
+  border-bottom: 2px solid #dee2e6; /* Stronger line for header */
+}
+
+.custom-table tbody tr {
+  border-bottom: 1px solid #dee2e6; /* Row lines only */
+}
+
+.custom-table th,
+.custom-table td {
+  border: none !important; /* Remove all inner borders */
+}
+.status-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.status-available {
+  background-color: #c1fac1;
+  color: #008000;
+}
+
+.status-out {
+  background-color: #ffe5e5;
+  color: #ff0000;
+}
+.action-icons img {
+  margin-right: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.action-icons img:hover {
+  transform: scale(1.1);
+}
+/* select {
+  background-color: #171515;
+  color: #f4f0f0;
+  cursor: pointer;
+} */
+/* .form-select  {
+  background-color: #171515;
+  color: #f4f0f0;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+} */
+@media (max-width: 1024px) {
+  /* #productTable td {
+    display: none;
+  } */
+
+  thead {
+    display: none;
+  }
+  table {
+    width: 100%;
+  }
+
+  /* Show product details in a collapsible format */
+  .mobile-details-row {
+    display: table-row;
+  }
+
+  .product-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    height: 10vh;
+  }
+  .product-summary p {
+    margin-right: 10px;
+  }
+  .product-summary .productId {
+    width: 30%;
+  }
+  .product-summary .productName {
+    width: 70%;
+  }
+  .dropdown-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .product-details[open] .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .product-info p {
+    margin: 0.5rem 0;
+  }
+
+  .product-info {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .product-summary span {
+    font-weight: bold;
+  }
+
+  /* Optional: adjust action buttons layout for mobile view */
+  .action-icons {
+    display: flex;
+    justify-content: space-around;
+  }
+}
