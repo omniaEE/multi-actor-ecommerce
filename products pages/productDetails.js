@@ -16,19 +16,6 @@ let checkedColor = ""
 let checkedSize = ""
 
 
-//heart
-let fav = document.querySelector(".add-to-wishlist")
-let favClicked = false
-fav.addEventListener('click', () => {
-    if (!favClicked) {
-        fav.innerHTML = `<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>`
-        favClicked = true
-    } else {
-        fav.innerHTML = `<i class="fa-regular fa-heart"></i>`
-        favClicked = false
-    }
-})
-
 
 
 
@@ -83,18 +70,22 @@ for (let i = 1; i < 5; i++) {
     otherPro.innerHTML += `
             <div class="pro-card">
                 <img src="${product.images[0]}" data-productid="${product.id}" alt="">
-                <p>${product.name}</p>
+                <p data-productid="${product.id}">${product.name}</p>
                 <div class="rating">
                     ${starsHtml}
                     &nbsp;
                     <small>${avgRating.toPrecision(2)}</small>
                 </div>
                 <h2>$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}</h2>
+                <div class="review-header" >
+                ${product.stock > 0 ? '<button class="add-to-cart" >Add To Cart</button>' : '<h3 id="product-stock"><span>Out of Stock</span></h3>'}
+                <i class="fa-regular fa-heart"></i>
+                </div>
             </div>
             `
 }
 otherPro.addEventListener("click", (e) => {
-    if (e.target.tagName === "IMG") {
+    if (e.target.tagName === "IMG" || e.target.tagName === "P") {
         window.location.href = `productDetails.html?id=${e.target.dataset.productid}`;
     }
 })
@@ -204,13 +195,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+        //heart
+        let fav = document.querySelector(".add-to-wishlist")
+        loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+        let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+        if (existingFavItem) {
+            fav.innerHTML = `<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>`
+        } else {
+            fav.innerHTML = `<i class="fa-regular fa-heart"></i>`
+        }
+        fav.addEventListener('click', () => {
+            loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+            let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+            if (existingFavItem) {
+                loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                fav.innerHTML = `<i class="fa-regular fa-heart"></i>`
+            } else {
+                loggedUser.fav.push(product)
+                fav.innerHTML = `<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>`
+            }
+            localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+        })
 
-        //----------name & desc & price & rate-----------
+
+
+
+
+
+        //----------name & desc & price & rate & stock-----------
         document.getElementById('product-name').textContent = product.name;
         document.getElementById('product-price').innerHTML = `$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}`;
-        document.getElementById('product-desc').textContent = product.desc;
+        document.getElementById('product-desc').textContent = product.description;
         document.getElementById('product-rate').textContent = (product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length).toPrecision(2)
-
+        document.getElementById('product-stock').innerHTML = `${product.stock > 0 ? "Stock : Available" : "<span>Out of Stock</span>"}`
 
 
 
@@ -347,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${starsHTML}
                         </div>
                     </div>
-                        <h3>${review.username} <i class="fa-solid fa-circle-check"></i></h3>
+                        <h3>${review.username} <i class="fa-solid fa-circle-check" ${review.rate < 3 ? `style="color:#d90b0b;"` : ""} ></i></h3>
                         <p>${review.review}</p>
                         <br />
                         <small>Posted on ${review.date}</small>
@@ -362,23 +379,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //add to cart
         let addToCartBtn = document.getElementById("addToCart")
-        let addedToCart = document.getElementById("addedToCart")
-        let amountDiv = document.querySelector(".amount")
+        // let addedToCart = document.getElementById("addedToCart")
+        // let amountDiv = document.querySelector(".amount")
         loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
         addToCartBtn.addEventListener('click', () => {
-            loggedUser.cart.push({
-                product: product,
-                amount: counter.innerText,
-                color: checkedColor,
-                size: checkedSize
-            })
+            let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
+
+            if (existingCartItem) {
+                existingCartItem.amount = Number(existingCartItem.amount) + Number(counter.innerText);
+            } else {
+                loggedUser.cart.push({
+                    product: product,
+                    amount: counter.innerText,
+                    color: checkedColor,
+                    size: checkedSize
+                })
+            }
             localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-            addToCartBtn.style.display = "none"
-            addedToCart.style.display = "block"
-            amountDiv.style.display = "none"
+            // addToCartBtn.style.display = "none"
+            // addedToCart.style.display = "block"
+            // amountDiv.style.display = "none"
         })
 
 
+
+
+        if (product.stock == 0) {
+            addToCartBtn.style.display = "none"
+        }
 
 
 
