@@ -1,5 +1,24 @@
-(() => {
+// active navbar
+const observer = new MutationObserver(() => {
+    const overView = document.getElementById("overView_page");
+    if (overView) {
+        overView.classList.add("nav-active");
+        observer.disconnect();
+    }
+});
 
+observer.observe(document.body, { childList: true, subtree: true });
+//------------------------------------------------------------------------------------
+(() => {
+    //welcome message
+    const user = JSON.parse(localStorage.getItem("loggedInUser")) || [];
+
+
+    if (user) {
+        document.getElementById("userName").innerText = user.firstName;
+    }
+
+    //-----------------------------------------------------------------------------
     const updateChangeBadge = (id, changeValue) => {
         const el = document.getElementById(id);
         const isPositive = changeValue >= 0;
@@ -9,14 +28,14 @@
     };
 
 
-
+    //---------------------------------------------------------------------------------------------
+    const all_data = JSON.parse(localStorage.getItem("all_data")) || {};
 
 
     let totalUsers = 0;
     let totalProducts = 0;
     let totalOrders = 0;
 
-    const all_data = JSON.parse(localStorage.getItem("all_data")) || {};
 
     if (!all_data) {
         console.error("No data found in localStorage under 'all-data'");
@@ -76,20 +95,50 @@
 
             // document.getElementById
 
-            console.log(`إجمالي عدد المستخدمين: ${totalUsers}`);
-            console.log(`عدد المستخدمين الجدد خلال آخر 30 يوم: ${newUsersCount}`);
-            console.log(`النسبة: ${changePercent.toFixed(1)}%`);
+            // console.log(`إجمالي عدد المستخدمين: ${totalUsers}`);
+            // console.log(`عدد المستخدمين الجدد خلال آخر 30 يوم: ${newUsersCount}`);
+            // console.log(`النسبة: ${changePercent.toFixed(1)}%`);
 
             updateChangeBadge("totalUsersChange", changePercent);
             updateChangeBadge("productsChange", productsChange);
             updateChangeBadge("ordersChange", ordersChange);
-            
+
         } else {
-            console.warn("لا توجد بيانات مستخدمين في localStorage");
+            console.warn("no data found in localStorage");
         }
 
     } catch (error) {
         console.error("Failed to parse data from localStorage:", error);
     }
 
+
+
+    //-------------------------------------------------------------------------------------------
+    //new orders
+    const newOrders = all_data.orders;
+
+for (let i = newOrders.length - 1; i < newOrders.length; i--) {
+    const user = users.find(u => u.id === newOrders[i].customerId) || { firstName: "", lastName: "" };
+
+    let productNames = "";
+
+    newOrders[i].items.forEach(item => {
+        const product = products.find(p => p.id === item.productId);
+        const productName = product ? product.name : "no product"; 
+        productNames += `${productName} <br>`;
+    });
+
+    document.getElementsByTagName("tbody")[0].innerHTML += `
+        <tr">
+            <td data-label="Customer"><i class="fa-solid fa-circle-user"></i> ${user.firstName} ${user.lastName}</td>
+            <td data-label="product">${productNames}</td>
+            <td data-label="Order Date">${newOrders[i].orderDate}</td>
+            <td data-label="Price">${newOrders[i].total}</td>
+        </tr>
+    `;
+}
 })();
+
+
+//---------------------------------------------------------------------------
+
