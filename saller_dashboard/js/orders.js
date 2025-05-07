@@ -34,3 +34,15 @@ function remove(el) {
 function delivered() {
     alert("succsessfully Delivered")
 }
+
+
+// active navbar
+const observer = new MutationObserver(() => {
+    const overView = document.getElementById("orders_page");
+    if (overView) {
+        overView.classList.add("nav-active");
+        observer.disconnect();
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
