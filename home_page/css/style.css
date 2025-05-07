@@ -1,6 +1,11 @@
 /* 
 MARK: HomePage
 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .sectionTitle {
   font-size: 2.4rm;
   text-align: center;
@@ -8,7 +13,9 @@ MARK: HomePage
   margin: 50px auto 25px;
 }
 
-/* Header */
+/* 
+MARK: Header 
+*/
 .navbar a {
   text-decoration: none;
 }
@@ -25,91 +32,42 @@ MARK: HomePage
   font-size: 1.5rem;
 }
 
-/* Hero */
+/* 
+MARK: Hero 
+*/
 .heroWrapper {
   height: 83vh;
   background-color: #f2f0f1;
 }
 
 .heroHeader {
-  /* width: 65%; */
   font-size: 4rem;
   font-weight: bolder;
 }
 
 .rightSideContainer {
   height: 80vh;
-  /* background-color: blue; */
 }
 
-/* products sections */
-.pros-holder {
-  text-align: center;
-}
-
-.other-pro {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  width: 85%;
-  margin: auto;
-}
-
-.pro-card {
-  text-align: left;
-}
-
-.pro-card img {
-  width: 100%;
-  border-radius: 20px;
-  margin-bottom: 10px;
-}
-
-.pro-card .rating {
-  margin: 7px 0;
-}
-
-.pro-card .rating i {
-  color: #ffd45e;
-}
-
-.pro-card p {
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-}
-
-.pro-card h2 {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.pro-card h2 s {
+/*
+MARK: Products
+*/
+.oldPrice {
   color: #bbb;
   margin: 0 10px;
 }
 
-.pro-card h2 span {
-  background-color: rgb(255, 226, 226);
+.discountPercentage {
   padding: 2px 10px;
   color: #d90b0b;
   border-radius: 10px;
   font-size: 0.7rem;
   font-weight: 300;
+  background-color: rgb(255, 226, 226);
 }
 
-.pros-holder hr {
-  width: 85%;
-  margin: 30px auto;
-  opacity: 0.1;
-}
-
-.pros-holder button {
-  margin: 30px auto;
-  padding: 8px 0;
-  width: 20%;
+.viewallBtn {
   border: 1px solid #bbb;
-  border-radius: 30px;
   background: transparent;
 }
 
@@ -151,23 +109,29 @@ MARK: Cat Catalog
   background-image: url("../image/category3.jpg");
 }
 
-/* Reviews */
+/* 
+MARK: Reviews 
+*/
 .reviewSection {
-  padding: 40px;
+  padding: 70px 0px;
 }
 
 .review-card {
   background: white;
   border-radius: 12px;
   padding: 20px;
-  /* width: 300px; */
-  border: 1px solid gray;
+  border: 2px solid rgba(201, 200, 200, 0.804);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.stars {
-  color: gold;
+.ratingContainer {
+  width: 30%;
+  display: flex;
   margin-bottom: 10px;
+}
+
+.ratingContainer i {
+  color: #ffd45e;
 }
 
 .reviewer {
@@ -176,8 +140,9 @@ MARK: Cat Catalog
 }
 
 .verified {
-  color: green;
-  font-size: 1.1em;
+  padding: 1px 3px;
+  font-size: 0.6em;
+  background-color: green;
 }
 
 .review-text {
@@ -191,11 +156,3 @@ MARK: Cat Catalog
     width: 100%;
   }
 }
-* {
-  margin: 0;
-  padding: 0;
-}
-
-/* 
-MARK: Main
-*/
