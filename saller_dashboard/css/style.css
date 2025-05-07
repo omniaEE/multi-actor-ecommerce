@@ -1,6 +1,5 @@
-body {
-    font-family: Arial, Helvetica, sans-serif
-}
+
+
 
 a {
     color: rgb(255, 255, 255);
@@ -96,7 +95,7 @@ small {
     color: #2d2929;
 }
 
-.star i {
+.star {
     color: rgb(255, 179, 0);
     font-size: 10px;
 }
@@ -124,9 +123,31 @@ input[type="checkbox"] {
 
 }
 
-#products-all:hover {
-    opacity: 70%;
+.products-all {
+    transition: all 0.3s ease-in-out !important;
 }
+
+.products-all:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4)  !important;
+    #image{
+        filter: brightness(90%);
+    }
+}
+
+
+
+.custom-success {
+    background-color: #19872f64;
+    color: rgb(12, 55, 0);
+}
+
+.custom-danger {
+    background-color: #ff000037;
+    color: rgb(233, 0, 0);
+}
+
+
 
 .product-card:hover .action-buttons {
     display: block;
@@ -180,7 +201,8 @@ td {
     .responsive-table thead {
         display: none;
     }
-    .responsive-table tbody{
+
+    .responsive-table tbody {
         background-color: white !important;
     }
 
@@ -189,10 +211,10 @@ td {
         margin-bottom: 15px;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, 0.1) !important;
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1) !important;
         padding: 6px;
     }
-    
+
 
     .responsive-table tr:hover {
         box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.1) !important;
@@ -213,6 +235,3 @@ td {
 }
 
 /* ------------------------------------- */
-
-
-

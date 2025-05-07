@@ -12,7 +12,6 @@ fetch("header.html")
 
         if (user) {
             document.getElementById("name").innerText = user.firstName + " " + user.lastName;
-            document.getElementById("email").innerText = user.email;
         }
     });
 

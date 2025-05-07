@@ -7,34 +7,46 @@ document.addEventListener("DOMContentLoaded", function () {
     //  productes
     if (all_data.products && Array.isArray(all_data.products)) {
         all_data.products.forEach(product => {
-            const avgRating = product.ratings.length
-                ? (product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length).toPrecision(2)
-                : "5.0";
+            // const avgRating = product.ratings.length
+            //     ? (product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length).toPrecision(2)
+            //     : "5.0";
+
+            const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length.toPrecision(2);
+            const fullStars = Math.floor(avgRating);
+            const halfStar = avgRating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+            let starsHtml = '';
+            for (let i = 0; i < fullStars; i++) starsHtml += `<i class="fa-solid fa-star star"></i>`;
+            if (halfStar) starsHtml += `<i class="fa-solid fa-star-half-stroke star"></i>`;
+            for (let i = 0; i < emptyStars; i++) starsHtml += `<i class="fa-regular fa-star star"></i>`;
+
+            const stockBadge = product.stock > 0
+            ? `<div class="badge rounded-pill px-3 py-2 custom-success">(${product.stock}) in stock</div>`
+            : `<div class="badge rounded-pill px-3 py-2 custom-danger">Out of stock</div>`;
+
 
             container.innerHTML += `
-                    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="card h-100 shadow product-card">
-                            <div id="products-all">
-                            <img id="image" src="${product.images[0]}" class="card-img-top" alt="${product.name}">
-                            <div class="card-body">
-                                <h6 class="card-title" style="font-size: 12px;">${product.name}</h6>
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <small>(${avgRating})</small>
-                                </div>
-                                <p class="card-text" style="font-size: 15px;">$${product.price}</p>
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 col-xl-2 mb-4">
+                    <div class="card h-100 shadow product-card products-all d-flex flex-column justify-content-between">
+                        <img id="image" src="${product.images[0]}" class="card-img-top" alt="${product.name}">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title" style="font-size: 12px;">${product.name}</h6>
+                            <div class="rating">
+                                ${starsHtml}
+                                &nbsp;
+                                <small>(${avgRating.toPrecision(2)})</small>
                             </div>
-                                <div class="action-buttons">
-                                    <button class="btn btn-primary" onclick="editProduct(${product.id})">Update</button><br>
-                                    <button class="btn btn-danger " onclick="deleteProduct(${product.id})">Delete </button>
-                                </div>
+                            <b class="card-text" style="font-size: 15px;">$${product.price}</b>
+                            <div class="mt-auto text-center">
+                                ${stockBadge}
                             </div>
                         </div>
+                        <div class="action-buttons text-center pb-2 ">
+                            <button class="btn btn-primary badge rounded-pill" onclick="editProduct(${product.id})">Update</button><br>
+                            <button class="btn btn-danger mt-2 badge rounded-pill" onclick="deleteProduct(${product.id})">Delete</button>
+                        </div>
                     </div>
+                </div>
             `;
         });
     }
@@ -168,15 +180,15 @@ function editProduct(productId) {
             li.style.margin = "2px";
             li.style.cursor = "pointer";
             li.title = "click to remove";
-        
+
             li.onclick = function () {
                 editColorList = editColorList.filter(c => c !== color);
                 li.remove();
             };
-        
+
             document.getElementById("editColorList").appendChild(li);
         });
-        
+
 
         document.getElementById("saveButton").onclick = function () {
             saveProductEdits(productId);
