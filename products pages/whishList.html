@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="products.css">
+    <title>WishList</title>
+</head>
+
+<body>
+    <section>
+        <br />
+        <br />
+        <h1 style="text-align: center;">YOUR WISHLIST</h1>
+        <div class="other-pro">
+        </div>
+        <br />
+        <br />
+    </section>
+
+
+
+    <script>
+        let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+let data = JSON.parse(localStorage.getItem("all_data"))
+        let otherPro = document.querySelector(".other-pro")
+
+        for (let i = 0; i < loggedUser.fav.length; i++) {
+            const product = loggedUser.fav[i]
+            //rating
+            const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
+            const fullStars = Math.floor(avgRating);
+            const halfStar = avgRating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+            let starsHtml = '';
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += `<i class="fa-solid fa-star"></i>`;
+            }
+            if (halfStar) {
+                starsHtml += `<i class="fa-solid fa-star-half-stroke"></i>`;
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                starsHtml += `<i class="fa-regular fa-star"></i>`;
+            }
+            otherPro.innerHTML += `
+            <div class="pro-card">
+                <img src="${product.images[0]}" data-productid="${product.id}" alt="">
+                <p data-productid="${product.id}">${product.name}</p>
+                <div class="rating">
+                    ${starsHtml}
+                    &nbsp;
+                    <small>${avgRating.toPrecision(2)}</small>
+                </div>
+                <h2>$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}</h2>
+                <div class="review-header" >
+                ${product.stock > 0 ? '<button class="add-to-cart" >Add To Cart</button>' : '<h3 id="product-stock"><span>Out of Stock</span></h3>'}
+                ${loggedUser && loggedUser.fav.find(p => p.id == product.id) ?
+                    '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
+                    :
+                    '<i class="fa-regular fa-heart"></i>'
+                }
+                </div>
+            </div>
+            `
+        }
+
+
+        let allCards = document.querySelectorAll(".pro-card")
+        allCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                //add in cart
+                if (e.target.classList.contains("add-to-cart")) {
+                    //get product obj
+                    let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                    let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
+                    if (existingCartItem) {
+                        existingCartItem.amount = Number(existingCartItem.amount) + 1;
+                    } else {
+                        loggedUser.cart.push({
+                            product: product,
+                            amount: 1,
+                            color: product.colors[0],
+                            size: product.sizes[0]
+                        })
+                    }
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
+
+                    //add in fav
+                } else if (e.target.classList.contains("fa-heart")) {
+                    //get product obj
+                    let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                    let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+                    if (existingFavItem) {
+                        loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                    } else {
+                        loggedUser.fav.push(product)
+                    }
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                    location.reload();/////////////
+                }
+            })
+        })
+
+
+
+
+        otherPro.addEventListener("click", (e) => {
+            if (e.target.tagName === "IMG" || e.target.tagName === "P") {
+                window.location.href = `productDetails.html?id=${e.target.dataset.productid}`;
+            }
+        })
+
+    </script>
+</body>
+
+</html>

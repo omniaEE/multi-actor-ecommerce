@@ -36,7 +36,8 @@ for (let i = 0; i < reviewTabs.length; i++) {
 }
 
 
-
+//get user data
+let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
 
 
 
@@ -79,11 +80,63 @@ for (let i = 1; i < 5; i++) {
                 <h2>$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}</h2>
                 <div class="review-header" >
                 ${product.stock > 0 ? '<button class="add-to-cart" >Add To Cart</button>' : '<h3 id="product-stock"><span>Out of Stock</span></h3>'}
-                <i class="fa-regular fa-heart"></i>
+                ${loggedUser && loggedUser.fav.find(p => p.id == product.id) ?
+            '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
+            :
+            '<i class="fa-regular fa-heart"></i>'
+        }
                 </div>
             </div>
             `
 }
+
+
+
+
+
+//add-to-cart & fav Btns in cards
+let allCards = document.querySelectorAll(".pro-card")
+allCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+        //add in cart
+        if (e.target.classList.contains("add-to-cart")) {
+            //get product obj
+            let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+            let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
+            if (existingCartItem) {
+                existingCartItem.amount = Number(existingCartItem.amount) + 1;
+            } else {
+                loggedUser.cart.push({
+                    product: product,
+                    amount: 1,
+                    color: product.colors[0],
+                    size: product.sizes[0]
+                })
+            }
+            localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
+
+            //add in fav
+        } else if (e.target.classList.contains("fa-heart")) {
+            //get product obj
+            let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+            loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+            let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+            if (existingFavItem) {
+                loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+            } else {
+                loggedUser.fav.push(product)
+            }
+            localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+            location.reload();/////////////
+        }
+    })
+})
+
+
+
 otherPro.addEventListener("click", (e) => {
     if (e.target.tagName === "IMG" || e.target.tagName === "P") {
         window.location.href = `productDetails.html?id=${e.target.dataset.productid}`;
@@ -197,7 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //heart
         let fav = document.querySelector(".add-to-wishlist")
-        loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
         let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
         if (existingFavItem) {
             fav.innerHTML = `<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>`
@@ -381,7 +433,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let addToCartBtn = document.getElementById("addToCart")
         // let addedToCart = document.getElementById("addedToCart")
         // let amountDiv = document.querySelector(".amount")
-        loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
         addToCartBtn.addEventListener('click', () => {
             let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
 
