@@ -7,9 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //  productes
     if (all_data.products && Array.isArray(all_data.products)) {
         all_data.products.forEach(product => {
-            // const avgRating = product.ratings.length
-            //     ? (product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length).toPrecision(2)
-            //     : "5.0";
 
             const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length.toPrecision(2);
             const fullStars = Math.floor(avgRating);
