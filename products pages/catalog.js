@@ -68,6 +68,15 @@ function renderProducts(products) {
     }
 
 
+
+    // search part
+    let searchInput = document.getElementById("prosSearch")
+    let searchValue = searchInput.value.toLowerCase().trim();
+    filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(searchValue)
+    );
+
+
     // pagination
     const totalPages = Math.ceil(filtered.length / productsPerPage);
     const start = (currentPage - 1) * productsPerPage;
@@ -199,6 +208,7 @@ function renderProducts(products) {
 
 
 
+
 // fetch('../data/data.json')
 //     .then(response => response.json())
 //     .then(data => {
@@ -283,6 +293,14 @@ renderProducts(allProducts) // Initial render
 
 
 
+
+
+
+
+//search
+document.getElementById("prosSearch").addEventListener("input", () => {
+    renderProducts(allProducts);
+});
 
 
 

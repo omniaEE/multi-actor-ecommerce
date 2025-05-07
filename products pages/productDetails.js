@@ -50,8 +50,10 @@ let otherPro = document.querySelector(".other-pro")
 //     .then(data => {
 let data = JSON.parse(localStorage.getItem("all_data"))
 
-for (let i = 1; i < 5; i++) {
-    const product = data.products[i]
+let currentProductId = window.location.href.split("=")[1]
+let productsToShow = data.products.filter(p => p.id != currentProductId).slice(0, 4); // limit to 4 others
+
+productsToShow.forEach(product => {
     //rating
     const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
     const fullStars = Math.floor(avgRating);
@@ -88,7 +90,7 @@ for (let i = 1; i < 5; i++) {
                 </div>
             </div>
             `
-}
+})
 
 
 
