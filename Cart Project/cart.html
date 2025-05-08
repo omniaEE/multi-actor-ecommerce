@@ -11,9 +11,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="cardstyle.css" />
+    <link rel="stylesheet" href="css/cardstyle.css" />
     <!-- JS -->
-    <script src="index.js" defer></script>
+    <script src="js/index.js" defer></script>
 </head>
 
 <body>
@@ -32,7 +32,8 @@
                         <span>Subtotal</span><span id="subtotal">$0.00</span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Discount (-20%)</span><span class="text-danger" id="discount">-$0.00</span>
+                        <span id="discount-label">Discount (20%):</span>
+                        <span id="discount-value" class="text-danger fw-bold">- $0.00</span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span>Delivery Fee</span><span id="delivery">$15</span>
@@ -42,8 +43,8 @@
                         <span>Total</span><span id="total_price">$0.00</span>
                     </div>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Add promo code">
-                        <button class="btn btn-dark">Apply</button>
+                        <input type="text" class="form-control" id="promo-input" placeholder="Add promo code">
+                        <button class="btn btn-dark" id="apply-promo">Apply</button>
                     </div>
                     <button id="checkout-btn" class="btn btn-dark w-100">
                         Go to Checkout <i class="fa fa-arrow-right ms-1"></i>
@@ -54,4 +55,4 @@
     </div>
 </body>
 
-</html
+</html>
