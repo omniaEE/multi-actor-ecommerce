@@ -1,3 +1,9 @@
-#mainTable {
+/* #mainTable {
   overflow-x: auto;
+} */
+
+/* the table styles are loaded from the product.css page as they are the same  */
+/* the bills style is taken from the products.css   status-out status-available status-pill*/
+.userPhone {
+  color: #454545;
 }
