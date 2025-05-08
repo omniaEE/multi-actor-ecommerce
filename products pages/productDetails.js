@@ -506,6 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             product.reviews.push(newReview)
+            product.ratings.push(selectedRating)
             localStorage.setItem("all_data", JSON.stringify(data));
 
             //reset

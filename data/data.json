@@ -105,8 +105,7 @@
       "category": "Men",
       "sellerId": 4,
       "ratings": [
-        5,
-        4,
+        3,
         5
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
@@ -152,9 +151,7 @@
       "category": "Party",
       "sellerId": 4,
       "ratings": [
-        5,
-        5,
-        4
+        3
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
@@ -192,13 +189,12 @@
       "sellerId": 3,
       "ratings": [
         2,
-        1,
-        2
+        5
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
         {
-          "rate": 3,
+          "rate": 2,
           "username": "Hagar Gamal",
           "review": "cool t-shirt",
           "date": "16-4-2025"
@@ -234,9 +230,7 @@
       "category": "Formal",
       "sellerId": 3,
       "ratings": [
-        5,
-        5,
-        5
+        3
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
@@ -273,7 +267,8 @@
       "ratings": [
         3,
         5,
-        4
+        4,
+        5
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
@@ -328,14 +323,14 @@
       "category": "Men",
       "sellerId": 3,
       "ratings": [
-        5,
         4,
+        5,
         1
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
         {
-          "rate": 3,
+          "rate": 4,
           "username": "Alex M.",
           "review": "cool t-shirt",
           "date": "16-4-2025"
@@ -347,7 +342,7 @@
           "date": "16-4-2025"
         },
         {
-          "rate": 2,
+          "rate": 1,
           "username": "Hagar Gamal",
           "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
           "date": "16-4-2025"
@@ -380,8 +375,7 @@
       "sellerId": 4,
       "ratings": [
         3,
-        5,
-        1
+        5
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
@@ -392,7 +386,7 @@
           "date": "16-4-2025"
         },
         {
-          "rate": 3,
+          "rate": 5,
           "username": "Maya S.",
           "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
           "date": "20-4-2025"
@@ -423,20 +417,19 @@
       "category": "Casual",
       "sellerId": 3,
       "ratings": [
-        4,
         1,
         2
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
         {
-          "rate": 3,
+          "rate": 1,
           "username": "Alex M.",
           "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
           "date": "16-4-2025"
         },
         {
-          "rate": 5,
+          "rate": 2,
           "username": "Alex M.",
           "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero reprehenderit, magnam rerum numquam eligendi soluta delectus voluptas quia error doloribus. Harum, eius quasi atque nisi magni quam dicta illo ullam?",
           "date": "16-4-2025"
@@ -469,14 +462,12 @@
       "category": "Casual",
       "sellerId": 3,
       "ratings": [
-        4,
-        1,
-        3
+        1
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
         {
-          "rate": 3,
+          "rate": 1,
           "username": "Alex M.",
           "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
           "date": "16-4-2025"
@@ -506,14 +497,19 @@
       "category": "Casual",
       "sellerId": 3,
       "ratings": [
-        4,
-        1,
-        3
+        3,
+        1
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
         {
           "rate": 3,
+          "username": "Alex M.",
+          "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 1,
           "username": "Alex M.",
           "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
           "date": "16-4-2025"
@@ -528,8 +524,8 @@
       "id": 311,
       "name": "Men's Jeans Pants",
       "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
-      "price": 99.0,
-      "old_price": "129.0",
+      "price": 810.0,
+      "old_price": "912.0",
       "colors": [
         "white",
         "black",
@@ -549,6 +545,18 @@
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
+        {
+          "rate": 4,
+          "username": "Alex M.",
+          "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 1,
+          "username": "Alex M.",
+          "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+          "date": "16-4-2025"
+        },
         {
           "rate": 3,
           "username": "Alex M.",
@@ -583,13 +591,25 @@
       "sellerId": 3,
       "ratings": [
         2,
-        5,
-        5
+        1,
+        1
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
         {
-          "rate": 3,
+          "rate": 2,
+          "username": "Alex M.",
+          "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 1,
+          "username": "Alex M.",
+          "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
+          "date": "16-4-2025"
+        },
+        {
+          "rate": 1,
           "username": "Alex M.",
           "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
           "date": "16-4-2025"
@@ -604,10 +624,10 @@
       "id": 313,
       "name": "Men's Jeans Pants",
       "description": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
-      "price": 99.0,
-      "old_price": "129.0",
+      "price": 420.0,
+      "old_price": "529.0",
       "colors": [
-        "white"
+        "pink"
       ],
       "sizes": [
         "Small",
@@ -619,17 +639,22 @@
       "category": "Kids",
       "sellerId": 3,
       "ratings": [
-        4,
-        1,
-        3
+        5,
+        5
       ],
       "details": "Brand : adidus <br/> Fabric material : jeans",
       "reviews": [
         {
-          "rate": 3,
+          "rate": 5,
           "username": "Alex M.",
           "review": "Comfortable oversized T-shirt made for everyday casual wear. Unisex fit with modern streetwear style.",
           "date": "16-4-2025"
+        },
+        {
+          "rate": 5,
+          "username": "mohamed",
+          "review": " Unisex fit with modern streetwear style.",
+          "date": "3-5-2025"
         }
       ],
       "images": [
