@@ -31,3 +31,15 @@ searchInput.addEventListener("input", function () {
         }
     });
 });
+
+
+// active navbar
+const observer = new MutationObserver(() => {
+    const overView = document.getElementById("customers_page");
+    if (overView) {
+        overView.classList.add("nav-active");
+        observer.disconnect();
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });

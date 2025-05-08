@@ -45,10 +45,21 @@
         activityCount = user.permissions?.length || 0;
       }
 
+      // Determine order count or product count depending on the role
+      let activityCount = "-";
+      if (user.role === "customer") {
+        activityCount = user.orders?.length || 0;
+      } else if (user.role === "seller") {
+        activityCount = user.products?.length || 0;
+      } else if (user.role === "admin") {
+        activityCount = user.permissions?.length || 0;
+      }
+
       const row = `
         <tr>
           <td>${index + 1}</td>
           <td>${user.firstName} ${user.lastName}</td>
+
 <td data-email="${user.email.toLowerCase()}" data-phone="${user.phone.toLowerCase()}">
   <div>${truncateEmail(user.email)}</div>
   <div class="userPhone">${user.phone}</div>
@@ -95,6 +106,40 @@
   </span>
 </td>
 
+
+          <td>${user.email}</td>
+          <td>${user.address || "-"}</td>
+          <td>${activityCount}</td>
+          <td><span class="badge ${statusClass}">${user.status}</span></td>
+          <td>${user.role}</td>
+          <td>
+            <button class="btn btn-info btn-sm view-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#viewModal"
+              data-id="${user.id}">View</button>
+  
+            ${
+              user.role !== "admin" // Hide ban/unban buttons for admin
+                ? `<button class="btn btn-${
+                    user.status === "Active" ? "warning" : "success"
+                  } btn-sm action-btn"
+                    data-action="${user.status === "Active" ? "ban" : "unban"}"
+                    data-id="${user.id}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#${
+                      user.status === "Active" ? "banModal" : "unbanModal"
+                    }">
+                      ${user.status === "Active" ? "Ban" : "Unban"}
+                  </button>`
+                : ""
+            }
+  
+            <button class="btn btn-danger btn-sm action-btn"
+              data-action="delete"
+              data-id="${user.id}"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteModal">Delete</button>
+          </td>
 
         </tr>
       `;

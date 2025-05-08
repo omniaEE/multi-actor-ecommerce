@@ -1,27 +1,16 @@
 
 
 //--------------------------------------------------------------------------------------------
+// show alert
 function showAlert(message, type = "danger") {
     const alertBox = document.getElementById("alertBox");
     alertBox.textContent = message;
-    alertBox.className = `alert alert-${type}`; // alert-danger, alert-success, etc.
+    alertBox.className = `alert alert-${type}`; 
     alertBox.classList.remove("d-none");
 }
 
 //----------------------------------------------------------------------------------------
-document.getElementById("phone").addEventListener("input", function () {
-    const phoneInput = document.getElementById("phone");
-    const phoneRegex = /^01[0-2,5]{1}[0-9]{8}$/;
-
-    if (phoneRegex.test(phoneInput.value)) {
-        phoneInput.classList.remove("is-invalid");
-    } else {
-        phoneInput.classList.add("is-invalid");
-    }
-});
-
-
-//----------------------------------------------------------------------------------------
+// check confirm password
 document.getElementById("ConfirmPassword").addEventListener("input", function () {
     const password = document.getElementById("password").value;
     const confirmPasswordInput = document.getElementById("ConfirmPassword");
@@ -34,98 +23,73 @@ document.getElementById("ConfirmPassword").addEventListener("input", function ()
 });
 
 //----------------------------------------------------------------------------------------
+// sign up
 function signUp(event) {
     event.preventDefault();
+const form = event.target;
+
+if (!form.checkValidity()) {
+    form.classList.add("was-validated");
+    return;
+}
+
 
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
+    const emailInput = document.getElementById("email");
     const password = document.getElementById("password").value;
     const ConfirmPassword = document.getElementById("ConfirmPassword").value;
     const role = document.getElementById("role");
 
+
+    const email = emailInput.value;
+
     let sellerRequest = role.checked
 
-    const phoneRegex = /^01[0-2,5]{1}[0-9]{8}$/;
 
-    if (!phoneRegex.test(phone)) {
-        document.getElementById("phone").classList.add("is-invalid");
+        let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+        let users = all_data.users;
+        const exists = users.find(users => users.email === email);
 
-        return;
-    }
-    else {
-        document.getElementById("phone").classList.remove("is-invalid");
-    }
-
-    if (password !== ConfirmPassword) {
-        alert("Passwords do not match.");
-        return;
-    }
-
-
-    let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
-    let users = all_data.users;
-
-    const newId = Math.max(0, ...all_data.users.map(p => p.id || 0)) + 1;
-
-    const exists = users.find(user => user.email === email);
-    if (exists) {
-        alert("Email already exists");
-        return;
-    }
-
-
-    const newUser = {
-        id: newId,
-        role: "customer",
-        firstName: firstName,
-        lastName: lastName,
-        phone: phone,
-        email: email,
-        password: password,
-        address: '123 Tanta, Egypt',
-        orders: [101, 102],
-        status: "Active",
-        roleAsSeller: sellerRequest
-
-    };
-
-    all_data.users.push(newUser);
-    localStorage.setItem("all_data", JSON.stringify(all_data));
-
-    showAlert("Signed up successfully!", "success");
-}
-
-//-----------------------------------------------------------------------------------------------------------------
-function login() {
-    const email = document.getElementById("email").value;
-    const loginPassword = document.getElementById("loginPassword").value;
-    const all_data = JSON.parse(localStorage.getItem("all_data")) || [];
-
-
-    const users = all_data.users;
-
-    const validUser = users.find(users => users.email === email && users.password === loginPassword);
-
-    if (validUser) {
-        switch (validUser.role) {
-            case "admin":
-                window.location.href = "../admin-dashboard/admin.html";
-                break;
-            case "seller":
-                window.location.href = "../saller/overView.html";
-                break;
-            case "customer":
-                window.location.href = "../../home_page/homePage.html";
-                break;
+        if (exists) {
+            alert("Email already exists");
+            emailInput.classList.remove("is-valid");
+            emailInput.classList.add("is-invalid");
+            emailInput.focus();
+            return;
+        } else {
+            emailInput.classList.remove("is-invalid");
+            emailInput.classList.add("is-valid");
         }
-        localStorage.setItem("loggedInUser", JSON.stringify(validUser));
-    } else {
-        alert("Invalid username or password");
-    }
-}
+        
+        if (password !== ConfirmPassword) {
+            alert("Passwords do not match.");
+            document.getElementById("password").focus();
+            return;
+        }
+        const newId = Math.max(0, ...all_data.users.map(p => p.id || 0)) + 1;
 
+        const newUser = {
+            id: newId,
+            role: "customer",
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone,
+            email: email,
+            password: password,
+            address: '123 Tanta, Egypt',
+            orders: [101, 102],
+            status: "Active",
+            roleAsSeller: sellerRequest
+
+        };
+
+        all_data.users.push(newUser);
+        localStorage.setItem("all_data", JSON.stringify(all_data));
+
+        showAlert("Signed up successfully!", "success");
+    }
 //-----------------------------------------------------------------------------------------------------------------
 function resetPassword() {
     const firstName = document.getElementById("firstName").value;
@@ -135,9 +99,10 @@ function resetPassword() {
     const message = document.getElementById("message");
     const newPassword = document.getElementById("password")
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+    const users = all_data.users;
 
-    const userIndex = users.findIndex(user => user.email === email && user.firstName === firstName && user.lastName === lastName && user.phone === phone);
+    const userIndex = users.findIndex(users => users.email === email && users.firstName === firstName && users.lastName === lastName && users.phone === phone);
 
     if (userIndex === -1) {
         message.textContent = "Email not found.";
@@ -175,9 +140,11 @@ function updatepassword() {
         message.style.color = "red";
         return;
     } else {
-        let users = JSON.parse(localStorage.getItem("users")) || [];
+        let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+        let users = all_data.users;      
         users[userIndex].password = password;
-        localStorage.setItem("users", JSON.stringify(users));
+
+        localStorage.setItem("all_data", JSON.stringify(all_data));
         message.style.display = "none";
         message2.style.color = "green";
         message2.textContent = "Password updated successfully!";

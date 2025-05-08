@@ -1,3 +1,18 @@
+// function to display the user image and name
+function displayUserData() {
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userImages = document.querySelectorAll(".user-image");
+  const userNames = document.querySelectorAll(".user-name");
+
+  if (user) {
+    userNames.forEach(
+      (name) => (name.textContent = `${user.firstName} ${user.lastName}`)
+    );
+  }
+  if (user.image) {
+    userImages.forEach((img) => (img.src = user.image));
+  }
+}
 // Function to handle active state for the sidebar links
 function handleActiveLink(containerSelector) {
   const container = document.querySelector(containerSelector);
@@ -40,4 +55,5 @@ function loadPage(page) {
 }
 
 loadPage("./dashboard.html");
+displayUserData();
 // loadPage("./users.html");

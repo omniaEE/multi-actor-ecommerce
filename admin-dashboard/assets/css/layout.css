@@ -29,6 +29,7 @@
 }
 @media (max-width: 990px) {
   .main-content {
-    margin-left: 0;
+    margin-left: 5px;
+    margin-right: 70px;
   }
 }
