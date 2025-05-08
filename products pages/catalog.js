@@ -10,7 +10,7 @@ let sizes = ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large", "XXX-
 let priceInput = document.getElementById("priceRange")
 let priceValue = document.getElementById("priceValue")
 let proLength = document.getElementById("proLength")
-const paginationContainer = document.querySelector(".pagination")
+let paginationContainer = document.querySelector(".pagination")
 
 
 let selectedCategory = null
@@ -22,6 +22,16 @@ let selectedSort = "default";
 
 let currentPage = 1;
 const productsPerPage = 9;
+
+
+
+
+
+
+
+
+
+
 
 
 function renderProducts(products) {
@@ -58,12 +68,23 @@ function renderProducts(products) {
     }
 
 
+
+    // search part
+    let searchInput = document.getElementById("prosSearch")
+    let searchValue = searchInput.value.toLowerCase().trim();
+    filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(searchValue)
+    );
+
+
     // pagination
     const totalPages = Math.ceil(filtered.length / productsPerPage);
     const start = (currentPage - 1) * productsPerPage;
     const end = start + productsPerPage;
     const paginatedProducts = filtered.slice(start, end);
 
+    //get user data
+    let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
 
     // Render products
     paginatedProducts.forEach(product => {
@@ -79,16 +100,71 @@ function renderProducts(products) {
         allPros.innerHTML += `
             <div class="pro-card">
                 <img src="${product.images[0]}" data-productid="${product.id}" alt="">
-                <p>${product.name}</p>
+                <p data-productid="${product.id}">${product.name}</p>
                 <div class="rating">
                     ${starsHtml}
                     &nbsp;
                     <small>${avgRating.toPrecision(2)}</small>
                 </div>
                 <h2>$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}</h2>
+                <div class="review-header" >
+                ${product.stock > 0 ? '<button class="add-to-cart" >Add To Cart</button>' : '<h3 id="product-stock"><span>Out of Stock</span></h3>'}
+                ${loggedUser && loggedUser.fav.find(p => p.id == product.id) ?
+                '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
+                :
+                '<i class="fa-regular fa-heart"></i>'
+            }
+                </div>
             </div>
         `
     })
+
+
+
+    let allCards = document.querySelectorAll(".pro-card")
+    allCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            //add in cart
+            if (e.target.classList.contains("add-to-cart")) {
+                //get product obj
+                let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
+                if (existingCartItem) {
+                    existingCartItem.amount = Number(existingCartItem.amount) + 1;
+                } else {
+                    loggedUser.cart.push({
+                        product: product,
+                        amount: 1,
+                        color: product.colors[0],
+                        size: product.sizes[0]
+                    })
+                }
+                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
+
+                //add in fav
+            } else if (e.target.classList.contains("fa-heart")) {
+                //get product obj
+                let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+                let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+                if (existingFavItem) {
+                    loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                } else {
+                    loggedUser.fav.push(product)
+                }
+                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                renderProducts(products)
+            }
+        })
+    })
+
+
+
+
+
 
     // Render pagination buttons
     for (let i = 1; i <= totalPages; i++) {
@@ -109,11 +185,12 @@ function renderProducts(products) {
 
     //open product details
     allPros.addEventListener("click", (e) => {
-        if (e.target.tagName === "IMG") {
+        if (e.target.tagName === "IMG" || e.target.tagName === "P") {
             window.location.href = `productDetails.html?id=${e.target.dataset.productid}`;
         }
     });
 }
+
 
 
 
@@ -220,6 +297,14 @@ renderProducts(allProducts) // Initial render
 
 
 
+//search
+document.getElementById("prosSearch").addEventListener("input", () => {
+    renderProducts(allProducts);
+});
+
+
+
+
 
 
 
@@ -265,6 +350,8 @@ document.querySelectorAll(".filter-header").forEach(header => {
         }
     })
 })
+
+
 
 
 

@@ -119,9 +119,9 @@
         }
       ],
       "images": [
-        "../assets/pro1.jpg",
-        "../assets/pro2.jpg",
-        "../assets/pro3.jpg"
+        "../assets/pro1.png",
+        "../assets/pro2.png",
+        "../assets/pro3.png"
       ]
     },
     {
@@ -159,8 +159,8 @@
         }
       ],
       "images": [
-        "../assets/pro9.jpg",
-        "../assets/pro5.jpg"
+        "../assets/pro9.png",
+        "../assets/pro5.png"
       ]
     },
     {
@@ -203,7 +203,7 @@
         }
       ],
       "images": [
-        "../assets/pro6.jpg"
+        "../assets/pro6.png"
       ]
     },
     {
@@ -239,7 +239,7 @@
         }
       ],
       "images": [
-        "../assets/pro7.jpg"
+        "../assets/pro7.png"
       ]
     },
     {
@@ -293,7 +293,7 @@
         }
       ],
       "images": [
-        "../assets/pro8.jpg"
+        "../assets/pro8.png"
       ]
     },
     {
@@ -343,8 +343,8 @@
         }
       ],
       "images": [
-        "../assets/pro10.jpg",
-        "../assets/pro4.jpg"
+        "../assets/pro10.png",
+        "../assets/pro4.png"
       ]
     },
     {
@@ -387,7 +387,7 @@
         }
       ],
       "images": [
-        "../assets/pro11.jpg"
+        "../assets/pro11.png"
       ]
     },
     {
@@ -430,8 +430,8 @@
         }
       ],
       "images": [
-        "../assets/pro12.jpg",
-        "../assets/pro14.jpg"
+        "../assets/pro12.png",
+        "../assets/pro14.png"
       ]
     },
     {
@@ -469,7 +469,7 @@
         }
       ],
       "images": [
-        "../assets/pro13.jpg"
+        "../assets/pro13.png"
       ]
     },
     {
@@ -507,7 +507,7 @@
         }
       ],
       "images": [
-        "../assets/pro13.jpg"
+        "../assets/pro4.png"
       ]
     },
     {
@@ -545,7 +545,7 @@
         }
       ],
       "images": [
-        "../assets/pro5.jpg"
+        "../assets/pro5.png"
       ]
     },
     {
@@ -583,7 +583,7 @@
         }
       ],
       "images": [
-        "../assets/pro14.jpg"
+        "../assets/pro14.png"
       ]
     },
     {
@@ -621,7 +621,7 @@
         }
       ],
       "images": [
-        "../assets/pro2.jpg"
+        "../assets/pro15.png"
       ]
     }
   ],
