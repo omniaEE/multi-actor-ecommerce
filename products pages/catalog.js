@@ -132,10 +132,10 @@ function renderProducts(products) {
                     //get product obj
                     let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
 
-                    let existingCartItem = loggedUser.cart.find(p => 
+                    let existingCartItem = loggedUser.cart.find(p =>
                         p.product.id == product.id &&
-                            p.color == product.colors[0] &&
-                            p.size == product.sizes[0]
+                        p.color == product.colors[0] &&
+                        p.size == product.sizes[0]
                     );
                     if (existingCartItem) {
                         existingCartItem.amount = Number(existingCartItem.amount) + 1;
@@ -240,7 +240,7 @@ JSON.parse(localStorage.getItem("all_data")).categories.forEach(category => {
             item.classList.remove("active")
         })
         categoryDiv.classList.add("active")
-
+        currentPage = 1;
         renderProducts(allProducts)
     })
     categories.appendChild(categoryDiv)
@@ -251,7 +251,7 @@ JSON.parse(localStorage.getItem("all_data")).categories.forEach(category => {
 priceInput.addEventListener("input", () => {
     selectedMaxPrice = parseInt(priceInput.value);
     priceValue.textContent = selectedMaxPrice;
-
+    currentPage = 1;
     renderProducts(allProducts);
 });
 
@@ -267,7 +267,7 @@ sizes.forEach(size => {
         } else {
             selectedSizes.push(size);
         }
-
+        currentPage = 1;
         renderProducts(allProducts);
     })
     filterSizes.appendChild(sizeBtn);
@@ -292,6 +292,7 @@ allColors.forEach(color => {
                 colorDiv.innerHTML = `<i class="fa-solid fa-check"></i>`
             }
         }
+        currentPage = 1;
         renderProducts(allProducts);
     });
     filterColor.appendChild(colorDiv);

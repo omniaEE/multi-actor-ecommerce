@@ -470,6 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // addToCartBtn.style.display = "none"
                 // addedToCart.style.display = "block"
                 // amountDiv.style.display = "none"
+                //-----------------------------------apply toast
             } else {
                 window.location.href = `../login/login.html`
             }
