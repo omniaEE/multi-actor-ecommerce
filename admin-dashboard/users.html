@@ -10,7 +10,8 @@
       placeholder="Search by name or email"
     />
   </div>
-  <!-- filters -->
+
+  <!-- Filters -->
   <div class="row mb-3">
     <div class="col-md-4 mb-2">
       <select id="roleFilter" class="form-select">
@@ -30,6 +31,7 @@
   </div>
 
   <!-- Modals -->
+
   <!-- Ban Modal -->
   <div
     class="modal fade"
@@ -79,7 +81,6 @@
   </div>
 
   <!-- Delete Modal -->
-  <!-- Delete Confirmation Modal -->
   <div class="modal fade" id="deleteModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-danger">
@@ -139,7 +140,7 @@
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>contact</th>
+        <th>Contact</th>
         <th>Address</th>
         <th>Orders</th>
         <th>Status</th>
@@ -147,6 +148,8 @@
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody id="userTableBody"></tbody>
+    <tbody id="userTableBody">
+      <!-- Dynamically populated rows go here -->
+    </tbody>
   </table>
 </div>

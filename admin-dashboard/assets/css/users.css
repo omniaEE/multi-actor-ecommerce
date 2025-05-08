@@ -7,3 +7,15 @@
 .userPhone {
   color: #454545;
 }
+/* General Layout */
+@media (max-width: 1024px) {
+  .user-details summary {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .action-icons {
+    display: flex;
+    justify-content: space-around;
+  }
+}
