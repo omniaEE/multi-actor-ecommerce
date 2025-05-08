@@ -9,7 +9,6 @@ fetch("header.html")
 
         const user = JSON.parse(localStorage.getItem("loggedInUser")) || [];
         
-        console.log(user);
 
         if (user) {
             document.getElementById("name").innerText = user.firstName + " " + user.lastName;

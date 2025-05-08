@@ -1,0 +1,50 @@
+#salesTrendChart {
+  height: 300px;
+}
+.card-text {
+  color: black;
+  font-size: 0.9rem;
+}
+.modern-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  color: white;
+  transition: transform 0.3s;
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.75em;
+  border-radius: 999px;
+}
+
+.modern-chart-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  color: white;
+}
