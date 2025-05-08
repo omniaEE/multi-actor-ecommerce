@@ -54,10 +54,12 @@ document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
 
     let userName = document.querySelector('input[placeholder="Full Name"]').value;
+    let address = document.querySelector('input[placeholder="Address"]').value;
 
     const orderDate = new Date().toISOString().split('T')[0];
     let newOrders = [{
-        customerId: loggedInUser.id,
+        FullName: userName,
+        Address: address,
         items: cartItems.map(item => ({
             productId: item.product.id,
             quantity: item.amount,

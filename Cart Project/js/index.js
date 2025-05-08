@@ -36,11 +36,11 @@ function show_cart_items() {
         totalEl.style.display = 'none';
         return;
     } else {
-        subtotalEl.style.display = 'inline';
-        discountLabel.style.display = 'inline';
-        discountValue.style.display = 'inline';
-        deliveryEl.style.display = 'inline';
-        totalEl.style.display = 'inline';
+        subtotalEl.style.display = 'block';
+        discountLabel.style.display = 'block';
+        discountValue.style.display = 'block';
+        deliveryEl.style.display = 'block';
+        totalEl.style.display = 'block';
     }
 
     cartItems.forEach(item => {
