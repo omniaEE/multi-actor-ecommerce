@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             product.reviews.push(newReview)
-            product.ratings.push(selectedRating)
+            product.ratings.push(selectedRating)//to link reviews with ratings
             localStorage.setItem("all_data", JSON.stringify(data));
 
             //reset
