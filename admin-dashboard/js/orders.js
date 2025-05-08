@@ -1,46 +1,7 @@
 (() => {
-  const data = {
-    users: [
-      {
-        id: 1,
-        firstName: "Fadl",
-        lastName: "Yousry",
-        role: "customer",
-        orders: [101, 102],
-      },
-      {
-        id: 2,
-        firstName: "Yousef",
-        lastName: "Hesham",
-        role: "customer",
-        orders: [103, 104],
-      },
-    ],
-    products: [
-      { id: 201, name: "Product A" },
-      { id: 202, name: "Product B" },
-    ],
-    orders: [
-      {
-        id: 101,
-        customerId: 1,
-        items: [{ productId: 201, quantity: 1, price: 499.99 }],
-        total: 499.99,
-        status: "delivered",
-        orderDate: "2025-04-20",
-      },
-      {
-        id: 102,
-        customerId: 2,
-        items: [{ productId: 202, quantity: 2, price: 149.99 }],
-        total: 299.98,
-        status: "processing",
-        orderDate: "2025-04-30",
-      },
-    ],
-  };
+  const data = JSON.parse(localStorage.getItem("all_data"));
+  // console.log("all_data", data.orders);
 
-  // Utility functions
   const getUserById = (id) => data.users.find((u) => u.id === id);
   const getProductById = (id) => data.products.find((p) => p.id === id);
 

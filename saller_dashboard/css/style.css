@@ -3,23 +3,28 @@ body {
 }
 
 a {
-    color: black;
+    color: rgb(255, 255, 255);
     border-radius: 5px;
-    padding: 2px 10px;
-    margin-bottom: 5px;
+    padding: 3px 1px;
+    margin-bottom: 8px;
     text-decoration: none;
 }
 
 a:hover {
-    color: white;
-    background-color: #2e2e3d;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
     text-decoration: none;
+}
+
+.nav-active {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
 }
 
 .sidebar {
     transition: width 0.3s;
     white-space: nowrap;
-    background-color: #d1d1d1;
+    background-color: #1d2124;
     position: relative;
 
 }
@@ -95,7 +100,8 @@ small {
     color: rgb(255, 179, 0);
     font-size: 10px;
 }
-#image{
+
+#image {
     height: 150px;
 }
 
@@ -103,13 +109,14 @@ input[type="checkbox"] {
     width: 20px;
     margin-left: 50px;
 }
+
 .action-buttons {
     display: none;
     position: absolute;
     bottom: 130px;
     left: 30%;
     z-index: 10;
-    
+
 }
 
 .product-card {
@@ -120,6 +127,7 @@ input[type="checkbox"] {
 #products-all:hover {
     opacity: 70%;
 }
+
 .product-card:hover .action-buttons {
     display: block;
 }
@@ -136,7 +144,7 @@ input[type="checkbox"] {
     background: white;
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .profile-pic {
@@ -156,6 +164,55 @@ input[type="checkbox"] {
 .form-label {
     font-weight: 500;
 }
+
+td {
+    font-size: 14px;
+    color: #575757 !important;
+}
+
+/* ------------------------- */
+@media screen and (max-width: 768px) {
+    .responsive-table {
+        width: 100%;
+
+    }
+
+    .responsive-table thead {
+        display: none;
+    }
+    .responsive-table tbody{
+        background-color: white !important;
+    }
+
+    .responsive-table tr {
+        display: block;
+        margin-bottom: 15px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, 0.1) !important;
+        padding: 6px;
+    }
+    
+
+    .responsive-table tr:hover {
+        box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .responsive-table td {
+        display: block;
+        text-align: left;
+        position: relative;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        right: 20px;
+        font-weight: bold;
+    }
+}
+
+/* ------------------------------------- */
 
 
 

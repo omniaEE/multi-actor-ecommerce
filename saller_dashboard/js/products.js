@@ -204,7 +204,7 @@ function addEditColor() {
         li.style.height = "20px";
         li.style.margin = "2px";
         li.style.cursor = "pointer";
-        li.title = "اضغط للحذف";
+        li.title = "click to remove";
 
         li.onclick = function () {
             editColorList = editColorList.filter(c => c !== color);
@@ -244,7 +244,7 @@ function saveProductEdits(productId) {
         all_data.products[productIndex] = product;
         localStorage.setItem("all_data", JSON.stringify(all_data));
 
-        alert(" تم تعديل المنتج بنجاح!");
+        alert("product updated successfully!");
         window.location.reload();
     }
 }
@@ -270,8 +270,17 @@ function deleteProduct(productId) {
 
         localStorage.setItem("all_data", JSON.stringify(all_data));
 
-        // alert("تم حذف المنتج بنجاح!");
         window.location.reload();
     }
 }
 
+// active navbar
+const observer = new MutationObserver(() => {
+    const overView = document.getElementById("products_page");
+    if (overView) {
+        overView.classList.add("nav-active");
+        observer.disconnect();
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
