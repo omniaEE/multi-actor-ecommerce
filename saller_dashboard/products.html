@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </head>
 
@@ -18,15 +20,69 @@
         <div id="sidebar" class="sidebar col-10 col-sm-3 col-md-2 p-2 " id="sidebar"></div>
         <div class=" header col p-0 ">
             <div id="header" class=""></div>
-            <div class="bg-light p-5  pt-4">
-                <!-- --------------------------------- -->
-                <button class="btn btn-dark ms-3" onclick="addProduct()">Add products</button>
-                <div class="container mt-4 productsContainer">
-                    <div class="row justify-content-center" id="productsContainer">
-                        <!-- المنتجات هتظهر هنا -->
-                    </div>
+            <div class="bg-light  px-2 px-sm-5  pt-5">
+                <!----------------- search bar------------------- -->
+                <div class="mb-3 ms-3 position-relative disapper" >
+
+                    <input type="text" id="userSearch" class="form-control border-start-0 ps-5"
+                        placeholder=" Search for a product...">
+                    <i class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+
                 </div>
 
+                <!-- ----------add product------------------------- -->
+                <button class="btn btn-dark ms-3  mb-3 mb-sm-0 " onclick="addProduct()">Add products <i
+                        class="fa-solid fa-plus plus-icon"></i></button>
+                <!-- -----------------category------------------ -->
+                <div class="my-3 mx-3 col-3 d-none d-sm-inline-block disapper">
+                    <select class="form-select" id="categorySelect">
+                        <option value="">All Categories</option>
+                        <!-- dynamically loaded options -->
+                    </select>
+                </div>
+                <!-- Mobile View: Icon Only Dropdown -->
+                <div class="dropdown d-inline-block d-sm-none disapper ">
+                    <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3" type="button"
+                        id="categoryDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-list"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="categoryDropdownBtn" id="categoryDropdown">
+                        <li><a class="dropdown-item" href="#" data-value="">All Categories</a></li>
+
+                        <!-- dynamically generated category options here -->
+                    </ul>
+                </div>
+
+
+                <!-- --------------stock------------------ -->
+                <div class="my-3  col-3 d-none d-sm-inline-block disapper">
+                    <select class="form-select" id="stockSelect">
+                        <option value="">All Stock Status</option>
+                        <option value="in">In Stock</option>
+                        <option value="out">Out of Stock</option>
+                    </select>
+                </div>
+                <!-- Mobile View: Icon Only Dropdown -->
+                <div class="dropdown d-inline-block d-sm-none disapper">
+                    <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3" type="button"
+                        id="stockDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-box-open"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="stockDropdownBtn" id="stockDropdown">
+                        <li><a class="dropdown-item" href="#" data-value="">All Stock Status</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="in">In Stock</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="out">Out of Stock</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- products catalog -->
+            <div class="bg-light px-5 px-sm-3 px-md-5 py-1  min-vh-100">
+                <div class="container mt-4 productsContainer">
+                    <div class="row justify-content-center" id="productsContainer">
+                        <!--   products will be here -->
+                    </div>
+                </div>
+                <!-- add product -->
                 <section id="addProduct" class="container my-5 p-4 border rounded-4 shadow bg-light d-none">
                     <h3 class="mb-4 text-center">Add New Product</h3>
                     <form id="productForm">
@@ -37,7 +93,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Price</label>
-                                <input type="number" class="form-control" id="price" required>
+                                <input type="number" class="form-control" id="price"   min="1" title="Please enter a positive number greater than 0"required>
                             </div>
                         </div>
 
@@ -60,12 +116,16 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity" required>
+                                <input type="number" class="form-control" id="quantity"  min="1" title="Please enter a positive number greater than 0" required>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label d-block">Sizes:</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="sizeXS" name="sizes" value="xs">
+                                <label class="form-check-label" for="sizeS">XS</label>
+                            </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="sizeS" name="sizes" value="s">
                                 <label class="form-check-label" for="sizeS">S</label>
@@ -82,6 +142,10 @@
                                 <input class="form-check-input" type="checkbox" id="sizeXL" name="sizes" value="xl">
                                 <label class="form-check-label" for="sizeXL">XL</label>
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="sizeXXL" name="sizes" value="xxl">
+                                <label class="form-check-label" for="sizeXL">XXL</label>
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -91,24 +155,33 @@
                                     value="#563d7c" title="Choose color">
                                 <button type="button" class="btn btn-outline-primary btn-sm" onclick="addColor()"> Add
                                     Color</button>
-                                    <div id="colorList" class="list-inline mt-2 ms-5"></div>
+                                <div id="colorList" class="list-inline mt-2 ms-5"></div>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="imageUpload" class="form-label">Product Image</label>
                             <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*"
-                                required>
-                            <img id="preview" src="" class="mt-2 img-thumbnail d-block" style="max-width: 150px;">
+                            multiple required>
+                            <div id="previewContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
+
                         </div>
 
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-success">✅ Add Product</button>
+
+                        <div class="row my-3">
+                            <div class="mb-3 col-md-6">
+                                <button type="submit" class="btn btn-success col-12 col-md-6 px-3 w-100">✅ Add Product</button>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <button type="button" class="btn btn-danger col-12 col-md-6 px-3 w-100"
+                                    id="closeadd" onclick="closeUpdate()">close</button>
+                            </div>
                         </div>
+                        
                     </form>
                 </section>
                 <!-- --------------------------------- -->
-                 <!-- update product -->
+                <!-- update product -->
                 <div class="container my-5 d-none p-4 border rounded-4 shadow bg-light d-none" id="update">
                     <h2>Edit Product</h2>
                     <form id="editForm">
@@ -119,7 +192,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="editPrice" class="form-label">Price</label>
-                                <input type="number" class="form-control" id="editPrice" required> 
+                                <input type="number" min="1" class="form-control" id="editPrice" required>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -129,7 +202,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="editCategory" class="form-label">Category</label>
-                                <select class="form-select" id="editCategory" >
+                                <select class="form-select" id="editCategory">
                                     <option value="Men">Men</option>
                                     <option value="Women">Women</option>
                                     <option value="Kids">Kids</option>
@@ -139,24 +212,56 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="editQuantity" class="form-label">Stock Quantity</label>
-                                <input type="number" class="form-control" id="editQuantity" >
+                                <label for="editQuantity" min="1" class="form-label">Stock Quantity</label>
+                                <input type="number" class="form-control" id="editQuantity">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Colors</label>
                                 <div class="d-flex align-items-center gap-2">
-                                    <input type="color" class="form-control form-control-color" id="editColorInput" value="#563d7c">
-                                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="addEditColor()">Add Color</button>
+                                    <input type="color" class="form-control form-control-color" id="editColorInput"
+                                        value="#563d7c">
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        onclick="addEditColor()">Add Color</button>
                                     <div id="editColorList" class="list-inline mt-2 ms-5"></div>
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label d-block">Sizes:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="editSizeXS" name="editSizes" value="xs">
+                                    <label class="form-check-label" for="editSizeXS">XS</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="editSizeS" name="editSizes" value="s">
+                                    <label class="form-check-label" for="editSizeS">S</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="editSizeM" name="editSizes" value="m">
+                                    <label class="form-check-label" for="editSizeM">M</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="editSizeL" name="editSizes" value="l">
+                                    <label class="form-check-label" for="editSizeL">L</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="editSizeXL" name="editSizes" value="xl">
+                                    <label class="form-check-label" for="editSizeXL">XL</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="editSizeXXL" name="editSizes" value="xxl">
+                                    <label class="form-check-label" for="editSizeXXL">XXL</label>
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="row my-3">
                             <div class="mb-3 col-md-6">
-                                <button type="submit" class="btn btn-success col-12 col-md-6 px-3 w-100" id="saveButton">Save Changes</button>
+                                <button type="submit" class="btn btn-success col-12 col-md-6 px-3 w-100"
+                                    id="saveButton">Save Changes</button>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <button type="button" class="btn btn-danger col-12 col-md-6 px-3 w-100" id="closeUpdate" >close</button>
+                                <button type="button" class="btn btn-danger col-12 col-md-6 px-3 w-100"
+                                    id="closeUpdate">close</button>
                             </div>
                         </div>
                     </form>
