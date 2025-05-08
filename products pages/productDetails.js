@@ -50,8 +50,10 @@ let otherPro = document.querySelector(".other-pro")
 //     .then(data => {
 let data = JSON.parse(localStorage.getItem("all_data"))
 
-for (let i = 1; i < 5; i++) {
-    const product = data.products[i]
+let currentProductId = window.location.href.split("=")[1]
+let productsToShow = data.products.filter(p => p.id != currentProductId).slice(0, 4); // limit to 4 others
+
+productsToShow.forEach(product => {
     //rating
     const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
     const fullStars = Math.floor(avgRating);
@@ -88,7 +90,7 @@ for (let i = 1; i < 5; i++) {
                 </div>
             </div>
             `
-}
+})
 
 
 
@@ -98,39 +100,43 @@ for (let i = 1; i < 5; i++) {
 let allCards = document.querySelectorAll(".pro-card")
 allCards.forEach(card => {
     card.addEventListener('click', (e) => {
-        //add in cart
-        if (e.target.classList.contains("add-to-cart")) {
-            //get product obj
-            let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+        if (loggedUser) {
+            //add in cart
+            if (e.target.classList.contains("add-to-cart")) {
+                //get product obj
+                let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
 
-            let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
-            if (existingCartItem) {
-                existingCartItem.amount = Number(existingCartItem.amount) + 1;
-            } else {
-                loggedUser.cart.push({
-                    product: product,
-                    amount: 1,
-                    color: product.colors[0],
-                    size: product.sizes[0]
-                })
+                let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
+                if (existingCartItem) {
+                    existingCartItem.amount = Number(existingCartItem.amount) + 1;
+                } else {
+                    loggedUser.cart.push({
+                        product: product,
+                        amount: 1,
+                        color: product.colors[0],
+                        size: product.sizes[0]
+                    })
+                }
+                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
+
+                //add in fav
+            } else if (e.target.classList.contains("fa-heart")) {
+                //get product obj
+                let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+                let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+                if (existingFavItem) {
+                    loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                } else {
+                    loggedUser.fav.push(product)
+                }
+                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                location.reload();/////////////
             }
-            localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
-
-            //add in fav
-        } else if (e.target.classList.contains("fa-heart")) {
-            //get product obj
-            let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
-
-            loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
-            let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
-            if (existingFavItem) {
-                loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
-            } else {
-                loggedUser.fav.push(product)
-            }
-            localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-            location.reload();/////////////
+        } else {
+            window.location.href = `../login/login.html`
         }
     })
 })
@@ -250,23 +256,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //heart
         let fav = document.querySelector(".add-to-wishlist")
-        let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+        let existingFavItem = loggedUser?.fav.find(p => p.id == product.id);
         if (existingFavItem) {
             fav.innerHTML = `<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>`
         } else {
             fav.innerHTML = `<i class="fa-regular fa-heart"></i>`
         }
         fav.addEventListener('click', () => {
-            loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
-            let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
-            if (existingFavItem) {
-                loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
-                fav.innerHTML = `<i class="fa-regular fa-heart"></i>`
+            if (loggedUser) {
+                loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+                let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+                if (existingFavItem) {
+                    loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                    fav.innerHTML = `<i class="fa-regular fa-heart"></i>`
+                } else {
+                    loggedUser.fav.push(product)
+                    fav.innerHTML = `<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>`
+                }
+                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
             } else {
-                loggedUser.fav.push(product)
-                fav.innerHTML = `<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>`
+                window.location.href = `../login/login.html`
             }
-            localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
         })
 
 
@@ -288,8 +298,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let proColor = document.createElement("div")
             proColor.style.backgroundColor = product.colors[i]
             if (i == 0) {
-                proColor.innerHTML = `<i class="fa-solid fa-check"></i>`
-                checkedColor = proColor.style.backgroundColor
+                if (proColor.style.backgroundColor == "white" || proColor.style.backgroundColor == "beige") {
+                    proColor.innerHTML = `<i class="fa-solid fa-check" style="color:black;"></i>`
+                    checkedColor = proColor.style.backgroundColor
+                } else {
+                    proColor.innerHTML = `<i class="fa-solid fa-check"></i>`
+                    checkedColor = proColor.style.backgroundColor
+                }
             }
             colorsHolder.appendChild(proColor)
         }
@@ -434,22 +449,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // let addedToCart = document.getElementById("addedToCart")
         // let amountDiv = document.querySelector(".amount")
         addToCartBtn.addEventListener('click', () => {
-            let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
+            if (loggedUser) {
+                let existingCartItem = loggedUser.cart.find(p => 
+                    p.product.id == product.id &&
+                        p.color == checkedColor &&
+                        p.size == checkedSize
+                );
 
-            if (existingCartItem) {
-                existingCartItem.amount = Number(existingCartItem.amount) + Number(counter.innerText);
+                if (existingCartItem) {
+                    existingCartItem.amount = Number(existingCartItem.amount) + Number(counter.innerText);
+                } else {
+                    loggedUser.cart.push({
+                        product: product,
+                        amount: counter.innerText,
+                        color: checkedColor,
+                        size: checkedSize
+                    })
+                }
+                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                // addToCartBtn.style.display = "none"
+                // addedToCart.style.display = "block"
+                // amountDiv.style.display = "none"
             } else {
-                loggedUser.cart.push({
-                    product: product,
-                    amount: counter.innerText,
-                    color: checkedColor,
-                    size: checkedSize
-                })
+                window.location.href = `../login/login.html`
             }
-            localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-            // addToCartBtn.style.display = "none"
-            // addedToCart.style.display = "block"
-            // amountDiv.style.display = "none"
         })
 
 

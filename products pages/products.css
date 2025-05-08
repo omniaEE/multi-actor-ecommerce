@@ -5,7 +5,10 @@
     font-family: Arial, sans-serif;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+a{
+    text-decoration: none;
+    color: #000;
+}
 .product-details {
     width: 85%;
     margin: 50px auto;
@@ -78,7 +81,6 @@ h1 {
     color: #d90b0b;
     border-radius: 10px;
     font-size: 1rem;
-    font-weight: 300;
 }
 
 .product-details hr {
@@ -564,6 +566,7 @@ aside hr {
 .filter-header,
 .categories div {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin: 10px 0;
@@ -654,6 +657,7 @@ aside #clear-filters {
     padding: 10px;
     padding-right: 50px;
     border-radius: 20px;
+    border: 0.5px solid #ccc;
 }
 
 .pagination {
@@ -672,9 +676,28 @@ aside #clear-filters {
 #filterMenu {
     display: none;
 }
-
-
-
+.filter-header{
+    gap: 10px;
+}
+.filter-header input {
+    width: 85%;
+    padding-left: 20px;
+    outline: 0;
+    border: 0;
+}
+.search{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 50px;
+    border-radius: 20px;
+    border: 0.5px solid #ccc;
+    padding: 10px 20px 10px 10px;
+}
+.search i{
+    color: #555;
+}
 
 
 
@@ -769,7 +792,12 @@ aside #clear-filters {
     .review-body {
         grid-template-columns: 1fr;
     }
-
+    .all-pros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .catalog{
+        width: 95%;
+    }
     .other-pro {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
@@ -780,12 +808,26 @@ aside #clear-filters {
         width: 80%;
     }
 
-
-    .all-pros {
-        grid-template-columns: repeat(2, 1fr);
+    .search{
+        width: 100%;
+        order: 3;
     }
-
-
+    .pro-card .add-to-cart {
+        font-size: 1.2rem;
+    }
+    
+    .pro-card i {
+        font-size: 1.8rem;
+    }
+    
+    .pro-card #product-stock span {
+        font-size: 1rem;
+        margin: 0;
+        padding: 10px 30px;
+    }
+    .pro-card img {
+        height: 300px;
+    }
 }
 
 @media (max-width: 480px) {

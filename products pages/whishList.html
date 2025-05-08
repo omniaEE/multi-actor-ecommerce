@@ -24,28 +24,37 @@
 
     <script>
         let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
-let data = JSON.parse(localStorage.getItem("all_data"))
+        let data = JSON.parse(localStorage.getItem("all_data"))
         let otherPro = document.querySelector(".other-pro")
 
-        for (let i = 0; i < loggedUser.fav.length; i++) {
-            const product = loggedUser.fav[i]
-            //rating
-            const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
-            const fullStars = Math.floor(avgRating);
-            const halfStar = avgRating % 1 >= 0.5;
-            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+        if (loggedUser.fav.length == 0) {
+            otherPro.innerHTML = `
+            <div style="grid-column: 1 / -1;text-align:center;margin: 50px 0">
+            <h3>You Don't have Wish List Items</h3>
+            <br/>
+            <button class="add-to-cart"><a style="color:#fff;" href="catalog.html">Go Shopping</a></button>
+            </div>
+            `
+        } else {
+            for (let i = 0; i < loggedUser.fav.length; i++) {
+                const product = loggedUser.fav[i]
+                //rating
+                const avgRating = product.ratings.reduce((acc, val) => acc + val, 0) / product.ratings.length;
+                const fullStars = Math.floor(avgRating);
+                const halfStar = avgRating % 1 >= 0.5;
+                const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
-            let starsHtml = '';
-            for (let i = 0; i < fullStars; i++) {
-                starsHtml += `<i class="fa-solid fa-star"></i>`;
-            }
-            if (halfStar) {
-                starsHtml += `<i class="fa-solid fa-star-half-stroke"></i>`;
-            }
-            for (let i = 0; i < emptyStars; i++) {
-                starsHtml += `<i class="fa-regular fa-star"></i>`;
-            }
-            otherPro.innerHTML += `
+                let starsHtml = '';
+                for (let i = 0; i < fullStars; i++) {
+                    starsHtml += `<i class="fa-solid fa-star"></i>`;
+                }
+                if (halfStar) {
+                    starsHtml += `<i class="fa-solid fa-star-half-stroke"></i>`;
+                }
+                for (let i = 0; i < emptyStars; i++) {
+                    starsHtml += `<i class="fa-regular fa-star"></i>`;
+                }
+                otherPro.innerHTML += `
             <div class="pro-card">
                 <img src="${product.images[0]}" data-productid="${product.id}" alt="">
                 <p data-productid="${product.id}">${product.name}</p>
@@ -58,51 +67,59 @@ let data = JSON.parse(localStorage.getItem("all_data"))
                 <div class="review-header" >
                 ${product.stock > 0 ? '<button class="add-to-cart" >Add To Cart</button>' : '<h3 id="product-stock"><span>Out of Stock</span></h3>'}
                 ${loggedUser && loggedUser.fav.find(p => p.id == product.id) ?
-                    '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
-                    :
-                    '<i class="fa-regular fa-heart"></i>'
-                }
+                        '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
+                        :
+                        '<i class="fa-regular fa-heart"></i>'
+                    }
                 </div>
             </div>
             `
+            }
         }
-
 
         let allCards = document.querySelectorAll(".pro-card")
         allCards.forEach(card => {
             card.addEventListener('click', (e) => {
-                //add in cart
-                if (e.target.classList.contains("add-to-cart")) {
-                    //get product obj
-                    let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+                if (loggedUser) {
+                    //add in cart
+                    if (e.target.classList.contains("add-to-cart")) {
+                        //get product obj
+                        let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
 
-                    let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
-                    if (existingCartItem) {
-                        existingCartItem.amount = Number(existingCartItem.amount) + 1;
-                    } else {
-                        loggedUser.cart.push({
-                            product: product,
-                            amount: 1,
-                            color: product.colors[0],
-                            size: product.sizes[0]
-                        })
+                        let existingCartItem = loggedUser.cart.find(p =>
+                            p.product.id == product.id &&
+                            p.color == product.colors[0] &&
+                            p.size == product.sizes[0]
+                        );
+                        if (existingCartItem) {
+                            existingCartItem.amount = Number(existingCartItem.amount) + 1;
+                        } else {
+                            loggedUser.cart.push({
+                                product: product,
+                                amount: 1,
+                                color: product.colors[0],
+                                size: product.sizes[0]
+                            })
+                        }
+                        localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
+
+                        //add in fav
+                    } else if (e.target.classList.contains("fa-heart")) {
+                        //get product obj
+                        let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                        let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+                        if (existingFavItem) {
+                            loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                        } else {
+                            loggedUser.fav.push(product)
+                        }
+                        localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                        location.reload();/////////////
                     }
-                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
-
-                    //add in fav
-                } else if (e.target.classList.contains("fa-heart")) {
-                    //get product obj
-                    let product = data.products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
-
-                    let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
-                    if (existingFavItem) {
-                        loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
-                    } else {
-                        loggedUser.fav.push(product)
-                    }
-                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-                    location.reload();/////////////
+                } else {
+                    window.location.href = `../login/login.html`
                 }
             })
         })
