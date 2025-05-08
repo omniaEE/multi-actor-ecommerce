@@ -1,88 +1,102 @@
 {
   "users": [
-
-  {
-    "id": 1,
-    "role": "customer",
-    "firstName": "Fadl",
-    "lastName": "Yousry",
-    "phone":"01210677917",
-    "email": "fadl@gmail.com",
-    "password": "fd_cust_1",
-    "address": "123 Tanta, Egypt",
-    "orders": [101, 102],
-    "status": "Active",
-    "roleAsSeller":"false",
-    "cart":[],
-    "fav":[],
-    "createdAt": "2025-5-3"
-  },
-  {
-    "id": 2,
-    "role": "customer",
-    "firstName": "Yousef",
-    "lastName": "Hesham",
-    "phone":"01210677917",
-    "email": "yousef@gmail.com",
-    "password": "fd_cust_2",
-    "address": "456 Garbia",
-    "orders": [103, 104],
-    "status": "Banned",
-    "roleAsSeller":"false",
-    "cart":[],
-    "fav":[],
-    "createdAt": "2025-5-4"
-  },
-  {
-    "id": 3,
-    "role": "seller",
-    "firstName": "Alaa",
-    "lastName": "Hamdi",
-    "phone":"01210677917",
-    "email": "alaa@sellhub.com",
-    "password": "alaa_sell_3",
-    "storeName": "Lola Store",
-    "products": [201, 202],
-    "status": "Active",
-    "roleAsSeller":"false",
-    "cart":[],
-    "fav":[],
-    "createdAt": "2025-5-5"
-  },
-  {
-    "id": 4,
-    "role": "seller",
-    "firstName": "Hagar",
-    "lastName": "Gamal",
-    "phone":"01210677917",
-    "email": "hager@sellhub.com",
-    "password": "hager_sell_4",
-    "storeName": "Gora Store",
-    "products": [203, 204],
-    "status": "Banned",
-    "roleAsSeller":"false",
-    "cart":[],
-    "fav":[],
-    "createdAt": "2025-5-6"
-  },
-  {
-    "id": 5,
-    "role": "admin",
-    "firstName": "Omnia",
-    "lastName": "Eid",
-    "phone":"01210677917",
-    "email": "omnia@adminhub.com",
-    "password": "omnia_admin_5",
-    "permissions": ["manage_users", "manage_products", "view_reports"],
-    "status": "Active",
-    "roleAsSeller":"false",
-    "cart":[],
-    "fav":[],
-    "createdAt": "2025-5-7"
-  }
-]
-,
-   "products": [
+    {
+      "id": 1,
+      "role": "customer",
+      "firstName": "Fadl",
+      "lastName": "Yousry",
+      "phone": "01210677917",
+      "email": "fadl@gmail.com",
+      "password": "fd_cust_1",
+      "address": "123 Tanta, Egypt",
+      "orders": [
+        101,
+        102
+      ],
+      "status": "Active",
+      "roleAsSeller": "false",
+      "cart": [],
+      "fav": [],
+      "createdAt": "2025-5-3"
+    },
+    {
+      "id": 2,
+      "role": "customer",
+      "firstName": "Yousef",
+      "lastName": "Hesham",
+      "phone": "01210677917",
+      "email": "yousef@gmail.com",
+      "password": "fd_cust_2",
+      "address": "456 Garbia",
+      "orders": [
+        103,
+        104
+      ],
+      "status": "Banned",
+      "roleAsSeller": "false",
+      "cart": [],
+      "fav": [],
+      "createdAt": "2025-5-4"
+    },
+    {
+      "id": 3,
+      "role": "seller",
+      "firstName": "Alaa",
+      "lastName": "Hamdi",
+      "phone": "01210677917",
+      "email": "alaa@sellhub.com",
+      "password": "alaa_sell_3",
+      "storeName": "Lola Store",
+      "products": [
+        201,
+        202
+      ],
+      "status": "Active",
+      "roleAsSeller": "false",
+      "cart": [],
+      "fav": [],
+      "createdAt": "2025-5-5"
+    },
+    {
+      "id": 4,
+      "role": "seller",
+      "firstName": "Hagar",
+      "lastName": "Gamal",
+      "phone": "01210677917",
+      "email": "hager@sellhub.com",
+      "password": "hager_sell_4",
+      "storeName": "Gora Store",
+      "products": [
+        203,
+        204
+      ],
+      "status": "Banned",
+      "roleAsSeller": "false",
+      "cart": [],
+      "fav": [],
+      "createdAt": "2025-5-6"
+    },
+    {
+      "id": 5,
+      "role": "admin",
+      "firstName": "Omnia",
+      "lastName": "Eid",
+      "phone": "01210677917",
+      "email": "omnia@adminhub.com",
+      "password": "omnia_admin_5",
+      "permissions": [
+        "manage_users",
+        "manage_products",
+        "view_reports"
+      ],
+      "status": "Active",
+      "roleAsSeller": "false",
+      "cart": [],
+      "fav": [],
+      "createdAt": "2025-5-7"
+    }
+  ],
+  "products": [
     {
       "createdAt": "2025-5-3",
       "id": 301,
@@ -125,9 +139,9 @@
         }
       ],
       "images": [
-        "../assets/pro1.jpg",
-        "../assets/pro2.jpg",
-        "../assets/pro3.jpg"
+        "../assets/pro1.png",
+        "../assets/pro2.png",
+        "../assets/pro3.png"
       ]
     },
     {
@@ -166,8 +180,8 @@
         }
       ],
       "images": [
-        "../assets/pro9.jpg",
-        "../assets/pro5.jpg"
+        "../assets/pro9.png",
+        "../assets/pro5.png"
       ]
     },
     {
@@ -211,7 +225,7 @@
         }
       ],
       "images": [
-        "../assets/pro6.jpg"
+        "../assets/pro6.png"
       ]
     },
     {
@@ -248,7 +262,7 @@
         }
       ],
       "images": [
-        "../assets/pro7.jpg"
+        "../assets/pro7.png"
       ]
     },
     {
@@ -303,7 +317,7 @@
         }
       ],
       "images": [
-        "../assets/pro8.jpg"
+        "../assets/pro8.png"
       ]
     },
     {
@@ -354,8 +368,8 @@
         }
       ],
       "images": [
-        "../assets/pro10.jpg",
-        "../assets/pro4.jpg"
+        "../assets/pro10.png",
+        "../assets/pro4.png"
       ]
     },
     {
@@ -399,7 +413,7 @@
         }
       ],
       "images": [
-        "../assets/pro11.jpg"
+        "../assets/pro11.png"
       ]
     },
     {
@@ -443,8 +457,8 @@
         }
       ],
       "images": [
-        "../assets/pro12.jpg",
-        "../assets/pro14.jpg"
+        "../assets/pro12.png",
+        "../assets/pro14.png"
       ]
     },
     {
@@ -483,7 +497,7 @@
         }
       ],
       "images": [
-        "../assets/pro13.jpg"
+        "../assets/pro13.png"
       ]
     },
     {
@@ -522,7 +536,7 @@
         }
       ],
       "images": [
-        "../assets/pro13.jpg"
+        "../assets/pro4.png"
       ]
     },
     {
@@ -561,7 +575,7 @@
         }
       ],
       "images": [
-        "../assets/pro5.jpg"
+        "../assets/pro5.png"
       ]
     },
     {
@@ -600,7 +614,7 @@
         }
       ],
       "images": [
-        "../assets/pro14.jpg"
+        "../assets/pro14.png"
       ]
     },
     {
@@ -639,79 +653,82 @@
         }
       ],
       "images": [
-        "../assets/pro2.jpg"
+        "../assets/pro15.png"
       ]
     }
   ],
-    "orders": [
-      {
-        "id": 101,
-        "customerId": 1,
-        "items": [
-          {
-            "productId": 201,
-            "quantity": 1,
-            "price": 499.99
-          }
-        ],
-        "total": 499.99,
-        "status": "delivered",
-        "orderDate": "2025-03-5"
-      },
-      {
-        "id": 102,
-        "customerId": 2,
-        "items": [
-          {
-            "productId": 202,
-            "quantity": 2,
-            "price": 149.99
-          }
-        ],
-        "total": 299.98,
-        "status": "processing",
-        "orderDate": "2025-03-7"
-      },{
-        "id": 103,
-        "customerId": 3,
-        "items": [
-          {
-            "productId": 202,
-            "quantity": 2,
-            "price": 149.99
-          }
-        ],
-        "total": 299.98,
-        "status": "processing",
-        "orderDate": "2025-04-7"
-      }
-    ],
-    "categories": [
-      {
-        "id": 1,
-        "name": "Men"
-      },
-      {
-        "id": 2,
-        "name": "Women"
-      },
-      {
-        "id": 3,
-        "name": "Kids"
-      },
-      {
-        "id": 4,
-        "name": "Casual"
-      },
-      {
-        "id": 5,
-        "name": "Formal"
-      },
-      {
-        "id": 6,
-        "name": "Party"
-      }
-    ]
-  }
-  
-
+  "orders": [
+    {
+      "Fullname": "yousefhesham",
+      "Address": "Tanta",
+      "id": 101,
+      "customerId": 1,
+      "items": [
+        {
+          "productId": 201,
+          "quantity": 1,
+          "price": 499.99
+        }
+      ],
+      "total": 499.99,
+      "status": "delivered",
+      "orderDate": "2025-03-5"
+    },
+    {
+      "Fullname": "yousefhesham",
+      "Address": "Tanta",
+      "id": 102,
+      "customerId": 2,
+      "items": [
+        {
+          "productId": 202,
+          "quantity": 2,
+          "price": 149.99
+        }
+      ],
+      "total": 299.98,
+      "status": "processing",
+      "orderDate": "2025-03-7"
+    },
+    {
+      "id": 103,
+      "customerId": 3,
+      "items": [
+        {
+          "productId": 202,
+          "quantity": 2,
+          "price": 149.99
+        }
+      ],
+      "total": 299.98,
+      "status": "processing",
+      "orderDate": "2025-04-7"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Men"
+    },
+    {
+      "id": 2,
+      "name": "Women"
+    },
+    {
+      "id": 3,
+      "name": "Kids"
+    },
+    {
+      "id": 4,
+      "name": "Casual"
+    },
+    {
+      "id": 5,
+      "name": "Formal"
+    },
+    {
+      "id": 6,
+      "name": "Party"
+    }
+  ]
+}
