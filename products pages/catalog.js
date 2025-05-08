@@ -75,7 +75,9 @@ function renderProducts(products) {
     filtered = filtered.filter(product =>
         product.name.toLowerCase().includes(searchValue)
     );
-
+    if (filtered.length === 0) {
+        allPros.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; font-size: 1.2rem; color: #666;">No result match your search.</p>`;
+    }
 
     // pagination
     const totalPages = Math.ceil(filtered.length / productsPerPage);
@@ -124,39 +126,47 @@ function renderProducts(products) {
     let allCards = document.querySelectorAll(".pro-card")
     allCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            //add in cart
-            if (e.target.classList.contains("add-to-cart")) {
-                //get product obj
-                let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+            if (loggedUser) {
+                //add in cart
+                if (e.target.classList.contains("add-to-cart")) {
+                    //get product obj
+                    let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
 
-                let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
-                if (existingCartItem) {
-                    existingCartItem.amount = Number(existingCartItem.amount) + 1;
-                } else {
-                    loggedUser.cart.push({
-                        product: product,
-                        amount: 1,
-                        color: product.colors[0],
-                        size: product.sizes[0]
-                    })
+                    let existingCartItem = loggedUser.cart.find(p => 
+                        p.product.id == product.id &&
+                            p.color == product.colors[0] &&
+                            p.size == product.sizes[0]
+                    );
+                    if (existingCartItem) {
+                        existingCartItem.amount = Number(existingCartItem.amount) + 1;
+                    } else {
+                        loggedUser.cart.push({
+                            product: product,
+                            amount: 1,
+                            color: product.colors[0],
+                            size: product.sizes[0]
+                        })
+                    }
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
+
+                    //add in fav
+                } else if (e.target.classList.contains("fa-heart")) {
+                    //get product obj
+                    let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                    loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+                    let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+                    if (existingFavItem) {
+                        loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                    } else {
+                        loggedUser.fav.push(product)
+                    }
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                    renderProducts(products)
                 }
-                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
-
-                //add in fav
-            } else if (e.target.classList.contains("fa-heart")) {
-                //get product obj
-                let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
-
-                loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
-                let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
-                if (existingFavItem) {
-                    loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
-                } else {
-                    loggedUser.fav.push(product)
-                }
-                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-                renderProducts(products)
+            } else {
+                window.location.href = `../login/login.html`
             }
         })
     })
