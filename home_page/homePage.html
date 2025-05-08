@@ -39,7 +39,7 @@
     <header>
       <!-- Authentication Suggestion part -->
       <div
-        class="bg-black text-white align-items-center justify-content-between d-flex px-4 py-1 signUpSuggistionWrapper"
+        class="bg-black text-white align-items-center justify-content-between d-flex py-1 signUpSuggistionWrapper"
       >
         <span class="m-auto">
           Sign up and get 20% off to your first order.
@@ -56,84 +56,120 @@
 
       <!-- Navbar -->
       <nav
-        class="navbar navbar-expand-lg py-3 px-3 bg-body-light align-items-center"
+        class="navbar navbar-expand-lg py-3 bg-body-light align-items-center"
       >
-        <div class="container-fluid">
-          <!-- Website Logo or Name -->
-          <h1 class="navbar-brand fs-2 fw-bolder mx-2" href="#">SHOP.CO</h1>
-
-          <!-- Collapse Icon in Smaller Screens -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTaps"
-            aria-controls="navbarTaps"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+        <div class="container p-0">
+          <div
+            class="row w-100 align-items-center justify-content-between px-sm-3 px-lg-0"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            <!-- Left Part -->
+            <div
+              class="col row align-items-center justify-content-between p-lg-0"
+            >
+              <!-- Collapse Icon in Smaller Screens -->
+              <button
+                class="navbar-toggler col-sm-3 d-sm-flex justify-content-center align-items-center d-lg-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarTaps"
+                aria-controls="navbarTaps"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-          <!-- Navigation Taps -->
-          <div class="collapse navbar-collapse" id="navbarTaps">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item mx-1 dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Shop
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Men</a></li>
-                  <li><a class="dropdown-item" href="#">Women</a></li>
-                  <li><a class="dropdown-item" href="#">Children</a></li>
+              <!-- Website Logo or Name -->
+              <h1 class="col-lg-4 col-sm-9 fs-1 fw-bolder m-0" href="#">
+                SHOP.CO
+              </h1>
+
+              <!-- Navigation Taps -->
+              <div class="col-8 collapse navbar-collapse m-0" id="navbarTaps">
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Shop
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Men</a></li>
+                      <li><a class="dropdown-item" href="#">Women</a></li>
+                      <li><a class="dropdown-item" href="#">Children</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item mx-1">
+                    <a class="nav-link" href="#">On Sale</a>
+                  </li>
+
+                  <li class="nav-item mx-1">
+                    <a class="nav-link" href="#">New Arrivals</a>
+                  </li>
+
+                  <li class="nav-item mx-1">
+                    <a class="nav-link" href="#">Brands</a>
+                  </li>
                 </ul>
-              </li>
+              </div>
+            </div>
 
-              <li class="nav-item mx-1">
-                <a class="nav-link" href="#">On Sale</a>
-              </li>
-
-              <li class="nav-item mx-1">
-                <a class="nav-link" href="#">New Arrivals</a>
-              </li>
-
-              <li class="nav-item mx-1">
-                <a class="nav-link" href="#">Brands</a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Search Box -->
-          <div class="w-50 input-group rounded-5 bg-light mx-5 px-4 flex-row">
-            <span class="input-group-text border-0">
-              <i class="fas fa-search text-muted"></i>
-            </span>
-            <input
-              type="text"
-              placeholder="Search for products..."
-              class="border-0 form-control shadow-none w-75 p-2 bg-light"
-            />
-          </div>
-          <!-- Cart & Profile Icons -->
-          <div class="p-2 fs-5 navbareIconsWrapper">
-            <a href="#" id="cartIcon">
-              <i
-                class="fa-solid fa-cart-shopping mx-3"
-                style="color: #141415"
-              ></i>
-            </a>
-            <a href="#" id="profileIcon">
-              <i
-                class="fa-regular fa-circle-user mx-3"
-                style="color: #141415"
-              ></i>
-            </a>
+            <!-- Right Part -->
+            <div
+              class="col row align-items-center justify-content-lg-between justify-content-sm-end p-0"
+            >
+              <!-- Search Box -->
+              <div
+                class="col-lg-9 d-lg-flex d-sm-none w-75 m-0 input-group rounded-5 bg-light"
+              >
+                <span class="input-group-text border-0">
+                  <i class="fas fa-search text-muted"></i>
+                </span>
+                <input
+                  type="text"
+                  placeholder="Search for products..."
+                  class="border-0 form-control shadow-none p-2 bg-light"
+                />
+              </div>
+              <!-- Cart & Profile Icons -->
+              <div
+                class="col-lg-3 col-sm-8 row w-lg-25 w-sm-100 p-0 justify-content-center align-items-center fs-5 navbareIconsWrapper"
+              >
+                <a
+                  a
+                  href="#"
+                  id="searchIcon"
+                  class="col-sm d-sm-flex justify-content-end d-lg-none"
+                >
+                  <i class="fas fa-search" style="color: #141415"></i>
+                </a>
+                <a
+                  href="#"
+                  id="cartIcon"
+                  class="col-sm col-lg d-flex justify-content-end"
+                >
+                  <i
+                    class="fa-solid fa-cart-shopping mx-lg-3"
+                    style="color: #141415"
+                  ></i>
+                </a>
+                <a
+                  href="#"
+                  id="profileIcon"
+                  class="col-sm col-lg d-flex justify-content-end"
+                >
+                  <i
+                    class="fa-regular fa-circle-user mx-lg-3"
+                    style="color: #141415"
+                  ></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -208,10 +244,18 @@
     <section class="container d-flex flex-column gap-4 align-items-center my-5">
       <h1 class="sectionTitle">NEW ARRIVALS</h1>
       <!-- Products Container -->
-      <div class="row flex-wrap col-12 align-items-center justify-content-center">
+      <div
+        class="row flex-wrap col-12 align-items-center justify-content-center"
+      >
         <!-- Product 1 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro8.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro8.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">T-shirt with Tape Details</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -225,8 +269,14 @@
         </div>
 
         <!-- Product 2 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro14.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro14.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Skinny Fit Jeans</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -236,12 +286,21 @@
             <i class="fa-solid fa-star col"></i>
             <small class="ms-2">5.0</small>
           </div>
-          <h5 class="d-flex">$240 <s class="oldPrice">$260</s> <span class="discountPercentage">-20%</span></h5>
+          <h5 class="d-flex">
+            $240 <s class="oldPrice">$260</s>
+            <span class="discountPercentage">-20%</span>
+          </h5>
         </div>
 
         <!-- Product 3 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro5.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro5.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Checkered Shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -255,8 +314,14 @@
         </div>
 
         <!-- Product 4 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3 ">
-          <img src="../assets/pro10.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro10.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Sleeve Striped T-shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -266,13 +331,20 @@
             <i class="fa-solid fa-star col"></i>
             <small class="ms-2">5.0</small>
           </div>
-          <h5 class="d-flex">$130 <s class="oldPrice">$160</s> <span class="discountPercentage">-30%</span></h5>
+          <h5 class="d-flex">
+            $130 <s class="oldPrice">$160</s>
+            <span class="discountPercentage">-30%</span>
+          </h5>
         </div>
       </div>
 
       <!-- View all Button -->
-      <button class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn">View All</button>
-      <hr class="w-100"/>
+      <button
+        class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn"
+      >
+        View All
+      </button>
+      <hr class="w-100" />
     </section>
 
     <!-- 
@@ -281,10 +353,18 @@
     <section class="container d-flex flex-column gap-4 align-items-center mb-5">
       <h1 class="sectionTitle mt-0">TOP SELLING</h1>
       <!-- Products Container -->
-      <div class="row flex-wrap col-12 align-items-center justify-content-center">
+      <div
+        class="row flex-wrap col-12 align-items-center justify-content-center"
+      >
         <!-- Product 1 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro9.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro9.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Vertical Striped Shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -294,12 +374,21 @@
             <i class="fa-solid fa-star col"></i>
             <small class="ms-2">5.0</small>
           </div>
-          <h5 class="d-flex">$212 <s class="oldPrice">$232</s> <span class="discountPercentage">-20%</span></h5>
+          <h5 class="d-flex">
+            $212 <s class="oldPrice">$232</s>
+            <span class="discountPercentage">-20%</span>
+          </h5>
         </div>
 
         <!-- Product 2 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro11.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro11.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Courage Graphic T-shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -313,8 +402,14 @@
         </div>
 
         <!-- Product 3 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro13.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro13.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Polo with Contrast Trims</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -328,8 +423,14 @@
         </div>
 
         <!-- Product 4 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3 ">
-          <img src="../assets/pro12.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro12.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Faded Skinny Jeans</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -344,9 +445,13 @@
       </div>
 
       <!-- View all Button -->
-      <button class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn">View All</button>
+      <button
+        class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn"
+      >
+        View All
+      </button>
     </section>
-    
+
     <!-- 
     MARK: Cat Catalog  
     -->
@@ -390,9 +495,7 @@
     <section class="container reviewSection my-3">
       <!-- Head of section -->
       <div class="row justify-content-between align-items-center my-4">
-        <h1 class="col-9 sectionTitle text-start m-0">
-          OUR HAPPY CUSTOMERS
-        </h1>
+        <h1 class="col-9 sectionTitle text-start m-0">OUR HAPPY CUSTOMERS</h1>
         <div class="col-3 d-flex justify-content-end mt-2">
           <div>
             <i
