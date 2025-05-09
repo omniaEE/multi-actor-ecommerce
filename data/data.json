@@ -689,20 +689,6 @@
       "total": 299.98,
       "status": "processing",
       "orderDate": "2025-03-7"
-    },
-    {
-      "id": 103,
-      "customerId": 3,
-      "items": [
-        {
-          "productId": 202,
-          "quantity": 2,
-          "price": 149.99
-        }
-      ],
-      "total": 299.98,
-      "status": "processing",
-      "orderDate": "2025-04-7"
     }
   ],
   "categories": [
