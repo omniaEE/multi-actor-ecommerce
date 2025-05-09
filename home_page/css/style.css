@@ -12,14 +12,14 @@ MARK: HomePage
   font-family: Arial Black, sans-serif;
   margin: 50px auto 25px;
 }
+a {
+  color: black;
+  text-decoration: none;
+}
 
 /* 
 MARK: Header 
 */
-.navbar a {
-  text-decoration: none;
-}
-
 .signUpSuggistionWrapper {
   font-size: 0.8rem;
 }

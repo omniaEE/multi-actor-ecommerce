@@ -19,6 +19,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Fontawsome -->
     <link
@@ -27,43 +29,44 @@
     />
     <!-- CSS Styles -->
     <link rel="stylesheet" href="css/style.css" />
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
   <body>
     <!-- 
     MARK: Header  
     -->
-    <header>
-      <!-- Authentication Suggestion part -->
-      <div
-        class="bg-black text-white align-items-center justify-content-between d-flex py-1 signUpSuggistionWrapper"
-      >
-        <span class="m-auto">
-          Sign up and get 20% off to your first order.
-          <a href="#" class="text-white">Sign Up Now</a>
-        </span>
-        <div class="bg-black align-self-end">
-          <button
-            type="button"
-            class="btn-close btn-close-white"
-            aria-label="Close"
-          ></button>
+    <header class="container-fluid">
+      <!-- Sign Up Option -->
+      <div class="row bg-black text-white py-1 signUpSuggistionWrapper">
+        <div class="container row">
+          <div class="col-lg-8 pe-lg-5 col-12 text-center text-lg-end">
+            Sign up and get 20% off to your first order.
+            <b
+              ><a href="#" class="text-white text-decoration-underline"
+                >Sign Up Now</a
+              ></b
+            >
+          </div>
+
+          <!-- Close Button -->
+          <div class="col-lg-4 text-end d-none d-lg-block">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              aria-label="Close"
+            ></button>
+          </div>
         </div>
       </div>
 
-      <!-- Navbar -->
-      <nav
-        class="container-fluid navbar navbar-expand-lg py-3 px-5 bg-body-light"
-      >
-        <div class="col-12 row gap-2">
-          <!-- Left Side -->
-          <div class="col row p-0 justify-content-between">
-            <!-- Collapse Icon in Smaller Screens -->
-            <button
-              class="navbar-toggler col-sm-2 d-sm-flex justify-content-center align-items-center d-lg-none"
+      <!-- Navbare Container -->
+      <div class="row justify-content-center">
+        <div class="container row justify-content-between">
+          <!-- Website Name and berger menue -->
+          <div class="col-7 col-lg-2 row p-0 text-center">
+            <!-- Berger Icon -->
+            <!-- <button
+              class="navbar-toggler col-6 d-md-none"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarTaps"
@@ -72,56 +75,90 @@
               aria-label="Toggle navigation"
             >
               <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> -->
 
-            <!-- Website Logo or Name -->
-            <div class="col-lg-4 col-sm-9 text-start fs-1 fw-bolder p-0">
-              <h1 href="#">SHOP.CO</h1>
-            </div>
-
-            <!-- Navigation Taps -->
-            <div
-              class="col-lg-8 p-0 m-0 collapse navbar-collapse row justify-content-between navbar-nav"
-              id="navbarTaps"
+            <!-- Shop Name -->
+            <a class="fs-1 fw-bolder text-black text-uppercase" href="#"
+              >Shop.co</a
             >
-              <li class="bg-light col nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle p-0"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Shop
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Men</a></li>
-                  <li><a class="dropdown-item" href="#">Women</a></li>
-                  <li><a class="dropdown-item" href="#">Children</a></li>
-                </ul>
-              </li>
+          </div>
 
-              <li class="bg-light col nav-item">
-                <a class="nav-link p-0" href="#">On Sale</a>
-              </li>
+          <!-- Nav Taps -->
+          <div
+            id="navbarTaps"
+            class="col-6 col-xl-4 d-none d-lg-flex row align-items-center justify-content-between"
+          >
+            <div class="col-2 text-secondary"><a href="#">Shop</a></div>
+            <div class="col-3 text-secondary"><a href="#">On Sale</a></div>
+            <div class="col-4 text-secondary"><a href="#">New Arrivals</a></div>
+            <div class="col-3 text-secondary"><a href="#">ContactUs</a></div>
+          </div>
 
-              <li class="bg-light col nav-item">
-                <a class="nav-link p-0" href="#">Brands</a>
-              </li>
-
-              <li class="bg-light col nav-item">
-                <a class="nav-link p-0" href="#">Contact</a>
-              </li>
+          <!-- Search -->
+          <div
+            class="col-xl-4 d-none d-xl-flex row align-items-center justify-content-center"
+          >
+            <div class="w-100 input-group rounded-5 bg-light">
+              <span class="input-group-text border-0">
+                <i class="fas fa-search text-muted"></i>
+              </span>
+              <input
+                type="text"
+                placeholder="Search for products..."
+                class="border-0 form-control shadow-none p-2 bg-light"
+              />
             </div>
           </div>
 
-          <!-- Right Side -->
-          <div class="col bg-info row p-0 justify-content-between">
-            <div class="col-lg-9 col-sm-2 bg-warning">Search</div>
-            <div class="col-lg-3 col-sm-10 bg-secondary">Icons</div>
+          <!-- Right Side Icons -->
+          <div
+            class="col-5 col-lg-4 col-xl-2 row justify-content-evenly align-items-center fs-4"
+          >
+            <!-- Search Icon -->
+            <a
+              a
+              href="#"
+              class="col d-flex justify-content-center d-xl-none text-decoration-none"
+            >
+              <i class="fas fa-search" style="color: #141415"></i>
+            </a>
+
+            <!-- Cart Icon -->
+            <a
+              href="#"
+              class="col col-xl d-flex justify-content-center text-decoration-none"
+            >
+              <i
+                class="fa-solid fa-cart-shopping mx-lg-3"
+                style="color: #141415"
+              ></i>
+            </a>
+
+            <!-- Profile Icon -->
+            <div class="dropdown col col-xl d-flex justify-content-center">
+              <a
+                href="#"
+                id="profileIcon"
+                aria-expanded="false"
+                class="dropdown-toggle dropdown-toggle-no-caret"
+              >
+                <i
+                  class="fa-regular fa-circle-user mx-lg-3"
+                  style="color: #141415"
+                ></i>
+              </a>
+              <!-- Dropdown Menue -->
+              <div id="profileDropdown" class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="./update personal info.html"
+                  >My Profile</a
+                >
+                <a class="dropdown-item" href="#">My Wihlist</a>
+                <a class="dropdown-item" href="#">Log out</a>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </div>
     </header>
 
     <!-- 
@@ -689,6 +726,7 @@
       </div>
     </footer>
     <script src="../js/main.js"></script>
-    <script src="./js/home.js"></script>
+    <script src="../login_data.js"></script>
+    <!-- <script src="./js/home.js"></script> -->
   </body>
 </html>
