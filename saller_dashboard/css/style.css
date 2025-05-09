@@ -299,3 +299,16 @@ input[type="checkbox"] {
     min-height: 100vh;
 }
 
+.is-invalid {
+    border-color: red !important;
+    color: red !important;
+}
+
+.is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.314) !important;
+}
+
+.is-valid {
+    border-color: green !important;
+    color: green !important;
+}
