@@ -20,22 +20,22 @@
         <div id="sidebar" class="sidebar col-10 col-sm-3 col-md-2 p-2 " id="sidebar"></div>
         <div class=" header col p-0 ">
             <div id="header" class=""></div>
-            <div class="bg-light  px-2 px-sm-5  pt-5">
+            <div class="bg-light  px-2 px-sm-5  pt-4">
                 <!----------------- search bar------------------- -->
-                <div class="mb-3 ms-3 position-relative disapper" >
+                <div class="mb-3 ms-3 position-relative disapper">
 
-                    <input type="text" id="userSearch" class="form-control border-start-0 ps-5"
+                    <input type="text" id="userSearch" class="form-control border-start-0 ps-5 border rounded-4"
                         placeholder=" Search for a product...">
                     <i class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
 
                 </div>
 
                 <!-- ----------add product------------------------- -->
-                <button class="btn btn-dark ms-3  mb-3 mb-sm-0 " onclick="addProduct()">Add products <i
+                <button class="btn btn-dark ms-3  mb-3 mb-sm-0 border rounded-4" onclick="addProduct()">Add products <i
                         class="fa-solid fa-plus plus-icon"></i></button>
                 <!-- -----------------category------------------ -->
                 <div class="my-3 mx-3 col-3 d-none d-sm-inline-block disapper">
-                    <select class="form-select" id="categorySelect">
+                    <select class="form-select border rounded-4" id="categorySelect">
                         <option value="">All Categories</option>
                         <!-- dynamically loaded options -->
                     </select>
@@ -56,7 +56,7 @@
 
                 <!-- --------------stock------------------ -->
                 <div class="my-3  col-3 d-none d-sm-inline-block disapper">
-                    <select class="form-select" id="stockSelect">
+                    <select class="form-select rounded-4" id="stockSelect">
                         <option value="">All Stock Status</option>
                         <option value="in">In Stock</option>
                         <option value="out">Out of Stock</option>
@@ -83,194 +83,287 @@
                     </div>
                 </div>
                 <!-- add product -->
-                <section id="addProduct" class="container my-5 p-4 border rounded-4 shadow bg-light d-none">
-                    <h3 class="mb-4 text-center">Add New Product</h3>
-                    <form id="productForm">
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="name5" required>
+                <form id="productForm">
+                    <section id="addProduct" class="d-none d-flex  flex-wrap  gap-4">
+                        <section class=" col-12 col-md-6  card shadow-lg  formBorder">
+                            <div class="card-header bg-dark text-white">
+                                <h5 class="mb-0 ms-2">Product Information</h5>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Price</label>
-                                <input type="number" class="form-control" id="price"   min="1" title="Please enter a positive number greater than 0"required>
-                            </div>
-                        </div>
+                            <div class=" card-body px-3 ">
+                                <div class="row mb-1">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Product Name</label>
+                                        <input type="text" class="form-control textBoxHover" id="name5" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Price</label>
+                                        <input type="number" class="form-control textBoxHover" id="price" min="1"
+                                            title="Please enter a positive number greater than 0" required>
+                                    </div>
+                                </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="description" rows="3" required></textarea>
-                        </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control textBoxHover" id="description" rows="3"
+                                        required></textarea>
+                                </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Category</label>
-                                <select class="form-select" id="category" required>
-                                    <option value="Men">Men</option>
-                                    <option value="Women">Women</option>
-                                    <option value="Kids">Kids</option>
-                                    <option value="Casual">Casual</option>
-                                    <option value="Formal">Formal</option>
-                                    <option value="Party">Party</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity"  min="1" title="Please enter a positive number greater than 0" required>
-                            </div>
-                        </div>
+                                <div class="row mb-1">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Category</label>
+                                        <select class="form-select textBoxHover" id="category" required>
+                                            <option value="Men">Men</option>
+                                            <option value="Women">Women</option>
+                                            <option value="Kids">Kids</option>
+                                            <option value="Casual">Casual</option>
+                                            <option value="Formal">Formal</option>
+                                            <option value="Party">Party</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Quantity</label>
+                                        <input type="number" class="form-control textBoxHover" id="quantity" min="1"
+                                            title="Please enter a positive number greater than 0" required>
+                                    </div>
+                                </div>
 
-                        <div class="mb-3">
-                            <label class="form-label d-block">Sizes:</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="sizeXS" name="sizes" value="xs">
-                                <label class="form-check-label" for="sizeS">XS</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="sizeS" name="sizes" value="s">
-                                <label class="form-check-label" for="sizeS">S</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="sizeM" name="sizes" value="m">
-                                <label class="form-check-label" for="sizeM">M</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="sizeL" name="sizes" value="l">
-                                <label class="form-check-label" for="sizeL">L</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="sizeXL" name="sizes" value="xl">
-                                <label class="form-check-label" for="sizeXL">XL</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="sizeXXL" name="sizes" value="xxl">
-                                <label class="form-check-label" for="sizeXL">XXL</label>
-                            </div>
-                        </div>
+                                <div class="mb-3">
+                                    <label class="form-label d-block">Sizes:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover " type="checkbox" id="sizeXS"
+                                            name="sizes" value="xs">
+                                        <label class="form-check-label" for="sizeS">XS</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover " type="checkbox" id="sizeS"
+                                            name="sizes" value="s">
+                                        <label class="form-check-label" for="sizeS">S</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeM"
+                                            name="sizes" value="m">
+                                        <label class="form-check-label" for="sizeM">M</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeL"
+                                            name="sizes" value="l">
+                                        <label class="form-check-label" for="sizeL">L</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeXL"
+                                            name="sizes" value="xl">
+                                        <label class="form-check-label" for="sizeXL">XL</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeXXL"
+                                            name="sizes" value="xxl">
+                                        <label class="form-check-label" for="sizeXXL">XXL</label>
+                                    </div>
+                                </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Colors</label>
-                            <div class="d-flex align-items-center gap-2">
-                                <input type="color" class="form-control form-control-color" id="colorInput"
-                                    value="#563d7c" title="Choose color">
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addColor()"> Add
-                                    Color</button>
-                                <div id="colorList" class="list-inline mt-2 ms-5"></div>
+                                <div class="mb-3">
+                                    <label class="form-label">Colors</label>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="color" class="form-control form-control-color textBoxHover"
+                                            id="colorInput" value="#563d7c" title="Choose color">
+                                        <button type="button" class="btn btn-outline-dark btn-sm" onclick="addColor()">
+                                            Add
+                                            Color</button>
+                                        <div id="colorList" class="list-inline mt-2 ms-5"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </section>
+                        <!-- ----------------------------------------------- -->
+                        <section class=" col-12 col-md  ">
+                            <section class=" card shadow-lg formBorder v-50">
+                                <div class="card-header bg-dark text-white">
+                                    <h5 class="mb-0 ms-2">Image Product</h5>
+                                </div>
+                                <div class=" card-body px-3 ">
+                                    <div class="mb-3">
+                                        <label  class="form-label">Upload Image</label>
+                                        <label for="imageUpload" class="upload-icon">
+                                            <i class="fas fa-upload"></i>  
+                                        </label>
+                                        <input type="file" class="form-control textBoxHover" id="imageUpload"
+                                            name="image" accept="image/*" multiple >
+                                        </div>
+                                        <div id="previewContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
 
-                        <div class="mb-3">
-                            <label for="imageUpload" class="form-label">Product Image</label>
-                            <input type="file" class="form-control" id="imageUpload" name="image" accept="image/*"
-                            multiple required>
-                            <div id="previewContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
+                                    <div class="row my-3">
+                                        <div class="mb-3 col-md-6">
+                                            <button type="submit"
+                                                class="btn btn-dark col-12 col-sm-6 col-md-4 px-0  w-100">
+                                                Add
+                                                Product</button>
+                                        </div>
+                                        <div class="mb-3 col-md-6">
+                                            <button type="button"
+                                                class="btn btn-outline-danger col-12 col-sm-6 col-md-4 px-0 w-100"
+                                                id="closeadd" onclick="closeUpdate()">close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
+                    </section>
+                </form>
 
-                        </div>
-
-
-                        <div class="row my-3">
-                            <div class="mb-3 col-md-6">
-                                <button type="submit" class="btn btn-success col-12 col-md-6 px-3 w-100">✅ Add Product</button>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <button type="button" class="btn btn-danger col-12 col-md-6 px-3 w-100"
-                                    id="closeadd" onclick="closeUpdate()">close</button>
-                            </div>
-                        </div>
-                        
-                    </form>
-                </section>
                 <!-- --------------------------------- -->
                 <!-- update product -->
-                <div class="container my-5 d-none p-4 border rounded-4 shadow bg-light d-none" id="update">
-                    <h2>Edit Product</h2>
-                    <form id="editForm">
-                        <div class="row mb-3">
-                            <div class="mb-3 col-md-6">
-                                <label for="editName" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="editName" required>
+                <form id="editForm">
+                    <section id="update" class="d-none d-flex g-2 flex-wrap justify-content-between gap-3">
+                        <section class=" col-12 col-md-6  card shadow-lg  formBorder">
+                            <div class="card-header bg-dark text-white">
+                                <h5 class="mb-0 ms-2">Edit Product</h5>
                             </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="editPrice" class="form-label">Price</label>
-                                <input type="number" min="1" class="form-control" id="editPrice" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editDescription" class="form-label">Description</label>
-                            <textarea class="form-control" id="editDescription" required></textarea>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="editCategory" class="form-label">Category</label>
-                                <select class="form-select" id="editCategory">
-                                    <option value="Men">Men</option>
-                                    <option value="Women">Women</option>
-                                    <option value="Kids">Kids</option>
-                                    <option value="Casual">Casual</option>
-                                    <option value="Formal">Formal</option>
-                                    <option value="Party">Party</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="editQuantity" min="1" class="form-label">Stock Quantity</label>
-                                <input type="number" class="form-control" id="editQuantity">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Colors</label>
-                                <div class="d-flex align-items-center gap-2">
-                                    <input type="color" class="form-control form-control-color" id="editColorInput"
-                                        value="#563d7c">
-                                    <button type="button" class="btn btn-outline-primary btn-sm"
-                                        onclick="addEditColor()">Add Color</button>
-                                    <div id="editColorList" class="list-inline mt-2 ms-5"></div>
+                            <div class=" card-body px-3 ">
+                                <div class="row mb-1">
+                                    <div class="col-md-6">
+                                        <label for="editName" class="form-label">Product Name</label>
+                                        <input type="text" class="form-control textBoxHover" id="editName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="editPrice" class="form-label">Price</label>
+                                        <input type="number" class="form-control textBoxHover" id="editPrice" min="1"
+                                            title="Please enter a positive number greater than 0" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="editDescription" class="form-label">Description</label>
+                                    <textarea class="form-control textBoxHover" id="editDescription" rows="3"
+                                        required></textarea>
+                                </div>
+
+                                <div class="row mb-1">
+                                    <div class="col-md-6">
+                                        <label for="editCategory" class="form-label">Category</label>
+                                        <select class="form-select textBoxHover" id="editCategory" required>
+                                            <option value="Men">Men</option>
+                                            <option value="Women">Women</option>
+                                            <option value="Kids">Kids</option>
+                                            <option value="Casual">Casual</option>
+                                            <option value="Formal">Formal</option>
+                                            <option value="Party">Party</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="editQuantity" class="form-label">Quantity</label>
+                                        <input type="number" class="form-control textBoxHover" id="editQuantity" min="1"
+                                            title="Please enter a positive number greater than 0" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label d-block">Sizes:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeXS"
+                                            name="editSizes" value="xs">
+                                        <label class="form-check-label" for="editSizeXS">XS</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeS"
+                                            name="editSizes" value="s">
+                                        <label class="form-check-label" for="editSizeS">S</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeM"
+                                            name="editSizes" value="m">
+                                        <label class="form-check-label" for="editSizeM">M</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeL"
+                                            name="editSizes" value="l">
+                                        <label class="form-check-label" for="editSizeL">L</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeXL"
+                                            name="editSizes" value="xl">
+                                        <label class="form-check-label" for="editSizeXL">XL</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeXXL"
+                                            name="editSizes" value="xxl">
+                                        <label class="form-check-label" for="editSizeXXL">XXL</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Colors</label>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="color" class="form-control form-control-color" id="editColorInput"
+                                            value="#563d7c">
+                                        <button type="button" class="btn btn-outline-primary btn-sm"
+                                            onclick="addEditColor()">Add Color</button>
+                                        <div id="editColorList" class="list-inline mt-2 ms-5"></div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label d-block">Sizes:</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="editSizeXS" name="editSizes" value="xs">
-                                    <label class="form-check-label" for="editSizeXS">XS</label>
+                        </section>
+                        <!-- ----------------------------------------------- -->
+                        <section class=" col-12 col-md-5  ">
+                            <section class=" card shadow-lg formBorder v-50">
+                                <div class="card-header bg-dark text-white">
+                                    <h5 class="mb-0 ms-2">Change Image Product</h5>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="editSizeS" name="editSizes" value="s">
-                                    <label class="form-check-label" for="editSizeS">S</label>
+                                <div class=" card-body px-3 ">
+                                    <div class="mb-3">
+                                        <label  class="form-label">Upload Image</label>
+                                        <label for="editImageUpload" class="upload-icon ">
+                                            <i class="fas fa-upload"></i>  
+                                        </label>
+                                        <input type="file" class="form-control textBoxHover" id="editImageUpload" accept="image/*" multiple>
+
+                                    </div>
+                                    <div id="previewContainerUpdate" class="mt-2 d-flex flex-wrap gap-2"></div>
+
+                                    <div class="row my-3">
+                                        <div class="mb-3 col-md-6">
+                                            <button type="submit"
+                                                class="btn btn-dark col-12 col-sm-6 col-md-4 px-3 w-100"
+                                                id="saveButton">Save Changes</button>
+                                        </div>
+                                        <div class="mb-3 col-md-6">
+                                            <button type="button"
+                                                class="btn btn-outline-danger col-12 col-sm-6 col-md-4 px-3 w-100"
+                                                id="closeUpdate">close</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="editSizeM" name="editSizes" value="m">
-                                    <label class="form-check-label" for="editSizeM">M</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="editSizeL" name="editSizes" value="l">
-                                    <label class="form-check-label" for="editSizeL">L</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="editSizeXL" name="editSizes" value="xl">
-                                    <label class="form-check-label" for="editSizeXL">XL</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="editSizeXXL" name="editSizes" value="xxl">
-                                    <label class="form-check-label" for="editSizeXXL">XXL</label>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row my-3">
-                            <div class="mb-3 col-md-6">
-                                <button type="submit" class="btn btn-success col-12 col-md-6 px-3 w-100"
-                                    id="saveButton">Save Changes</button>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <button type="button" class="btn btn-danger col-12 col-md-6 px-3 w-100"
-                                    id="closeUpdate">close</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                            </section>
+                        </section>
+                    </section>
+                </form>
             </div>
         </div>
 
     </main>
 
+
+
+
+    <!-- ----------------------confirm delete product modal------------------------------- -->
+    <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteProductModalLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this product? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn" onclick="deleteShore()">Yes,
+                        Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------------------confirm delete product modal------------------------------- -->
 
 
 

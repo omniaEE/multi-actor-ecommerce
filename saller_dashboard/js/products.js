@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     filterProducts();
 });
 
-//add product
+//add product button
 window.addProduct = function () {
     document.getElementById("addProduct").classList.remove("d-none");
     document.getElementById("productsContainer").classList.add("d-none");
@@ -116,7 +116,7 @@ window.addProduct = function () {
     document.querySelectorAll(".disapper").forEach(el => {
         el.classList.add("hide_department");
     });
-    }
+}
 
 // add color 
 let colorList = [];
@@ -137,23 +137,58 @@ window.addColor = function () {
 }
 
 // image view 
+let selectedImages = [];
+
 document.getElementById("imageUpload").addEventListener("change", function (e) {
     const files = Array.from(e.target.files);
     const previewContainer = document.getElementById("previewContainer");
-    previewContainer.innerHTML = "";
 
     files.forEach(file => {
         const reader = new FileReader();
         reader.onload = function () {
+            const imageData = reader.result;
+            selectedImages.push(imageData); // خزّن الصورة في المصفوفة
+
+            // إنشاء عنصر عرض الصورة + زر حذف
+            const wrapper = document.createElement("div");
+            wrapper.style.position = "relative";
+            wrapper.style.display = "inline-block";
+            wrapper.style.marginRight = "5px";
+
+
             const img = document.createElement("img");
-            img.src = reader.result;
+            img.src = imageData;
             img.classList.add("img-thumbnail");
-            img.style.maxWidth = "100px";
-            previewContainer.appendChild(img);
+            img.style.Width = "100px";
+            img.style.height = "100px";
+
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "x";
+            deleteBtn.className = "btn btn-sm btn-danger position-absolute top-0 end-0";
+            deleteBtn.style.transform = "translate(30%, -10%)";
+            deleteBtn.style.borderRadius = "50%";
+            deleteBtn.style.width = "25px";
+            deleteBtn.style.height = "25px";
+            deleteBtn.style.padding = "0";
+            deleteBtn.title = "Remove Image";
+
+            deleteBtn.onclick = function () {
+                selectedImages = selectedImages.filter(img => img !== imageData);
+                wrapper.remove();
+            };
+
+            wrapper.appendChild(img);
+            wrapper.appendChild(deleteBtn);
+            previewContainer.appendChild(wrapper);
         };
         reader.readAsDataURL(file);
     });
+
+    // Clear file input so re-adding same image works
+    e.target.value = "";
 });
+
 
 
 //send form
@@ -169,59 +204,51 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
 
     const selectedSizes = Array.from(document.querySelectorAll('input[name="sizes"]:checked')).map(checkbox => checkbox.value);
 
-    const imageInput = document.getElementById("imageUpload");
-    const imageFile = imageInput.files[0];
-
-    if (!imageFile) {
-        alert("Please upload an image.");
+    if (selectedImages.length === 0) {
+        alert("Please upload at least one image.");
         return;
     }
-
-    const reader = new FileReader();
-    reader.onload = function () {
-        const imageBase64 = reader.result;
-
-        let all_data = JSON.parse(localStorage.getItem("all_data")) || {};
-        if (!Array.isArray(all_data.products)) {
-            all_data.products = [];
-        }
-
-        const newId = Math.max(0, ...all_data.products.map(p => p.id || 0)) + 1;
-
-        const newProduct = {
-            id: newId,
-            name: name,
-            description: description,
-            price: price,
-            old_price: "",
-            colors: colorList,
-            sizes: selectedSizes,
-            stock: quantity,
-            category: category,
-            sellerId: 4,
-            ratings: [5],
-            images: [imageBase64]
-        };
-
-        all_data.products.push(newProduct);
-        localStorage.setItem("all_data", JSON.stringify(all_data));
-
-        alert("✅ Product added successfully!");
-
-        // Reset form
-        e.target.reset();
-        document.getElementById("colorList").innerHTML = "";
-        colorList.length = 0;
-        document.getElementById("preview").src = "";
+    
+    let all_data = JSON.parse(localStorage.getItem("all_data")) || {};
+    if (!Array.isArray(all_data.products)) {
+        all_data.products = [];
+    }
+    
+    const newId = Math.max(0, ...all_data.products.map(p => p.id || 0)) + 1;
+    
+    const newProduct = {
+        id: newId,
+        name: name,
+        description: description,
+        price: price,
+        old_price: "",
+        colors: colorList,
+        sizes: selectedSizes,
+        stock: quantity,
+        category: category,
+        sellerId: 4,
+        ratings: [5],
+        images: selectedImages // هنا الصور اللي المستخدم رفعها
     };
-
-    reader.readAsDataURL(imageFile);
+    
+    all_data.products.push(newProduct);
+    localStorage.setItem("all_data", JSON.stringify(all_data));
+    
+    alert("✅ Product added successfully!");
+    
+    // Reset form
+    e.target.reset();
+    document.getElementById("colorList").innerHTML = "";
+    colorList.length = 0;
+    selectedImages = [];
+    document.getElementById("previewContainer").innerHTML = "";
+    
 });
 
 
 
 
-// update product
+// update product button
 let editColorList = [];
 function editProduct(productId) {
     document.getElementById("update").classList.remove("d-none");
@@ -236,10 +263,10 @@ function editProduct(productId) {
 
 
     // Set sizes
-const sizeCheckboxes = document.querySelectorAll('input[name="editSizes"]');
-sizeCheckboxes.forEach(cb => {
-    cb.checked = product.sizes?.includes(cb.value);
-});
+    const sizeCheckboxes = document.querySelectorAll('input[name="editSizes"]');
+    sizeCheckboxes.forEach(cb => {
+        cb.checked = product.sizes?.includes(cb.value);
+    });
 
 
     if (product) {
@@ -248,6 +275,7 @@ sizeCheckboxes.forEach(cb => {
         document.getElementById("editDescription").value = product.description;
         document.getElementById("editCategory").value = product.category;
         document.getElementById("editQuantity").value = product.stock;
+
 
         editColorList = product.colors || [];
         document.getElementById("editColorList").innerHTML = "";
@@ -267,6 +295,101 @@ sizeCheckboxes.forEach(cb => {
             };
             document.getElementById("editColorList").appendChild(li);
         });
+
+        // show photo in update products
+        const previewContainer = document.getElementById("previewContainerUpdate");
+        previewContainer.innerHTML = "";
+
+        if (Array.isArray(product.images)) {
+            product.images.forEach((imgSrc, index) => {
+                const wrapper = document.createElement("div");
+                wrapper.style.position = "relative";
+                wrapper.style.display = "inline-block";
+                wrapper.style.marginRight = "5px";
+
+                const img = document.createElement("img");
+                img.src = imgSrc;
+                img.classList.add("img-thumbnail");
+                img.style.Width = "100px";
+                img.style.height = "100px";
+                img.style.objectFit = "cover";
+
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "x";
+                deleteBtn.className = "btn btn-sm btn-danger position-absolute top-0 end-0";
+                deleteBtn.style.transform = "translate(30%, -10%)";
+                deleteBtn.style.borderRadius = "50%";
+                deleteBtn.style.width = "25px";
+                deleteBtn.style.height = "25px";
+                deleteBtn.style.padding = "0";
+                deleteBtn.title = "Remove Image";
+
+                deleteBtn.onclick = function () {
+                    product.images.splice(index, 1);
+                    wrapper.remove();
+                };
+
+                wrapper.appendChild(img);
+                wrapper.appendChild(deleteBtn);
+                previewContainer.appendChild(wrapper);
+            });
+        }
+        // add new photo in update products
+        document.getElementById("editImageUpload").addEventListener("change", function (e) {
+            const files = Array.from(e.target.files);
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const imgBase64 = reader.result;
+
+                    product.images.push(imgBase64);
+
+                    // view new photo which added in update products
+                    const wrapper = document.createElement("div");
+                    wrapper.style.position = "relative";
+                    wrapper.style.display = "inline-block";
+                    wrapper.style.marginRight = "5px";
+
+                    const img = document.createElement("img");
+                    img.src = imgBase64;
+                    img.classList.add("img-thumbnail");
+                    img.style.maxWidth = "100px";
+                    img.style.height = "100px";
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.innerHTML = "×";
+                    deleteBtn.style.position = "absolute";
+                    deleteBtn.style.top = "0";
+                    deleteBtn.style.right = "0";
+                    deleteBtn.style.background = "red";
+                    deleteBtn.style.color = "white";
+                    deleteBtn.style.border = "none";
+                    deleteBtn.style.borderRadius = "50%";
+                    deleteBtn.style.width = "20px";
+                    deleteBtn.style.height = "20px";
+                    deleteBtn.style.cursor = "pointer";
+
+                    deleteBtn.onclick = function () {
+                        const index = product.images.indexOf(imgBase64);
+                        if (index !== -1) {
+                            product.images.splice(index, 1); 
+                            wrapper.remove(); 
+                        }
+                    };
+
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(deleteBtn);
+                    document.getElementById("previewContainerUpdate").appendChild(wrapper);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+
+
+
         document.getElementById("saveButton").onclick = function () {
             saveProductEdits(productId);
         };
@@ -321,6 +444,7 @@ function saveProductEdits(productId) {
         const description = document.getElementById("editDescription").value.trim();
         const category = document.getElementById("editCategory").value;
         const quantity = parseInt(document.getElementById("editQuantity").value);
+        const images = Array.from(document.querySelectorAll('#previewContainerUpdate img')).map(img => img.src);
 
         product.name = name;
         product.price = price;
@@ -328,10 +452,11 @@ function saveProductEdits(productId) {
         product.category = category;
         product.stock = quantity;
         product.colors = editColorList;
+        product.images = images;
 
         const selectedSizes = Array.from(document.querySelectorAll('input[name="editSizes"]:checked')).map(cb => cb.value);
         product.sizes = selectedSizes;
-        
+
 
 
 
@@ -360,18 +485,19 @@ function closeUpdate() {
 
 //delete product
 function deleteProduct(productId) {
-    const confirmDelete = confirm("do you sure you want to delete this product?");
-
-    if (confirmDelete) {
-        const all_data = JSON.parse(localStorage.getItem("all_data")) || { products: [] };
-
+    this.productId = productId;
+    const logoutModal = new bootstrap.Modal(document.getElementById('deleteProductModal'));
+    logoutModal.show();
+}
+function deleteShore() {
+    if (productId !== null) {
+        let all_data = JSON.parse(localStorage.getItem("all_data")) || {};
         all_data.products = all_data.products.filter(p => p.id !== productId);
-
         localStorage.setItem("all_data", JSON.stringify(all_data));
-
         window.location.reload();
     }
 }
+
 
 // active navbar
 const observer = new MutationObserver(() => {

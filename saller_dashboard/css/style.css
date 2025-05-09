@@ -87,9 +87,11 @@ table tbody tr:hover td:last-child {
     border-bottom-right-radius: 15px;
 }
 
-small {
-    font-size: 10px;
-    color: #2d2929;
+.small {
+    font-size: 12px;
+    color: #aba0a0;
+    line-height: 1.2; 
+
 }
 
 .star {
@@ -235,7 +237,7 @@ td {
 }
 
 /* -----search bar---------------------- */
-#userSearch:focus {
+#userSearch:focus,#categorySelect:focus,#stockSelect:focus ,.textBoxHover:focus {
     box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
     border-color: #6c757d;
 }
@@ -245,3 +247,37 @@ td {
 .hide_department{
     display: none !important;
 }
+.formBorder{
+    border-radius: 30px !important;
+    overflow: hidden;
+}
+
+
+
+/* ---------------------upload image icon-------------------------- */
+#imageUpload,#editImageUpload {
+    display: none;
+}
+
+/* تخصيص الأيقونة */
+.upload-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #2a2a2a;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+}
+
+/* تأثير عند التمرير بالماوس */
+.upload-icon:hover {
+    background-color: #3eaf42;
+    box-shadow: 1px 1px 10px 1px rgb(0, 0, 0);
+    transform: translateY(-5px) ;
+
+}
+
