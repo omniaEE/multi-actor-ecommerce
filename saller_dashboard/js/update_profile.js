@@ -31,14 +31,19 @@ if (user) {
 window.updateProfile = function () {
     document.getElementById("profileCard").classList.remove("d-none");
     document.getElementById("securityCard").classList.add("d-none");
+    document.getElementById("messageCard").classList.add("d-none");
+
 }
 //security button
 window.updateSecurity = function () {
-    document.getElementById("profileCard").classList.add("d-none");
     document.getElementById("securityCard").classList.remove("d-none");
+    document.getElementById("profileCard").classList.add("d-none");
+    document.getElementById("messageCard").classList.add("d-none");
+
 }
 //message button
 window.updateMessage = function () {
+    document.getElementById("messageCard").classList.remove("d-none");
     document.getElementById("profileCard").classList.add("d-none");
     document.getElementById("securityCard").classList.add("d-none");
 }
@@ -79,8 +84,6 @@ document.getElementById("profileForm").addEventListener("submit", function (e) {
 //-----------------------------------------------update password-(security))-----------------------------------------------------------------------------------
 
 // check confirm password
-window.onload = function () {
-
 document.getElementById("confirmPassword").addEventListener("input", function () {
     const password = document.getElementById("newPassword").value;
     const confirmPasswordInput = document.getElementById("confirmPassword");
@@ -91,7 +94,6 @@ document.getElementById("confirmPassword").addEventListener("input", function ()
         confirmPasswordInput.classList.add("is-invalid");
     }
 });
-};
 
 //--------------------------------------------------------------------------------------------
 // show alert
@@ -174,4 +176,3 @@ function changePassword(event) {
     })
 })()
 
-//-------------------------bootstrap-----alert---------------------------------------------------------------------------------

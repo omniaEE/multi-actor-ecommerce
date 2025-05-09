@@ -25,7 +25,7 @@
                             Profile</span></a>
                     <a href="#" onclick="updateSecurity()"><i class="fas fa-lock"></i><span class="label">
                             Security</span></a>
-                    <a href="#" onclick="showMessages()"><i class="fas fa-envelope-open"></i><span class="label">
+                    <a href="#" onclick="updateMessage()"><i class="fas fa-envelope-open"></i><span class="label">
                             Message</span></a>
 
                 </div>
@@ -37,7 +37,7 @@
             <div class="d-flex flex-column py-0">
                 <nav class="d-flex justify-content-end align-items-center">
                     <div class="dropdown">
-                        <div class="d-flex align-items-center dropdown-toggle text-white" data-bs-toggle="dropdown" 
+                        <div class="d-flex align-items-center dropdown-toggle text-white" data-bs-toggle="dropdown"
                             style="cursor: pointer;">
                             <img src="image/fadl0 anuimi.png" alt="" class="rounded-circle me-2 pt-2" width="60"
                                 height="70">
@@ -75,25 +75,25 @@
                         <form id="profileForm">
                             <div class="mb-3">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" required pattern="[A-Za-z]{3,}"
+                                <input type="text" class="form-control textBoxHover" id="firstName" required pattern="[A-Za-z]{3,}"
                                     title=" First name must start with at least 3 letters">
                             </div>
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" required pattern="[A-Za-z]{3,}"
+                                <input type="text" class="form-control textBoxHover" id="lastName" required pattern="[A-Za-z]{3,}"
                                     title=" last name must start with at least 3 letters">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" required>
+                                <input type="email" class="form-control textBoxHover" id="email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" pattern="01[0125][0-9]{8}">
+                                <input type="tel" class="form-control textBoxHover" id="phone" pattern="01[0125][0-9]{8}">
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">address</label>
-                                <textarea class="form-control" id="address" rows="3"></textarea>
+                                <textarea class="form-control textBoxHover" id="address" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-dark">Save Changes</button>
                         </form>
@@ -110,11 +110,11 @@
                         <form id="securityForm" class="needs-validation" novalidate onsubmit="changePassword(event)">
                             <div class="mb-3">
                                 <label for="currentPassword" class="form-label">Current Password</label>
-                                <input type="password" class="form-control" id="currentPassword" required>
+                                <input type="password" class="form-control textBoxHover" id="currentPassword" required>
                             </div>
                             <div class="mb-3">
                                 <label for="newPassword" class="form-label">New Password</label>
-                                <input type="password" minlength="8" class="form-control" id="newPassword" required
+                                <input type="password" minlength="8" class="form-control textBoxHover" id="newPassword" required
                                     title="Password must be at least 8 characters">
                                 <div class="invalid-feedback font_error">
                                     Password must be at least 8 characters
@@ -122,7 +122,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                                <input type="password" minlength="8" class="form-control" id="confirmPassword" required
+                                <input type="password" minlength="8" class="form-control textBoxHover" id="confirmPassword" required
                                     title="Password must be at least 8 characters">
                                 <div class="invalid-feedback font_error">
                                     Password don't match
@@ -133,6 +133,122 @@
                         </form>
                     </div>
                 </div>
+
+                <!-- message -->
+                <div class="card shadow-lg d-none" id="messageCard">
+                    <div class="card-header bg-dark text-white d-flex align-items-center">
+                        <i class="fas fa-envelope-open-text me-2 "></i>
+                        <h4 class="mb-0">Customer Messages</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <!-- Message Card 1 -->
+                            <div class="col-md-6">
+                                <div class="card h-100 border-dark shadow-sm products-all">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-user me-2 text-black"></i>Sarah Johnson
+                                        </h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            <i class="fas fa-envelope me-2 text-black"></i>sarah@example.com
+                                        </h6>
+                                        <p><i class="fas fa-tag me-2 text-black"></i><strong>Subject:</strong> Product
+                                            Inquiry</p>
+                                        <p><i class="fas fa-comment-dots me-2 text-black"></i><strong>Message:</strong>
+                                            Can you provide more details about the product specs?</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar-alt me-1 text-black"></i>2025-05-10
+                                        </small>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash text-black me-1"></i>Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Message Card 2 -->
+                            <div class="col-md-6">
+                                <div class="card h-100 border-dark shadow-sm products-all">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-user me-2 text-black"></i>Mohamed Ali
+                                        </h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            <i class="fas fa-envelope me-2 text-black"></i>mohamed@example.com
+                                        </h6>
+                                        <p><i class="fas fa-tag me-2 text-black"></i><strong>Subject:</strong> Complaint
+                                        </p>
+                                        <p><i class="fas fa-comment-dots me-2 text-black"></i><strong>Message:</strong>
+                                            The item I received is damaged. Please assist.</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar-alt me-1 text-black"></i>2025-05-09
+                                        </small>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash text-black me-1"></i>Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Message Card 3 -->
+                            <div class="col-md-6 sha">
+                                <div class="card h-100 border-dark shadow-sm products-all">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-user me-2 text-black"></i>Mohamed Ali
+                                        </h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            <i class="fas fa-envelope me-2 text-black"></i>mohamed@example.com
+                                        </h6>
+                                        <p><i class="fas fa-tag me-2 text-black"></i><strong>Subject:</strong> Complaint
+                                        </p>
+                                        <p><i class="fas fa-comment-dots me-2 text-black"></i><strong>Message:</strong>
+                                            The item I received is damaged. Please assist.</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar-alt me-1 text-black"></i>2025-05-09
+                                        </small>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash text-black me-1"></i>Delete
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Message Card 3 -->
+                            </div><div class="col-md-6">
+                                <div class="card h-100 border-dark shadow-sm products-all">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-user me-2 text-black"></i>Mohamed Ali
+                                        </h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            <i class="fas fa-envelope me-2 text-black"></i>mohamed@example.com
+                                        </h6>
+                                        <p><i class="fas fa-tag me-2 text-black"></i><strong>Subject:</strong> Complaint
+                                        </p>
+                                        <p><i class="fas fa-comment-dots me-2 text-black"></i><strong>Message:</strong>
+                                            The item I received is damaged. Please assist.</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar-alt me-1 text-black"></i>2025-05-09
+                                        </small>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash text-black me-1"></i>Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             </div>
         </div>
     </main>
