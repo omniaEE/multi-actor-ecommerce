@@ -21,6 +21,9 @@
         <h1 style="text-align: center;">YOUR WISHLIST</h1>
         <div class="other-pro">
         </div>
+        <div class="tost">
+            <p>ADDED TO CART</p><i class="fa-solid fa-xmark"></i>
+        </div>
         <br />
         <br />
     </section>
@@ -28,6 +31,22 @@
 
 
     <script>
+        //-----------------------------------apply toast
+        let toastTimeout
+        function showToast() {
+            const toast = document.querySelector(".tost");
+            toast.style.display = "flex";
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.style.display = "none";
+            }, 1500);
+            toast.querySelector("i").addEventListener('click', () => {
+                toast.style.display = "none";
+                clearTimeout(toastTimeout)
+            });
+        }
+
+
         let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
         let data = JSON.parse(localStorage.getItem("all_data"))
         let otherPro = document.querySelector(".other-pro")
@@ -107,7 +126,8 @@
                             })
                         }
                         localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
+                        //----------toast
+                        showToast()
 
                         //add in fav
                     } else if (e.target.classList.contains("fa-heart")) {

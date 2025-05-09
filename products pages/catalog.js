@@ -27,7 +27,20 @@ const productsPerPage = 9;
 
 
 
-
+//-----------------------------------apply toast
+let toastTimeout
+function showToast() {
+    const toast = document.querySelector(".tost");
+    toast.style.display = "flex";
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.style.display = "none";
+    }, 1500);
+    toast.querySelector("i").addEventListener('click', () => {
+        toast.style.display = "none";
+        clearTimeout(toastTimeout)
+    });
+}
 
 
 
@@ -148,7 +161,8 @@ function renderProducts(products) {
                         })
                     }
                     localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
+                    //----------toast
+                    showToast()
 
                     //add in fav
                 } else if (e.target.classList.contains("fa-heart")) {

@@ -5,10 +5,16 @@
     font-family: Arial, sans-serif;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-a{
+
+a {
     text-decoration: none;
     color: #000;
 }
+
+body {
+    position: relative;
+}
+
 .product-details {
     width: 85%;
     margin: 50px auto;
@@ -182,13 +188,13 @@ h1 {
     transform: scale(1.1);
 }
 
-#addedToCart {
+/* #addedToCart {
     display: none;
     font-size: 1.2rem;
     color: #000;
     font-weight: bold;
     margin: 10px;
-}
+} */
 
 #product-stock span {
     background-color: rgb(255, 226, 226);
@@ -198,6 +204,26 @@ h1 {
     margin: 10px 0;
 }
 
+.tost {
+    background-color: #01ab31;
+    padding: 10px 30px;
+    border-radius: 20px;
+    width: 35%;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+}
+
+.tost p,
+.tost i {
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
 
 
 
@@ -357,6 +383,10 @@ h1 {
     color: #fff;
     transform: scale(1.07);
 }
+
+
+
+
 
 
 
@@ -676,16 +706,19 @@ aside #clear-filters {
 #filterMenu {
     display: none;
 }
-.filter-header{
+
+.filter-header {
     gap: 10px;
 }
+
 .filter-header input {
     width: 85%;
     padding-left: 20px;
     outline: 0;
     border: 0;
 }
-.search{
+
+.search {
     width: 50%;
     display: flex;
     align-items: center;
@@ -695,7 +728,8 @@ aside #clear-filters {
     border: 0.5px solid #ccc;
     padding: 10px 20px 10px 10px;
 }
-.search i{
+
+.search i {
     color: #555;
 }
 
@@ -727,10 +761,6 @@ aside #clear-filters {
 
     .all-pros {
         grid-template-columns: repeat(3, 1fr);
-    }
-
-    body {
-        position: relative;
     }
 
     aside {
@@ -792,12 +822,15 @@ aside #clear-filters {
     .review-body {
         grid-template-columns: 1fr;
     }
+
     .all-pros {
         grid-template-columns: repeat(2, 1fr);
     }
-    .catalog{
+
+    .catalog {
         width: 95%;
     }
+
     .other-pro {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
@@ -808,23 +841,25 @@ aside #clear-filters {
         width: 80%;
     }
 
-    .search{
+    .search {
         width: 100%;
         order: 3;
     }
+
     .pro-card .add-to-cart {
         font-size: 1.2rem;
     }
-    
+
     .pro-card i {
         font-size: 1.8rem;
     }
-    
+
     .pro-card #product-stock span {
         font-size: 1rem;
         margin: 0;
         padding: 10px 30px;
     }
+
     .pro-card img {
         height: 300px;
     }
@@ -889,5 +924,9 @@ aside #clear-filters {
 
     .pro-card img {
         height: auto;
+    }
+
+    .tost {
+        width: 90%;
     }
 }
