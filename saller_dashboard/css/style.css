@@ -1,3 +1,18 @@
+/* ------------------header-- and---- sidebar----------------- */
+#header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.sideBarPosition {
+    position: sticky;
+    top: 10px;
+
+}
+
 a {
     color: rgb(255, 255, 255);
     border-radius: 5px;
@@ -22,6 +37,7 @@ a:hover {
     white-space: nowrap;
     background-color: #1d2124;
     position: relative;
+    z-index: 10000;
 
 }
 
@@ -63,7 +79,7 @@ a:hover {
     margin: 10px;
     position: absolute;
     top: 10px;
-    right: -25px;
+    right: -30px;
     /* يتحرك خارج الحافة اليمنى */
     width: 30px;
     height: 30px;
@@ -90,7 +106,7 @@ table tbody tr:hover td:last-child {
 .small {
     font-size: 12px;
     color: #aba0a0;
-    line-height: 1.2; 
+    line-height: 1.2;
 
 }
 
@@ -188,11 +204,6 @@ input[type="checkbox"] {
     font-weight: 500;
 }
 
-td {
-    font-size: 14px;
-    color: #575757 !important;
-}
-
 /* ------------------------- */
 @media screen and (max-width: 768px) {
     .responsive-table {
@@ -237,29 +248,33 @@ td {
 }
 
 /* -----search bar---------------------- */
-#userSearch:focus,#categorySelect:focus,#stockSelect:focus ,.textBoxHover:focus {
+#userSearch:focus,
+#categorySelect:focus,
+#stockSelect:focus,
+.textBoxHover:focus {
     box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
     border-color: #6c757d;
 }
 
 /*--------------------------------------------  */
 /* -----disabled button---------------------- */
-.hide_department{
+.hide_department {
     display: none !important;
 }
-.formBorder{
-    border-radius: 30px !important;
+
+.formBorder {
+    border-radius: 20px !important;
     overflow: hidden;
 }
 
 
 
 /* ---------------------upload image icon-------------------------- */
-#imageUpload,#editImageUpload {
+#imageUpload,
+#editImageUpload {
     display: none;
 }
 
-/* تخصيص الأيقونة */
 .upload-icon {
     display: inline-flex;
     justify-content: center;
@@ -273,11 +288,14 @@ td {
     font-size: 24px;
 }
 
-/* تأثير عند التمرير بالماوس */
 .upload-icon:hover {
     background-color: #3eaf42;
     box-shadow: 1px 1px 10px 1px rgb(0, 0, 0);
-    transform: translateY(-5px) ;
+    transform: translateY(-5px);
 
+}
+
+.minmuntHeight {
+    min-height: 100vh;
 }
 
