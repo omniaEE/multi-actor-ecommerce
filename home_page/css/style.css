@@ -46,7 +46,7 @@ MARK: Profile
 /* 
 MARK: Hero 
 */
-.heroWrapper {
+/* .heroWrapper {
   height: 83vh;
   background-color: #f2f0f1;
 }
@@ -58,6 +58,10 @@ MARK: Hero
 
 .rightSideContainer {
   height: 80vh;
+} */
+
+.heroLeftSideHeader {
+  font-size: 4em;
 }
 
 /*
