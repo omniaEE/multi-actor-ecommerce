@@ -11,10 +11,6 @@ for (i = 0; i < users.length; i++) {
 
 
 //search
-
-
-
-
 let searchInput = document.getElementById("search");
 let myTable = document.querySelector("table"); 
 

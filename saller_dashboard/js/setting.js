@@ -33,13 +33,13 @@
 
 
 
-// function logout() {
-//     localStorage.removeItem("loggedInUser");
-//     let confirmed = confirm("do you sure you want to logout?");
-//     if(confirmed){
-//         window.location.href = "../../login/login.html";
-//     }
-// }
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    let confirmed = confirm("do you sure you want to logout?");
+    if(confirmed){
+        window.location.href = "../../login/login.html";
+    }
+}
 
 
 // active navbar

@@ -1,3 +1,4 @@
+
 let data = JSON.parse(localStorage.getItem("all_data"));
 let filtered = [];
 
@@ -16,3 +17,4 @@ searchInput.addEventListener("change", () => {
     alert(JSON.stringify(filtered)); // optional: format or render as needed
   }
 });
+

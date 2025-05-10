@@ -12,7 +12,6 @@ fetch("header.html")
 
         if (user) {
             document.getElementById("name").innerText = user.firstName + " " + user.lastName;
-            document.getElementById("email").innerText = user.email;
         }
     });
 
@@ -41,3 +40,19 @@ fetch("nav bar.html")
 
 
 
+
+
+
+    // Display the modal to confirm logout
+function showLogoutModal() {
+    const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    logoutModal.show();
+}
+
+// Perform the logout action
+function performLogout() {
+    // Remove the logged-in user from localStorage
+    localStorage.removeItem("loggedInUser");
+    // Redirect the user to the login page
+    window.location.href = "../../login/login.html";
+}

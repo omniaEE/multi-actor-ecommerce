@@ -27,7 +27,20 @@ const productsPerPage = 9;
 
 
 
-
+//-----------------------------------apply toast
+let toastTimeout
+function showToast() {
+    const toast = document.querySelector(".tost");
+    toast.style.display = "flex";
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.style.display = "none";
+    }, 1500);
+    toast.querySelector("i").addEventListener('click', () => {
+        toast.style.display = "none";
+        clearTimeout(toastTimeout)
+    });
+}
 
 
 
@@ -68,6 +81,17 @@ function renderProducts(products) {
     }
 
 
+
+    // search part
+    let searchInput = document.getElementById("prosSearch")
+    let searchValue = searchInput.value.toLowerCase().trim();
+    filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(searchValue)
+    );
+    if (filtered.length === 0) {
+        allPros.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; font-size: 1.2rem; color: #666;">No result match your search.</p>`;
+    }
+
     // pagination
     const totalPages = Math.ceil(filtered.length / productsPerPage);
     const start = (currentPage - 1) * productsPerPage;
@@ -100,7 +124,7 @@ function renderProducts(products) {
                 <h2>$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}</h2>
                 <div class="review-header" >
                 ${product.stock > 0 ? '<button class="add-to-cart" >Add To Cart</button>' : '<h3 id="product-stock"><span>Out of Stock</span></h3>'}
-                ${loggedUser && loggedUser.fav.find(p => p.id == product.id) ?
+                ${loggedUser && loggedUser.fav?.find(p => p.id == product.id) ?
                 '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
                 :
                 '<i class="fa-regular fa-heart"></i>'
@@ -115,39 +139,48 @@ function renderProducts(products) {
     let allCards = document.querySelectorAll(".pro-card")
     allCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            //add in cart
-            if (e.target.classList.contains("add-to-cart")) {
-                //get product obj
-                let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+            if (loggedUser) {
+                //add in cart
+                if (e.target.classList.contains("add-to-cart")) {
+                    //get product obj
+                    let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
 
-                let existingCartItem = loggedUser.cart.find(p => p.product.id == product.id);
-                if (existingCartItem) {
-                    existingCartItem.amount = Number(existingCartItem.amount) + 1;
-                } else {
-                    loggedUser.cart.push({
-                        product: product,
-                        amount: 1,
-                        color: product.colors[0],
-                        size: product.sizes[0]
-                    })
+                    let existingCartItem = loggedUser.cart.find(p =>
+                        p.product.id == product.id &&
+                        p.color == product.colors[0] &&
+                        p.size == product.sizes[0]
+                    );
+                    if (existingCartItem) {
+                        existingCartItem.amount = Number(existingCartItem.amount) + 1;
+                    } else {
+                        loggedUser.cart.push({
+                            product: product,
+                            amount: 1,
+                            color: product.colors[0],
+                            size: product.sizes[0]
+                        })
+                    }
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                    //----------toast
+                    showToast()
+
+                    //add in fav
+                } else if (e.target.classList.contains("fa-heart")) {
+                    //get product obj
+                    let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
+
+                    loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+                    let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
+                    if (existingFavItem) {
+                        loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
+                    } else {
+                        loggedUser.fav.push(product)
+                    }
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+                    renderProducts(products)
                 }
-                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
-
-                //add in fav
-            } else if (e.target.classList.contains("fa-heart")) {
-                //get product obj
-                let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
-
-                loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
-                let existingFavItem = loggedUser.fav.find(p => p.id == product.id);
-                if (existingFavItem) {
-                    loggedUser.fav = loggedUser.fav.filter((element) => element.id != product.id);
-                } else {
-                    loggedUser.fav.push(product)
-                }
-                localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-                renderProducts(products)
+            } else {
+                window.location.href = `../login/login.html`
             }
         })
     })
@@ -199,6 +232,7 @@ function renderProducts(products) {
 
 
 
+
 // fetch('../data/data.json')
 //     .then(response => response.json())
 //     .then(data => {
@@ -220,7 +254,7 @@ JSON.parse(localStorage.getItem("all_data")).categories.forEach(category => {
             item.classList.remove("active")
         })
         categoryDiv.classList.add("active")
-
+        currentPage = 1;
         renderProducts(allProducts)
     })
     categories.appendChild(categoryDiv)
@@ -231,7 +265,7 @@ JSON.parse(localStorage.getItem("all_data")).categories.forEach(category => {
 priceInput.addEventListener("input", () => {
     selectedMaxPrice = parseInt(priceInput.value);
     priceValue.textContent = selectedMaxPrice;
-
+    currentPage = 1;
     renderProducts(allProducts);
 });
 
@@ -247,7 +281,7 @@ sizes.forEach(size => {
         } else {
             selectedSizes.push(size);
         }
-
+        currentPage = 1;
         renderProducts(allProducts);
     })
     filterSizes.appendChild(sizeBtn);
@@ -272,6 +306,7 @@ allColors.forEach(color => {
                 colorDiv.innerHTML = `<i class="fa-solid fa-check"></i>`
             }
         }
+        currentPage = 1;
         renderProducts(allProducts);
     });
     filterColor.appendChild(colorDiv);
@@ -283,6 +318,14 @@ renderProducts(allProducts) // Initial render
 
 
 
+
+
+
+
+//search
+document.getElementById("prosSearch").addEventListener("input", () => {
+    renderProducts(allProducts);
+});
 
 
 
