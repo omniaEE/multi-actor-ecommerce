@@ -101,7 +101,7 @@
       user.id
     }">
         <img src="./assets/img/${
-          user.status === "Active" ? "lock.svg" : "lock-open.svg"
+          user.status === "Active" ? "lock-open.svg" : "lock.svg"
         }" alt="${
       user.status === "Active" ? "Ban" : "Unban"
     }" width="25" height="25" style="cursor:pointer;" />
