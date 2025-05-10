@@ -1,5 +1,16 @@
-body {
-    font-family: Arial, Helvetica, sans-serif
+/* ------------------header-- and---- sidebar----------------- */
+#header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.sideBarPosition {
+    position: sticky;
+    top: 10px;
+
 }
 
 a {
@@ -26,6 +37,7 @@ a:hover {
     white-space: nowrap;
     background-color: #1d2124;
     position: relative;
+    z-index: 10000;
 
 }
 
@@ -67,7 +79,7 @@ a:hover {
     margin: 10px;
     position: absolute;
     top: 10px;
-    right: -25px;
+    right: -30px;
     /* يتحرك خارج الحافة اليمنى */
     width: 30px;
     height: 30px;
@@ -91,12 +103,14 @@ table tbody tr:hover td:last-child {
     border-bottom-right-radius: 15px;
 }
 
-small {
-    font-size: 10px;
-    color: #2d2929;
+.small {
+    font-size: 12px;
+    color: #aba0a0;
+    line-height: 1.2;
+
 }
 
-.star i {
+.star {
     color: rgb(255, 179, 0);
     font-size: 10px;
 }
@@ -124,9 +138,34 @@ input[type="checkbox"] {
 
 }
 
-#products-all:hover {
-    opacity: 70%;
+.products-all {
+    transition: all 0.3s ease-in-out !important;
+    border-radius: 15px !important;
+    overflow: hidden;
 }
+
+.products-all:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4) !important;
+
+    #image {
+        filter: brightness(90%);
+    }
+}
+
+
+
+.custom-success {
+    background-color: #19872f64;
+    color: rgb(12, 55, 0);
+}
+
+.custom-danger {
+    background-color: #ff000037;
+    color: rgb(233, 0, 0);
+}
+
+
 
 .product-card:hover .action-buttons {
     display: block;
@@ -165,11 +204,6 @@ input[type="checkbox"] {
     font-weight: 500;
 }
 
-td {
-    font-size: 14px;
-    color: #575757 !important;
-}
-
 /* ------------------------- */
 @media screen and (max-width: 768px) {
     .responsive-table {
@@ -180,7 +214,8 @@ td {
     .responsive-table thead {
         display: none;
     }
-    .responsive-table tbody{
+
+    .responsive-table tbody {
         background-color: white !important;
     }
 
@@ -189,10 +224,10 @@ td {
         margin-bottom: 15px;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, 0.1) !important;
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1) !important;
         padding: 6px;
     }
-    
+
 
     .responsive-table tr:hover {
         box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.1) !important;
@@ -212,7 +247,68 @@ td {
     }
 }
 
-/* ------------------------------------- */
+/* -----search bar---------------------- */
+#userSearch:focus,
+#categorySelect:focus,
+#stockSelect:focus,
+.textBoxHover:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
+    border-color: #6c757d;
+}
+
+/*--------------------------------------------  */
+/* -----disabled button---------------------- */
+.hide_department {
+    display: none !important;
+}
+
+.formBorder {
+    border-radius: 20px !important;
+    overflow: hidden;
+}
 
 
 
+/* ---------------------upload image icon-------------------------- */
+#imageUpload,
+#editImageUpload {
+    display: none;
+}
+
+.upload-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #2a2a2a;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+}
+
+.upload-icon:hover {
+    background-color: #3eaf42;
+    box-shadow: 1px 1px 10px 1px rgb(0, 0, 0);
+    transform: translateY(-5px);
+
+}
+
+.minmuntHeight {
+    min-height: 100vh;
+}
+
+.is-invalid {
+    border-color: red !important;
+    color: red !important;
+}
+
+.is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.314) !important;
+}
+
+.is-valid {
+    border-color: green !important;
+    color: green !important;
+}

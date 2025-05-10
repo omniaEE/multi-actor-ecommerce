@@ -53,7 +53,7 @@ function show_cart_items() {
                             <h5>${item.product.name}</h5>
                             <p>Size: ${item.size}<br>Color: ${item.color}</p>
                         </div>
-                        <i class="fa fa-trash-can" onclick="removeItem(${item.product.id})"></i>
+                        <i class="fa fa-trash-can" onclick="removeItem(${item.product.id}, '${item.color}', '${item.size}')"></i>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold">$${item.product.price}</span>
@@ -72,11 +72,14 @@ function show_cart_items() {
 }
 
 // Remove Element by id
-function removeItem(id) {
+function removeItem(id, color, size) {
     let user = JSON.parse(localStorage.getItem("loggedInUser"));
     let cartItems = user.cart || [];
 
-    cartItems = cartItems.filter(item => item.product.id !== id);
+    cartItems = cartItems.filter(item => {
+        return !(item.product.id === id && item.color === color && item.size === size);
+    });
+
     user.cart = cartItems;
     localStorage.setItem("loggedInUser", JSON.stringify(user));
 

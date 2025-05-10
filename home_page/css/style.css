@@ -12,14 +12,14 @@ MARK: HomePage
   font-family: Arial Black, sans-serif;
   margin: 50px auto 25px;
 }
+a {
+  color: black;
+  text-decoration: none;
+}
 
 /* 
 MARK: Header 
 */
-.navbar a {
-  text-decoration: none;
-}
-
 .signUpSuggistionWrapper {
   font-size: 0.8rem;
 }
@@ -28,25 +28,46 @@ MARK: Header
   font-size: 0.9rem;
 }
 
-.navbareIconsWrapper {
-  font-size: 1.5rem;
+/* Search */
+#searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+#searchResults.show {
+  display: block;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* 
+MARK: Profile
+*/
+.dropdown-item:hover {
+  background-color: #ddd;
+}
+
+#profileIcon::after {
+  display: none !important;
 }
 
 /* 
 MARK: Hero 
 */
-.heroWrapper {
-  height: 83vh;
-  background-color: #f2f0f1;
-}
-
-.heroHeader {
-  font-size: 4rem;
-  font-weight: bolder;
-}
-
-.rightSideContainer {
-  height: 80vh;
+.heroLeftSideHeader {
+  font-size: 4em;
 }
 
 /*
