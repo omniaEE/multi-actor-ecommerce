@@ -60,13 +60,12 @@
       </div>
 
       <!-- Navbare Container -->
-      <div class="row justify-content-center">
-        <div class="container row justify-content-between">
-          <!-- Website Name and berger menue -->
-          <div class="col-7 col-lg-2 row p-0 text-center">
-            <!-- Berger Icon -->
-            <!-- <button
-              class="navbar-toggler col-6 d-md-none"
+      <nav class="row navbar navbar-expand">
+        <!-- Left -->
+        <div class="col-6 col-md-8 col-lg-10 me-3 row">
+          <div class="col-lg-3 col-md-12">
+            <button
+              class="navbar-toggler me-3"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarTaps"
@@ -75,90 +74,107 @@
               aria-label="Toggle navigation"
             >
               <span class="navbar-toggler-icon"></span>
-            </button> -->
+            </button>
 
-            <!-- Shop Name -->
-            <a class="fs-1 fw-bolder text-black text-uppercase" href="#"
+            <!-- Brand Name -->
+            <a
+              class="navbar-brand fs-1 fw-bolder text-black text-start text-md-center text-uppercase"
+              href="#"
               >Shop.co</a
             >
           </div>
 
-          <!-- Nav Taps -->
+          <!-- Nav & Search -->
           <div
-            id="navbarTaps"
-            class="col-6 col-xl-4 d-none d-lg-flex row align-items-center justify-content-between"
+            class="collapse navbar-collapse col-lg-9 row justify-content-around d-none d-lg-block"
           >
-            <div class="col-2 text-secondary"><a href="#">Shop</a></div>
-            <div class="col-3 text-secondary"><a href="#">On Sale</a></div>
-            <div class="col-4 text-secondary"><a href="#">New Arrivals</a></div>
-            <div class="col-3 text-secondary"><a href="#">ContactUs</a></div>
-          </div>
-
-          <!-- Search -->
-          <div
-            class="col-xl-4 d-none d-xl-flex row align-items-center justify-content-center"
-          >
-            <div class="w-100 input-group rounded-5 bg-light">
-              <span class="input-group-text border-0">
-                <i class="fas fa-search text-muted"></i>
-              </span>
-              <input
-                type="text"
-                placeholder="Search for products..."
-                class="border-0 form-control shadow-none p-2 bg-light"
-              />
-            </div>
-          </div>
-
-          <!-- Right Side Icons -->
-          <div
-            class="col-5 col-lg-4 col-xl-2 row justify-content-evenly align-items-center fs-4"
-          >
-            <!-- Search Icon -->
-            <a
-              a
-              href="#"
-              class="col d-flex justify-content-center d-xl-none text-decoration-none"
+            <!-- Navbar -->
+            <div
+              id="navbarTaps"
+              class="col-lg-7 d-none d-lg-block row align-items-center"
             >
-              <i class="fas fa-search" style="color: #141415"></i>
-            </a>
-
-            <!-- Cart Icon -->
-            <a
-              href="#"
-              class="col col-xl d-flex justify-content-center text-decoration-none"
-            >
-              <i
-                class="fa-solid fa-cart-shopping mx-lg-3"
-                style="color: #141415"
-              ></i>
-            </a>
-
-            <!-- Profile Icon -->
-            <div class="dropdown col col-xl d-flex justify-content-center">
-              <a
-                href="#"
-                id="profileIcon"
-                aria-expanded="false"
-                class="dropdown-toggle dropdown-toggle-no-caret"
-              >
-                <i
-                  class="fa-regular fa-circle-user mx-lg-3"
-                  style="color: #141415"
-                ></i>
-              </a>
-              <!-- Dropdown Menue -->
-              <div id="profileDropdown" class="dropdown-menu dropdown-menu-end">
-                <a class="dropdown-item" href="./update personal info.html"
-                  >My Profile</a
+              <ul class="navbar-nav nav-underline p-0 mb-2 mb-lg-0">
+                <li
+                  class="nav-item col-lg-2 d-flex align-items-center justify-content-center p-0"
                 >
-                <a class="dropdown-item" href="#">My Wihlist</a>
-                <a class="dropdown-item" href="#">Log out</a>
+                  <a class="nav-link px-0 text-black" href="#">Shop</a>
+                </li>
+                <li
+                  class="nav-item col-lg-3 d-flex align-items-center justify-content-center p-0"
+                >
+                  <a class="nav-link px-0 text-black" href="#saleSection"
+                    >On Sale</a
+                  >
+                </li>
+                <li
+                  class="nav-item col-lg-3 d-flex align-items-center justify-content-center p-0"
+                >
+                  <a class="nav-link px-0 text-black" href="#newArrSection"
+                    >New Arrivals</a
+                  >
+                </li>
+                <li
+                  class="nav-item col-lg-2 d-flex align-items-center justify-content-center p-0"
+                >
+                  <a class="nav-link px-0 text-black" href="#footerSection"
+                    >ContactUs</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Search -->
+            <div
+              class="col-lg-5 d-none d-lg-block row rounded-5 justify-content-center align-items-center bg-light"
+            >
+              <div class="input-group rounded-5">
+                <span class="input-group-text border-0">
+                  <i class="fas fa-search text-muted"></i>
+                </span>
+                <input
+                  type="text"
+                  id="prosSearch"
+                  placeholder="Search for products..."
+                  class="form-control border-0 bg-light shadow-none p-2"
+                />
               </div>
             </div>
           </div>
         </div>
-      </div>
+
+        <!-- Right -->
+        <div
+          class="col-6 col-md-4 col-lg-2 row justify-content-between align-items-center justify-content-lg-end fs-4"
+        >
+          <a
+            href="#"
+            class="col-4 col-lg-6 text-ceneter d-lg-none text-decoration-none"
+            ><i class="fas fa-search text-black"></i
+          ></a>
+          <a href="#" class="col-4 text-ceneter text-decoration-none"
+            ><i class="fa-solid fa-cart-shopping text-black"></i
+          ></a>
+          <div class="dropdown col-4 col-lg-6">
+            <a
+              href="#"
+              id="profileIcon"
+              class="dropdown-toggle dropdown-toggle-no-caret text-ceneter"
+              data-bs-toggle="dropdown"
+            >
+              <i class="fa-regular fa-circle-user text-black"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="./update personal info.html"
+                  >My Profile</a
+                >
+              </li>
+              <li><a class="dropdown-item" href="#">My Wishlist</a></li>
+              <li><a class="dropdown-item" href="#">Log out</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- 
@@ -257,7 +273,10 @@
     <!-- 
     MARK: New Arr  
     -->
-    <section class="container d-flex flex-column gap-4 align-items-center my-5">
+    <section
+      id="newArrSection"
+      class="container d-flex flex-column gap-4 align-items-center my-5"
+    >
       <h1 class="sectionTitle">NEW ARRIVALS</h1>
       <!-- Products Container -->
       <div
@@ -366,7 +385,10 @@
     <!-- 
     MARK: Top Selling  
     -->
-    <section class="container d-flex flex-column gap-4 align-items-center mb-5">
+    <section
+      id="saleSection"
+      class="container d-flex flex-column gap-4 align-items-center mb-5"
+    >
       <h1 class="sectionTitle mt-0">TOP SELLING</h1>
       <!-- Products Container -->
       <div
@@ -598,7 +620,7 @@
     <!-- 
     MARK: Footer  
     -->
-    <footer class="bg-light py-5">
+    <footer id="footerSection" class="bg-light py-5">
       <div class="container py-2">
         <div class="row">
           <!-- description and social -->
@@ -757,6 +779,6 @@
     </footer>
     <script src="../js/main.js"></script>
     <script src="../login_data.js"></script>
-    <!-- <script src="./js/home.js"></script> -->
+    <script src="./js/home.js"></script>
   </body>
 </html>
