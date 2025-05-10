@@ -36,6 +36,28 @@ for (let i = 0; i < reviewTabs.length; i++) {
 }
 
 
+
+
+
+//-----------------------------------apply toast
+let toastTimeout
+function showToast() {
+    const toast = document.querySelector(".tost");
+    toast.style.display = "flex";
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.style.display = "none";
+    }, 1500);
+    toast.querySelector("i").addEventListener('click', () => {
+        toast.style.display = "none";
+        clearTimeout(toastTimeout)
+    });
+}
+
+
+
+
+
 //get user data
 let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
 
@@ -118,7 +140,8 @@ allCards.forEach(card => {
                     })
                 }
                 localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
+                //----------toast
+                showToast()
 
                 //add in fav
             } else if (e.target.classList.contains("fa-heart")) {
@@ -140,7 +163,6 @@ allCards.forEach(card => {
         }
     })
 })
-
 
 
 otherPro.addEventListener("click", (e) => {
@@ -450,10 +472,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // let amountDiv = document.querySelector(".amount")
         addToCartBtn.addEventListener('click', () => {
             if (loggedUser) {
-                let existingCartItem = loggedUser.cart.find(p => 
+                let existingCartItem = loggedUser.cart.find(p =>
                     p.product.id == product.id &&
-                        p.color == checkedColor &&
-                        p.size == checkedSize
+                    p.color == checkedColor &&
+                    p.size == checkedSize
                 );
 
                 if (existingCartItem) {
@@ -470,6 +492,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // addToCartBtn.style.display = "none"
                 // addedToCart.style.display = "block"
                 // amountDiv.style.display = "none"
+                //----------toast
+                showToast()
             } else {
                 window.location.href = `../login/login.html`
             }
@@ -506,6 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             product.reviews.push(newReview)
+            product.ratings.push(selectedRating)//to link reviews with ratings
             localStorage.setItem("all_data", JSON.stringify(data));
 
             //reset

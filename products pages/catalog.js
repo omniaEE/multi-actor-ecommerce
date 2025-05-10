@@ -27,7 +27,20 @@ const productsPerPage = 9;
 
 
 
-
+//-----------------------------------apply toast
+let toastTimeout
+function showToast() {
+    const toast = document.querySelector(".tost");
+    toast.style.display = "flex";
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.style.display = "none";
+    }, 1500);
+    toast.querySelector("i").addEventListener('click', () => {
+        toast.style.display = "none";
+        clearTimeout(toastTimeout)
+    });
+}
 
 
 
@@ -132,10 +145,10 @@ function renderProducts(products) {
                     //get product obj
                     let product = products.find(p => p.id == e.target.parentNode.parentNode.children[0].dataset.productid);
 
-                    let existingCartItem = loggedUser.cart.find(p => 
+                    let existingCartItem = loggedUser.cart.find(p =>
                         p.product.id == product.id &&
-                            p.color == product.colors[0] &&
-                            p.size == product.sizes[0]
+                        p.color == product.colors[0] &&
+                        p.size == product.sizes[0]
                     );
                     if (existingCartItem) {
                         existingCartItem.amount = Number(existingCartItem.amount) + 1;
@@ -148,7 +161,8 @@ function renderProducts(products) {
                         })
                     }
                     localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-
+                    //----------toast
+                    showToast()
 
                     //add in fav
                 } else if (e.target.classList.contains("fa-heart")) {
@@ -240,7 +254,7 @@ JSON.parse(localStorage.getItem("all_data")).categories.forEach(category => {
             item.classList.remove("active")
         })
         categoryDiv.classList.add("active")
-
+        currentPage = 1;
         renderProducts(allProducts)
     })
     categories.appendChild(categoryDiv)
@@ -251,7 +265,7 @@ JSON.parse(localStorage.getItem("all_data")).categories.forEach(category => {
 priceInput.addEventListener("input", () => {
     selectedMaxPrice = parseInt(priceInput.value);
     priceValue.textContent = selectedMaxPrice;
-
+    currentPage = 1;
     renderProducts(allProducts);
 });
 
@@ -267,7 +281,7 @@ sizes.forEach(size => {
         } else {
             selectedSizes.push(size);
         }
-
+        currentPage = 1;
         renderProducts(allProducts);
     })
     filterSizes.appendChild(sizeBtn);
@@ -292,6 +306,7 @@ allColors.forEach(color => {
                 colorDiv.innerHTML = `<i class="fa-solid fa-check"></i>`
             }
         }
+        currentPage = 1;
         renderProducts(allProducts);
     });
     filterColor.appendChild(colorDiv);
