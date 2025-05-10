@@ -124,7 +124,7 @@ function renderProducts(products) {
                 <h2>$${product.price} <s>${product.old_price ? "$" + product.old_price : ""}</s> ${product.old_price ? "<span>-" + Math.floor(((product.old_price - product.price) / product.old_price * 100)) + "%</span>" : ""}</h2>
                 <div class="review-header" >
                 ${product.stock > 0 ? '<button class="add-to-cart" >Add To Cart</button>' : '<h3 id="product-stock"><span>Out of Stock</span></h3>'}
-                ${loggedUser && loggedUser.fav.find(p => p.id == product.id) ?
+                ${loggedUser && loggedUser.fav?.find(p => p.id == product.id) ?
                 '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
                 :
                 '<i class="fa-regular fa-heart"></i>'
