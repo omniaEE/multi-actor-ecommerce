@@ -19,6 +19,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Fontawsome -->
     <link
@@ -27,177 +29,227 @@
     />
     <!-- CSS Styles -->
     <link rel="stylesheet" href="css/style.css" />
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
   <body>
     <!-- 
     MARK: Header  
     -->
-    <header>
-      <!-- Authentication Suggestion part -->
-      <div
-        class="bg-black text-white align-items-center justify-content-between d-flex px-4 py-1 signUpSuggistionWrapper"
-      >
-        <span class="m-auto">
-          Sign up and get 20% off to your first order.
-          <a href="#" class="text-white">Sign Up Now</a>
-        </span>
-        <div class="bg-black align-self-end">
-          <button
-            type="button"
-            class="btn-close btn-close-white"
-            aria-label="Close"
-          ></button>
+    <header class="container-fluid">
+      <!-- Sign Up Option -->
+      <div class="row bg-black text-white py-1 signUpSuggistionWrapper">
+        <div class="container row">
+          <div class="col-lg-8 pe-lg-5 col-12 text-center text-lg-end">
+            Sign up and get 20% off to your first order.
+            <b
+              ><a href="#" class="text-white text-decoration-underline"
+                >Sign Up Now</a
+              ></b
+            >
+          </div>
+
+          <!-- Close Button -->
+          <div class="col-lg-4 text-end d-none d-lg-block">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              aria-label="Close"
+            ></button>
+          </div>
         </div>
       </div>
 
-      <!-- Navbar -->
-      <nav
-        class="navbar navbar-expand-lg py-3 px-3 bg-body-light align-items-center"
-      >
-        <div class="container-fluid">
-          <!-- Website Logo or Name -->
-          <h1 class="navbar-brand fs-2 fw-bolder mx-2" href="#">SHOP.CO</h1>
+      <!-- Navbare Container -->
+      <div class="row justify-content-center">
+        <div class="container row justify-content-between">
+          <!-- Website Name and berger menue -->
+          <div class="col-7 col-lg-2 row p-0 text-center">
+            <!-- Berger Icon -->
+            <!-- <button
+              class="navbar-toggler col-6 d-md-none"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarTaps"
+              aria-controls="navbarTaps"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button> -->
 
-          <!-- Collapse Icon in Smaller Screens -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTaps"
-            aria-controls="navbarTaps"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            <!-- Shop Name -->
+            <a class="fs-1 fw-bolder text-black text-uppercase" href="#"
+              >Shop.co</a
+            >
+          </div>
+
+          <!-- Nav Taps -->
+          <div
+            id="navbarTaps"
+            class="col-6 col-xl-4 d-none d-lg-flex row align-items-center justify-content-between"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            <div class="col-2 text-secondary"><a href="#">Shop</a></div>
+            <div class="col-3 text-secondary"><a href="#">On Sale</a></div>
+            <div class="col-4 text-secondary"><a href="#">New Arrivals</a></div>
+            <div class="col-3 text-secondary"><a href="#">ContactUs</a></div>
+          </div>
 
-          <!-- Navigation Taps -->
-          <div class="collapse navbar-collapse" id="navbarTaps">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item mx-1 dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+          <!-- Search -->
+          <div
+            class="col-xl-4 d-none d-xl-flex row align-items-center justify-content-center"
+          >
+            <div class="w-100 input-group rounded-5 bg-light">
+              <span class="input-group-text border-0">
+                <i class="fas fa-search text-muted"></i>
+              </span>
+              <input
+                type="text"
+                placeholder="Search for products..."
+                class="border-0 form-control shadow-none p-2 bg-light"
+              />
+            </div>
+          </div>
+
+          <!-- Right Side Icons -->
+          <div
+            class="col-5 col-lg-4 col-xl-2 row justify-content-evenly align-items-center fs-4"
+          >
+            <!-- Search Icon -->
+            <a
+              a
+              href="#"
+              class="col d-flex justify-content-center d-xl-none text-decoration-none"
+            >
+              <i class="fas fa-search" style="color: #141415"></i>
+            </a>
+
+            <!-- Cart Icon -->
+            <a
+              href="#"
+              class="col col-xl d-flex justify-content-center text-decoration-none"
+            >
+              <i
+                class="fa-solid fa-cart-shopping mx-lg-3"
+                style="color: #141415"
+              ></i>
+            </a>
+
+            <!-- Profile Icon -->
+            <div class="dropdown col col-xl d-flex justify-content-center">
+              <a
+                href="#"
+                id="profileIcon"
+                aria-expanded="false"
+                class="dropdown-toggle dropdown-toggle-no-caret"
+              >
+                <i
+                  class="fa-regular fa-circle-user mx-lg-3"
+                  style="color: #141415"
+                ></i>
+              </a>
+              <!-- Dropdown Menue -->
+              <div id="profileDropdown" class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="./update personal info.html"
+                  >My Profile</a
                 >
-                  Shop
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Men</a></li>
-                  <li><a class="dropdown-item" href="#">Women</a></li>
-                  <li><a class="dropdown-item" href="#">Children</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item mx-1">
-                <a class="nav-link" href="#">On Sale</a>
-              </li>
-
-              <li class="nav-item mx-1">
-                <a class="nav-link" href="#">New Arrivals</a>
-              </li>
-
-              <li class="nav-item mx-1">
-                <a class="nav-link" href="#">Brands</a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Search Box -->
-          <div class="w-50 input-group rounded-5 bg-light mx-5 px-4 flex-row">
-            <span class="input-group-text border-0">
-              <i class="fas fa-search text-muted"></i>
-            </span>
-            <input
-              type="text"
-              placeholder="Search for products..."
-              class="border-0 form-control shadow-none w-75 p-2 bg-light"
-            />
-          </div>
-          <!-- Cart & Profile Icons -->
-          <div class="p-2 fs-5 navbareIconsWrapper">
-            <a href="#" id="cartIcon">
-              <i
-                class="fa-solid fa-cart-shopping mx-3"
-                style="color: #141415"
-              ></i>
-            </a>
-            <a href="#" id="profileIcon">
-              <i
-                class="fa-regular fa-circle-user mx-3"
-                style="color: #141415"
-              ></i>
-            </a>
+                <a class="dropdown-item" href="#">My Wihlist</a>
+                <a class="dropdown-item" href="#">Log out</a>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </div>
     </header>
 
     <!-- 
     MARK: Hero  
     -->
-    <section class="heroWrapper">
-      <div class="container-fluid h-100 d-flex position-relative">
-        <div class="row col-12 d-flex flex-wrap">
-          <!-- Hero left Side -->
-          <div class="col-lg-7 col-sm-12 pt-3">
-            <h1 class="heroHeader col-lg-8 col-sm-12">
-              FIND CLOTHES THAT MATCHES YOUR STYLE
-            </h1>
+    <section id="heroSection" class="container-fluid">
+      <div class="row justify-content-center" style="background-color: #f2f0f1">
+        <!-- Hero Left Side -->
+        <div class="col-12 col-lg-6 p-5 py-3">
+          <!-- Inro -->
+          <div
+            class="fw-bolder text-black text-uppercase ps-4 lh-sm heroLeftSideHeader"
+          >
+            find clothes<br />
+            that matches<br />
+            your style
+          </div>
+
+          <!-- Description -->
+          <div class="ps-4 my-3 fs-6 lh-sm">
             <p>
               Browse through our diverse range of meticulously crafted garments,
               designed to bring out your individuality and cater to your sense
               of style.
             </p>
-            <button
-              class="btn bg-black text-white rounded-5 px-5 my-3 col-lg-3 col-sm-12"
-            >
-              Shop Now
-            </button>
-
-            <div class="row d-flex mt-3 pe-5">
-              <div
-                class="col-lg-4 col-sm-6 d-flex flex-column text-sm-center border-end"
-              >
-                <h3>200 +</h3>
-                <p>International Brands</p>
-              </div>
-              <div
-                class="col-lg-4 col-sm-6 d-flex flex-column text-center border-end"
-              >
-                <h3>2,000 +</h3>
-                <p>High-Quality Products</p>
-              </div>
-              <div class="col-lg-4 col-sm-12 d-flex flex-column text-center">
-                <h3>30,000 +</h3>
-                <p>Happy Customers</p>
-              </div>
-            </div>
           </div>
 
-          <!-- Hero Right Side -->
-          <div class="col-lg-5 col-sm-12 rightSideContainer">
-            <img src="image/heroimg.jpg" class="w-100 h-100" />
+          <!-- Shop Btn -->
+          <button
+            class="btn bg-black text-white rounded-5 px-3 py-2 my-2 ms-3 col-12 col-lg-3"
+          >
+            Shop Now
+          </button>
+
+          <div class="row d-flex mt-3 pe-5">
+            <div
+              class="col-6 col-lg-4 d-flex flex-column text-center border-end"
+            >
+              <h3>200 +</h3>
+              <p>International Brands</p>
+            </div>
+            <div
+              class="col-6 col-lg-4 d-flex flex-column text-center border-end"
+            >
+              <h3>2,000 +</h3>
+              <p>High-Quality Products</p>
+            </div>
+            <div
+              class="col-12 col-lg-4 d-flex flex-column text-center mt-3 mt-lg-0"
+            >
+              <h3>30,000 +</h3>
+              <p>Happy Customers</p>
+            </div>
           </div>
         </div>
 
-        <!-- Hero Footer -->
+        <!-- Hero Right Side -->
         <div
-          class="row bg-black text-white position-absolute bottom-0 start-50 translate-middle-x w-100 d-flex align-items-center justify-content-center"
+          style="height: 75vh"
+          class="col-12 col-lg-6 px-5 d-flex align-items-center justify-content-center"
         >
-          <div class="col-lg col-sm-4 mb-sm-3 text-center">VERSACE</div>
-          <div class="col-lg col-sm-4 mb-sm-3 text-center">ZARA</div>
-          <div class="col-lg col-sm-4 mb-sm-3 text-center">GUCCI</div>
-          <div class="col-lg col-sm-6 mb-sm-3 mb-lg-0 text-center">PRADA</div>
-          <div class="col-lg col-sm-6 mb-sm-3 mb-lg-0 text-center">
-            Calvin Klein
-          </div>
+          <img src="./image/heroimg.jpg" width="90%" height="100%" />
+        </div>
+      </div>
+
+      <!-- Hero Footer -->
+      <div class="row p-3 py-4 bg-black">
+        <div
+          class="col-4 mb-4 mb-lg-0 col-lg d-flex justify-content-center align-items-center"
+        >
+          <img src="./image/brand1Logo.png" alt="Versace Brand" />
+        </div>
+        <div
+          class="col-4 mb-4 mb-lg-0 col-lg d-flex justify-content-center align-items-center"
+        >
+          <img src="./image/brand2Logo.png" alt="Zara Brand" />
+        </div>
+        <div
+          class="col-4 mb-4 mb-lg-0 col-lg d-flex justify-content-center align-items-center"
+        >
+          <img src="./image/brand3Logo.png" alt="Gucci Brand" />
+        </div>
+        <div
+          class="col-6 mb-1 mb-lg-0 col-lg d-flex justify-content-center align-items-center"
+        >
+          <img src="./image/brand4Logo.png" alt="Prada Brand" />
+        </div>
+        <div
+          class="col-6 mb-1 mb-lg-0 col-lg d-flex justify-content-center align-items-center"
+        >
+          <img src="./image/brand5Logo.png" alt="Calvin Klein" />
         </div>
       </div>
     </section>
@@ -208,10 +260,18 @@
     <section class="container d-flex flex-column gap-4 align-items-center my-5">
       <h1 class="sectionTitle">NEW ARRIVALS</h1>
       <!-- Products Container -->
-      <div class="row flex-wrap col-12 align-items-center justify-content-center">
+      <div
+        class="row flex-wrap col-12 align-items-center justify-content-center"
+      >
         <!-- Product 1 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro8.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro8.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">T-shirt with Tape Details</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -225,8 +285,14 @@
         </div>
 
         <!-- Product 2 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro14.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro14.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Skinny Fit Jeans</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -236,12 +302,21 @@
             <i class="fa-solid fa-star col"></i>
             <small class="ms-2">5.0</small>
           </div>
-          <h5 class="d-flex">$240 <s class="oldPrice">$260</s> <span class="discountPercentage">-20%</span></h5>
+          <h5 class="d-flex">
+            $240 <s class="oldPrice">$260</s>
+            <span class="discountPercentage">-20%</span>
+          </h5>
         </div>
 
         <!-- Product 3 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro5.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro5.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Checkered Shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -255,8 +330,14 @@
         </div>
 
         <!-- Product 4 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3 ">
-          <img src="../assets/pro10.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro10.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Sleeve Striped T-shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -266,13 +347,20 @@
             <i class="fa-solid fa-star col"></i>
             <small class="ms-2">5.0</small>
           </div>
-          <h5 class="d-flex">$130 <s class="oldPrice">$160</s> <span class="discountPercentage">-30%</span></h5>
+          <h5 class="d-flex">
+            $130 <s class="oldPrice">$160</s>
+            <span class="discountPercentage">-30%</span>
+          </h5>
         </div>
       </div>
 
       <!-- View all Button -->
-      <button class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn">View All</button>
-      <hr class="w-100"/>
+      <button
+        class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn"
+      >
+        View All
+      </button>
+      <hr class="w-100" />
     </section>
 
     <!-- 
@@ -281,10 +369,18 @@
     <section class="container d-flex flex-column gap-4 align-items-center mb-5">
       <h1 class="sectionTitle mt-0">TOP SELLING</h1>
       <!-- Products Container -->
-      <div class="row flex-wrap col-12 align-items-center justify-content-center">
+      <div
+        class="row flex-wrap col-12 align-items-center justify-content-center"
+      >
         <!-- Product 1 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro9.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro9.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Vertical Striped Shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -294,12 +390,21 @@
             <i class="fa-solid fa-star col"></i>
             <small class="ms-2">5.0</small>
           </div>
-          <h5 class="d-flex">$212 <s class="oldPrice">$232</s> <span class="discountPercentage">-20%</span></h5>
+          <h5 class="d-flex">
+            $212 <s class="oldPrice">$232</s>
+            <span class="discountPercentage">-20%</span>
+          </h5>
         </div>
 
         <!-- Product 2 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro11.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro11.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Courage Graphic T-shirt</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -313,8 +418,14 @@
         </div>
 
         <!-- Product 3 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3">
-          <img src="../assets/pro13.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro13.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Polo with Contrast Trims</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -328,8 +439,14 @@
         </div>
 
         <!-- Product 4 -->
-        <div class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3 ">
-          <img src="../assets/pro12.jpg" height="70%" class="row rounded-4 align-self-center" />
+        <div
+          class="col-lg col-sm-6 d-flex flex-column align-items-start m-1 mb-sm-3"
+        >
+          <img
+            src="../assets/pro12.jpg"
+            height="70%"
+            class="row rounded-4 align-self-center"
+          />
           <p class="row fw-bolder p-3 fs-6">Faded Skinny Jeans</p>
           <div class="ratingContainer">
             <i class="fa-solid fa-star col"></i>
@@ -344,9 +461,13 @@
       </div>
 
       <!-- View all Button -->
-      <button class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn">View All</button>
+      <button
+        class="row align-items-center justify-content-center col-lg-2 col-sm-12 p-2 rounded-5 my-3 viewallBtn"
+      >
+        View All
+      </button>
     </section>
-    
+
     <!-- 
     MARK: Cat Catalog  
     -->
@@ -390,9 +511,7 @@
     <section class="container reviewSection my-3">
       <!-- Head of section -->
       <div class="row justify-content-between align-items-center my-4">
-        <h1 class="col-9 sectionTitle text-start m-0">
-          OUR HAPPY CUSTOMERS
-        </h1>
+        <h1 class="col-9 sectionTitle text-start m-0">OUR HAPPY CUSTOMERS</h1>
         <div class="col-3 d-flex justify-content-end mt-2">
           <div>
             <i
@@ -637,6 +756,7 @@
       </div>
     </footer>
     <script src="../js/main.js"></script>
-    <script src="./js/home.js"></script>
+    <script src="../login_data.js"></script>
+    <!-- <script src="./js/home.js"></script> -->
   </body>
 </html>
