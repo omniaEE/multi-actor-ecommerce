@@ -176,3 +176,20 @@ function changePassword(event) {
     })
 })()
 
+
+
+//-----------------logout----------------------------------
+
+    // Display the modal to confirm logout
+function showLogoutModal() {
+    const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    logoutModal.show();
+}
+
+// Perform the logout action
+function performLogout() {
+    // Remove the logged-in user from localStorage
+    localStorage.removeItem("loggedInUser");
+    // Redirect the user to the login page
+    window.location.href = "../../login/login.html";
+}

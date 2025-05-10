@@ -15,7 +15,7 @@
 <body class="bg-light">
     <main class="d-flex">
         <!-- side bar -->
-        <div id="sidebar" class="sidebar col-10 col-sm-3 col-md-2 p-2 vh-100" id="sidebar">
+        <div id="sidebar" class="sidebar col-10 col-sm-3 col-md-2 p-2 minmuntHeight " id="sidebar">
             <div class="sideBarPosition">
                 <button class="toggle-btn"><i id="toggleIcon" class="fas fa-angle-double-right"></i></button>
                 <h2 class="p-2 pb-3 fw-bold text-white"> <span class="logo fw-bold text-white fs-2"> settings</span>.co
@@ -75,13 +75,13 @@
                         <form id="profileForm">
                             <div class="mb-3">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control textBoxHover" id="firstName" required pattern="[A-Za-z]{3,}"
-                                    title=" First name must start with at least 3 letters">
+                                <input type="text" class="form-control textBoxHover" id="firstName" required
+                                    pattern="[A-Za-z]{3,}" title=" First name must start with at least 3 letters">
                             </div>
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control textBoxHover" id="lastName" required pattern="[A-Za-z]{3,}"
-                                    title=" last name must start with at least 3 letters">
+                                <input type="text" class="form-control textBoxHover" id="lastName" required
+                                    pattern="[A-Za-z]{3,}" title=" last name must start with at least 3 letters">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
@@ -89,7 +89,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control textBoxHover" id="phone" pattern="01[0125][0-9]{8}">
+                                <input type="tel" class="form-control textBoxHover" id="phone"
+                                    pattern="01[0125][0-9]{8}">
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">address</label>
@@ -114,16 +115,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="newPassword" class="form-label">New Password</label>
-                                <input type="password" minlength="8" class="form-control textBoxHover" id="newPassword" required
-                                    title="Password must be at least 8 characters">
+                                <input type="password" minlength="8" class="form-control textBoxHover" id="newPassword"
+                                    required title="Password must be at least 8 characters">
                                 <div class="invalid-feedback font_error">
                                     Password must be at least 8 characters
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                                <input type="password" minlength="8" class="form-control textBoxHover" id="confirmPassword" required
-                                    title="Password must be at least 8 characters">
+                                <input type="password" minlength="8" class="form-control textBoxHover"
+                                    id="confirmPassword" required title="Password must be at least 8 characters">
                                 <div class="invalid-feedback font_error">
                                     Password don't match
                                 </div>
@@ -218,7 +219,8 @@
                                     </div>
                                 </div>
                                 <!-- Message Card 3 -->
-                            </div><div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="card h-100 border-dark shadow-sm products-all">
                                     <div class="card-body">
                                         <h5 class="card-title">
@@ -245,13 +247,32 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </main>
+
+
+
+
+
+    <!-- logout modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="performLogout()">Yes, Log me out</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="js/update_profile.js"></script>
