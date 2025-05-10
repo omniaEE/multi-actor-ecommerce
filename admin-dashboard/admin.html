@@ -73,49 +73,50 @@
           class="col-lg-3 col-xl-2 d-none d-lg-block bg-dark text-white min-vh-100 fixed-sidebar"
         >
           <div class="px-3">
-            <h4 class="pb-4">Admin Menu</h4>
+            <h4 class="pb-4">Shop.co</h4>
             <div class="list-group list-group-flush">
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white active"
                 onclick="loadPage('./dashboard.html')"
-                ><img src="./assets/img/home-2.svg" alt="" /> Dashboard</a
+                ><i class="fa-solid fa-chart-line"></i>  <span class="fs-5"> &nbsp;Dashboard</span> </a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./users.html')"
-                ><img src="./assets/img/arrow-down-simple.svg" alt="" />
-                Users</a
-              >
+                ><i class="fa-solid fa-user-group"></i>
+                 <span class="fs-5"> &nbsp;Users</span>
+              
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./products.html')"
-                >Products</a
-              >
+                ><i class="fa-solid fa-boxes-stacked"></i
+                ><span class="fs-5"> &nbsp;Products</span>
+              </a>
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./orders.html')"
-                >Orders</a
+                ><i class="fa-solid fa-cart-shopping"></i>
+                <span class="fs-5"> &nbsp;Orders</span></a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./support.html')"
-                >Support</a
+                ><i class="fa-solid fa-ticket-simple"></i>
+                <span class="fs-5"> &nbsp;Support</span></a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
-                onclick="loadPage('logout')"
+                onclick="loadPage('settings.html')"
               >
-                <i
-                  class="fa-solid fa-arrow-right-from-bracket"
-                  style="font-size: 30px"
-                ></i
-              ></a>
+                <i class="fa-solid fa-gear"> </i>
+                <span class="fs-5"> &nbsp;Settings</span></a
+              >
             </div>
           </div>
         </div>
@@ -127,7 +128,7 @@
           id="sidebar"
         >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Admin Menu</h5>
+            <h5 class="offcanvas-title">Shop.co</h5>
             <button
               type="button"
               class="btn-close btn-close-white"
@@ -141,42 +142,43 @@
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white active"
                 onclick="loadPage('./dashboard.html')"
-                >Dashboard</a
+                ><i class="fa-solid fa-chart-line"></i>  <span class="fs-5"> &nbsp;Dashboard</span></a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./users.html')"
-                >Users</a
+                ><i class="fa-solid fa-user-group"></i>
+                 <span class="fs-5"> &nbsp;Users</span></a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./products.html')"
-                >Products</a
+                ><i class="fa-solid fa-boxes-stacked"></i
+                ><span class="fs-5"> &nbsp;Products</span></a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./orders.html')"
-                >Orders</a
+                ><i class="fa-solid fa-cart-shopping"></i>
+                <span class="fs-5"> &nbsp;Orders</span></a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
                 onclick="loadPage('./support.html')"
-                >Support</a
+                ><i class="fa-solid fa-ticket-simple"></i>
+                <span class="fs-5"> &nbsp;Support</span></a
               >
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark text-white"
-                onclick="loadPage('logout')"
+                onclick="loadPage('settings')"
               >
-                <i
-                  class="fa-solid fa-arrow-right-from-bracket"
-                  style="font-size: 30px"
-                ></i
-              ></a>
+            <i class="fa-solid fa-gear"> </i>
+                <span class="fs-5"> &nbsp;Settings</span></a>
             </div>
           </div>
         </div>
