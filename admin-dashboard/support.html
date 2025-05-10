@@ -1,0 +1,137 @@
+<div class="container-fluid p-4">
+  <h2 class="mb-4">Admin Support Page</h2>
+
+  <!-- Dashboard Stats -->
+  <div class="card-stats row mb-4">
+    <div class="stat-box card text-bg-primary text-center p-3">
+      <h5>Total Tickets</h5>
+      <p id="totalTickets">120</p>
+    </div>
+    <div class="stat-box card text-bg-success text-center p-3">
+      <h5>Resolved</h5>
+      <p id="resolvedTickets">85</p>
+    </div>
+    <div class="stat-box card text-bg-warning text-center p-3">
+      <h5>Pending</h5>
+      <p id="pendingTickets">25</p>
+    </div>
+    <div class="stat-box card text-bg-info text-center p-3">
+      <h5>Avg. Response Time</h5>
+      <p>3h 15m</p>
+    </div>
+  </div>
+
+  <!-- Support Ticket Table -->
+  <div class="card mb-4">
+    <div class="card-header">Support Tickets</div>
+    <div class="card-body">
+      <input
+        type="text"
+        class="form-control mb-3"
+        id="searchTicket"
+        placeholder="Search tickets..."
+      />
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="ticketTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Seller Requests -->
+  <div class="card mb-4">
+    <div class="card-header">Seller Requests</div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>Date</th>
+
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="sellerRequestsTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Delete Confirmation Modal -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="modalTitle"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Confirm Ticket Deletion</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <strong>Warning:</strong> Deleting this ticket will remove it
+          permanently . This action cannot be undone.
+        </p>
+        <p class="fw-bold text-danger">Are you sure you want to proceed?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button id="confirmDeleteBtn" class="btn btn-danger">
+          Yes, Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ticket Modal -->
+<div
+  class="modal fade"
+  id="ticketModal"
+  tabindex="-1"
+  aria-labelledby="modalTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Ticket Details</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div id="ticketThread" class="mb-3"></div>
+        <textarea
+          id="adminReplyInput"
+          class="form-control mb-2"
+          placeholder="Type your reply here..."
+        ></textarea>
+        <button id="sendReplyBtn" class="btn btn-primary">Send Reply</button>
+      </div>
+    </div>
+  </div>
+</div>
