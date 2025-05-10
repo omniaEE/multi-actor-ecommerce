@@ -1,7 +1,3 @@
-document.getElementById("profileIcon").addEventListener("click", () => {
-  window.location.href = "../../login/login.html";
-});
-
 let data = JSON.parse(localStorage.getItem("all_data"));
 let filtered = [];
 

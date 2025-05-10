@@ -163,14 +163,26 @@
             >
               <i class="fa-regular fa-circle-user text-black"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end">
+            <ul id="profileDropdown" class="dropdown-menu dropdown-menu-end">
               <li>
-                <a class="dropdown-item" href="./update personal info.html"
+                <a class="dropdown-item" href="updateProfile.html"
                   >My Profile</a
                 >
               </li>
-              <li><a class="dropdown-item" href="#">My Wishlist</a></li>
-              <li><a class="dropdown-item" href="#">Log out</a></li>
+              <li>
+                <a class="dropdown-item" href="../products pages/whishList.html"
+                  >My Wishlist</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="../Cart Project/cart.html"
+                  >My cart</a
+                >
+              </li>
+              <a><hr class="dropdown-divider" /></a>
+              <li>
+                <a class="dropdown-item" onclick="showLogoutModal()">Log out</a>
+              </li>
             </ul>
           </div>
         </div>
