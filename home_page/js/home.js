@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadFirstProducts();
 
   // MARK: Selecting category
+
   const categoryItems = document.querySelectorAll("[data-category]");
   categoryItems.forEach((item) => {
     item.addEventListener("click", function () {
