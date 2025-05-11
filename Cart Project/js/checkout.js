@@ -70,7 +70,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     let allData = JSON.parse(localStorage.getItem('all_data')) || { users: [], orders: [], categories: [] };
     const insufficientStockItems = cartItems.filter(item => {
         const product = allData.products.find(p => p.id === item.product.id);
-        return product && product.stock < item.amount;
+        return product && product.stock < item.amount; // تأكد من وجود الكمية الكافية
     });
 
     if (insufficientStockItems.length > 0) {
@@ -98,7 +98,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
         const productIndex = allData.products.findIndex(p => p.id === item.product.id);
         if (productIndex !== -1) {
             const product = allData.products[productIndex];
-            product.stock -= item.amount;
+            product.stock -= item.amount; // تقليل الكمية في المخزون بناءً على الكمية المشتراة
         }
     });
 
