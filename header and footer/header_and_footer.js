@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function () {
     fetch('../header and footer/main_header.html')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('header-container').innerHTML = data;
+            document.getElementById('header-container').insertAdjacentHTML('beforeend', data);
 
             const user = JSON.parse(localStorage.getItem("loggedInUser"));
             const profileIcon = document.getElementById("profileIcon");
