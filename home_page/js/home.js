@@ -1,3 +1,4 @@
+// MARK: Rating Stars
 function generateStarRating(averageRating) {
   const fullStars = Math.floor(averageRating);
   const hasHalfStar = averageRating % 1 >= 0.5;
@@ -189,62 +190,7 @@ function addProductCardEventListeners() {
   });
 }
 
-// //add-to-cart & fav Btns in cards
-// let allCards = document.querySelectorAll(".pro-card");
-// allCards.forEach((card) => {
-//   card.addEventListener("click", (e) => {
-//     if (loggedUser) {
-//       //add in cart
-//       if (e.target.classList.contains("add-to-cart")) {
-//         //get product obj
-//         let product = data.products.find(
-//           (p) =>
-//             p.id == e.target.parentNode.parentNode.children[0].dataset.productid
-//         );
-
-//         let existingCartItem = loggedUser.cart.find(
-//           (p) => p.product.id == product.id
-//         );
-//         if (existingCartItem) {
-//           existingCartItem.amount = Number(existingCartItem.amount) + 1;
-//         } else {
-//           loggedUser.cart.push({
-//             product: product,
-//             amount: 1,
-//             color: product.colors[0],
-//             size: product.sizes[0],
-//           });
-//         }
-//         localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-//         //----------toast
-//         showToast();
-
-//         //add in fav
-//       } else if (e.target.classList.contains("fa-heart")) {
-//         //get product obj
-//         let product = data.products.find(
-//           (p) =>
-//             p.id == e.target.parentNode.parentNode.children[0].dataset.productid
-//         );
-
-//         loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-//         let existingFavItem = loggedUser.fav.find((p) => p.id == product.id);
-//         if (existingFavItem) {
-//           loggedUser.fav = loggedUser.fav.filter(
-//             (element) => element.id != product.id
-//           );
-//         } else {
-//           loggedUser.fav.push(product);
-//         }
-//         localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
-//         location.reload(); /////////////
-//       }
-//     } else {
-//       window.location.href = `../../login/login.html`;
-//     }
-//   });
-// });
-// Refactored add-to-cart & fav buttons handler
+// MARK: AddToCart & Fav buttons handler
 function handleProductCardInteractions() {
   const allCards = document.querySelectorAll(".pro-card");
   const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -331,6 +277,7 @@ function handleProductCardInteractions() {
   });
 }
 
+// MARK: View all Btns
 // View all Btn
 document.querySelector(".viewallBtn").addEventListener("click", function () {
   window.location.href = "../products pages/catalog.html";
@@ -351,6 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load Top Sells products
   loadFirstProducts();
 
+  // Handle Cart Interactions
   handleProductCardInteractions();
 
   // MARK: Selecting category
