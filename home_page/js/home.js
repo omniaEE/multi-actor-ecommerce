@@ -1,3 +1,4 @@
+
 // Calculate average rating
 function calculateAverageRating(ratings) {
   if (!ratings || ratings.length === 0) return 5.0;
@@ -145,7 +146,7 @@ document
 
 // MARK: Load
 document.addEventListener("DOMContentLoaded", () => {
-  // Load New Arrivals products
+
   loadLatestProducts();
 
   // Load Top Sells products

@@ -78,7 +78,7 @@ function signUp(event) {
         phone: phone,
         email: email,
         password: password,
-        address: '123 Tanta, Egypt',
+        address: "",
         orders: [],
         status: "Active",
         roleAsSeller: sellerRequest,
