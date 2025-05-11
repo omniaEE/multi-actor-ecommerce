@@ -197,5 +197,5 @@ function performLogout() {
     // Remove the logged-in user from localStorage
     localStorage.removeItem("loggedInUser");
     // Redirect the user to the login page
-    window.location.href = "../../login/login.html";
+    window.location.replace = "../../login/login.html";
 }
