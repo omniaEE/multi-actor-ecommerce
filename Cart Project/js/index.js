@@ -46,7 +46,7 @@ function show_cart_items() {
     cartItems.forEach(item => {
         itemsContainer.innerHTML += `
             <div class="item_cart">
-                <img src="${item.product.images[0]}" alt="${item.product.name}">
+                <img src="${item.product.images[0]}" data-productid="${item.product.id}" style="cursor: pointer;" alt="${item.product.name}">
                 <div class="content w-100">
                     <div class="d-flex justify-content-between">
                         <div>
@@ -69,6 +69,13 @@ function show_cart_items() {
     });
 
     updateSummary();
+
+    //open product details
+    itemsContainer.addEventListener("click", (e) => {
+        if (e.target.tagName === "IMG") {
+            window.location.href = `../products pages/productDetails.html?id=${e.target.dataset.productid}`;
+        }
+    });
 }
 
 // Remove Element by id
