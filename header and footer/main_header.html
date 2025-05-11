@@ -35,12 +35,26 @@
 
                 <!-- favorite icon -->
                 <a href="../products pages/whishList.html" class="text-decoration-none text-black">
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-heart fs-5"></i>
                 </a>
 
                 <!-- Cart Icon -->
-                <a href="../Cart Project/cart.html" class="text-decoration-none text-black">
-                    <i class="fa-solid fa-cart-shopping"></i>
+                <a href="../Cart Project/cart.html" class="text-decoration-none text-black position-relative">
+                    <i class="fa-solid fa-cart-shopping fs-5"></i>
+                    <div class="cart-budge" style="
+                        color: #fff;
+                        background-color: #d90b0b;
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                        font-size: 0.7rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 5px;
+                        right: -7px;"
+                    ></div>
                 </a>
 
                 <!-- Profile Dropdown -->
@@ -92,9 +106,9 @@
                         <span class="input-group-text border-0 bg-light rounded-5">
                             <i class="fas fa-search text-muted"></i>
                         </span>
-                            <input type="text" id="searchInput" placeholder="Search for products..."
-                                class="form-control border-0 bg-light shadow-none  rounded-5" />
-                            <div id="searchResults" class="dropdown-menu w-100"></div>
+                        <input type="text" id="searchInput" placeholder="Search for products..."
+                            class="form-control border-0 bg-light shadow-none  rounded-5" />
+                        <div id="searchResults" class="dropdown-menu w-100"></div>
                     </div>
                 </form>
             </div>
