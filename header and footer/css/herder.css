@@ -1,40 +1,23 @@
-.sectionTitle {
-  font-size: 2.4rm;
-  text-align: center;
-  font-family: Arial Black, sans-serif;
-  margin: 50px auto 25px;
+/* Search */
+#searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
 }
 
-/* Header */
-.navbar a {
-  text-decoration: none;
+#searchResults.show {
+  display: block;
 }
 
-.signUpSuggistionWrapper {
-  font-size: 0.8rem;
+.dropdown-item {
+  cursor: pointer;
 }
 
-.signUpSuggistionWrapper a {
-  font-size: 0.9rem;
-}
-
-.navbareIconsWrapper {
-  font-size: 1.5rem;
-}
-
-/* Hero */
-.heroWrapper {
-  height: 83vh;
-  background-color: #f2f0f1;
-}
-
-.heroHeader {
-  /* width: 65%; */
-  font-size: 4rem;
-  font-weight: bolder;
-}
-
-.rightSideContainer {
-  height: 80vh;
-  /* background-color: blue; */
+.dropdown-item:hover {
+  background-color: #f8f9fa;
 }
