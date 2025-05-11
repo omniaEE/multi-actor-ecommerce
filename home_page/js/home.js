@@ -101,7 +101,7 @@ function loadLatestProducts() {
                 <small class="col-4">${averageRating}</small>
               </div>
               <h5 class="card-text d-flex ${
-                discount ? "justify-content-center" : "justify-content-start"
+                discount ? "justify-content-between" : "justify-content-start"
               } mt-auto">
                 $${product.price.toFixed(2)}
                 ${
@@ -164,7 +164,7 @@ function loadFirstProducts() {
                 <small class="col-4">${averageRating}</small>
               </div>
               <h5 class="card-text d-flex ${
-                discount ? "justify-content-center" : "justify-content-start"
+                discount ? "justify-content-between" : "justify-content-start"
               } mt-auto">
                 $${product.price.toFixed(2)}
                 ${
@@ -223,14 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load Top Sells products
   loadFirstProducts();
 
-  // تحديد جميع عناصر الفئات
+  // Selecting category
   const categoryItems = document.querySelectorAll("[data-category]");
-
-  // إضافة حدث النقر لكل فئة
   categoryItems.forEach((item) => {
     item.addEventListener("click", function () {
       const category = this.getAttribute("data-category");
-      // توجيه المستخدم إلى صفحة الكتالوج مع إضافة معامل الفئة
       window.location.href = `../products pages/catalog.html?category=${category}`;
     });
   });
