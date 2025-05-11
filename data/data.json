@@ -86,7 +86,7 @@
       "phone": "01210677917",
       "email": "omnia@adminhub.com",
       "password": "omnia_admin_5",
-          "address": "123 Tanta, Egypt",
+      "address": "123 Tanta, Egypt",
       "permissions": [
         "manage_users",
         "manage_products",
