@@ -1,17 +1,21 @@
 <!-- -------------------------------------------------------------------------------------------------- -->
 
-
-
 <header class="container-fluid p-0">
-    <!-- Sign Up Banner -->
-    <div class="row bg-black text-white py-1 m-0" id="signUpSuggistion">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="text-center  flex-grow-1">
-                Sign up and get 20% off your first order.
-                <b><a href="../login/signup.html" class="text-white text-decoration-underline">Sign Up Now</a></b>
-            </div>
-        </div>
+  <!-- Sign Up Banner -->
+  <div class="row bg-black text-white py-1 m-0" id="signUpSuggistion">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="text-center flex-grow-1">
+        Sign up and get 20% off your first order.
+        <b
+          ><a
+            href="../login/signup.html"
+            class="text-white text-decoration-underline"
+            >Sign Up Now</a
+          ></b
+        >
+      </div>
     </div>
+
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white px-0 px-sm-3">
@@ -111,35 +115,128 @@
                         <div id="searchResults" class="dropdown-menu w-100"></div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </nav>
 
-    <hr class="col-11 mx-auto mb-0">
+            </div>
+          </div>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="profileIcon"
+          >
+            <li>
+              <a class="dropdown-item" href="../home_page/updateProfile.html"
+                >My Profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="../products pages/whishList.html"
+                >My Wishlist</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="../Cart Project/cart.html"
+                >My Cart</a
+              >
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" onclick="showLogoutModal()"
+                >Log out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Collapsible Content -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <!-- Nav Links -->
+        <ul
+          class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline justify-content-between"
+          style="min-width: 470px"
+        >
+          <li class="nav-item">
+            <a class="nav-link text-black" href="../home_page/homePage.html"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-black"
+              href="../home_page/homePage.html#newArrSection"
+              >New Arrivals</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-black"
+              href="../home_page/homePage.html#saleSection"
+              >Top Selling</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="../products pages/catalog.html"
+              >Store</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="../contact us/contactUs.html"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+
+        <!-- Search Input (Large Screens Only) -->
+        <form class="d-none d-lg-block mx-4 flex-grow-1">
+          <div class="input-group rounded-5 bg-light">
+            <span class="input-group-text border-0 bg-light rounded-5">
+              <i class="fas fa-search text-muted"></i>
+            </span>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search for products..."
+              class="form-control border-0 bg-light shadow-none rounded-5"
+            />
+            <div id="searchResults" class="dropdown-menu w-100"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <hr class="col-11 mx-auto mb-0" />
 </header>
 
-
-
-
-
-
-
-
 <!-- logout modal -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to log out?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" onclick="performLogout()">Yes, Log me out</button>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="logoutModal"
+  tabindex="-1"
+  aria-labelledby="logoutModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">Are you sure you want to log out?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-danger" onclick="performLogout()">
+          Yes, Log me out
+        </button>
+      </div>
     </div>
+  </div>
 </div>

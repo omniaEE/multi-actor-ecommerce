@@ -162,7 +162,8 @@
   <!-- 
     MARK: Reviews  
     -->
-  <section class="container reviewSection my-3">
+
+<!--   <section class="container reviewSection my-3">
     <!-- Head of section -->
     <div class="row justify-content-between align-items-center my-4">
       <h1 class="col-9 sectionTitle text-start m-0">OUR HAPPY CUSTOMERS</h1>
@@ -172,7 +173,12 @@
         </div>
         <div>
           <i class="fa-solid fa-arrow-right mx-3 fs-5" style="color: #0a0a0a"></i>
-        </div>
+        </div> -->
+
+    <section class="container reviewSection my-3">
+      <!-- Head of section -->
+      <div class="row justify-content-between align-items-center my-4">
+
       </div>
     </div>
 
@@ -249,7 +255,8 @@
   <div id="footer-container"></div>
 
 
-  <!-- logout modal -->
+
+<!--   <!-- logout modal -->
   <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -264,7 +271,45 @@
           </button>
           <button type="button" class="btn btn-danger" onclick="performLogout()">
             Yes, Log me out
-          </button>
+          </button> -->
+
+    <!-- logout modal -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      aria-labelledby="logoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Are you sure you want to log out?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="performLogout()"
+            >
+              Yes, Log me out
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
