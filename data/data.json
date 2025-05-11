@@ -14,7 +14,7 @@
         102
       ],
       "status": "Active",
-      "roleAsSeller": "false",
+      "roleAsSeller": "true",
       "cart": [],
       "fav": [],
       "createdAt": "2025-5-3"
@@ -735,5 +735,66 @@
       "id": 6,
       "name": "Party"
     }
-  ]
+  ],
+  "tickets": [
+  {
+    "id": 1,
+    "subject": "Login Issue",
+    "email": "fadl@gmail.com",
+    "name":"Fadl Yousry",
+    "status": "Pending",
+    "priority": "High",
+    "date": "2025-05-01",
+    "messages": [
+      {
+        "from": "user",
+        "message": "I can't log into my account.",
+        "timestamp": "2025-05-01T08:30:00"
+      },
+      {
+        "from": "admin",
+        "message": "Try resetting your password using the link provided.",
+        "timestamp": "2025-05-01T09:00:00"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "subject": "Refund not received",
+    "email": "sara@example.com",
+    "name":"Sara Ahmed",
+    "status": "Resolved",
+    "priority": "Medium",
+    "date": "2025-04-28",
+    "messages": [
+      {
+        "from": "user",
+        "message": "I requested a refund last week and still haven’t received it.",
+        "timestamp": "2025-04-28T14:12:00"
+      },
+      {
+        "from": "admin",
+        "message": "We’ve processed your refund. It should reflect in 3–5 business days.",
+        "timestamp": "2025-04-29T10:40:00"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "subject": "Product damaged",
+    "email": "khaled@example.com",
+    "name":"Khaled Mostafa",
+    "status": "Pending",
+    "priority": "High",
+    "date": "2025-05-03",
+    "messages": [
+      {
+        "from": "user",
+        "message": "The product I received is broken. I need a replacement.",
+        "timestamp": "2025-05-03T17:50:00"
+      }
+    ]
+  }
+]
+
 }

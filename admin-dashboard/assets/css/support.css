@@ -1,0 +1,19 @@
+.card-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.stat-box {
+  flex: 1;
+  min-width: 150px;
+  margin: 10px;
+}
+.sidebar {
+  background: #f8f9fa;
+  padding: 15px;
+  border-left: 1px solid #dee2e6;
+}
+.ticket-thread {
+  max-height: 200px;
+  overflow-y: auto;
+}
