@@ -109,10 +109,15 @@ function showLogoutModal() {
 
 // Perform the logout action
 function performLogout() {
+            let userIndex = all_data.users.findIndex(u => u.id == user.id);    
+    if (userIndex !== -1) {        
+        all_data.users[userIndex] = user;
+        localStorage.setItem("all_data", JSON.stringify(all_data));
+    }
     // Remove the logged-in user from localStorage
     localStorage.removeItem("loggedInUser");
     // Redirect the user to the login page
-    window.location.reload();
+    window.location.href = "../../login/login.html";
 }
 
 
