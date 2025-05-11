@@ -1,4 +1,3 @@
-// ./js/home.js
 // MARK: Search
 function searchProducts(query) {
   // Validation
@@ -65,7 +64,7 @@ function calculateAverageRating(ratings) {
 function loadLatestProducts() {
   const data = JSON.parse(localStorage.getItem("all_data") || "{}");
   const products = data.products || [];
-  const latestProducts = products.slice(-4).reverse(); // Get last 4 products, reverse for newest first
+  const latestProducts = products.slice(-4).reverse();
   const container = document.getElementById("latestProducts");
   container.innerHTML = "";
 
@@ -81,39 +80,50 @@ function loadLatestProducts() {
     const averageRating = calculateAverageRating(product.ratings);
 
     const productHtml = `
-      <a href="../products pages/productDetails.html?id=${
-        product.id
-      }" class="col-lg col-sm-6 m-1 d-flex flex-column align-items-start mb-sm-3 text-decoration-none">
-        <img src="../assets/pro${
-          index + 1
-        }.png" height="300px" class="row rounded-4 align-self-center" alt="${
-      product.name
-    }"/>
-        <p class="row fw-bolder p-3 fs-6">${product.name}</p>
-        <div class="ratingContainer">
-          <i class="fa-solid fa-star col"></i>
-          <i class="fa-solid fa-star col"></i>
-          <i class="fa-solid fa-star col"></i>
-          <i class="fa-solid fa-star col"></i>
-          <i class="fa-solid fa-star col"></i>
-          <small class="ms-2">${averageRating}</small>
-        </div>
-        <h5 class="d-flex">
-          $${product.price.toFixed(2)}
-          ${
-            discount
-              ? `
-                <s class="oldPrice">$${oldPrice.toFixed(2)}</s>
-                <span class="discountPercentage">-${discount}%</span>
-              `
-              : ""
-          }
-        </h5>
-      </a>
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-3 d-flex justify-content-center"> 
+        <a href="../products pages/productDetails.html?id=${
+          product.id
+        }" class="text-decoration-none w-100" style="max-width: 300px;"> 
+          <div class="card product-card rounded-4 d-flex flex-column h-100"> 
+            <img src="../assets/pro${
+              index + 1
+            }.png" class="card-img-top product-image" alt="${product.name}"/>
+            <div class="card-body text-center d-flex flex-column">
+              <p class="card-title text-start fw-bolder fs-6">${
+                product.name
+              }</p>
+              <div class="row justify-content-start align-items-start mb-2">
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <small class="col-4">${averageRating}</small>
+              </div>
+              <h5 class="card-text d-flex justify-content-center mt-auto"> 
+                $${product.price.toFixed(2)}
+                ${
+                  discount
+                    ? `
+                      <s class="oldPrice ms-2">$${oldPrice.toFixed(2)}</s>
+                      <span class="discountPercentage ms-2">-${discount}%</span>
+                    `
+                    : ""
+                }
+              </h5>
+            </div>
+          </div>
+        </a>
+      </div>
     `;
     container.insertAdjacentHTML("beforeend", productHtml);
   });
 }
+
+// View all Btn
+document.querySelector(".viewallBtn").addEventListener("click", function () {
+  window.location.href = "../products pages/catalog.html";
+});
 
 // Event listener setup
 document.addEventListener("DOMContentLoaded", () => {
