@@ -26,167 +26,15 @@
     />
     <!-- CSS Styles -->
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="../header and footer/css/herder.css">
+
   </head>
 
   <body>
     <!-- 
     MARK: Header  
     -->
-    <header class="container-fluid">
-      <!-- Sign Up Option -->
-      <div class="row bg-black text-white py-1 signUpSuggistionWrapper">
-        <div class="container row">
-          <div class="col-lg-8 pe-lg-5 col-12 text-center text-lg-end">
-            Sign up and get 20% off to your first order.
-            <b
-              ><a href="#" class="text-white text-decoration-underline"
-                >Sign Up Now</a
-              ></b
-            >
-          </div>
-
-          <!-- Close Button -->
-          <div class="col-lg-4 text-end d-none d-lg-block">
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              aria-label="Close"
-            ></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Navbar Container -->
-      <nav class="row navbar navbar-expand">
-        <!-- Left -->
-        <div class="col-6 col-md-8 col-lg-10 me-3 row">
-          <div class="col-lg-3 col-md-12">
-            <button
-              class="navbar-toggler me-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarTaps"
-              aria-controls="navbarTaps"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Brand Name -->
-            <a
-              class="navbar-brand fs-1 fw-bolder text-black text-start text-md-center text-uppercase"
-              href="#"
-              >Shop.co</a
-            >
-          </div>
-
-          <!-- Nav & Search -->
-          <div
-            class="collapse navbar-collapse col-lg-9 row justify-content-around d-none d-lg-block"
-          >
-            <!-- Navbar -->
-            <div
-              id="navbarTaps"
-              class="col-lg-7 d-none d-lg-block row align-items-center"
-            >
-              <ul class="navbar-nav nav-underline p-0 mb-2 mb-lg-0">
-                <li
-                  class="nav-item col-lg-2 d-flex align-items-center justify-content-center p-0"
-                >
-                  <a class="nav-link px-0 text-black" href="#">Shop</a>
-                </li>
-                <li
-                  class="nav-item col-lg-3 d-flex align-items-center justify-content-center p-0"
-                >
-                  <a class="nav-link px-0 text-black" href="#saleSection"
-                    >On Sale</a
-                  >
-                </li>
-                <li
-                  class="nav-item col-lg-3 d-flex align-items-center justify-content-center p-0"
-                >
-                  <a class="nav-link px-0 text-black" href="#newArrSection"
-                    >New Arrivals</a
-                  >
-                </li>
-                <li
-                  class="nav-item col-lg-2 d-flex align-items-center justify-content-center p-0"
-                >
-                  <a class="nav-link px-0 text-black" href="#footerSection"
-                    >ContactUs</a
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <!-- Search -->
-            <div
-              class="col-lg-5 d-none d-lg-block row rounded-5 justify-content-center align-items-center bg-light"
-            >
-              <div class="input-group rounded-5 position-relative">
-                <span class="input-group-text border-0">
-                  <i class="fas fa-search text-muted"></i>
-                </span>
-                <input
-                  type="text"
-                  id="searchInput"
-                  placeholder="Search for products..."
-                  class="form-control border-0 bg-light shadow-none p-2"
-                />
-                <div id="searchResults" class="dropdown-menu w-100"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right -->
-        <div
-          class="col-6 col-md-4 col-lg-2 row justify-content-between align-items-center justify-content-lg-end fs-4"
-        >
-          <a
-            href="#"
-            class="col-4 col-lg-6 text-center d-lg-none text-decoration-none"
-            ><i class="fas fa-search text-black"></i
-          ></a>
-          <a href="#" class="col-4 text-center text-decoration-none"
-            ><i class="fa-solid fa-cart-shopping text-black"></i
-          ></a>
-          <div class="dropdown col-4 col-lg-6">
-            <a
-              href="#"
-              id="profileIcon"
-              class="dropdown-toggle dropdown-toggle-no-caret text-center"
-              data-bs-toggle="dropdown"
-            >
-              <i class="fa-regular fa-circle-user text-black"></i>
-            </a>
-
-            <ul id="profileDropdown" class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="updateProfile.html"
-                  >My Profile</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="../products pages/whishList.html"
-                  >My Wishlist</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="../Cart Project/cart.html"
-                  >My cart</a
-                >
-              </li>
-              <a><hr class="dropdown-divider" /></a>
-              <li>
-                <a class="dropdown-item" onclick="showLogoutModal()">Log out</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <div id="header-container"></div>
 
     <!-- 
     MARK: Hero  
@@ -662,7 +510,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Other Scripts -->
     <script src="../js/main.js"></script>
-    <script src="../login_data.js"></script>
     <script src="./js/home.js"></script>
+    <script src="../header and footer/header_and_footer.js"></script>
+
   </body>
 </html>
