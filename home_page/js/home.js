@@ -1,3 +1,4 @@
+
 // MARK: Rating Stars
 function generateStarRating(averageRating) {
   const fullStars = Math.floor(averageRating);
@@ -23,6 +24,7 @@ function generateStarRating(averageRating) {
 
   return starsHtml;
 }
+
 
 // Calculate average rating
 function calculateAverageRating(ratings) {
@@ -292,7 +294,7 @@ document
 
 // MARK: Load
 document.addEventListener("DOMContentLoaded", () => {
-  // Load New Arrivals products
+
   loadLatestProducts();
 
   // Load Top Sells products

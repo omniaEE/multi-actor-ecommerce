@@ -102,6 +102,9 @@ window.addEventListener('DOMContentLoaded', function () {
 //-----------------logout----------------------------------
 
 // Display the modal to confirm logout
+const user = JSON.parse(localStorage.getItem("loggedInUser")) || {};
+
+
 function showLogoutModal() {
     const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
     logoutModal.show();
