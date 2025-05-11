@@ -1,3 +1,4 @@
+// ----- cart.js -----
 const itemsContainer = document.querySelector('.items_in_cart');
 const subtotalEl = document.getElementById('subtotal');
 const discountLabel = document.getElementById('discount-label');
@@ -6,16 +7,13 @@ const deliveryEl = document.getElementById('delivery');
 const totalEl = document.getElementById('total_price');
 const promoinput = document.getElementById('promo-input');
 const applypromo = document.getElementById('apply-promo');
-
 const promos = ["fadl", "yousef", "alaa", "omnia", "hager"];
 let promoapplied = false;
 
-
-// show cart items 
 function show_cart_items() {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
     const cartItems = user.cart || [];
-
+    const allData = JSON.parse(localStorage.getItem("all_data"));
     itemsContainer.innerHTML = "";
 
     if (cartItems.length === 0) {
@@ -27,8 +25,7 @@ function show_cart_items() {
                 </span>
                 <p class="empty-message mt-3">Your Cart is Empty </p><br/>
                 <a href="../products pages/catalog.html">Click Here to go to Products</a>
-            </div>
-        `;
+            </div>`;
         subtotalEl.style.display = 'none';
         discountLabel.style.display = 'none';
         discountValue.style.display = 'none';
@@ -44,6 +41,7 @@ function show_cart_items() {
     }
 
     cartItems.forEach(item => {
+        const product = allData.products.find(p => p.id === item.product.id);
         itemsContainer.innerHTML += `
             <div class="item_cart">
                 <img src="${item.product.images[0]}" data-productid="${item.product.id}" style="cursor: pointer;" alt="${item.product.name}">
@@ -52,20 +50,20 @@ function show_cart_items() {
                         <div>
                             <h5>${item.product.name}</h5>
                             <p>Size: ${item.size}<br>Color: ${item.color}</p>
+                             <span style="display:none;">Max available: ${product ? product.stock : 0}</span>
                         </div>
                         <i class="fa fa-trash-can" onclick="removeItem(${item.product.id}, '${item.color}', '${item.size}')"></i>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold">$${item.product.price}</span>
                         <div class="quantity_btn d-flex align-items-center">
-                            <button onclick="decreaseQuantity(${item.product.id})">-</button>
+                            <button onclick="decreaseQuantity(${item.product.id}, '${item.color}', '${item.size}')">-</button>
                             <span>${item.amount}</span>
-                            <button onclick="increaseQuantity(${item.product.id})">+</button>
+                            <button onclick="increaseQuantity(${item.product.id}, '${item.color}', '${item.size}')">+</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        `;
+            </div>`;
     });
 
     updateSummary();
@@ -78,62 +76,78 @@ function show_cart_items() {
     });
 }
 
-// Remove Element by id
-function removeItem(id, color, size) {
+function increaseQuantity(id, color, size) {
     let user = JSON.parse(localStorage.getItem("loggedInUser"));
-    let cartItems = user.cart || [];
+    let cartItems = user.cart;
+    let item = cartItems.find(item => item.product.id === id && item.color === color && item.size === size);
+    const allData = JSON.parse(localStorage.getItem("all_data"));
+    const product = allData.products.find(p => p.id === id);
 
-    cartItems = cartItems.filter(item => {
-        return !(item.product.id === id && item.color === color && item.size === size);
-    });
-
-    user.cart = cartItems;
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
-
-    show_cart_items();
-}
-
-// increase Q
-function increaseQuantity(id) {
-    let user = JSON.parse(localStorage.getItem("loggedInUser"));
-    let cartItems = user.cart || [];
-
-    let item = cartItems.find(item => item.product.id === id);
-    if (item) {
-        item.amount++;
-        user.cart = cartItems;
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-        show_cart_items();
+    if (item && product) {
+        if (item.amount < product.stock) {
+            item.amount++;
+            user.cart = cartItems;
+            localStorage.setItem("loggedInUser", JSON.stringify(user));
+            show_cart_items();
+        } else {
+            Swal.fire({
+                title: 'Out of Stock!',
+                text: `Sorry, only ${product.stock} available for this variant.`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
     }
 }
 
-// Decrease Q
-function decreaseQuantity(id) {
+function decreaseQuantity(id, color, size) {
     let user = JSON.parse(localStorage.getItem("loggedInUser"));
     let cartItems = user.cart || [];
-
-    let item = cartItems.find(item => item.product.id === id);
+    let item = cartItems.find(item => item.product.id === id && item.color === color && item.size === size);
     if (item && item.amount > 1) {
         item.amount--;
         user.cart = cartItems;
         localStorage.setItem("loggedInUser", JSON.stringify(user));
         show_cart_items();
+    } else if (item && item.amount === 1) {
+        removeItem(id, color, size);
     }
 }
 
-// update the summary
+function removeItem(id, color, size) {
+    let user = JSON.parse(localStorage.getItem("loggedInUser"));
+    let cartItems = user.cart || [];
+    const removedItem = cartItems.find(item => item.product.id === id && item.color === color && item.size === size);
+    if (removedItem) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `Do you want to remove ${removedItem.product.name} from your cart?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, remove it!',
+            cancelButtonText: 'No, keep it',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                cartItems = cartItems.filter(item => item.product.id !== id || item.color !== color || item.size !== size);
+                user.cart = cartItems;
+                localStorage.setItem("loggedInUser", JSON.stringify(user));
+                show_cart_items();
+                Swal.fire('Removed!', `${removedItem.product.name} has been removed from your cart.`, 'success');
+            }
+        });
+    }
+}
+
 function updateSummary() {
     let user = JSON.parse(localStorage.getItem("loggedInUser"));
     let cartItems = user.cart || [];
-
     promoapplied = !!user.promoApplied;
-
     const subtotal = cartItems.reduce((sum, item) => sum + parseFloat(item.product.price) * item.amount, 0);
     const discountRate = promoapplied ? 0.25 : 0.20;
     const discount = subtotal * discountRate;
     const delivery = 15;
     const total = subtotal - discount + delivery;
-
     subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
     discountLabel.textContent = `Discount (${(discountRate * 100).toFixed(0)}%):`;
     discountValue.textContent = `- $${discount.toFixed(2)}`;
@@ -141,31 +155,28 @@ function updateSummary() {
     totalEl.textContent = `$${total.toFixed(2)}`;
 }
 
-// Apply promo code
 applypromo.addEventListener("click", function () {
     let user = JSON.parse(localStorage.getItem("loggedInUser"));
     const enteredCode = promoinput.value.trim().toLowerCase();
-
     if (promos.includes(enteredCode)) {
         if (!promoapplied) {
             promoapplied = true;
             user.promoApplied = true;
             localStorage.setItem("loggedInUser", JSON.stringify(user));
-            alert("Promo code applied. You now have a 25% discount.");
+            Swal.fire({ title: 'Success!', text: 'Promo code applied. You now have a 25% discount.', icon: 'success', confirmButtonText: 'OK' });
         } else {
-            alert("Promo code already applied.");
+            Swal.fire({ title: 'Info!', text: 'Promo code already applied.', icon: 'info', confirmButtonText: 'OK' });
         }
     } else {
         if (promoapplied) {
             promoapplied = false;
             user.promoApplied = false;
             localStorage.setItem("loggedInUser", JSON.stringify(user));
-            alert("Invalid code! Default discount (20%) restored.");
+            Swal.fire({ title: 'Invalid Code!', text: 'Invalid code! Default discount (20%) restored.', icon: 'error', confirmButtonText: 'OK' });
         } else {
-            alert("You do not have a valid promo code.");
+            Swal.fire({ title: 'Oops!', text: 'You do not have a valid promo code.', icon: 'warning', confirmButtonText: 'OK' });
         }
     }
-
     updateSummary();
 });
 
@@ -175,7 +186,7 @@ if (checkoutBtn) {
         let user = JSON.parse(localStorage.getItem("loggedInUser"));
         let cartItems = user.cart || [];
         if (cartItems.length === 0) {
-            alert("Go to products page first to choose what you want before checkout.");
+            Swal.fire({ title: 'Oops!', text: 'Go to products first before checkout!', icon: 'warning', confirmButtonText: 'OK' });
             return;
         }
         window.location.href = "checkout.html";
