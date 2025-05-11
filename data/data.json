@@ -735,5 +735,37 @@
       "id": 6,
       "name": "Party"
     }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "subject": "Login Issue",
+      "email": "fadl@gmail.com",
+      "name": "Fadl Yousry",
+      "status": "Pending",
+      "priority": "High",
+      "date": "2025/05/01",
+      "messages": "I can't log into my account.Try resetting your password using the link provided."
+    },
+    {
+      "id": 2,
+      "subject": "Refund not received",
+      "email": "sara@example.com",
+      "name": "Sara Ahmed",
+      "status": "Resolved",
+      "priority": "Medium",
+      "date": "2025/04/28",
+      "messages": "I requested a refund last week and still haven’t received it."
+    },
+    {
+      "id": 3,
+      "subject": "Product damaged",
+      "email": "khaled@example.com",
+      "name": "Khaled Mostafa",
+      "status": "Pending",
+      "priority": "High",
+      "date": "2025/05/03",
+      "messages": "The product I received is broken. I need a replacement."
+    }
   ]
 }
