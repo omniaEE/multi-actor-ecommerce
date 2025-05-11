@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../header and footer/css/herder.css">
+    <title>Contact Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            position: relative;
+        }
+
+        section {
+            width: 85%;
+            margin: 50px auto;
+        }
+
+        h4,
+        h2 {
+            font-weight: bold;
+        }
+
+        #img {
+            width: 100%;
+            height: 50vh;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .contact-us {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-form p {
+            margin: 7px 0 25px;
+            color: #777;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            outline: 0;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+
+        .contact-form button {
+            padding: 10px 60px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .contact-form button:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-info {
+            color: #999;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: #000;
+        }
+
+        .contact-info i {
+            margin-right: 7px;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        .contact-info .fa-brands {
+            font-size: 1.9rem;
+            margin-right: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-info .fa-brands:hover {
+            transform: scale(1.2);
+        }
+
+        #error-msg {
+            color: rgb(217, 33, 33);
+            font-weight: 500;
+            margin: 0 0 8px;
+            display: none;
+        }
+
+        .tost {
+            background-color: #01ab31;
+            padding: 20px;
+            border-radius: 20px;
+            width: 400px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 200;
+            align-items: center;
+            justify-content: space-between;
+            display: none;
+        }
+
+        .tost p,
+        .tost i {
+            color: #fff;
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tost i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 838px) {
+            .contact-us {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                width: 95%;
+            }
+
+            .tost {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- for header -->
+    <div id="header-container"></div>
+
+    <section>
+        <img src="../assets/contactUs.jpg" alt="" id="img">
+        <div class="contact-us">
+            <div class="contact-form">
+                <h2>We would love to hear from you.</h2>
+                <p>If you've got great products your making or looking to work with us then drop us a line.</p>
+                <div>
+                    <input type="text" placeholder="Username" id="username">
+                    <input type="email" placeholder="Email" id="email">
+                </div>
+                <input type="text" placeholder="Subject" id="subject">
+                <br />
+                <textarea placeholder="Message" rows="12" id="message"></textarea>
+                <p id="error-msg">SOMETHING IS WRONG TRY AGAIN</p>
+                <button id="submitForm">Submit</button>
+                <div class="tost">
+                    <p>YOUR MESSAGE SENDED TO OUR CUSTOMER SERVICE<br />THANK YOU FOR SUPPORTING US</p><i
+                        class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div class="contact-info">
+                <h2>Address</h2>
+                <i class="fa-solid fa-location-dot"></i>13 EL.Nozha St. Arab African Bank 4th floor
+                <br />
+                <br />
+                <br />
+                <h2>Information</h2>
+                <i class="fa-solid fa-phone"></i>0221294380
+                <br />
+                <i class="fa-solid fa-envelope"></i>omnia@adminhub.com
+                <br />
+                <br />
+                <br />
+                <h2>Social Media</h2>
+                <i class="fa-brands fa-facebook-f" onMouseOver="this.style.color='#2576d3'"
+                    onMouseOut="this.style.color='#555'"></i>
+                <i class="fa-brands fa-twitter" onMouseOver="this.style.color='#5cd6ff'"
+                    onMouseOut="this.style.color='#555'"></i>
+                <i class="fa-brands fa-instagram" onMouseOver="this.style.color='#f40461'"
+                    onMouseOut="this.style.color='#555'"></i>
+                <i class="fa-brands fa-github" onMouseOver="this.style.color='#000'"
+                    onMouseOut="this.style.color='#555'"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+
+    <script>
+        let nameInput = document.getElementById("username")
+        let emailInput = document.getElementById("email")
+        let subjectInput = document.getElementById("subject")
+        let msgInput = document.getElementById("message")
+        let submitBtn = document.getElementById("submitForm")
+        let errorMsg = document.getElementById("error-msg")
+
+        let data = JSON.parse(localStorage.getItem("all_data"))
+        let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
+
+        //-----apply toast
+        let toastTimeout
+        function showToast() {
+            let toast = document.querySelector(".tost");
+            toast.style.display = "flex";
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.style.display = "none";
+            }, 1500);
+            toast.querySelector("i").addEventListener('click', () => {
+                toast.style.display = "none";
+                clearTimeout(toastTimeout)
+            });
+        }
+
+        submitBtn.addEventListener("click", () => {
+            if (nameInput.value && subjectInput.value && msgInput.value && emailInput.value == loggedUser.email) {
+                errorMsg.style.display = "none"
+                let newTicket = {
+                    id: parseInt(data.tickets.length) + 1,
+                    subject: subjectInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    name: nameInput.value.trim(),
+                    status: "Pending",
+                    priority: "High",
+                    date: new Date().toLocaleDateString(),
+                    messages: msgInput.value.trim()
+                }
+                data.tickets.push(newTicket)
+                localStorage.setItem("all_data", JSON.stringify(data));
+                showToast()
+                //reset
+                subjectInput.value = ""
+                emailInput.value = ""
+                nameInput.value = ""
+                msgInput.value = ""
+            } else {
+                errorMsg.style.display = "block"
+            }
+        })
+    </script>
+    <script src="../header and footer/header_and_footer.js"></script>
+</body>
+
+</html>

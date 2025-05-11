@@ -9,6 +9,10 @@
 
   data.orders.forEach((order) => {
     const customer = getUserById(order.customerId);
+
+    const customerName = customer
+      ? `${customer.firstName} ${customer.lastName}`
+      : "Unknown Customer";
     const orderCard = document.createElement("div");
     orderCard.className = "order-card";
 
@@ -17,9 +21,8 @@
 
     orderCard.innerHTML = `
       <div class="order-header">Order ID: ${order.id}</div>
-      <p><strong>Customer:</strong> ${customer.firstName} ${
-      customer.lastName
-    }</p>
+<p><strong>Customer:</strong> ${customerName}</p>
+
       <p><strong>Date:</strong> ${order.orderDate}</p>
       <p><strong>Status:</strong> <span class="status ${statusClass}">${
       order.status

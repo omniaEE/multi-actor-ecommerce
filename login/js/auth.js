@@ -5,7 +5,7 @@
 function showAlert(message, type = "danger") {
     const alertBox = document.getElementById("alertBox");
     alertBox.textContent = message;
-    alertBox.className = `alert alert-${type}`; 
+    alertBox.className = `alert alert-${type}`;
     alertBox.classList.remove("d-none");
 }
 
@@ -26,12 +26,12 @@ document.getElementById("ConfirmPassword").addEventListener("input", function ()
 // sign up
 function signUp(event) {
     event.preventDefault();
-const form = event.target;
+    const form = event.target;
 
-if (!form.checkValidity()) {
-    form.classList.add("was-validated");
-    return;
-}
+    if (!form.checkValidity()) {
+        form.classList.add("was-validated");
+        return;
+    }
 
 
     const firstName = document.getElementById("firstName").value;
@@ -48,48 +48,52 @@ if (!form.checkValidity()) {
     let sellerRequest = role.checked
 
 
-        let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
-        let users = all_data.users;
-        const exists = users.find(users => users.email === email);
+    let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
+    let users = all_data.users;
+    const exists = users.find(users => users.email === email);
 
-        if (exists) {
-            alert("Email already exists");
-            emailInput.classList.remove("is-valid");
-            emailInput.classList.add("is-invalid");
-            emailInput.focus();
-            return;
-        } else {
-            emailInput.classList.remove("is-invalid");
-            emailInput.classList.add("is-valid");
-        }
-        
-        if (password !== ConfirmPassword) {
-            alert("Passwords do not match.");
-            document.getElementById("password").focus();
-            return;
-        }
-        const newId = Math.max(0, ...all_data.users.map(p => p.id || 0)) + 1;
-
-        const newUser = {
-            id: newId,
-            role: "customer",
-            firstName: firstName,
-            lastName: lastName,
-            phone: phone,
-            email: email,
-            password: password,
-            address: '123 Tanta, Egypt',
-            orders: [101, 102],
-            status: "Active",
-            roleAsSeller: sellerRequest
-
-        };
-
-        all_data.users.push(newUser);
-        localStorage.setItem("all_data", JSON.stringify(all_data));
-
-        showAlert("Signed up successfully!", "success");
+    if (exists) {
+        alert("Email already exists");
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+        emailInput.focus();
+        return;
+    } else {
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
     }
+
+    if (password !== ConfirmPassword) {
+        alert("Passwords do not match.");
+        document.getElementById("password").focus();
+        return;
+    }
+    const newId = Math.max(0, ...all_data.users.map(p => p.id || 0)) + 1;
+
+    const newUser = {
+        id: newId,
+        role: "customer",
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        email: email,
+        password: password,
+        address: "no address",
+        orders: [],
+        status: "Active",
+        roleAsSeller: sellerRequest,
+        cart: [],
+        fav: [],
+        createdAt: "",
+        storeName: "",
+        permissions:[]
+    };
+
+    all_data.users.push(newUser);
+    localStorage.setItem("all_data", JSON.stringify(all_data));
+
+    showAlert("Signed up successfully!", "success");
+}
 //-----------------------------------------------------------------------------------------------------------------
 function resetPassword() {
     const firstName = document.getElementById("firstName").value;
@@ -141,7 +145,7 @@ function updatepassword() {
         return;
     } else {
         let all_data = JSON.parse(localStorage.getItem("all_data")) || [];
-        let users = all_data.users;      
+        let users = all_data.users;
         users[userIndex].password = password;
 
         localStorage.setItem("all_data", JSON.stringify(all_data));

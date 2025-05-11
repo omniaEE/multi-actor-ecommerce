@@ -12,7 +12,6 @@ fetch("header.html")
 
         if (user) {
             document.getElementById("name").innerText = user.firstName + " " + user.lastName;
-            document.getElementById("email").innerText = user.email;
         }
     });
 
@@ -41,3 +40,25 @@ fetch("nav bar.html")
 
 
 
+
+
+const user = JSON.parse(localStorage.getItem("loggedInUser")) || {};
+let all_data = JSON.parse(localStorage.getItem("all_data")) || { users: [] };
+    // Display the modal to confirm logout
+function showLogoutModal() {
+    const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    logoutModal.show();
+}
+
+// Perform the logout action
+function performLogout() {
+                let userIndex = all_data.users.findIndex(u => u.id == user.id);    
+    if (userIndex !== -1) {        
+        all_data.users[userIndex] = user;
+        localStorage.setItem("all_data", JSON.stringify(all_data));
+    }
+    // Remove the logged-in user from localStorage
+    localStorage.removeItem("loggedInUser");
+    // Redirect the user to the login page
+    window.location.replace = "../../login/login.html";
+}

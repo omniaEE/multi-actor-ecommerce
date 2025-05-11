@@ -58,6 +58,10 @@ observer.observe(document.body, { childList: true, subtree: true });
             products = all_data.products;
             users = all_data.users;
 
+
+            const customersCount = users.filter(user => user.role?.toLowerCase() === "customer").length;
+            document.getElementById("totalUsers").textContent = customersCount;
+
             const now = new Date();
             const oneMonthAgo = new Date();
             oneMonthAgo.setDate(now.getDate() - 30);
@@ -93,12 +97,7 @@ observer.observe(document.body, { childList: true, subtree: true });
             const newOrdersCount = newOrders.length;
             const ordersChange = totalOrders === 0 ? 0 : (newOrdersCount / totalOrders) * 100;
 
-            // document.getElementById
-
-            // console.log(`إجمالي عدد المستخدمين: ${totalUsers}`);
-            // console.log(`عدد المستخدمين الجدد خلال آخر 30 يوم: ${newUsersCount}`);
-            // console.log(`النسبة: ${changePercent.toFixed(1)}%`);
-
+       
             updateChangeBadge("totalUsersChange", changePercent);
             updateChangeBadge("productsChange", productsChange);
             updateChangeBadge("ordersChange", ordersChange);
@@ -117,7 +116,7 @@ observer.observe(document.body, { childList: true, subtree: true });
     //new orders
     const newOrders = all_data.orders;
 
-for (let i = newOrders.length - 1; i < newOrders.length; i--) {
+for (let i = newOrders.length - 1; i >=0; i--) {
     const user = users.find(u => u.id === newOrders[i].customerId) || { firstName: "", lastName: "" };
 
     let productNames = "";
