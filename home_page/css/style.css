@@ -73,23 +73,45 @@ MARK: Hero
 /*
 MARK: Products
 */
-.oldPrice {
-  color: #bbb;
-  margin: 0 10px;
-}
-
-.discountPercentage {
-  padding: 2px 10px;
-  color: #d90b0b;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  font-weight: 300;
-  background-color: rgb(255, 226, 226);
-}
-
 .viewallBtn {
   border: 1px solid #bbb;
   background: transparent;
+}
+
+.oldPrice {
+  color: #6c757d;
+  margin-left: 10px;
+}
+
+.discountPercentage {
+  color: #d90b0b;
+  margin-left: 10px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  background-color: rgb(255, 226, 226);
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+}
+
+/* Horizontal scroll for New Arrivals on small screens */
+@media (max-width: 767.98px) {
+  #latestProducts {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  #latestProducts::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  #latestProducts .col-lg.col-sm-6 {
+    flex: 0 0 250px;
+    max-width: 250px;
+  }
 }
 
 /* 
