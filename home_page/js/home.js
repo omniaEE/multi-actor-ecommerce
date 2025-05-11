@@ -1,35 +1,3 @@
-// MARK: Search
-function searchProducts(query) {
-  // Validation
-  if (!query || typeof query !== "string") {
-    return [];
-  }
-
-  query = query.trim().toLowerCase();
-  if (query.length === 0) {
-    return [];
-  }
-
-  const data = JSON.parse(localStorage.getItem("all_data") || "{}");
-  return data.products.filter((product) =>
-    product.name.toLowerCase().includes(query)
-  );
-}
-
-
-
-// Debounce function to limit search calls
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
 
 // Calculate average rating
 function calculateAverageRating(ratings) {
@@ -169,29 +137,23 @@ document.querySelector(".viewallBtn").addEventListener("click", function () {
   window.location.href = "../products pages/catalog.html";
 });
 
+// View all Btn Top Sells
+document
+  .querySelector("#topSellsViewAllBtn")
+  .addEventListener("click", function () {
+    window.location.href = "../products pages/catalog.html";
+  });
+
 // MARK: Load
 document.addEventListener("DOMContentLoaded", () => {
-  // Setup search
-  const searchInput = document.getElementById("searchInput");
 
-  // Debounced search
-  const debouncedSearch = debounce((value) => {
-    const results = searchProducts(value);
-    displayResults(results);
-  }, 300);
-
-
-
-  // Hide results when clicking outside
-
-
-  // Load latest products
   loadLatestProducts();
 
   // Load Top Sells products
   loadFirstProducts();
 
-  // Selecting category
+  // MARK: Selecting category
+
   const categoryItems = document.querySelectorAll("[data-category]");
   categoryItems.forEach((item) => {
     item.addEventListener("click", function () {
