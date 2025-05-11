@@ -1,3 +1,28 @@
+function generateStarRating(averageRating) {
+  const fullStars = Math.floor(averageRating);
+  const hasHalfStar = averageRating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+  let starsHtml = "";
+
+  // Full stars
+  for (let i = 0; i < fullStars; i++) {
+    starsHtml += '<i class="fa-solid fa-star text-warning col-1"></i>';
+  }
+
+  // Half star
+  if (hasHalfStar) {
+    starsHtml += '<i class="fa-solid fa-star-half-alt text-warning col-1"></i>';
+  }
+
+  // Empty stars
+  for (let i = 0; i < emptyStars; i++) {
+    starsHtml += '<i class="fa-regular fa-star text-warning col-1"></i>';
+  }
+
+  return starsHtml;
+}
+
 // Calculate average rating
 function calculateAverageRating(ratings) {
   if (!ratings || ratings.length === 0) return 5.0;
@@ -39,11 +64,7 @@ function loadLatestProducts() {
                 product.name
               }</p>
               <div class="row justify-content-start align-items-start mb-2">
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
+                ${generateStarRating(averageRating)}
                 <small class="col-4">${averageRating}</small>
               </div>
               <h5 class="card-text d-flex ${
@@ -102,11 +123,7 @@ function loadFirstProducts() {
                 product.name
               }</p>
               <div class="row justify-content-start align-items-start mb-2">
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
-                <i class="fa-solid fa-star text-warning col-1"></i>
+                ${generateStarRating(averageRating)}
                 <small class="col-4">${averageRating}</small>
               </div>
               <h5 class="card-text d-flex ${
