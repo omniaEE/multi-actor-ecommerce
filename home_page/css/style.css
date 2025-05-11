@@ -97,6 +97,14 @@ MARK: Products
   filter: brightness(90%);
 }
 
+.card-title {
+  white-space: nowrap; /* يمنع الانتقال للسطر التالي */
+  overflow: hidden; /* يخفي النص الزائد */
+  text-overflow: ellipsis; /* يعرض ثلاث نقاط (...) للنص الزائد */
+  width: 100%; /* يجب تحديد عرض ثابت */
+  display: block; /* مهم لعمل ellipsis */
+}
+
 .ratingContainer {
   color: #ffd45e;
 }

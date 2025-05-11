@@ -52,7 +52,6 @@ function debounce(func, wait) {
   };
 }
 
-// MARK: New Arrivals
 // Calculate average rating
 function calculateAverageRating(ratings) {
   if (!ratings || ratings.length === 0) return 5.0;
@@ -60,6 +59,7 @@ function calculateAverageRating(ratings) {
   return (sum / ratings.length).toFixed(1);
 }
 
+// MARK: New Arrivals
 // Load latest 4 products
 function loadLatestProducts() {
   const data = JSON.parse(localStorage.getItem("all_data") || "{}");
@@ -68,7 +68,7 @@ function loadLatestProducts() {
   const container = document.getElementById("latestProducts");
   container.innerHTML = "";
 
-  latestProducts.forEach((product, index) => {
+  latestProducts.forEach((product) => {
     const oldPrice =
       product.old_price && product.old_price !== ""
         ? parseFloat(product.old_price)
@@ -85,11 +85,11 @@ function loadLatestProducts() {
           product.id
         }" class="text-decoration-none w-100" style="max-width: 300px;"> 
           <div class="card product-card rounded-4 d-flex flex-column h-100"> 
-            <img src="../assets/pro${
-              index + 1
-            }.png" class="card-img-top product-image" alt="${product.name}"/>
+            <img src="../${
+              product.images[0]
+            }" class="card-img-top product-image" alt="${product.name}"/>
             <div class="card-body text-center d-flex flex-column">
-              <p class="card-title text-start fw-bolder fs-6">${
+              <p class="card-title text-start fw-bolder fs-6" style="width: 100%">${
                 product.name
               }</p>
               <div class="row justify-content-start align-items-start mb-2">
@@ -100,7 +100,72 @@ function loadLatestProducts() {
                 <i class="fa-solid fa-star text-warning col-1"></i>
                 <small class="col-4">${averageRating}</small>
               </div>
-              <h5 class="card-text d-flex justify-content-center mt-auto"> 
+              <h5 class="card-text d-flex ${
+                discount ? "justify-content-center" : "justify-content-start"
+              } mt-auto">
+                $${product.price.toFixed(2)}
+                ${
+                  discount
+                    ? `
+                      <s class="oldPrice ms-2">$${oldPrice.toFixed(2)}</s>
+                      <span class="discountPercentage ms-2">-${discount}%</span>
+                    `
+                    : ""
+                }
+              </h5>
+            </div>
+          </div>
+        </a>
+      </div>
+    `;
+    container.insertAdjacentHTML("beforeend", productHtml);
+  });
+}
+
+// MARK: Top Sells
+// Load first 4 products
+function loadFirstProducts() {
+  const data = JSON.parse(localStorage.getItem("all_data") || "{}");
+  const products = data.products || [];
+  const firstProducts = products.slice(0, 4);
+  const container = document.getElementById("firstProducts");
+  container.innerHTML = "";
+
+  firstProducts.forEach((product) => {
+    const oldPrice =
+      product.old_price && product.old_price !== ""
+        ? parseFloat(product.old_price)
+        : null;
+    const discount =
+      oldPrice && oldPrice > product.price
+        ? Math.round(((oldPrice - product.price) / oldPrice) * 100)
+        : 0;
+    const averageRating = calculateAverageRating(product.ratings);
+
+    const productHtml = `
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-3 d-flex justify-content-center"> 
+        <a href="../products pages/productDetails.html?id=${
+          product.id
+        }" class="text-decoration-none w-100" style="max-width: 300px;"> 
+          <div class="card product-card rounded-4 d-flex flex-column h-100"> 
+            <img src="../${
+              product.images[0]
+            }" class="card-img-top product-image" alt="${product.name}"/>
+            <div class="card-body text-center d-flex flex-column">
+              <p class="card-title text-start fw-bolder fs-6" style="width: 100%">${
+                product.name
+              }</p>
+              <div class="row justify-content-start align-items-start mb-2">
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <i class="fa-solid fa-star text-warning col-1"></i>
+                <small class="col-4">${averageRating}</small>
+              </div>
+              <h5 class="card-text d-flex ${
+                discount ? "justify-content-center" : "justify-content-start"
+              } mt-auto">
                 $${product.price.toFixed(2)}
                 ${
                   discount
@@ -125,11 +190,8 @@ document.querySelector(".viewallBtn").addEventListener("click", function () {
   window.location.href = "../products pages/catalog.html";
 });
 
-// Event listener setup
+// MARK: Load
 document.addEventListener("DOMContentLoaded", () => {
-  // Load latest products
-  loadLatestProducts();
-
   // Setup search
   const searchInput = document.getElementById("searchInput");
 
@@ -154,4 +216,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("searchResults").classList.remove("show");
     }
   });
+
+  // Load latest products
+  loadLatestProducts();
+
+  // Load Top Sells products
+  loadFirstProducts();
 });
