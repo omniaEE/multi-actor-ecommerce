@@ -208,7 +208,7 @@ input[type="checkbox"] {
 @media screen and (max-width: 768px) {
     .responsive-table {
         width: 100%;
-
+        padding: 0 10px; 
     }
 
     .responsive-table thead {
@@ -221,13 +221,13 @@ input[type="checkbox"] {
 
     .responsive-table tr {
         display: block;
-        margin-bottom: 15px;
+        margin: 15px 10px; 
         border-radius: 20px;
         overflow: hidden;
         box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1) !important;
-        padding: 6px;
+        padding: 10px;
+        background-color: #fff;
     }
-
 
     .responsive-table tr:hover {
         box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.1) !important;
@@ -235,8 +235,9 @@ input[type="checkbox"] {
 
     .responsive-table td {
         display: block;
-        text-align: left;
+        text-align: left !important;
         position: relative;
+        padding: 10px 5px;
     }
 
     .responsive-table td::before {
@@ -246,6 +247,7 @@ input[type="checkbox"] {
         font-weight: bold;
     }
 }
+
 
 /* -----search bar---------------------- */
 #userSearch:focus,

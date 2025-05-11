@@ -53,6 +53,7 @@ function loadPage(page) {
       document.body.appendChild(script);
     });
 }
+// function loadProfile()
 
 loadPage("./dashboard.html");
 displayUserData();
