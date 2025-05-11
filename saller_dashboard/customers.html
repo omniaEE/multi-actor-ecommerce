@@ -42,7 +42,7 @@
                         <div class="d-flex justify-content-between py-2">
 
                             <h3 class="text-dark ms-2"><b> Customers</b></h3>
-                            <div class="d-flex justify-content-between py-2 gap-2 ">
+                            <div class="d-flex justify-content-between py-0 gap-2 ">
                                 <!----------------- search bar------------------- -->
                                 <div class="mb-3 ms-3 position-relative disapper">
 
@@ -57,13 +57,15 @@
                         </div>
                         <!-- ---------------------------------------------- -->
                     </div>
-                    <div>
+                    <div class="responsive-table">
                         <table id="mainTable"
-                            class="table table-hover formBorder text-small m-0 p-0 fs-6 responsive-table shadow">
-                            <thead>
-                                <th >Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
+                            class="table table-hover formBorder text-small m-0 p-0 fs-6 shadow">
+                            <thead >
+                                <tr>
+                                    <th >Name</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <!-- data will be added -->
