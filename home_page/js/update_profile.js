@@ -17,7 +17,7 @@ toggleBtn.addEventListener("click", () => {
 
 //---------------------------------------------------------------
 
-const user = JSON.parse(localStorage.getItem("loggedInUser")) || {};
+const user = JSON.parse(localStorage.getItem("loggedInUser"));
 let all_data = JSON.parse(localStorage.getItem("all_data")) || { users: [] };
 
 
@@ -31,22 +31,14 @@ if (user) {
 window.updateProfile = function () {
     document.getElementById("profileCard").classList.remove("d-none");
     document.getElementById("securityCard").classList.add("d-none");
-    document.getElementById("messageCard").classList.add("d-none");
 
 }
 //security button
 window.updateSecurity = function () {
     document.getElementById("securityCard").classList.remove("d-none");
     document.getElementById("profileCard").classList.add("d-none");
-    document.getElementById("messageCard").classList.add("d-none");
+}
 
-}
-//message button
-window.updateMessage = function () {
-    document.getElementById("messageCard").classList.remove("d-none");
-    document.getElementById("profileCard").classList.add("d-none");
-    document.getElementById("securityCard").classList.add("d-none");
-}
 
 //-----------------------------------------------update profile-------------------------------------------------------------------------------------
 // Fill the form with current user data

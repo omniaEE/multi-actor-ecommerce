@@ -16,28 +16,7 @@ function searchProducts(query) {
   );
 }
 
-// Display search results
-function displayResults(results) {
-  const resultsContainer = document.getElementById("searchResults");
-  resultsContainer.innerHTML = "";
 
-  if (results.length === 0) {
-    resultsContainer.classList.remove("show");
-    return;
-  }
-
-  results.forEach((product) => {
-    const item = document.createElement("a");
-    item.className = "dropdown-item";
-    item.textContent = product.name;
-    item.addEventListener("click", () => {
-      window.location.href = `../products pages/productDetails.html?id=${product.id}`;
-    });
-    resultsContainer.appendChild(item);
-  });
-
-  resultsContainer.classList.add("show");
-}
 
 // Debounce function to limit search calls
 function debounce(func, wait) {
@@ -201,21 +180,10 @@ document.addEventListener("DOMContentLoaded", () => {
     displayResults(results);
   }, 300);
 
-  // Input event listener
-  searchInput.addEventListener("input", (e) => {
-    const value = e.target.value;
-    debouncedSearch(value);
-  });
+
 
   // Hide results when clicking outside
-  document.addEventListener("click", (e) => {
-    if (
-      !searchInput.contains(e.target) &&
-      !document.getElementById("searchResults").contains(e.target)
-    ) {
-      document.getElementById("searchResults").classList.remove("show");
-    }
-  });
+
 
   // Load latest products
   loadLatestProducts();
