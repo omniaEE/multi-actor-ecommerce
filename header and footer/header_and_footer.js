@@ -80,6 +80,27 @@ window.addEventListener('DOMContentLoaded', function () {
                 ) {
                     resultsContainer.classList.remove("show");
                 }
+
+
+                //-----------------seller -dashboard----------------------
+
+                if (user && user.role === "seller") {
+                    const sellerDashboard = document.getElementById("sellerDashboard");
+                    sellerDashboard.classList.remove("d-none");
+                }
+
+
+                // if (user && user.role === "seller") {
+                //     const sellerDashboard = document.getElementById("sellerDashboard");
+                //     const li = document.createElement("li");
+                //     li.className = "list-group-item";
+                //     li.innerHTML = `<a href="seller-dashboard.html" class="nav-link">Seller Dashboard</a>`;
+                //     navList.appendChild(li);
+                // }
+
+
+
+
             });
 
 
@@ -124,7 +145,7 @@ function performLogout() {
     // Remove the logged-in user from localStorage
     localStorage.removeItem("loggedInUser");
     // Redirect the user to the login page
-     location.reload();
+    location.reload();
     // window.location.href= "../../login/login.html";
 }
 
