@@ -1,10 +1,7 @@
 const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || {};
-
 const cartItems = loggedInUser.cart || [];
-
 const orderList = document.getElementById('order-summary');
 const totalPriceEl = document.getElementById('total-checkout');
-
 let subtotal = 0;
 let promoapplied = false;
 
@@ -71,6 +68,21 @@ document.querySelector('form').addEventListener('submit', function (e) {
     }];
 
     let allData = JSON.parse(localStorage.getItem('all_data')) || { users: [], orders: [], categories: [] };
+    const insufficientStockItems = cartItems.filter(item => {
+        const product = allData.products.find(p => p.id === item.product.id);
+        return product && product.stock < item.amount;
+    });
+
+    if (insufficientStockItems.length > 0) {
+        let productNames = insufficientStockItems.map(item => item.product.name).join(", ");
+        Swal.fire({
+            title: 'Insufficient Stock!',
+            text: `Sorry, we do not have enough stock for the following products: ${productNames}. Please reduce the quantity.`,
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
 
     allData.orders.push(...newOrders);
 
@@ -82,11 +94,28 @@ document.querySelector('form').addEventListener('submit', function (e) {
         allData.users[userIndex].orders.push(...newOrders.map((_, i) => allData.orders.length - newOrders.length + i));
     }
 
+    cartItems.forEach(item => {
+        const productIndex = allData.products.findIndex(p => p.id === item.product.id);
+        if (productIndex !== -1) {
+            const product = allData.products[productIndex];
+            product.stock -= item.amount;
+        }
+    });
+
     localStorage.setItem("all_data", JSON.stringify(allData));
 
     loggedInUser.cart = [];
     loggedInUser.promoApplied = false;
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-    window.location.href = "index2.html";
+    Swal.fire({
+        icon: 'success',
+        title: 'Order Placed!',
+        text: 'Your order has been placed successfully. Redirecting to cart.',
+        confirmButtonColor: '#3085d6',
+        timer: 3000,
+        showConfirmButton: false
+    }).then(() => {
+        window.location.replace("cart.html");
+    });
 });
