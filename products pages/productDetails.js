@@ -38,11 +38,14 @@ function showToast() {
   clearTimeout(toastTimeout);
   toastTimeout = setTimeout(() => {
     toast.style.display = "none";
+      location.reload()
   }, 1500);
   toast.querySelector("i").addEventListener("click", () => {
     toast.style.display = "none";
     clearTimeout(toastTimeout);
+
   });
+
 }
 
 //get user data
