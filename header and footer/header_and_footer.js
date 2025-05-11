@@ -81,6 +81,10 @@ window.addEventListener('DOMContentLoaded', function () {
                     resultsContainer.classList.remove("show");
                 }
             });
+
+
+            //cart budge
+            document.querySelector(".cart-budge").innerText = user.cart.length
         });
 
     fetch('../header and footer/main_footer.html')
@@ -112,8 +116,8 @@ function showLogoutModal() {
 
 // Perform the logout action
 function performLogout() {
-            let userIndex = all_data.users.findIndex(u => u.id == user.id);    
-    if (userIndex !== -1) {        
+    let userIndex = all_data.users.findIndex(u => u.id == user.id);
+    if (userIndex !== -1) {
         all_data.users[userIndex] = user;
         localStorage.setItem("all_data", JSON.stringify(all_data));
     }
