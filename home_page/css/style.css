@@ -98,11 +98,11 @@ MARK: Products
 }
 
 .card-title {
-  white-space: nowrap; /* يمنع الانتقال للسطر التالي */
-  overflow: hidden; /* يخفي النص الزائد */
-  text-overflow: ellipsis; /* يعرض ثلاث نقاط (...) للنص الزائد */
-  width: 100%; /* يجب تحديد عرض ثابت */
-  display: block; /* مهم لعمل ellipsis */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: block;
 }
 
 .ratingContainer {
@@ -206,6 +206,8 @@ MARK: Cat Catalog
 .catCover:hover {
   cursor: pointer;
   opacity: 0.4;
+  transform: translateY(-3px);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 .casualCat {
