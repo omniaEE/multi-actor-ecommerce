@@ -222,4 +222,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load Top Sells products
   loadFirstProducts();
+
+  // تحديد جميع عناصر الفئات
+  const categoryItems = document.querySelectorAll("[data-category]");
+
+  // إضافة حدث النقر لكل فئة
+  categoryItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      const category = this.getAttribute("data-category");
+      // توجيه المستخدم إلى صفحة الكتالوج مع إضافة معامل الفئة
+      window.location.href = `../products pages/catalog.html?category=${category}`;
+    });
+  });
 });
