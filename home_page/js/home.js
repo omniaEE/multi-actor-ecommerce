@@ -191,6 +191,22 @@ function addProductCardEventListeners() {
 }
 
 // MARK: AddToCart & Fav buttons handler
+//-----------------------------------apply toast
+let toastTimeout;
+function showToast() {
+  const toast = document.querySelector(".tost");
+  toast.style.display = "flex";
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toast.style.display = "none";
+    location.reload();
+  }, 1500);
+  toast.querySelector("i").addEventListener("click", () => {
+    toast.style.display = "none";
+    clearTimeout(toastTimeout);
+  });
+}
+
 function handleProductCardInteractions() {
   const allCards = document.querySelectorAll(".pro-card");
   const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -212,6 +228,7 @@ function handleProductCardInteractions() {
       };
 
       // Handle add to cart
+
       if (e.target.classList.contains("add-to-cart")) {
         e.stopPropagation(); // Prevent card click event
         const product = getProductFromCard(e.target);
@@ -229,6 +246,7 @@ function handleProductCardInteractions() {
             color: product.colors?.[0] || null,
             size: product.sizes?.[0] || null,
           });
+          showToast;
         }
 
         localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
