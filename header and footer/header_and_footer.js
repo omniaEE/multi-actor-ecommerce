@@ -94,7 +94,11 @@ window.addEventListener("DOMContentLoaded", function () {
       });
 
       //cart budge
-      document.querySelector(".cart-budge").innerText = user.cart.length;
+      if (!user || user.cart.length == 0) {
+        document.querySelector(".cart-budge").style.display = "none"
+      } else {
+        document.querySelector(".cart-budge").innerText = user.cart.length;
+      }
     });
 
   fetch("../header and footer/main_footer.html")
