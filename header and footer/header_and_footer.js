@@ -1,44 +1,48 @@
-window.addEventListener('DOMContentLoaded', function () {
-    fetch('../header and footer/main_header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-container').insertAdjacentHTML('beforeend', data);
+window.addEventListener("DOMContentLoaded", function () {
+  fetch("../header and footer/main_header.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document
+        .getElementById("header-container")
+        .insertAdjacentHTML("beforeend", data);
 
-            const user = JSON.parse(localStorage.getItem("loggedInUser"));
-            const profileIcon = document.getElementById("profileIcon");
-            const signUpSuggistion = document.getElementById("signUpSuggistion");
+      const user = JSON.parse(localStorage.getItem("loggedInUser"));
+      const profileIcon = document.getElementById("profileIcon");
+      const signUpSuggistion = document.getElementById("signUpSuggistion");
 
-            if (user) {
-                document.getElementById("name").innerText = user.firstName;
-                profileIcon.setAttribute("data-bs-toggle", "dropdown");
-                signUpSuggistion?.classList.add("d-none");
-            } else {
-                profileIcon?.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    window.location.href = "../login/login.html";
-                });
-            }
+      if (user) {
+        document.getElementById("name").innerText = user.firstName;
+        profileIcon.setAttribute("data-bs-toggle", "dropdown");
+        signUpSuggistion?.classList.add("d-none");
+      } else {
+        profileIcon?.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.location.href = "../login/login.html";
+        });
+      }
 
-            // -------------------- Search functionality --------------------
-            const searchInput = document.getElementById("searchInput");
-            const resultsContainer = document.getElementById("searchResults");
+      // -------------------- Search functionality --------------------
+      const searchInput = document.getElementById("searchInput");
+      const resultsContainer = document.getElementById("searchResults");
 
-            function searchProducts(query) {
-                if (!query || typeof query !== "string") return [];
-                query = query.trim().toLowerCase();
-                if (query.length === 0) return [];
-                const data = JSON.parse(localStorage.getItem("all_data") || "{}");
-                return data.products?.filter(product =>
-                    product.name.toLowerCase().includes(query)
-                ) || [];
-            }
+      function searchProducts(query) {
+        if (!query || typeof query !== "string") return [];
+        query = query.trim().toLowerCase();
+        if (query.length === 0) return [];
+        const data = JSON.parse(localStorage.getItem("all_data") || "{}");
+        return (
+          data.products?.filter((product) =>
+            product.name.toLowerCase().includes(query)
+          ) || []
+        );
+      }
 
-            function displayResults(results) {
-                resultsContainer.innerHTML = "";
-                if (results.length === 0) {
-                    resultsContainer.classList.remove("show");
-                    return;
-                }
+      function displayResults(results) {
+        resultsContainer.innerHTML = "";
+        if (results.length === 0) {
+          resultsContainer.classList.remove("show");
+          return;
+        }
 
                 results.forEach(product => {
                     const item = document.createElement("a");
@@ -94,22 +98,21 @@ window.addEventListener('DOMContentLoaded', function () {
 
             //cart budge
             document.querySelector(".cart-budge").innerText = user.cart.length
-        });
 
-    fetch('../header and footer/main_footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-container').innerHTML = data;
-        });
+
+
+          });
+
+  fetch("../header and footer/main_footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("footer-container").innerHTML = data;
+    });
 });
 
-
-
 // <div id="header-container"></div>
-//  <div id="footer-container"></div> 
+//  <div id="footer-container"></div>
 // <script src="../header and footer/header_and_footer.js"></script>
-
-
 
 //--------------------header----------------------
 //-----------------logout----------------------------------
@@ -117,10 +120,11 @@ window.addEventListener('DOMContentLoaded', function () {
 // Display the modal to confirm logout
 const user = JSON.parse(localStorage.getItem("loggedInUser")) || {};
 
-
 function showLogoutModal() {
-    const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
-    logoutModal.show();
+  const logoutModal = new bootstrap.Modal(
+    document.getElementById("logoutModal")
+  );
+  logoutModal.show();
 }
 
 // Perform the logout action
@@ -133,12 +137,7 @@ function performLogout() {
     // Remove the logged-in user from localStorage
     localStorage.removeItem("loggedInUser");
     // Redirect the user to the login page
-     location.reload();
+    location.reload();
     // window.location.href= "../../login/login.html";
+
 }
-
-
-
-
-
-

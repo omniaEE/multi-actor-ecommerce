@@ -29,6 +29,10 @@ let selectedSort = "default";
 let currentPage = 1;
 const productsPerPage = 9;
 
+//get category from url
+let urlParams = new URLSearchParams(window.location.search);
+let categoryFromUrl = urlParams.get("category");
+
 //-----------------------------------apply toast
 let toastTimeout;
 function showToast() {
@@ -37,6 +41,7 @@ function showToast() {
   clearTimeout(toastTimeout);
   toastTimeout = setTimeout(() => {
     toast.style.display = "none";
+    location.reload();
   }, 1500);
   toast.querySelector("i").addEventListener("click", () => {
     toast.style.display = "none";
@@ -183,6 +188,7 @@ function renderProducts(products) {
             });
           }
           localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
+
           //----------toast
           showToast();
 
@@ -237,45 +243,12 @@ function renderProducts(products) {
   });
 }
 
-// MARK:Category filter from home page
-function checkUrlForCategory() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const categoryFromUrl = urlParams.get("category");
-
-  if (categoryFromUrl) {
-    // Find the category in your categories
-    const allCategories = JSON.parse(
-      localStorage.getItem("all_data")
-    ).categories;
-    const matchedCategory = allCategories.find(
-      (cat) => cat.name.toLowerCase() === categoryFromUrl.toLowerCase()
-    );
-
-    if (matchedCategory) {
-      selectedCategory = matchedCategory.name;
-
-      // Highlight the category
-      document
-        .querySelectorAll(".categories .category-item")
-        .forEach((item) => {
-          item.classList.remove("active");
-          if (
-            item.querySelector("p").textContent.trim() === matchedCategory.name
-          ) {
-            item.classList.add("active");
-            // Apply the same styles as clicking manually
-            item.style.fontWeight = "bold";
-            item.style.color = "#000";
-          }
-        });
-    }
-  }
-}
+// fetch('../data/data.json')
+//     .then(response => response.json())
+//     .then(data => {
+// allProducts = data.products
 
 let allProducts = JSON.parse(localStorage.getItem("all_data")).products;
-
-// Check for category in URL when page loads
-checkUrlForCategory();
 
 proLength.innerText = allProducts.length + " Items";
 
@@ -289,25 +262,20 @@ JSON.parse(localStorage.getItem("all_data")).categories.forEach((category) => {
     selectedCategory = category.name;
     document.querySelectorAll(".categories .category-item").forEach((item) => {
       item.classList.remove("active");
-      item.style.fontWeight = ""; // Reset style
-      item.style.color = ""; // Reset style
     });
     categoryDiv.classList.add("active");
-    categoryDiv.style.fontWeight = "bold";
-    categoryDiv.style.color = "#000";
     currentPage = 1;
     renderProducts(allProducts);
-
-    // // Update URL without reloading
-    // const url = new URL(window.location);
-    // url.searchParams.set("category", category.name.toLowerCase());
-    // window.history.pushState({}, "", url);
   });
-  // Update URL without reloading
-  const url = new URL(window.location);
-  url.searchParams.set("category", category.name.toLowerCase());
-  window.history.pushState({}, "", url);
-
+  if (categoryFromUrl) {
+    if (
+      category.name ==
+      categoryFromUrl.charAt(0).toUpperCase() + categoryFromUrl.slice(1)
+    ) {
+      selectedCategory = category.name;
+      categoryDiv.classList.add("active");
+    }
+  }
   categories.appendChild(categoryDiv);
 });
 
@@ -365,6 +333,7 @@ allColors.forEach((color) => {
 });
 
 renderProducts(allProducts); // Initial render
+// })
 
 //search
 document.getElementById("prosSearch").addEventListener("input", () => {
@@ -394,12 +363,6 @@ document.getElementById("clear-filters").addEventListener("click", () => {
   document
     .querySelectorAll(".filter-color div")
     .forEach((div) => (div.innerHTML = ""));
-
-  // Remove category from URL
-  const url = new URL(window.location);
-  url.searchParams.delete("category");
-  window.history.pushState({}, "", url);
-
   renderProducts(allProducts);
 });
 

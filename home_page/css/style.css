@@ -5,6 +5,26 @@ MARK: HomePage
   margin: 0;
   padding: 0;
 }
+.tost {
+  background-color: #01ab31;
+  padding: 10px 30px;
+  border-radius: 20px;
+  width: 35%;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  align-items: center;
+  justify-content: space-between;
+  display: none;
+}
+
+.tost p,
+.tost i {
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
 .sectionTitle {
   font-size: 2.4rm;
