@@ -210,6 +210,8 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
     }
     
     let all_data = JSON.parse(localStorage.getItem("all_data")) || {};
+    let loinUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
+    const sellerId = loinUser.id ;
     if (!Array.isArray(all_data.products)) {
         all_data.products = [];
     }
@@ -226,7 +228,7 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
         sizes: selectedSizes,
         stock: quantity,
         category: category,
-        sellerId: 4,
+        sellerId: sellerId,
         ratings: [5],
         images: selectedImages // هنا الصور اللي المستخدم رفعها
     };
@@ -271,6 +273,7 @@ function editProduct(productId) {
 
     if (product) {
         document.getElementById("editName").value = product.name;
+        document.getElementById("editOldPrice").value = product.old_price;
         document.getElementById("editPrice").value = product.price;
         document.getElementById("editDescription").value = product.description;
         document.getElementById("editCategory").value = product.category;
@@ -440,6 +443,7 @@ function saveProductEdits(productId) {
         const product = all_data.products[productIndex];
 
         const name = document.getElementById("editName").value;
+        const oldPrice = parseFloat(document.getElementById("editOldPrice").value);
         const price = parseFloat(document.getElementById("editPrice").value);
         const description = document.getElementById("editDescription").value.trim();
         const category = document.getElementById("editCategory").value;
@@ -448,6 +452,7 @@ function saveProductEdits(productId) {
 
         product.name = name;
         product.price = price;
+        product.old_price = oldPrice;
         product.description = description;
         product.category = category;
         product.stock = quantity;

@@ -57,7 +57,7 @@ function loadLatestProducts() {
     const productHtml = `
       <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-3 d-flex justify-content-center"> 
         <div class="pro-card">
-          <img src="../${product.images[0]}" data-productid="${
+          <img src="${product.images[0]}" data-productid="${
       product.id
     }" alt="${product.name}">
           <p data-productid="${product.id}">${product.name}</p>

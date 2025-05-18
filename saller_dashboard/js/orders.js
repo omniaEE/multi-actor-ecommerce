@@ -51,23 +51,28 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
         }
         //---------------------- change status-- by button----------and change status in local storage----------------------------------------------
-        document.addEventListener("click", function (e) {
-            if (e.target && e.target.classList.contains("statusBtn")) {
-                const orderId = e.target.dataset.orderId; 
-                const order = newOrders.find(order => order.id === parseInt(orderId));
+document.addEventListener("click", function (e) {
+    if (e.target && e.target.classList.contains("statusBtn")) {
+        const orderId = e.target.dataset.orderId;
 
-                if (order) {
-                    order.status = order.status === "Delivered" ? "Processing" : "Delivered";
-                    const allData = JSON.parse(localStorage.getItem("all_data")) || {};
-                    allData.orders = newOrders;
-                    localStorage.setItem("all_data", JSON.stringify(allData));
+        const allData = JSON.parse(localStorage.getItem("all_data")) || {};
+        const newOrders = allData.orders || [];
 
-                    e.target.innerText = order.status;
-                    e.target.classList.toggle("btn-success");
-                    e.target.classList.toggle("btn-warning");
-                }
-            }
-        });
+        const order = newOrders.find(order => order.id === parseInt(orderId));
+
+        if (order) {
+            order.status = order.status === "Delivered" ? "Processing" : "Delivered";
+
+            allData.orders = newOrders;
+            localStorage.setItem("all_data", JSON.stringify(allData));
+
+            e.target.innerText = order.status;
+            e.target.classList.toggle("btn-success");
+            e.target.classList.toggle("btn-warning");
+        }
+    }
+});
+
     }
     )();
 
@@ -114,14 +119,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     //-----------mobile display- stock-----------
-    document.getElementById("stockSelect").addEventListener("click", function (e) {
-        if (e.target && e.target.matches("a.dropdown-item")) {
-            e.preventDefault();
-            const value = e.target.getAttribute("data-value");
-            document.getElementById("stockSelect").value = value;
+document.getElementById("stockDropdown").addEventListener("click", function (e) {
+    if (e.target && e.target.matches("a.dropdown-item")) {
+        e.preventDefault();
+        const value = e.target.getAttribute("data-value");
+        const label = e.target.innerText;
 
-        }
-    });
+        document.getElementById("selectedStatus").innerText = label;
+
+        const rows = document.querySelectorAll("#mainTable tbody tr");
+
+        rows.forEach(row => {
+            const statusCell = row.children[6]; 
+            const statusText = statusCell ? statusCell.innerText.trim().toLowerCase() : "";
+
+            if (!value || statusText.includes(value.toLowerCase())) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
+});
+
 
 
 });

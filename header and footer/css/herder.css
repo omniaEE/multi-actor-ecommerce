@@ -90,14 +90,17 @@ color: #000 !important;
 }
 
 .dropdown-item {
-  padding: 0.6rem 1.5rem;
-  font-size: 0.9rem;
-  color: #2f3032;
-  display: flex;
-  align-items: center;
-  transition: all 0.2s ease;
-  position: relative;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    transition: all 0.25s ease;
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
 }
+
 
 .dropdown-item:hover {
   background-color: #f8f9fa;
@@ -150,6 +153,15 @@ color: #000 !important;
 }
 .dropdown-item[href*="homePage"]::before {
   content: "\f015";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 0.8rem;
+  width: 1.2rem;
+  display: inline-block;
+  text-align: center;
+}
+.dropdown-item[onclick="showLogoutModal()"]::before {
+    content: "\f2f5";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   margin-right: 0.8rem;

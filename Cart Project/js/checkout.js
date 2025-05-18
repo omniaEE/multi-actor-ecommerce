@@ -52,11 +52,14 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
     let userName = document.querySelector('input[placeholder="Full Name"]').value;
     let address = document.querySelector('input[placeholder="Address"]').value;
+    const loggedInUserId= loggedInUser.id;
 
     const orderDate = new Date().toISOString().split('T')[0];
     let newOrders = [{
         FullName: userName,
         Address: address,
+        customerId:loggedInUserId,
+        id: Math.floor(Math.random() * 1000000),
         items: cartItems.map(item => ({
             productId: item.product.id,
             quantity: item.amount,
