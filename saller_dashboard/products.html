@@ -54,6 +54,7 @@
                 </div>
 
 
+
                 <!-- --------------stock------------------ -->
                 <div class="my-3  col-3 d-none d-sm-inline-block disapper">
                     <select class="form-select rounded-4" id="stockSelect">
@@ -74,7 +75,11 @@
                         <li><a class="dropdown-item" href="#" data-value="out">Out of Stock</a></li>
                     </ul>
                 </div>
+                <div class="text-end pe-3">
+                    <small id="proLength"></small>
+                </div>
             </div>
+
             <!-- products catalog -->
             <div class="bg-light px-5 px-sm-3 px-md-5 py-1  min-vh-100">
                 <div class="container mt-4 productsContainer">
@@ -82,6 +87,7 @@
                         <!--   products will be here -->
                     </div>
                 </div>
+
                 <!-- add product -->
                 <form id="productForm">
                     <section id="addProduct" class="d-none d-flex  flex-wrap  gap-4">
@@ -182,14 +188,14 @@
                                 </div>
                                 <div class=" card-body px-3 ">
                                     <div class="mb-3">
-                                        <label  class="form-label">Upload Image</label>
+                                        <label class="form-label">Upload Image</label>
                                         <label for="imageUpload" class="upload-icon">
-                                            <i class="fas fa-upload"></i>  
+                                            <i class="fas fa-upload"></i>
                                         </label>
                                         <input type="file" class="form-control textBoxHover" id="imageUpload"
-                                            name="image" accept="image/*" multiple >
-                                        </div>
-                                        <div id="previewContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
+                                            name="image" accept="image/*" multiple>
+                                    </div>
+                                    <div id="previewContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
 
                                     <div class="row my-3">
                                         <div class="mb-3 col-md-6">
@@ -227,7 +233,7 @@
                                     <div class="col-md-6">
                                         <label for="editPrice" class="form-label">Old Price</label>
                                         <input type="number" class="form-control textBoxHover" id="editOldPrice" min="1"
-                                            title="Please enter a positive number greater than 0" >
+                                            title="Please enter a positive number greater than 0">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="editPrice" class="form-label">Price</label>
@@ -314,11 +320,12 @@
                                 </div>
                                 <div class=" card-body px-3 ">
                                     <div class="mb-3">
-                                        <label  class="form-label">Upload Image</label>
+                                        <label class="form-label">Upload Image</label>
                                         <label for="editImageUpload" class="upload-icon ">
-                                            <i class="fas fa-upload"></i>  
+                                            <i class="fas fa-upload"></i>
                                         </label>
-                                        <input type="file" class="form-control textBoxHover" id="editImageUpload" accept="image/*" multiple>
+                                        <input type="file" class="form-control textBoxHover" id="editImageUpload"
+                                            accept="image/*" multiple>
 
                                     </div>
                                     <div id="previewContainerUpdate" class="mt-2 d-flex flex-wrap gap-2"></div>
@@ -375,7 +382,7 @@
     <script src="js/header.js"></script>
     <script src="js/products.js"></script>
     <!-- SweetAlert2 CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 

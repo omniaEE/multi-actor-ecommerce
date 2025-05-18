@@ -18,6 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+
+    // number of items
+// Get all products
+let allProducts = all_data.products;
+
+// Get the element to display the number of products
+let proLength = document.getElementById("proLength");
+
+// Update the text content with the number of items
+if (proLength) {
+    proLength.innerText = `${allProducts.length} Items`;
+} else {
+    console.warn("Element with ID 'proLength' not found.");
+}
+
+
+
+
     //---------mobile display- category-----------
     categoryDropdown.addEventListener("click", function (e) {
         if (e.target && e.target.matches("a.dropdown-item")) {
