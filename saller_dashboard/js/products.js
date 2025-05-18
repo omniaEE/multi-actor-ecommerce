@@ -208,16 +208,16 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
         alert("Please upload at least one image.");
         return;
     }
-    
+
     let all_data = JSON.parse(localStorage.getItem("all_data")) || {};
     let loinUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
-    const sellerId = loinUser.id ;
+    const sellerId = loinUser.id;
     if (!Array.isArray(all_data.products)) {
         all_data.products = [];
     }
-    
+
     const newId = Math.max(0, ...all_data.products.map(p => p.id || 0)) + 1;
-    
+
     const newProduct = {
         id: newId,
         name: name,
@@ -232,19 +232,30 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
         ratings: [5],
         images: selectedImages // هنا الصور اللي المستخدم رفعها
     };
-    
+
     all_data.products.push(newProduct);
     localStorage.setItem("all_data", JSON.stringify(all_data));
-    
-    alert("✅ Product added successfully!");
-    
+
+    // alert("✅ Product added successfully!");
+    Swal.fire({
+            title: 'Done',
+            text: 'product added successfully!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+            
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.reload();
+            }
+        });
+
     // Reset form
     e.target.reset();
     document.getElementById("colorList").innerHTML = "";
     colorList.length = 0;
     selectedImages = [];
     document.getElementById("previewContainer").innerHTML = "";
-    
+
 });
 
 
@@ -377,8 +388,8 @@ function editProduct(productId) {
                     deleteBtn.onclick = function () {
                         const index = product.images.indexOf(imgBase64);
                         if (index !== -1) {
-                            product.images.splice(index, 1); 
-                            wrapper.remove(); 
+                            product.images.splice(index, 1);
+                            wrapper.remove();
                         }
                     };
 
@@ -468,8 +479,19 @@ function saveProductEdits(productId) {
         all_data.products[productIndex] = product;
         localStorage.setItem("all_data", JSON.stringify(all_data));
 
-        alert("product updated successfully!");
-        window.location.reload();
+        // alert("product updated successfully!");
+
+        Swal.fire({
+            title: 'Done',
+            text: 'product updated successfully!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+            
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.reload();
+            }
+        });
     }
 }
 
