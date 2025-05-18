@@ -383,6 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //---------------------reviews
     let reviewsLenght = document.getElementById("reviewsLength");
     let viewMore = document.getElementById("showMoreReview");
+    
     reviewsLenght.innerText = "(" + product.reviews.length + ")";
 
     const showInitialReviews = () => {

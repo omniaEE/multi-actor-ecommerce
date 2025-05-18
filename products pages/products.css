@@ -408,10 +408,12 @@ h4,h2{
 .pro-card p {
   font-weight: bold;
   cursor: pointer;
+    margin: 0;
+  padding: 0;
 }
 
 .pro-card h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .pro-card h2 span {
@@ -453,7 +455,7 @@ h4,h2{
 /*MARK:Catalog
 */
 .catalog {
-  width: 85%;
+  width: 90%;
   margin: 50px auto;
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -562,6 +564,7 @@ aside hr {
 .filter-sizes button {
   margin: 10px 5px;
   color: #777;
+  font-size: 0.8rem;
 }
 
 aside #clear-filters {
@@ -665,6 +668,7 @@ aside #clear-filters {
     z-index: 200;
     background-color: #fff;
     min-height: 100%;
+    margin-top: 100px;
   }
 
   #filterMenu,

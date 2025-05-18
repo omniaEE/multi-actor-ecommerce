@@ -86,22 +86,23 @@ window.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                //-----------------seller -dashboard----------------------
                 
-                    if (user && user.role === "seller") {
-                        const sellerDashboard = document.getElementById("sellerDashboard");
-                        sellerDashboard.classList.remove("d-none");
-                    }
 
-            });
+        //-----------------seller -dashboard----------------------
 
+        if (user && user.role === "seller") {
+          const sellerDashboard = document.getElementById("sellerDashboard");
+          sellerDashboard.classList.remove("d-none");
+        }
+      });
 
-            //cart budge
-            document.querySelector(".cart-budge").innerText = user.cart.length
-
-
-
-          });
+      //cart budge
+      if (!user || user.cart.length == 0) {
+        document.querySelector(".cart-budge").style.display = "none"
+      } else {
+        document.querySelector(".cart-budge").innerText = user.cart.length;
+      }
+    });
 
   fetch("../header and footer/main_footer.html")
     .then((response) => response.text())
