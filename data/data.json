@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "role": "seller",
+      "role": "customer",
       "firstName": "Fadl",
       "lastName": "Yousry",
       "phone": "01210677917",
