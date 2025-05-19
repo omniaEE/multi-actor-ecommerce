@@ -20,7 +20,7 @@ if (cartItems.length === 0) {
             <div>
               <strong>${item.product.name}</strong>
               <br />
-              <small>Qty: ${item.amount}</small>
+              <small>Qty: ${item.amount} <br/> Size : ${item.size}  <br/ > Color : ${item.color}</small> 
             </div>
             <span>$${(item.product.price * item.amount).toFixed(2)}</span>
         `;
@@ -52,18 +52,22 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
     let userName = document.querySelector('input[placeholder="Full Name"]').value;
     let address = document.querySelector('input[placeholder="Address"]').value;
-    const loggedInUserId= loggedInUser.id;
+    let loginid = loggedInUser.id
+    let imporid = Math.floor(Math.random() * 100000)
+
 
     const orderDate = new Date().toISOString().split('T')[0];
     let newOrders = [{
+        customerId: loginid,
+        id: imporid,
         FullName: userName,
         Address: address,
-        customerId:loggedInUserId,
-        id: Math.floor(Math.random() * 1000000),
         items: cartItems.map(item => ({
             productId: item.product.id,
             quantity: item.amount,
-            price: item.product.price
+            price: item.product.price,
+            size: item.size,
+            color: item.color
         })),
         total: (subtotal - (subtotal * (promoapplied ? 0.25 : 0.2)) + 15).toFixed(2),
         status: "processing",
@@ -73,7 +77,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     let allData = JSON.parse(localStorage.getItem('all_data')) || { users: [], orders: [], categories: [] };
     const insufficientStockItems = cartItems.filter(item => {
         const product = allData.products.find(p => p.id === item.product.id);
-        return product && product.stock < item.amount; // تأكد من وجود الكمية الكافية
+        return product && product.stock < item.amount;
     });
 
     if (insufficientStockItems.length > 0) {
@@ -101,7 +105,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
         const productIndex = allData.products.findIndex(p => p.id === item.product.id);
         if (productIndex !== -1) {
             const product = allData.products[productIndex];
-            product.stock -= item.amount; // تقليل الكمية في المخزون بناءً على الكمية المشتراة
+            product.stock -= item.amount;
         }
     });
 
@@ -114,11 +118,11 @@ document.querySelector('form').addEventListener('submit', function (e) {
     Swal.fire({
         icon: 'success',
         title: 'Order Placed!',
-        text: 'Your order has been placed successfully. Redirecting to cart.',
+        text: 'Your order has been placed successfully. Redirecting to catalog to choose another prouduct if you want.',
         confirmButtonColor: '#3085d6',
         timer: 3000,
         showConfirmButton: false
     }).then(() => {
-        window.location.replace("cart.html");
+        window.location.replace("../products pages/catalog.html");
     });
 });

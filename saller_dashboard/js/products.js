@@ -20,18 +20,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // number of items
-// Get all products
-let allProducts = all_data.products;
+    // Get all products
+    let allProducts = all_data.products;
 
-// Get the element to display the number of products
-let proLength = document.getElementById("proLength");
+    // Get the element to display the number of products
+    let proLength = document.getElementById("proLength");
 
-// Update the text content with the number of items
-if (proLength) {
-    proLength.innerText = `${allProducts.length} Items`;
-} else {
-    console.warn("Element with ID 'proLength' not found.");
-}
+    // Update the text content with the number of items
+    if (proLength) {
+        proLength.innerText = `${allProducts.length} Items`;
+    } else {
+        console.warn("Element with ID 'proLength' not found.");
+    }
 
 
 
@@ -131,6 +131,7 @@ window.addProduct = function () {
     document.getElementById("addProduct").classList.remove("d-none");
     document.getElementById("productsContainer").classList.add("d-none");
     document.getElementById("update").classList.add("d-none");
+    document.getElementById("proCount").classList.add("d-none");
     document.querySelectorAll(".disapper").forEach(el => {
         el.classList.add("hide_department");
     });
@@ -165,9 +166,8 @@ document.getElementById("imageUpload").addEventListener("change", function (e) {
         const reader = new FileReader();
         reader.onload = function () {
             const imageData = reader.result;
-            selectedImages.push(imageData); // خزّن الصورة في المصفوفة
+            selectedImages.push(imageData);
 
-            // إنشاء عنصر عرض الصورة + زر حذف
             const wrapper = document.createElement("div");
             wrapper.style.position = "relative";
             wrapper.style.display = "inline-block";
@@ -247,8 +247,9 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
         stock: quantity,
         category: category,
         sellerId: sellerId,
+        reviews: [],
         ratings: [5],
-        images: selectedImages // هنا الصور اللي المستخدم رفعها
+        images: selectedImages
     };
 
     all_data.products.push(newProduct);
@@ -256,16 +257,16 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
 
     // alert("✅ Product added successfully!");
     Swal.fire({
-            title: 'Done',
-            text: 'product added successfully!',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-            
-        }).then((result) => {
-            if (result.isConfirmed) {
-                location.reload();
-            }
-        });
+        title: 'Done',
+        text: 'product added successfully!',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.reload();
+        }
+    });
 
     // Reset form
     e.target.reset();
@@ -285,6 +286,8 @@ function editProduct(productId) {
     document.getElementById("update").classList.remove("d-none");
     document.getElementById("productsContainer").classList.add("d-none");
     document.getElementById("addProduct").classList.add("d-none");
+    document.getElementById("proCount").classList.add("d-none");
+
     document.querySelectorAll(".disapper").forEach(el => {
         el.classList.add("hide_department");
     });
@@ -422,9 +425,9 @@ function editProduct(productId) {
 
 
 
-        document.getElementById("saveButton").onclick = function () {
-            saveProductEdits(productId);
-        };
+        // document.getElementById("saveButton").onclick = function () {
+        //     saveProductEdits(productId);
+        // };
         document.getElementById("closeUpdate").onclick = function () {
             closeUpdate();
         };
@@ -504,7 +507,7 @@ function saveProductEdits(productId) {
             text: 'product updated successfully!',
             icon: 'success',
             confirmButtonText: 'Ok'
-            
+
         }).then((result) => {
             if (result.isConfirmed) {
                 location.reload();
@@ -517,6 +520,7 @@ function saveProductEdits(productId) {
 function closeUpdate() {
     document.getElementById("update").classList.add("d-none");
     document.getElementById("productsContainer").classList.remove("d-none");
+    document.getElementById("proCount").classList.remove("d-none");
     document.getElementById("addProduct").classList.add("d-none");
 
     document.querySelectorAll(".disapper").forEach(el => {

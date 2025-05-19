@@ -44,32 +44,27 @@ function show_cart_items() {
     const product = allData.products.find((p) => p.id === item.product.id);
     itemsContainer.innerHTML += `
             <div class="item_cart">
-                <img src="${item.product.images[0]}" data-productid="${
-      item.product.id
-    }" style="cursor: pointer;" alt="${item.product.name}">
+                <img src="${item.product.images[0]}" data-productid="${item.product.id
+      }" style="cursor: pointer;" alt="${item.product.name}">
                 <div class="content w-100">
                     <div class="d-flex justify-content-between">
                         <div>
                             <h5>${item.product.name}</h5>
                             <p>Size: ${item.size}<br>Color: ${item.color}</p>
-                             <span style="display:none;">Max available: ${
-                               product ? product.stock : 0
-                             }</span>
+                             <span style="display:none;">Max available: ${product ? product.stock : 0
+      }</span>
                         </div>
-                        <i class="fa fa-trash-can" onclick="removeItem(${
-                          item.product.id
-                        }, '${item.color}', '${item.size}')"></i>
+                        <i class="fa fa-trash-can" onclick="removeItem(${item.product.id
+      }, '${item.color}', '${item.size}')"></i>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold">$${item.product.price}</span>
                         <div class="quantity_btn d-flex align-items-center">
-                            <button onclick="decreaseQuantity(${
-                              item.product.id
-                            }, '${item.color}', '${item.size}')">-</button>
+                            <button onclick="decreaseQuantity(${item.product.id
+      }, '${item.color}', '${item.size}')">-</button>
                             <span>${item.amount}</span>
-                            <button onclick="increaseQuantity(${
-                              item.product.id
-                            }, '${item.color}', '${item.size}')">+</button>
+                            <button onclick="increaseQuantity(${item.product.id
+      }, '${item.color}', '${item.size}')">+</button>
                         </div>
                     </div>
                 </div>
@@ -81,6 +76,8 @@ function show_cart_items() {
   //open product details
   itemsContainer.addEventListener("click", (e) => {
     if (e.target.tagName === "IMG") {
+      const imageSrc = e.target.src;
+      console.log(imageSrc)
       window.location.href = `../products pages/productDetails.html?id=${e.target.dataset.productid}`;
     }
   });
@@ -89,29 +86,39 @@ function show_cart_items() {
 function increaseQuantity(id, color, size) {
   let user = JSON.parse(localStorage.getItem("loggedInUser"));
   let cartItems = user.cart;
-  let item = cartItems.find(
+
+  let totalAmountForThisProduct = cartItems.filter(item => item.product.id === id).reduce((sum, item) => +sum + +(item.amount), 0);
+  console.log(totalAmountForThisProduct)
+
+  let targetItem = cartItems.find(
     (item) =>
-      item.product.id === id && item.color === color && item.size === size
+      item.product.id === id &&
+      item.color === color &&
+      item.size === size
   );
+
   const allData = JSON.parse(localStorage.getItem("all_data"));
   const product = allData.products.find((p) => p.id === id);
 
-  if (item && product) {
-    if (item.amount < product.stock) {
-      item.amount++;
+  if (targetItem && product) {
+    if (totalAmountForThisProduct < product.stock) {
+      targetItem.amount++;
+
       user.cart = cartItems;
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       show_cart_items();
     } else {
       Swal.fire({
         title: "Out of Stock!",
-        text: `Sorry, only ${product.stock} available for this variant.`,
+        text: `Sorry, only ${product.stock} units available in total for this product.`,
         icon: "error",
         confirmButtonText: "OK",
       });
     }
   }
 }
+
+
 
 function decreaseQuantity(id, color, size) {
   let user = JSON.parse(localStorage.getItem("loggedInUser"));
