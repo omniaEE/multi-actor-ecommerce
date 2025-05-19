@@ -6,7 +6,7 @@
   const tickets = allData.tickets || [];
   const users = allData.users || [];
 
-  console.log(users);
+  // console.log(users);
 
   document
     .getElementById("searchTicket")

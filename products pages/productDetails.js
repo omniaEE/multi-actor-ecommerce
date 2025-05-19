@@ -38,14 +38,12 @@ function showToast() {
   clearTimeout(toastTimeout);
   toastTimeout = setTimeout(() => {
     toast.style.display = "none";
-      location.reload()
+    location.reload();
   }, 1500);
   toast.querySelector("i").addEventListener("click", () => {
     toast.style.display = "none";
     clearTimeout(toastTimeout);
-
   });
-
 }
 
 //get user data
@@ -383,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //---------------------reviews
     let reviewsLenght = document.getElementById("reviewsLength");
     let viewMore = document.getElementById("showMoreReview");
-    
+
     reviewsLenght.innerText = "(" + product.reviews.length + ")";
 
     const showInitialReviews = () => {
@@ -495,43 +493,51 @@ document.addEventListener("DOMContentLoaded", () => {
     sendReview.addEventListener("click", () => {
       const username = usernameInput.value.trim();
       const reviewText = reviewTextarea.value.trim();
+      if (loggedUser.status == "Active") {
+        if (!username || !reviewText || selectedRating === 0) {
+          alert("Please fill in all fields and select a rating.");
+          return;
+        }
 
-      if (!username || !reviewText || selectedRating === 0) {
-        alert("Please fill in all fields and select a rating.");
-        return;
+        //create new review
+        const newReview = {
+          username: username,
+          review: reviewText,
+          rate: selectedRating,
+          date: new Date().toLocaleDateString(),
+        };
+
+        product.reviews.push(newReview);
+        product.ratings.push(selectedRating); //to link reviews with ratings
+        localStorage.setItem("all_data", JSON.stringify(data));
+
+        //reset
+        usernameInput.value = "";
+        reviewTextarea.value = "";
+        selectedRating = 0;
+        starEls.forEach((s) => {
+          s.classList.remove("fa-solid");
+          s.classList.add("fa-regular");
+        });
+
+        reviewTabs.forEach((tab) => {
+          tab.classList.remove("active");
+          reviewTabs[1].classList.add("active");
+        });
+        reviewContents.forEach((content) => {
+          content.classList.remove("show");
+          reviewContents[1].classList.add("show");
+        });
+
+        location.reload(); /////////////
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "You are not allowed to add comment as you are banned. Please contact support.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
       }
-
-      //create new review
-      const newReview = {
-        username: username,
-        review: reviewText,
-        rate: selectedRating,
-        date: new Date().toLocaleDateString(),
-      };
-
-      product.reviews.push(newReview);
-      product.ratings.push(selectedRating); //to link reviews with ratings
-      localStorage.setItem("all_data", JSON.stringify(data));
-
-      //reset
-      usernameInput.value = "";
-      reviewTextarea.value = "";
-      selectedRating = 0;
-      starEls.forEach((s) => {
-        s.classList.remove("fa-solid");
-        s.classList.add("fa-regular");
-      });
-
-      reviewTabs.forEach((tab) => {
-        tab.classList.remove("active");
-        reviewTabs[1].classList.add("active");
-      });
-      reviewContents.forEach((content) => {
-        content.classList.remove("show");
-        reviewContents[1].classList.add("show");
-      });
-
-      location.reload(); /////////////
     });
   } else {
     // window.location.href = 'index.html';
