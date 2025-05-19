@@ -117,12 +117,7 @@ function changePassword(event) {
         return;
     }
 
-    if (newPassword !== confirmPassword) {
-        showMessage("❌ New password and confirmation do not match!", "danger");
-        document.getElementById("confirmPassword").focus();
-        return;
 
-    }
     const all_data = JSON.parse(localStorage.getItem("all_data")) || [];
     const users = all_data.users;
     const userIndex = users.findIndex(users => users.password === currentPassword);
@@ -135,6 +130,12 @@ function changePassword(event) {
         return;
     }
 
+        if (newPassword !== confirmPassword) {
+        showMessage("❌ New password and confirmation do not match!", "danger");
+        document.getElementById("confirmPassword").focus();
+        return;
+
+    }
 
     all_data.users[userIndex].password = newPassword;
     localStorage.setItem("all_data", JSON.stringify(all_data));

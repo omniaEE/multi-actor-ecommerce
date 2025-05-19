@@ -48,3 +48,13 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   color: white;
 }
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+.bg-gradient-success {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+}
+

@@ -42,35 +42,35 @@
 
                             <h3 class="text-dark ms-2"><b> Orders</b></h3>
                             <div class="d-flex justify-content-between py-2 gap-2 ">
-                                                            <!----------------- search bar------------------- -->
-                            <div class="mb-3 ms-3 position-relative disapper">
+                                <!----------------- search bar------------------- -->
+                                <div class="mb-3 ms-3 position-relative disapper">
 
-                                <input type="text" id="userSearch"
-                                    class="form-control border-start-0 ps-5 border rounded-4"
-                                    placeholder=" Search by Name or Id...">
-                                <i
-                                    class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
-                            </div>
-                            <!-- --------------stock------------------ -->
-                            <div class=" d-none d-sm-inline-block disapper">
-                                <select class="form-select rounded-4" id="stockSelect">
-                                    <option value="">All Status</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="processing">processing</option>
-                                </select>
-                            </div>
-                            <!-- Mobile View: Icon Only Dropdown -->
-                            <div class="dropdown d-inline-block d-sm-none disapper">
-                                <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3" type="button"
-                                    id="stockDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-box-open"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="stockDropdownBtn" id="stockDropdown">
-                                    <li><a class="dropdown-item" href="#" data-value="">All Status</a></li>
-                                    <li><a class="dropdown-item" href="#" data-value="Delivered">Delivered</a></li>
-                                    <li><a class="dropdown-item" href="#" data-value="processing">processing</a></li>
-                                </ul>
-                            </div>
+                                    <input type="text" id="userSearch"
+                                        class="form-control border-start-0 ps-5 border rounded-4"
+                                        placeholder=" Search by Name or Id...">
+                                    <i
+                                        class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                                </div>
+                                <!-- --------------stock------------------ -->
+                                <div class=" d-none d-sm-inline-block disapper">
+                                    <select class="form-select rounded-4" id="stockSelect">
+                                        <option value="">All Status</option>
+                                        <option value="Delivered">Delivered</option>
+                                        <option value="processing">processing</option>
+                                    </select>
+                                </div>
+                                <!-- Mobile View: Icon Only Dropdown -->
+                                <div class="dropdown d-inline-block d-sm-none disapper">
+                                    <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3" type="button"
+                                        id="stockDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-box-open"></i> <span id="selectedStatus">All Status</span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="stockDropdownBtn" id="stockDropdown">
+                                        <li><a class="dropdown-item" data-value="">All Status</a></li>
+                                        <li><a class="dropdown-item" data-value="Delivered">Delivered</a></li>
+                                        <li><a class="dropdown-item" data-value="processing">processing</a></li>
+                                    </ul>
+                                </div>
                             </div>
 
                         </div>
@@ -82,7 +82,7 @@
                             class="table table-hover formBorder text-small m-0 p-0  fs-6 responsive-table shadow">
                             <thead class="">
                                 <tr>
-                                    <th >Id</th>
+                                    <th>Id</th>
                                     <th class="col-2">Customers</th>
                                     <th class="col-3">Products</th>
                                     <th lass="col-2">Order Date</th>
@@ -91,7 +91,7 @@
                                     <th class="col-1"> Status</th>
                                 </tr>
                             </thead>
-                            <tbody >
+                            <tbody>
                                 <!-- Data will be added dynamically here -->
                             </tbody>
                         </table>

@@ -18,6 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+
+    // number of items
+// Get all products
+let allProducts = all_data.products;
+
+// Get the element to display the number of products
+let proLength = document.getElementById("proLength");
+
+// Update the text content with the number of items
+if (proLength) {
+    proLength.innerText = `${allProducts.length} Items`;
+} else {
+    console.warn("Element with ID 'proLength' not found.");
+}
+
+
+
+
     //---------mobile display- category-----------
     categoryDropdown.addEventListener("click", function (e) {
         if (e.target && e.target.matches("a.dropdown-item")) {
@@ -208,14 +226,16 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
         alert("Please upload at least one image.");
         return;
     }
-    
+
     let all_data = JSON.parse(localStorage.getItem("all_data")) || {};
+    let loinUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
+    const sellerId = loinUser.id;
     if (!Array.isArray(all_data.products)) {
         all_data.products = [];
     }
-    
+
     const newId = Math.max(0, ...all_data.products.map(p => p.id || 0)) + 1;
-    
+
     const newProduct = {
         id: newId,
         name: name,
@@ -226,23 +246,34 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
         sizes: selectedSizes,
         stock: quantity,
         category: category,
-        sellerId: 4,
+        sellerId: sellerId,
         ratings: [5],
         images: selectedImages // هنا الصور اللي المستخدم رفعها
     };
-    
+
     all_data.products.push(newProduct);
     localStorage.setItem("all_data", JSON.stringify(all_data));
-    
-    alert("✅ Product added successfully!");
-    
+
+    // alert("✅ Product added successfully!");
+    Swal.fire({
+            title: 'Done',
+            text: 'product added successfully!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+            
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.reload();
+            }
+        });
+
     // Reset form
     e.target.reset();
     document.getElementById("colorList").innerHTML = "";
     colorList.length = 0;
     selectedImages = [];
     document.getElementById("previewContainer").innerHTML = "";
-    
+
 });
 
 
@@ -271,6 +302,7 @@ function editProduct(productId) {
 
     if (product) {
         document.getElementById("editName").value = product.name;
+        document.getElementById("editOldPrice").value = product.old_price;
         document.getElementById("editPrice").value = product.price;
         document.getElementById("editDescription").value = product.description;
         document.getElementById("editCategory").value = product.category;
@@ -374,8 +406,8 @@ function editProduct(productId) {
                     deleteBtn.onclick = function () {
                         const index = product.images.indexOf(imgBase64);
                         if (index !== -1) {
-                            product.images.splice(index, 1); 
-                            wrapper.remove(); 
+                            product.images.splice(index, 1);
+                            wrapper.remove();
                         }
                     };
 
@@ -440,6 +472,7 @@ function saveProductEdits(productId) {
         const product = all_data.products[productIndex];
 
         const name = document.getElementById("editName").value;
+        const oldPrice = parseFloat(document.getElementById("editOldPrice").value);
         const price = parseFloat(document.getElementById("editPrice").value);
         const description = document.getElementById("editDescription").value.trim();
         const category = document.getElementById("editCategory").value;
@@ -448,6 +481,7 @@ function saveProductEdits(productId) {
 
         product.name = name;
         product.price = price;
+        product.old_price = oldPrice;
         product.description = description;
         product.category = category;
         product.stock = quantity;
@@ -463,8 +497,19 @@ function saveProductEdits(productId) {
         all_data.products[productIndex] = product;
         localStorage.setItem("all_data", JSON.stringify(all_data));
 
-        alert("product updated successfully!");
-        window.location.reload();
+        // alert("product updated successfully!");
+
+        Swal.fire({
+            title: 'Done',
+            text: 'product updated successfully!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+            
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.reload();
+            }
+        });
     }
 }
 

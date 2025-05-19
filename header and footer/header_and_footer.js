@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
-        results.forEach((product) => {
+        results.forEach(product => {
           const item = document.createElement("a");
           item.className = "dropdown-item";
           item.textContent = product.name;
@@ -84,14 +84,13 @@ window.addEventListener("DOMContentLoaded", function () {
         ) {
           resultsContainer.classList.remove("show");
         }
-
-        //-----------------seller -dashboard----------------------
-
-        if (user && user.role === "seller") {
-          const sellerDashboard = document.getElementById("sellerDashboard");
-          sellerDashboard.classList.remove("d-none");
-        }
       });
+      //-----------------seller -dashboard---------------------
+
+      if (user && user.role === "seller") {
+        const sellerDashboard = document.getElementById("sellerDashboard");
+        sellerDashboard.classList.remove("d-none");
+      }
 
       //cart budge
       if (!user || user.cart.length == 0) {
@@ -99,6 +98,51 @@ window.addEventListener("DOMContentLoaded", function () {
       } else {
         document.querySelector(".cart-budge").innerText = user.cart.length;
       }
+
+
+      // Toggle mobile search bar
+      const mobileSearchIcon = document.getElementById("mobileSearchIcon");
+      const mobileSearchBar = document.getElementById("mobileSearchBar");
+
+      if (mobileSearchIcon && mobileSearchBar) {
+        mobileSearchIcon.addEventListener("click", (e) => {
+          e.preventDefault();
+          mobileSearchBar.classList.toggle("d-none");
+        });
+      }
+
+      // Mobile search logic
+      const mobileSearchInput = document.getElementById("mobileSearchInput");
+      const mobileResultsContainer = document.getElementById("mobileSearchResults");
+
+      function displayResultsForMobile(results) {
+        mobileResultsContainer.innerHTML = "";
+        if (results.length === 0) {
+          mobileResultsContainer.classList.remove("show");
+          return;
+        }
+
+        results.forEach((product) => {
+          const item = document.createElement("a");
+          item.className = "dropdown-item";
+          item.textContent = product.name;
+          item.addEventListener("click", () => {
+            window.location.href = `../products pages/productDetails.html?id=${product.id}`;
+          });
+          mobileResultsContainer.appendChild(item);
+        });
+
+        mobileResultsContainer.classList.add("show");
+      }
+
+      if (mobileSearchInput) {
+        mobileSearchInput.addEventListener("input", debounce((e) => {
+          const value = e.target.value;
+          const results = searchProducts(value);
+          displayResultsForMobile(results);
+        }, 300));
+      }
+
     });
 
   fetch("../header and footer/main_footer.html")
@@ -127,7 +171,8 @@ function showLogoutModal() {
 
 // Perform the logout action
 function performLogout() {
-  let userIndex = all_data.users.findIndex((u) => u.id == user.id);
+  const all_data = JSON.parse(localStorage.getItem("all_data") || "{}");
+  let userIndex = all_data.users.findIndex(u => u.id == user.id);
   if (userIndex !== -1) {
     all_data.users[userIndex] = user;
     localStorage.setItem("all_data", JSON.stringify(all_data));
@@ -137,4 +182,5 @@ function performLogout() {
   // Redirect the user to the login page
   location.reload();
   // window.location.href= "../../login/login.html";
+
 }
