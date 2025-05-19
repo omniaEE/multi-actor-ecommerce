@@ -60,7 +60,7 @@
             })
             .join("")}
         </div>
-        <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+        <p><strong>Total:</strong> $${order.total}</p>
       `;
 
       ordersContainer.appendChild(orderCard);

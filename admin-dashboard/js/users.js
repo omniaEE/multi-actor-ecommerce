@@ -1,7 +1,7 @@
 (() => {
   let selectedUserId = null;
   const data = JSON.parse(localStorage.getItem("all_data"));
-  console.log("all_data", data.users);
+  // console.log("all_data", data.users);
   let users = data.users;
 
   // Event listeners (correct placement)
