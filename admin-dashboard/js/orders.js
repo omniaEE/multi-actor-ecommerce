@@ -1,46 +1,76 @@
 (() => {
   const data = JSON.parse(localStorage.getItem("all_data"));
-  // console.log("all_data", data.orders);
 
   const getUserById = (id) => data.users.find((u) => u.id === id);
   const getProductById = (id) => data.products.find((p) => p.id === id);
-
   const ordersContainer = document.getElementById("orders-container");
+  const statusFilter = document.getElementById("statusFilter");
+  const sortOrder = document.getElementById("sortOrder");
 
-  data.orders.forEach((order) => {
-    const customer = getUserById(order.customerId);
+  const renderOrders = () => {
+    const selectedStatus = statusFilter.value;
+    const sort = sortOrder.value;
 
-    const customerName = customer
-      ? `${customer.firstName} ${customer.lastName}`
-      : "Unknown Customer";
-    const orderCard = document.createElement("div");
-    orderCard.className = "order-card";
+    let filteredOrders = [...data.orders];
 
-    const statusClass =
-      order.status === "delivered" ? "delivered" : "processing";
+    // Filter
+    if (selectedStatus !== "all") {
+      filteredOrders = filteredOrders.filter(
+        (order) => order.status === selectedStatus
+      );
+    }
 
-    orderCard.innerHTML = `
-      <div class="order-header">Order ID: ${order.id}</div>
-<p><strong>Customer:</strong> ${customerName}</p>
+    // Sort
+    filteredOrders.sort((a, b) => {
+      const dateA = new Date(a.orderDate);
+      const dateB = new Date(b.orderDate);
+      return sort === "newest" ? dateB - dateA : dateA - dateB;
+    });
 
-      <p><strong>Date:</strong> ${order.orderDate}</p>
-      <p><strong>Status:</strong> <span class="status ${statusClass}">${
-      order.status
-    }</span></p>
-      <p><strong>Items:</strong></p>
-      <div class="items">
-        ${order.items
-          .map((item) => {
-            const product = getProductById(item.productId);
-            return `<div class="item">- ${
-              product?.name || "Unknown Product"
-            } x ${item.quantity} @ $${item.price.toFixed(2)}</div>`;
-          })
-          .join("")}
-      </div>
-      <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
-    `;
+    // Clear and render
+    ordersContainer.innerHTML = "";
 
-    ordersContainer.appendChild(orderCard);
-  });
+    filteredOrders.forEach((order) => {
+      const customer = getUserById(order.customerId);
+      const customerName = customer
+        ? `${customer.firstName} ${customer.lastName}`
+        : "Unknown Customer";
+
+      const statusClass =
+        order.status === "delivered" ? "delivered" : "processing";
+
+      const orderCard = document.createElement("div");
+      orderCard.className = "order-card";
+
+      orderCard.innerHTML = `
+        <div class="order-header">Order ID: ${order.id}</div>
+        <p><strong>Customer:</strong> ${customerName}</p>
+        <p><strong>Date:</strong> ${order.orderDate}</p>
+        <p><strong>Status:</strong> 
+          <span class="status ${statusClass}">${order.status}</span>
+        </p>
+        <p><strong>Items:</strong></p>
+        <div class="items">
+          ${order.items
+            .map((item) => {
+              const product = getProductById(item.productId);
+              return `<div class="item">- ${
+                product?.name || "Unknown Product"
+              } x ${item.quantity} @ $${item.price.toFixed(2)}</div>`;
+            })
+            .join("")}
+        </div>
+        <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+      `;
+
+      ordersContainer.appendChild(orderCard);
+    });
+  };
+
+  // Initial render
+  renderOrders();
+
+  // Event listeners for filter and sort
+  statusFilter.addEventListener("change", renderOrders);
+  sortOrder.addEventListener("change", renderOrders);
 })();

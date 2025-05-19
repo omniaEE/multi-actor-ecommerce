@@ -1,4 +1,19 @@
 <div class="container mt-4">
   <h1>Orders</h1>
+  <!-- Filters and Sorting Tools -->
+  <div class="filters mb-4">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter">
+      <option value="all">All</option>
+      <option value="delivered">Delivered</option>
+      <option value="processing">Processing</option>
+    </select>
+
+    <label for="sortOrder">Sort by Date:</label>
+    <select id="sortOrder">
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
+    </select>
+  </div>
   <div id="orders-container"></div>
 </div>
