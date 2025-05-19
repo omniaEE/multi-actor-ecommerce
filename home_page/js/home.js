@@ -57,9 +57,9 @@ function loadLatestProducts() {
     const productHtml = `
       <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-3 d-flex justify-content-center"> 
         <div class="pro-card">
-          <img src="${product.images[0]}" data-productid="${
-      product.id
-    }" alt="${product.name}">
+          <img src="${product.images[0]}" data-productid="${product.id}" alt="${
+      product.name
+    }">
           <p data-productid="${product.id}">${product.name}</p>
           <div class="rating">
             ${starsHtml}
@@ -214,12 +214,6 @@ function handleProductCardInteractions() {
 
   allCards.forEach((card) => {
     card.addEventListener("click", (e) => {
-      // Early return if not logged in
-      if (!loggedUser) {
-        window.location.href = "../../login/login.html";
-        return;
-      }
-
       // Helper function to get product from card
       const getProductFromCard = (element) => {
         const productId = element.closest(".pro-card").querySelector("img")
@@ -228,9 +222,13 @@ function handleProductCardInteractions() {
       };
 
       // Handle add to cart
-
       if (e.target.classList.contains("add-to-cart")) {
         e.stopPropagation(); // Prevent card click event
+        if (!loggedUser) {
+          window.location.href = "../../login/login.html";
+          return;
+        }
+
         const product = getProductFromCard(e.target);
 
         // Update cart
@@ -246,7 +244,6 @@ function handleProductCardInteractions() {
             color: product.colors?.[0] || null,
             size: product.sizes?.[0] || null,
           });
-          showToast;
         }
 
         localStorage.setItem("loggedInUser", JSON.stringify(loggedUser));
@@ -255,6 +252,11 @@ function handleProductCardInteractions() {
         // Handle favorite toggle
       } else if (e.target.classList.contains("fa-heart")) {
         e.stopPropagation(); // Prevent card click event
+        if (!loggedUser) {
+          window.location.href = "../../login/login.html";
+          return;
+        }
+
         const product = getProductFromCard(e.target);
 
         // Toggle favorite status
@@ -275,22 +277,11 @@ function handleProductCardInteractions() {
         e.target.style.color = e.target.classList.contains("fa-solid")
           ? "#d90b0b"
           : "";
+      } else {
+        // Navigate to product details for any other click
+        const productId = card.querySelector("img").dataset.productid;
+        window.location.href = `../products pages/productDetails.html?id=${productId}`;
       }
-    });
-
-    // Add separate click handlers for product image and name to maintain link functionality
-    const productLinkElements = card.querySelectorAll(
-      "img[data-productid], p[data-productid]"
-    );
-    productLinkElements.forEach((el) => {
-      el.addEventListener("click", (e) => {
-        if (
-          !e.target.classList.contains("add-to-cart") &&
-          !e.target.classList.contains("fa-heart")
-        ) {
-          window.location.href = `../products pages/productDetails.html?id=${e.target.dataset.productid}`;
-        }
-      });
     });
   });
 }
