@@ -317,6 +317,11 @@ input[type="checkbox"] {
 
 
 
+.disabled-link {
+    pointer-events: none;
+    color: #827979!important;
+}
+
 #soon {
     display: inline-block;
     padding: 4px 8px;
@@ -333,13 +338,11 @@ input[type="checkbox"] {
 
 
 
-/* تنسيق القائمة المنسدلة الرئيسية */
-.dropdown-menu {
+.dropdown-menu{
     border: none;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     padding: 8px 0;
-    min-width: 240px;
     background: #ffffff;
     border: 1px solid #f0f0f0;
     animation: fadeIn 0.25s ease-out;
@@ -357,7 +360,8 @@ input[type="checkbox"] {
     }
 }
 
-.dropdown-item {
+
+.dropdown-item{
     padding: 10px 20px;
     font-size: 15px;
     color: #333333;
@@ -377,7 +381,7 @@ input[type="checkbox"] {
 
 .dropdown-item[href*="updateProfile"]::before,
 .dropdown-item[href*="homePage"]::before,
-.dropdown-item[href*="#"]::before,
+.dropdown-item[href*="##"]::before,
 .dropdown-item[onclick="showLogoutModal()"]::before {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -395,7 +399,7 @@ input[type="checkbox"] {
     content: "\f54e";
 }
 
-.dropdown-item[href="#"]::before {
+.dropdown-item[href="##"]::before {
     content: "\f27a";
 }
 
@@ -406,8 +410,3 @@ input[type="checkbox"] {
 .dropdown-item[onclick="showLogoutModal()"]::before {
     content: "\f2f5";
 }
-
-
-
-
-

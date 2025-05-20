@@ -222,10 +222,42 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
 
     const selectedSizes = Array.from(document.querySelectorAll('input[name="sizes"]:checked')).map(checkbox => checkbox.value);
 
-    if (selectedImages.length === 0) {
-        alert("Please upload at least one image.");
+    // Check if any size is selected
+    const sizeCheckboxes = document.querySelectorAll('input[name="sizes"]');
+    const isAnySizeChecked = Array.from(sizeCheckboxes).some(cb => cb.checked);
+
+    if (!isAnySizeChecked) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Sizes Required',
+            text: 'Please select at least one size.'
+        });
         return;
     }
+    
+    
+    // Check if any color is selected
+    if (editColorList.length === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Color Required',
+            text: 'Please select at least one color.'
+        });
+        return;
+    }
+
+
+    // Check if any image is selected
+    if (selectedImages.length === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Image Required',
+            text: 'Please select at least one image.'
+        });
+        return;
+    }
+
+
 
     let all_data = JSON.parse(localStorage.getItem("all_data")) || {};
     let loinUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
@@ -283,6 +315,9 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
 // update product button
 let editColorList = [];
 function editProduct(productId) {
+
+    document.getElementById("editForm").dataset.id = productId;
+
     document.getElementById("update").classList.remove("d-none");
     document.getElementById("productsContainer").classList.add("d-none");
     document.getElementById("addProduct").classList.add("d-none");
@@ -296,7 +331,6 @@ function editProduct(productId) {
 
 
 
-    // Set sizes
     const sizeCheckboxes = document.querySelectorAll('input[name="editSizes"]');
     sizeCheckboxes.forEach(cb => {
         cb.checked = product.sizes?.includes(cb.value);
@@ -422,12 +456,6 @@ function editProduct(productId) {
             });
         });
 
-
-
-
-        // document.getElementById("saveButton").onclick = function () {
-        //     saveProductEdits(productId);
-        // };
         document.getElementById("closeUpdate").onclick = function () {
             closeUpdate();
         };
@@ -461,13 +489,54 @@ function addEditColor() {
         document.getElementById("editColorList").appendChild(li);
     }
 }
+// save edits button
+
+document.getElementById("editForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const sizeCheckboxes = document.querySelectorAll('input[name="editSizes"]');
+    const isAnySizeChecked = Array.from(sizeCheckboxes).some(cb => cb.checked);
+    // check sizes
+    if (!isAnySizeChecked) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Sizes Required',
+            text: 'Please select at least one size.'
+        });
+        return;
+    }
+    //  check images
+    const previewImages = document.querySelectorAll('#previewContainerUpdate img');
+
+    if (previewImages.length === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'image Required',
+            text: 'Please select at least one image.'
+        });
+        return;
+    }
 
 
+    //  check coloe
+    if (editColorList.length === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Color Required',
+            text: 'Please select at least one color.'
+        });
+        return;
+    }
 
+
+    const productId = Number(this.dataset.id);
+    saveProductEdits(productId);
+});
 
 
 // save edits
 function saveProductEdits(productId) {
+
     const all_data = JSON.parse(localStorage.getItem("all_data")) || { products: [] };
     const productIndex = all_data.products.findIndex(p => p.id === productId);
 

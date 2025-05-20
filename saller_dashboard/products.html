@@ -170,8 +170,8 @@
                                 <div class="mb-3">
                                     <label class="form-label">Colors</label>
                                     <div class="d-flex align-items-center gap-2">
-                                        <input type="color" class="form-control form-control-color textBoxHover"
-                                            id="colorInput" value="#563d7c" title="Choose color">
+                                        <input type="color" required class="form-control form-control-color textBoxHover"
+                                            id="colorInput" value="#000000" title="Choose color">
                                         <button type="button" class="btn btn-outline-dark btn-sm" onclick="addColor()">
                                             Add
                                             Color</button>
@@ -218,7 +218,7 @@
 
                 <!-- --------------------------------- -->
                 <!-- update product -->
-                <form id="editForm">
+                <form id="editForm" >
                     <section id="update" class="d-none d-flex g-2 flex-wrap justify-content-between gap-3">
                         <section class=" col-12 col-md-6  card shadow-lg  formBorder">
                             <div class="card-header bg-dark text-white">
@@ -304,7 +304,7 @@
                                     <label class="form-label">Colors</label>
                                     <div class="d-flex align-items-center gap-2">
                                         <input type="color" class="form-control form-control-color" id="editColorInput"
-                                            value="#563d7c">
+                                            value="#000000">
                                         <button type="button" class="btn btn-outline-dark btn-sm"
                                             onclick="addEditColor()">Add Color</button>
                                         <div id="editColorList" class="list-inline mt-2 ms-5"></div>
