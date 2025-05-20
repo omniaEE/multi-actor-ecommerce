@@ -32,69 +32,127 @@
         <div id="sidebar" class="sidebar col-10 col-sm-3 col-md-2 p-2 " id="sidebar"></div>
         <div class=" header col p-0 bg-light minmuntHeight">
             <div id="header" class=""></div>
-
-            <div class="container mt-4 modern-chart-card bg-light pb-3">
-                <div class="row">
-                    <!-- all-orders -->
-
-                    <div class="mt-3">
-                        <div class="d-flex justify-content-between py-2">
-
-                            <h3 class="text-dark ms-2"><b> Orders</b></h3>
-                            <div class="d-flex justify-content-between py-2 gap-2 ">
-                                <!----------------- search bar------------------- -->
-                                <div class="mb-3 ms-3 position-relative disapper">
-
-                                    <input type="text" id="userSearch"
-                                        class="form-control border-start-0 ps-5 border rounded-4"
-                                        placeholder=" Search by Name or Id...">
-                                    <i
-                                        class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+            <div class="p-4 container mt-4  pb-3">
+                <div class="row g-4">
+                    <!-- total orders -->
+                    <div class="col-md-4">
+                        <div class="modern-card h-80 text-dark">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                <h6 class=" text-dark-50 mb-1">Total Orders</h6>
+                                <h3 id="totalOrders" class="mb-0 fw-bold">--</h3>
                                 </div>
-                                <!-- --------------stock------------------ -->
-                                <div class=" d-none d-sm-inline-block disapper">
-                                    <select class="form-select rounded-4" id="stockSelect">
-                                        <option value="">All Status</option>
-                                        <option value="Delivered">Delivered</option>
-                                        <option value="processing">processing</option>
-                                    </select>
-                                </div>
-                                <!-- Mobile View: Icon Only Dropdown -->
-                                <div class="dropdown d-inline-block d-sm-none disapper">
-                                    <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3" type="button"
-                                        id="stockDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-box-open"></i> <span id="selectedStatus">All Status</span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="stockDropdownBtn" id="stockDropdown">
-                                        <li><a class="dropdown-item" data-value="">All Status</a></li>
-                                        <li><a class="dropdown-item" data-value="Delivered">Delivered</a></li>
-                                        <li><a class="dropdown-item" data-value="processing">processing</a></li>
-                                    </ul>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="icon-circle bg-info text-dark">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <!-- total delivered orders -->
+                    <div class="col-md-4">
+                        <div class="modern-card h-80 text-dark">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                <h6 class=" text-dark-50 mb-1">Total Delivered Orders</h6>
+                                <h3 id="totalDileveredOrders" class="mb-0 fw-bold">--</h3>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="icon-circle bg-gradient-success text-dark">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- total pending orders -->
+                    <div class="col-md-4">
+                        <div class="modern-card h-80 text-dark">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                <h6 class=" text-dark-50 mb-1">Total Processing Orders</h6>
+                                <h3 id="totalProcessingOrders" class="mb-0 fw-bold">--</h3>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="icon-circle bg-gradient-warning text-dark">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="container mt-4 modern-chart-card bg-light pb-3">
+                    <div class="row">
+                        <!-- all-orders -->
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-between py-2">
+
+                                <h3 class="text-dark ms-2"><b> Orders</b></h3>
+                                <div class="d-flex justify-content-between py-2 gap-2 ">
+                                    <!----------------- search bar------------------- -->
+                                    <div class="mb-3 ms-3 position-relative disapper">
+
+                                        <input type="text" id="userSearch"
+                                            class="form-control border-start-0 ps-5 border rounded-4"
+                                            placeholder=" Search by Name or Id...">
+                                        <i
+                                            class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                                    </div>
+                                    <!-- --------------stock------------------ -->
+                                    <div class=" d-none d-sm-inline-block disapper">
+                                        <select class="form-select rounded-4" id="stockSelect">
+                                            <option value="">All Status</option>
+                                            <option value="Delivered">Delivered</option>
+                                            <option value="processing">processing</option>
+                                        </select>
+                                    </div>
+                                    <!-- Mobile View: Icon Only Dropdown -->
+                                    <div class="dropdown d-inline-block d-sm-none disapper">
+                                        <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3"
+                                            type="button" id="stockDropdownBtn" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <i class="fa-solid fa-box-open"></i> <span id="selectedStatus">All
+                                                Status</span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="stockDropdownBtn" id="stockDropdown">
+                                            <li><a class="dropdown-item" data-value="">All Status</a></li>
+                                            <li><a class="dropdown-item" data-value="Delivered">Delivered</a></li>
+                                            <li><a class="dropdown-item" data-value="processing">processing</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ---------------------------------------------- -->
 
                         </div>
-                        <!-- ---------------------------------------------- -->
-
-                    </div>
-                    <div>
-                        <table id="mainTable"
-                            class="table table-hover formBorder text-small m-0 p-0  fs-6 responsive-table shadow">
-                            <thead class="">
-                                <tr>
-                                    <th>Id</th>
-                                    <th class="col-2">Customers</th>
-                                    <th class="col-3">Products</th>
-                                    <th lass="col-2">Order Date</th>
-                                    <th class="col-1">T-Price</th>
-                                    <th class="col-2">Delivery Address</th>
-                                    <th class="col-1"> Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Data will be added dynamically here -->
-                            </tbody>
-                        </table>
+                        <div>
+                            <table id="mainTable"
+                                class="table table-hover formBorder text-small m-0 p-0  fs-6 responsive-table shadow">
+                                <thead class="">
+                                    <tr>
+                                        <th class="col-0">Id</th>
+                                        <th class="col-2 ps-0">Customers</th>
+                                        <th class="col-3">Products</th>
+                                        <th lass="col-2">Order Date</th>
+                                        <th class="col-1">T-Price</th>
+                                        <th class="col-2"> Address</th>
+                                        <th class="col-0 px-0"> details</th>
+                                        <th class="col-1"> Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be added dynamically here -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,6 +162,25 @@
         </div>
 
 
+
+        <!-- Order Details Modal -->
+        <div class="modal fade" style="z-index: 99999;" id="orderDetailsModal" tabindex="-1"
+            aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="orderDetailsBody">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </main>
 
 
@@ -111,6 +188,8 @@
 
     <script src="js/header.js"></script>
     <script src="js/orders.js"></script>
+
+
 
 
 
