@@ -1,158 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SHOP.CO | Premium Menswear</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background: #fff;
-            color: #000;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background: #fff;
+        color: #000;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+      }
 
-        .bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80&grayscale');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.2;
-            z-index: 0;
-            filter: contrast(110%);
-        }
+      .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80&grayscale");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.2;
+        z-index: 0;
+        filter: contrast(110%);
+      }
 
-        .brand-container {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 3rem;
-        }
+      .brand-container {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 3rem;
+      }
 
+      .logo {
+        font-size: 4.5rem;
+        font-weight: 500;
+        font-weight: bolder;
+        letter-spacing: 8px;
+        margin: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 1s ease-out 0.5s forwards;
+        text-transform: uppercase;
+        line-height: 1.1;
+      }
+
+      .tagline {
+        font-size: 1rem;
+        letter-spacing: 3px;
+        margin: 10px 0 0 0;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeIn 1s ease-out 0.8s forwards;
+        text-transform: uppercase;
+        font-weight: 300;
+        color: #555;
+      }
+
+      .skip-btn {
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        padding: 10px 20px;
+        background: transparent;
+        border: 1px solid #000;
+        color: #000;
+        cursor: pointer;
+        font-size: 13px;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 1.5s forwards;
+        z-index: 2;
+        text-transform: uppercase;
+      }
+
+      .skip-btn:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      .loader {
+        width: 120px;
+        height: 2px;
+        background: #f0f0f0;
+        margin-top: 2rem;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 1.5s forwards;
+      }
+
+      .loader-bar {
+        height: 100%;
+        width: 0%;
+        background: #000;
+        animation: load 4s linear 2s forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes load {
+        to {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
         .logo {
-            font-size: 4.5rem;
-            font-weight: 500;
-            font-weight: bolder;
-            letter-spacing: 8px;
-            margin: 0;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease-out 0.5s forwards;
-            text-transform: uppercase;
-            line-height: 1.1;
+          font-size: 2.8rem;
+          letter-spacing: 5px;
         }
-
         .tagline {
-            font-size: 1rem;
-            letter-spacing: 3px;
-            margin: 10px 0 0 0;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: fadeIn 1s ease-out 0.8s forwards;
-            text-transform: uppercase;
-            font-weight: 300;
-            color: #555;
+          font-size: 0.8rem;
+          letter-spacing: 2px;
         }
-
-        .skip-btn {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            padding: 10px 20px;
-            background: transparent;
-            border: 1px solid #000;
-            color: #000;
-            cursor: pointer;
-            font-size: 13px;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out 1.5s forwards;
-            z-index: 2;
-            text-transform: uppercase;
+        .bg-image {
+          opacity: 0.15;
         }
-
-        .skip-btn:hover {
-            background: #000;
-            color: #fff;
-        }
-
-        .loader {
-            width: 120px;
-            height: 2px;
-            background: #f0f0f0;
-            margin-top: 2rem;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out 1.5s forwards;
-        }
-
-        .loader-bar {
-            height: 100%;
-            width: 0%;
-            background: #000;
-            animation: load 4s linear 2s forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes load {
-            to {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .logo {
-                font-size: 2.8rem;
-                letter-spacing: 5px;
-            }
-            .tagline {
-                font-size: 0.8rem;
-                letter-spacing: 2px;
-            }
-            .bg-image {
-                opacity: 0.15;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="bg-image"></div>
     <button class="skip-btn" onclick="redirect()">Skip</button>
-    
+
     <div class="brand-container">
-        <h1 class="logo">Shop.co</h1>
-        <p class="tagline">Modern essentials for men</p>
+      <h1 class="logo">Shop.co</h1>
+      <p class="tagline">Modern essentials for men</p>
     </div>
-    
+
     <div class="loader">
-        <div class="loader-bar"></div>
+      <div class="loader-bar"></div>
     </div>
 
     <script>
-        setTimeout(redirect, 5000);
-        
-        function redirect() {
-            window.location.href = "./home_page/homePage.html";
-        }
+      setTimeout(redirect, 5000);
+
+      function redirect() {
+        window.location.href = "./home_page/homePage.html";
+      }
     </script>
-</body>
+  </body>
 </html>
