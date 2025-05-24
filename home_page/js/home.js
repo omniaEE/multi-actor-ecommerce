@@ -1,4 +1,6 @@
 // MARK: Rating Stars
+const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
 function generateStarRating(averageRating) {
   const fullStars = Math.floor(averageRating);
   const hasHalfStar = averageRating % 1 >= 0.5;
@@ -39,7 +41,6 @@ function loadLatestProducts() {
   const latestProducts = products.slice(-4).reverse();
   const container = document.getElementById("latestProducts");
   container.innerHTML = "";
-  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
   latestProducts.forEach((product) => {
     const oldPrice =
@@ -77,9 +78,7 @@ function loadLatestProducts() {
                 : `<h3 id="product-stock"><span>Out of Stock</span></h3>`
             }
             ${
-              loggedUser &&
-              loggedUser.fav &&
-              loggedUser.fav.find((p) => p.id == product.id)
+              loggedUser && loggedUser.fav.find((p) => p.id == product.id)
                 ? '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
                 : '<i class="fa-regular fa-heart"></i>'
             }
@@ -102,7 +101,6 @@ function loadFirstProducts() {
   const firstProducts = products.slice(0, 4);
   const container = document.getElementById("firstProducts");
   container.innerHTML = "";
-  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 
   firstProducts.forEach((product) => {
     const oldPrice =
@@ -140,9 +138,7 @@ function loadFirstProducts() {
                 : `<h3 id="product-stock"><span>Out of Stock</span></h3>`
             }
             ${
-              loggedUser &&
-              loggedUser.fav &&
-              loggedUser.fav.find((p) => p.id == product.id)
+              loggedUser && loggedUser.fav?.find((p) => p.id == product.id)
                 ? '<i class="fa-solid fa-heart" style="color:#d90b0b;"></i>'
                 : '<i class="fa-regular fa-heart"></i>'
             }
@@ -274,9 +270,9 @@ function handleProductCardInteractions() {
         // Update UI without full reload by toggling heart classes
         e.target.classList.toggle("fa-regular");
         e.target.classList.toggle("fa-solid");
-        e.target.style.color = e.target.classList.contains("fa-solid")
-          ? "#d90b0b"
-          : "";
+        // e.target.style.color == e.target.classList.contains("fa-solid")
+        //   ? "#d90b0b"
+        //   : "";
       } else {
         // Navigate to product details for any other click
         const productId = card.querySelector("img").dataset.productid;
