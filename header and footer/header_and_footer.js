@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
-        results.forEach(product => {
+        results.forEach((product) => {
           const item = document.createElement("a");
           item.className = "dropdown-item";
           item.textContent = product.name;
@@ -94,11 +94,10 @@ window.addEventListener("DOMContentLoaded", function () {
 
       //cart budge
       if (!user || user.cart.length == 0) {
-        document.querySelector(".cart-budge").style.display = "none"
+        document.querySelector(".cart-budge").style.display = "none";
       } else {
         document.querySelector(".cart-budge").innerText = user.cart.length;
       }
-
 
       // Toggle mobile search bar
       const mobileSearchIcon = document.getElementById("mobileSearchIcon");
@@ -113,7 +112,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
       // Mobile search logic
       const mobileSearchInput = document.getElementById("mobileSearchInput");
-      const mobileResultsContainer = document.getElementById("mobileSearchResults");
+      const mobileResultsContainer = document.getElementById(
+        "mobileSearchResults"
+      );
 
       function displayResultsForMobile(results) {
         mobileResultsContainer.innerHTML = "";
@@ -136,13 +137,15 @@ window.addEventListener("DOMContentLoaded", function () {
       }
 
       if (mobileSearchInput) {
-        mobileSearchInput.addEventListener("input", debounce((e) => {
-          const value = e.target.value;
-          const results = searchProducts(value);
-          displayResultsForMobile(results);
-        }, 300));
+        mobileSearchInput.addEventListener(
+          "input",
+          debounce((e) => {
+            const value = e.target.value;
+            const results = searchProducts(value);
+            displayResultsForMobile(results);
+          }, 300)
+        );
       }
-
     });
 
   fetch("../header and footer/main_footer.html")
@@ -172,7 +175,7 @@ function showLogoutModal() {
 // Perform the logout action
 function performLogout() {
   const all_data = JSON.parse(localStorage.getItem("all_data") || "{}");
-  let userIndex = all_data.users.findIndex(u => u.id == user.id);
+  let userIndex = all_data.users.findIndex((u) => u.id == user.id);
   if (userIndex !== -1) {
     all_data.users[userIndex] = user;
     localStorage.setItem("all_data", JSON.stringify(all_data));
@@ -182,5 +185,4 @@ function performLogout() {
   // Redirect the user to the login page
   location.reload();
   // window.location.href= "../../login/login.html";
-
 }
