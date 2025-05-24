@@ -38,14 +38,12 @@ function showToast() {
   clearTimeout(toastTimeout);
   toastTimeout = setTimeout(() => {
     toast.style.display = "none";
-      location.reload()
+    location.reload();
   }, 1500);
   toast.querySelector("i").addEventListener("click", () => {
     toast.style.display = "none";
     clearTimeout(toastTimeout);
-
   });
-
 }
 
 //get user data
@@ -81,6 +79,7 @@ productsToShow.forEach((product) => {
   for (let i = 0; i < emptyStars; i++) {
     starsHtml += `<i class="fa-regular fa-star"></i>`;
   }
+
   otherPro.innerHTML += `
             <div class="pro-card">
                 <img src="${product.images[0]}" data-productid="${
@@ -378,12 +377,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // desc
     let extraDesc = document.getElementById("proDetails");
-    extraDesc.innerHTML = `${product.details}<br/>`;
+    extraDesc.innerHTML = `${
+      product.details ? product.details : "No Extra Details"
+    }<br/>`;
 
     //---------------------reviews
     let reviewsLenght = document.getElementById("reviewsLength");
     let viewMore = document.getElementById("showMoreReview");
-    
+
     reviewsLenght.innerText = "(" + product.reviews.length + ")";
 
     const showInitialReviews = () => {
@@ -492,47 +493,51 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //add review
-    sendReview.addEventListener("click", () => {
-      const username = usernameInput.value.trim();
-      const reviewText = reviewTextarea.value.trim();
+    sendReview.addEventListener(
+      "click",
 
-      if (!username || !reviewText || selectedRating === 0) {
-        alert("Please fill in all fields and select a rating.");
-        return;
+      () => {
+        const username = usernameInput.value.trim();
+        const reviewText = reviewTextarea.value.trim();
+
+        if (!username || !reviewText || selectedRating === 0) {
+          alert("Please fill in all fields and select a rating.");
+          return;
+        }
+
+        //create new review
+        const newReview = {
+          username: username,
+          review: reviewText,
+          rate: selectedRating,
+          date: new Date().toLocaleDateString(),
+        };
+
+        product.reviews.push(newReview);
+        product.ratings.push(selectedRating); //to link reviews with ratings
+        localStorage.setItem("all_data", JSON.stringify(data));
+
+        //reset
+        usernameInput.value = "";
+        reviewTextarea.value = "";
+        selectedRating = 0;
+        starEls.forEach((s) => {
+          s.classList.remove("fa-solid");
+          s.classList.add("fa-regular");
+        });
+
+        reviewTabs.forEach((tab) => {
+          tab.classList.remove("active");
+          reviewTabs[1].classList.add("active");
+        });
+        reviewContents.forEach((content) => {
+          content.classList.remove("show");
+          reviewContents[1].classList.add("show");
+        });
+
+        location.reload(); /////////////
       }
-
-      //create new review
-      const newReview = {
-        username: username,
-        review: reviewText,
-        rate: selectedRating,
-        date: new Date().toLocaleDateString(),
-      };
-
-      product.reviews.push(newReview);
-      product.ratings.push(selectedRating); //to link reviews with ratings
-      localStorage.setItem("all_data", JSON.stringify(data));
-
-      //reset
-      usernameInput.value = "";
-      reviewTextarea.value = "";
-      selectedRating = 0;
-      starEls.forEach((s) => {
-        s.classList.remove("fa-solid");
-        s.classList.add("fa-regular");
-      });
-
-      reviewTabs.forEach((tab) => {
-        tab.classList.remove("active");
-        reviewTabs[1].classList.add("active");
-      });
-      reviewContents.forEach((content) => {
-        content.classList.remove("show");
-        reviewContents[1].classList.add("show");
-      });
-
-      location.reload(); /////////////
-    });
+    );
   } else {
     // window.location.href = 'index.html';
   }
