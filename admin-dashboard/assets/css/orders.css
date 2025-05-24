@@ -36,3 +36,8 @@ h1 {
   background-color: #fff3cd;
   color: #856404;
 }
+.filters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
