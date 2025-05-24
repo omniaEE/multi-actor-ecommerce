@@ -1,389 +1,643 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>products</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <main class="d-flex">
-        <div id="sidebar" class="sidebar col-10 col-sm-3 col-md-2 p-2 " id="sidebar"></div>
-        <div class=" header col p-0 ">
-            <div id="header" class=""></div>
-            <div class="bg-light  px-2 px-sm-5  pt-4">
-                <!----------------- search bar------------------- -->
-                <div class="mb-3 ms-3 position-relative disapper">
+      <div
+        id="sidebar"
+        class="sidebar col-10 col-sm-3 col-md-2 p-2"
+        id="sidebar"
+      ></div>
+      <div class="header col p-0">
+        <div id="header" class=""></div>
+        <div class="bg-light px-2 px-sm-5 pt-4">
+          <!----------------- search bar------------------- -->
+          <div class="mb-3 ms-3 position-relative disapper">
+            <input
+              type="text"
+              id="userSearch"
+              class="form-control border-start-0 ps-5 border rounded-4"
+              placeholder=" Search for a product..."
+            />
+            <i
+              class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"
+            ></i>
+          </div>
 
-                    <input type="text" id="userSearch" class="form-control border-start-0 ps-5 border rounded-4"
-                        placeholder=" Search for a product...">
-                    <i class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+          <!-- ----------add product------------------------- -->
+          <button
+            class="btn btn-dark ms-3 mb-3 mb-sm-0 border rounded-4"
+            onclick="addProduct()"
+          >
+            Add products <i class="fa-solid fa-plus plus-icon"></i>
+          </button>
+          <!-- -----------------category------------------ -->
+          <div class="my-3 mx-3 col-3 d-none d-sm-inline-block disapper">
+            <select class="form-select border rounded-4" id="categorySelect">
+              <option value="">All Categories</option>
+              <!-- dynamically loaded options -->
+            </select>
+          </div>
+          <!-- Mobile View: Icon Only Dropdown -->
+          <div class="dropdown d-inline-block d-sm-none disapper">
+            <button
+              class="btn btn-outline-secondary dropdown-toggle px-1 mb-3"
+              type="button"
+              id="categoryDropdownBtn"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-list"></i>
+            </button>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="categoryDropdownBtn"
+              id="categoryDropdown"
+            >
+              <li>
+                <a class="dropdown-item" href="#" data-value=""
+                  >All Categories</a
+                >
+              </li>
 
-                </div>
+              <!-- dynamically generated category options here -->
+            </ul>
+          </div>
 
-                <!-- ----------add product------------------------- -->
-                <button class="btn btn-dark ms-3  mb-3 mb-sm-0 border rounded-4" onclick="addProduct()">Add products <i
-                        class="fa-solid fa-plus plus-icon"></i></button>
-                <!-- -----------------category------------------ -->
-                <div class="my-3 mx-3 col-3 d-none d-sm-inline-block disapper">
-                    <select class="form-select border rounded-4" id="categorySelect">
-                        <option value="">All Categories</option>
-                        <!-- dynamically loaded options -->
-                    </select>
-                </div>
-                <!-- Mobile View: Icon Only Dropdown -->
-                <div class="dropdown d-inline-block d-sm-none disapper ">
-                    <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3" type="button"
-                        id="categoryDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-list"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="categoryDropdownBtn" id="categoryDropdown">
-                        <li><a class="dropdown-item" href="#" data-value="">All Categories</a></li>
-
-                        <!-- dynamically generated category options here -->
-                    </ul>
-                </div>
-
-
-
-                <!-- --------------stock------------------ -->
-                <div class="my-3  col-3 d-none d-sm-inline-block disapper">
-                    <select class="form-select rounded-4" id="stockSelect">
-                        <option value="">All Stock Status</option>
-                        <option value="in">In Stock</option>
-                        <option value="out">Out of Stock</option>
-                    </select>
-                </div>
-                <!-- Mobile View: Icon Only Dropdown -->
-                <div class="dropdown d-inline-block d-sm-none disapper">
-                    <button class="btn btn-outline-secondary dropdown-toggle px-1 mb-3" type="button"
-                        id="stockDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-box-open"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="stockDropdownBtn" id="stockDropdown">
-                        <li><a class="dropdown-item" href="#" data-value="">All Stock Status</a></li>
-                        <li><a class="dropdown-item" href="#" data-value="in">In Stock</a></li>
-                        <li><a class="dropdown-item" href="#" data-value="out">Out of Stock</a></li>
-                    </ul>
-                </div>
-                <div class="text-end pe-3">
-                    <small id="proLength"></small>
-                </div>
-            </div>
-
-            <!-- products catalog -->
-            <div class="bg-light px-5 px-sm-3 px-md-5 py-1  min-vh-100">
-                <div class="container mt-4 productsContainer">
-                    <div class="row justify-content-center" id="productsContainer">
-                        <!--   products will be here -->
-                    </div>
-                </div>
-
-                <!-- add product -->
-                <form id="productForm">
-                    <section id="addProduct" class="d-none d-flex  flex-wrap  gap-4">
-                        <section class=" col-12 col-md-6  card shadow-lg  formBorder">
-                            <div class="card-header bg-dark text-white">
-                                <h5 class="mb-0 ms-2">Product Information</h5>
-                            </div>
-                            <div class=" card-body px-3 ">
-                                <div class="row mb-1">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Product Name</label>
-                                        <input type="text" class="form-control textBoxHover" id="name5" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Price</label>
-                                        <input type="number" class="form-control textBoxHover" id="price" min="1"
-                                            title="Please enter a positive number greater than 0" required>
-                                    </div>
-                                </div>
-
-                                <div class="mb-1">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control textBoxHover" id="description" rows="3"
-                                        required></textarea>
-                                </div>
-
-                                <div class="row mb-1">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Category</label>
-                                        <select class="form-select textBoxHover" id="category" required>
-                                            <option value="Men">Men</option>
-                                            <option value="Women">Women</option>
-                                            <option value="Kids">Kids</option>
-                                            <option value="Casual">Casual</option>
-                                            <option value="Formal">Formal</option>
-                                            <option value="Party">Party</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Quantity</label>
-                                        <input type="number" class="form-control textBoxHover" id="quantity" min="1"
-                                            title="Please enter a positive number greater than 0" required>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label d-block">Sizes:</label>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover " type="checkbox" id="sizeXS"
-                                            name="sizes" value="X-Small">
-                                        <label class="form-check-label" for="sizeS">XS</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover " type="checkbox" id="sizeS"
-                                            name="sizes" value="Small">
-                                        <label class="form-check-label" for="sizeS">S</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeM"
-                                            name="sizes" value="Medium">
-                                        <label class="form-check-label" for="sizeM">M</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeL"
-                                            name="sizes" value="Large">
-                                        <label class="form-check-label" for="sizeL">L</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeXL"
-                                            name="sizes" value="X-Large">
-                                        <label class="form-check-label" for="sizeXL">XL</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="sizeXXL"
-                                            name="sizes" value="XX-Large">
-                                        <label class="form-check-label" for="sizeXXL">XXL</label>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Colors</label>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <input type="color" class="form-control form-control-color textBoxHover"
-                                            id="colorInput" value="#563d7c" title="Choose color">
-                                        <button type="button" class="btn btn-outline-dark btn-sm" onclick="addColor()">
-                                            Add
-                                            Color</button>
-                                        <div id="colorList" class="list-inline mt-2 ms-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- ----------------------------------------------- -->
-                        <section class=" col-12 col-md  ">
-                            <section class=" card shadow-lg formBorder v-50">
-                                <div class="card-header bg-dark text-white">
-                                    <h5 class="mb-0 ms-2">Image Product</h5>
-                                </div>
-                                <div class=" card-body px-3 ">
-                                    <div class="mb-3">
-                                        <label class="form-label">Upload Image</label>
-                                        <label for="imageUpload" class="upload-icon">
-                                            <i class="fas fa-upload"></i>
-                                        </label>
-                                        <input type="file" class="form-control textBoxHover" id="imageUpload"
-                                            name="image" accept="image/*" multiple>
-                                    </div>
-                                    <div id="previewContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
-
-                                    <div class="row my-3">
-                                        <div class="mb-3 col-md-6">
-                                            <button type="submit"
-                                                class="btn btn-dark col-12 col-sm-6 col-md-4 px-0  w-100">
-                                                Add
-                                                Product</button>
-                                        </div>
-                                        <div class="mb-3 col-md-6">
-                                            <button type="button"
-                                                class="btn btn-outline-danger col-12 col-sm-6 col-md-4 px-0 w-100"
-                                                id="closeadd" onclick="closeUpdate()">close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </section>
-                    </section>
-                </form>
-
-                <!-- --------------------------------- -->
-                <!-- update product -->
-                <form id="editForm">
-                    <section id="update" class="d-none d-flex g-2 flex-wrap justify-content-between gap-3">
-                        <section class=" col-12 col-md-6  card shadow-lg  formBorder">
-                            <div class="card-header bg-dark text-white">
-                                <h5 class="mb-0 ms-2">Edit Product</h5>
-                            </div>
-                            <div class=" card-body px-3 ">
-                                <div class="row mb-1">
-                                    <div class="col-md-12">
-                                        <label for="editName" class="form-label">Product Name</label>
-                                        <input type="text" class="form-control textBoxHover" id="editName" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="editPrice" class="form-label">Old Price</label>
-                                        <input type="number" class="form-control textBoxHover" id="editOldPrice" min="1"
-                                            title="Please enter a positive number greater than 0">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="editPrice" class="form-label">Price</label>
-                                        <input type="number" class="form-control textBoxHover" id="editPrice" min="1"
-                                            title="Please enter a positive number greater than 0" required>
-                                    </div>
-                                </div>
-
-                                <div class="mb-1">
-                                    <label for="editDescription" class="form-label">Description</label>
-                                    <textarea class="form-control textBoxHover" id="editDescription" rows="3"
-                                        required></textarea>
-                                </div>
-
-                                <div class="row mb-1">
-                                    <div class="col-md-6">
-                                        <label for="editCategory" class="form-label">Category</label>
-                                        <select class="form-select textBoxHover" id="editCategory" required>
-                                            <option value="Men">Men</option>
-                                            <option value="Women">Women</option>
-                                            <option value="Kids">Kids</option>
-                                            <option value="Casual">Casual</option>
-                                            <option value="Formal">Formal</option>
-                                            <option value="Party">Party</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="editQuantity" class="form-label">Quantity</label>
-                                        <input type="number" class="form-control textBoxHover" id="editQuantity" min="1"
-                                            title="Please enter a positive number greater than 0" required>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label d-block">Sizes:</label>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeXS"
-                                            name="editSizes" value="X-Small">
-                                        <label class="form-check-label" for="editSizeXS">XS</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeS"
-                                            name="editSizes" value="Small">
-                                        <label class="form-check-label" for="editSizeS">S</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeM"
-                                            name="editSizes" value="Medium">
-                                        <label class="form-check-label" for="editSizeM">M</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeL"
-                                            name="editSizes" value="Large">
-                                        <label class="form-check-label" for="editSizeL">L</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeXL"
-                                            name="editSizes" value="X-Large">
-                                        <label class="form-check-label" for="editSizeXL">XL</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input textBoxHover" type="checkbox" id="editSizeXXL"
-                                            name="editSizes" value="XX-Large">
-                                        <label class="form-check-label" for="editSizeXXL">XXL</label>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Colors</label>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <input type="color" class="form-control form-control-color" id="editColorInput"
-                                            value="#563d7c">
-                                        <button type="button" class="btn btn-outline-dark btn-sm"
-                                            onclick="addEditColor()">Add Color</button>
-                                        <div id="editColorList" class="list-inline mt-2 ms-5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- ----------------------------------------------- -->
-                        <section class=" col-12 col-md-5">
-                            <section class=" card shadow-lg formBorder v-50">
-                                <div class="card-header bg-dark text-white">
-                                    <h5 class="mb-0 ms-2">Change Image Product</h5>
-                                </div>
-                                <div class=" card-body px-3 ">
-                                    <div class="mb-3">
-                                        <label class="form-label">Upload Image</label>
-                                        <label for="editImageUpload" class="upload-icon ">
-                                            <i class="fas fa-upload"></i>
-                                        </label>
-                                        <input type="file" class="form-control textBoxHover" id="editImageUpload"
-                                            accept="image/*" multiple>
-
-                                    </div>
-                                    <div id="previewContainerUpdate" class="mt-2 d-flex flex-wrap gap-2"></div>
-
-                                    <div class="row my-3">
-                                        <div class="mb-3 col-md-6">
-                                            <button type="submit"
-                                                class="btn btn-dark col-12 col-sm-6 col-md-4 px-3 w-100"
-                                                id="saveButton">Save Changes</button>
-                                        </div>
-                                        <div class="mb-3 col-md-6">
-                                            <button type="button"
-                                                class="btn btn-outline-danger col-12 col-sm-6 col-md-4 px-3 w-100"
-                                                id="closeUpdate">close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </section>
-                    </section>
-                </form>
-            </div>
+          <!-- --------------stock------------------ -->
+          <div class="my-3 col-3 d-none d-sm-inline-block disapper">
+            <select class="form-select rounded-4" id="stockSelect">
+              <option value="">All Stock Status</option>
+              <option value="in">In Stock</option>
+              <option value="out">Out of Stock</option>
+            </select>
+          </div>
+          <!-- Mobile View: Icon Only Dropdown -->
+          <div class="dropdown d-inline-block d-sm-none disapper">
+            <button
+              class="btn btn-outline-secondary dropdown-toggle px-1 mb-3"
+              type="button"
+              id="stockDropdownBtn"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-box-open"></i>
+            </button>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="stockDropdownBtn"
+              id="stockDropdown"
+            >
+              <li>
+                <a class="dropdown-item" href="#" data-value=""
+                  >All Stock Status</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" data-value="in">In Stock</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" data-value="out"
+                  >Out of Stock</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="text-end pe-3" id="proCount">
+            <small id="proLength"></small>
+          </div>
         </div>
 
+        <!-- products catalog -->
+        <div class="bg-light px-5 px-sm-3 px-md-5 py-1 min-vh-100">
+          <div class="container mt-4 productsContainer">
+            <div class="row justify-content-center" id="productsContainer">
+              <!--   products will be here -->
+            </div>
+          </div>
+
+          <!-- add product -->
+          <form id="productForm">
+            <section id="addProduct" class="d-none d-flex flex-wrap gap-4">
+              <section class="col-12 col-md-6 card shadow-lg formBorder">
+                <div class="card-header bg-dark text-white">
+                  <h5 class="mb-0 ms-2">Product Information</h5>
+                </div>
+                <div class="card-body px-3">
+                  <div class="row mb-1">
+                    <div class="col-md-6">
+                      <label class="form-label">Product Name</label>
+                      <input
+                        type="text"
+                        class="form-control textBoxHover"
+                        id="name5"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Price</label>
+                      <input
+                        type="number"
+                        class="form-control textBoxHover"
+                        id="price"
+                        min="1"
+                        title="Please enter a positive number greater than 0"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label class="form-label">Description</label>
+                    <textarea
+                      class="form-control textBoxHover"
+                      id="description"
+                      rows="3"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-md-6">
+                      <label class="form-label">Category</label>
+                      <select
+                        class="form-select textBoxHover"
+                        id="category"
+                        required
+                      >
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Kids">Kids</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Formal">Formal</option>
+                        <option value="Party">Party</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Quantity</label>
+                      <input
+                        type="number"
+                        class="form-control textBoxHover"
+                        id="quantity"
+                        min="1"
+                        title="Please enter a positive number greater than 0"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label d-block">Sizes:</label>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="sizeXS"
+                        name="sizes"
+                        value="X-Small"
+                      />
+                      <label class="form-check-label" for="sizeXS">XS</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="sizeS"
+                        name="sizes"
+                        value="Small"
+                      />
+                      <label class="form-check-label" for="sizeS">S</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="sizeM"
+                        name="sizes"
+                        value="Medium"
+                      />
+                      <label class="form-check-label" for="sizeM">M</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="sizeL"
+                        name="sizes"
+                        value="Large"
+                      />
+                      <label class="form-check-label" for="sizeL">L</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="sizeXL"
+                        name="sizes"
+                        value="X-Large"
+                      />
+                      <label class="form-check-label" for="sizeXL">XL</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="sizeXXL"
+                        name="sizes"
+                        value="XX-Large"
+                      />
+                      <label class="form-check-label" for="sizeXXL">XXL</label>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Colors</label>
+                    <div class="d-flex align-items-center gap-2">
+                      <input
+                        type="color"
+                        required
+                        class="form-control form-control-color textBoxHover"
+                        id="colorInput"
+                        value="#000000"
+                        title="Choose color"
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark btn-sm"
+                        onclick="addColor()"
+                      >
+                        Add Color
+                      </button>
+                      <div id="colorList" class="list-inline mt-2 ms-5"></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- ----------------------------------------------- -->
+              <section class="col-12 col-md">
+                <section class="card shadow-lg formBorder v-50">
+                  <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0 ms-2">Image Product</h5>
+                  </div>
+                  <div class="card-body px-3">
+                    <div class="mb-3">
+                      <label class="form-label">Upload Image</label>
+                      <label for="imageUpload" class="upload-icon">
+                        <i class="fas fa-upload"></i>
+                      </label>
+                      <input
+                        type="file"
+                        class="form-control textBoxHover"
+                        id="imageUpload"
+                        name="image"
+                        accept="image/*"
+                        multiple
+                      />
+                    </div>
+                    <div
+                      id="previewContainer"
+                      class="mt-2 d-flex flex-wrap gap-2"
+                    ></div>
+
+                    <div class="row my-3">
+                      <div class="mb-3 col-md-6">
+                        <button
+                          type="submit"
+                          class="btn btn-dark col-12 col-sm-6 col-md-4 px-0 w-100"
+                        >
+                          Add Product
+                        </button>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger col-12 col-sm-6 col-md-4 px-0 w-100"
+                          id="closeadd"
+                          onclick="closeUpdate()"
+                        >
+                          close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </section>
+          </form>
+
+          <!-- --------------------------------- -->
+          <!-- update product -->
+          <form id="editForm">
+            <section
+              id="update"
+              class="d-none d-flex g-2 flex-wrap justify-content-between gap-3"
+            >
+              <section class="col-12 col-md-6 card shadow-lg formBorder">
+                <div class="card-header bg-dark text-white">
+                  <h5 class="mb-0 ms-2">Edit Product</h5>
+                </div>
+                <div class="card-body px-3">
+                  <div class="row mb-1">
+                    <div class="col-md-12">
+                      <label for="editName" class="form-label"
+                        >Product Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control textBoxHover"
+                        id="editName"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="editPrice" class="form-label"
+                        >Old Price</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control textBoxHover"
+                        id="editOldPrice"
+                        min="1"
+                        title="Please enter a positive number greater than 0"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="editPrice" class="form-label">Price</label>
+                      <input
+                        type="number"
+                        class="form-control textBoxHover"
+                        id="editPrice"
+                        min="1"
+                        title="Please enter a positive number greater than 0"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="editDescription" class="form-label"
+                      >Description</label
+                    >
+                    <textarea
+                      class="form-control textBoxHover"
+                      id="editDescription"
+                      rows="3"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-md-6">
+                      <label for="editCategory" class="form-label"
+                        >Category</label
+                      >
+                      <select
+                        class="form-select textBoxHover"
+                        id="editCategory"
+                        required
+                      >
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Kids">Kids</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Formal">Formal</option>
+                        <option value="Party">Party</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="editQuantity" class="form-label"
+                        >Quantity</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control textBoxHover"
+                        id="editQuantity"
+                        min="1"
+                        title="Please enter a positive number greater than 0"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label d-block">Sizes:</label>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="editSizeXS"
+                        name="editSizes"
+                        value="X-Small"
+                      />
+                      <label class="form-check-label" for="editSizeXS"
+                        >XS</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="editSizeS"
+                        name="editSizes"
+                        value="Small"
+                      />
+                      <label class="form-check-label" for="editSizeS">S</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="editSizeM"
+                        name="editSizes"
+                        value="Medium"
+                      />
+                      <label class="form-check-label" for="editSizeM">M</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="editSizeL"
+                        name="editSizes"
+                        value="Large"
+                      />
+                      <label class="form-check-label" for="editSizeL">L</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="editSizeXL"
+                        name="editSizes"
+                        value="X-Large"
+                      />
+                      <label class="form-check-label" for="editSizeXL"
+                        >XL</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input textBoxHover"
+                        type="checkbox"
+                        id="editSizeXXL"
+                        name="editSizes"
+                        value="XX-Large"
+                      />
+                      <label class="form-check-label" for="editSizeXXL"
+                        >XXL</label
+                      >
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Colors</label>
+                    <div class="d-flex align-items-center gap-2">
+                      <input
+                        type="color"
+                        class="form-control form-control-color"
+                        id="editColorInput"
+                        value="#000000"
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark btn-sm"
+                        onclick="addEditColor()"
+                      >
+                        Add Color
+                      </button>
+                      <div
+                        id="editColorList"
+                        class="list-inline mt-2 ms-5"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- ----------------------------------------------- -->
+              <section class="col-12 col-md-5">
+                <section class="card shadow-lg formBorder v-50">
+                  <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0 ms-2">Change Image Product</h5>
+                  </div>
+                  <div class="card-body px-3">
+                    <div class="mb-3">
+                      <label class="form-label">Upload Image</label>
+                      <label for="editImageUpload" class="upload-icon">
+                        <i class="fas fa-upload"></i>
+                      </label>
+                      <input
+                        type="file"
+                        class="form-control textBoxHover"
+                        id="editImageUpload"
+                        accept="image/*"
+                        multiple
+                      />
+                    </div>
+                    <div
+                      id="previewContainerUpdate"
+                      class="mt-2 d-flex flex-wrap gap-2"
+                    ></div>
+
+                    <div class="row my-3">
+                      <div class="mb-3 col-md-6">
+                        <button
+                          type="submit"
+                          class="btn btn-dark col-12 col-sm-6 col-md-4 px-3 w-100"
+                          id="saveButton"
+                        >
+                          Save Changes
+                        </button>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger col-12 col-sm-6 col-md-4 px-3 w-100"
+                          id="closeUpdate"
+                        >
+                          close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </section>
+          </form>
+        </div>
+      </div>
     </main>
 
-
-
-
     <!-- ----------------------confirm delete product modal------------------------------- -->
-    <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel"
-        aria-hidden="true" style="z-index: 9999;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteProductModalLabel">Confirm Delete</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this product? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn" onclick="deleteShore()">Yes,
-                        Delete</button>
-                </div>
-            </div>
+    <div
+      class="modal fade"
+      id="deleteProductModal"
+      tabindex="-1"
+      aria-labelledby="deleteProductModalLabel"
+      aria-hidden="true"
+      style="z-index: 9999"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteProductModalLabel">
+              Confirm Delete
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this product? This action cannot be
+            undone.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="confirmDeleteBtn"
+              onclick="deleteShore()"
+            >
+              Yes, Delete
+            </button>
+          </div>
         </div>
+      </div>
     </div>
     <!-- ----------------------confirm delete product modal------------------------------- -->
-
-
 
     <script src="js/header.js"></script>
     <script src="js/products.js"></script>
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-</body>
-
+  </body>
 </html>
