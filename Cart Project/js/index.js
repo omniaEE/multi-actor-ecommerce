@@ -81,6 +81,8 @@ function show_cart_items() {
   //open product details
   itemsContainer.addEventListener("click", (e) => {
     if (e.target.tagName === "IMG") {
+      const imageSrc = e.target.src;
+      console.log(imageSrc);
       window.location.href = `../products pages/productDetails.html?id=${e.target.dataset.productid}`;
     }
   });
@@ -89,23 +91,31 @@ function show_cart_items() {
 function increaseQuantity(id, color, size) {
   let user = JSON.parse(localStorage.getItem("loggedInUser"));
   let cartItems = user.cart;
-  let item = cartItems.find(
+
+  let totalAmountForThisProduct = cartItems
+    .filter((item) => item.product.id === id)
+    .reduce((sum, item) => +sum + +item.amount, 0);
+  console.log(totalAmountForThisProduct);
+
+  let targetItem = cartItems.find(
     (item) =>
       item.product.id === id && item.color === color && item.size === size
   );
+
   const allData = JSON.parse(localStorage.getItem("all_data"));
   const product = allData.products.find((p) => p.id === id);
 
-  if (item && product) {
-    if (item.amount < product.stock) {
-      item.amount++;
+  if (targetItem && product) {
+    if (totalAmountForThisProduct < product.stock) {
+      targetItem.amount++;
+
       user.cart = cartItems;
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       show_cart_items();
     } else {
       Swal.fire({
         title: "Out of Stock!",
-        text: `Sorry, only ${product.stock} available for this variant.`,
+        text: `Sorry, only ${product.stock} units available in total for this product.`,
         icon: "error",
         confirmButtonText: "OK",
       });
